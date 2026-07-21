@@ -1,6 +1,6 @@
 {
   "version": "V35",
-  "generated_at": "2026-07-21 08:30 AM Pacific",
+  "generated_at": "2026-07-21 10:48 AM Pacific",
   "automatic_execution": true,
   "workers_requested": 2,
   "tasks_dispatched": 2,
@@ -15,19 +15,19 @@
       "score": 100.0,
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-21T15:30:14.025420+00:00"
+      "reserved_at": "2026-07-21T17:48:24.894936+00:00"
     },
     {
       "worker": "Alex",
       "repository": "xevrion-v2/agent-playground",
-      "issue_number": 8191,
-      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8191",
-      "title": "Add is-halfwidth-katakana-letter-nu-present API utility",
+      "issue_number": 2681,
+      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/2681",
+      "title": "[agent] Document repository GitHub workflows",
       "reward": 50.0,
       "score": 100.0,
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-21T15:30:14.025420+00:00"
+      "reserved_at": "2026-07-21T17:48:24.894936+00:00"
     }
   ]
 }
