@@ -1,7 +1,7 @@
 {
   "version": "V35",
   "owner": "Mazen Farkouh",
-  "generated_at": "2026-07-21 06:22 AM Pacific",
+  "generated_at": "2026-07-21 07:29 AM Pacific",
   "config": {
     "minimum_reward": 100,
     "minimum_payment_confidence": 55,
@@ -111,7 +111,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -197,7 +197,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -283,7 +283,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -369,7 +369,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -455,7 +455,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -541,7 +541,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -621,7 +621,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -701,7 +701,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -781,7 +781,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -861,7 +861,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -941,7 +941,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -1019,9 +1019,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -1099,9 +1099,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -1179,9 +1179,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -1259,9 +1259,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -1339,9 +1339,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -1421,7 +1421,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -1501,7 +1501,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -1581,7 +1581,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -1661,7 +1661,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific",
+      "last_verified": "2026-07-21 07:29 AM Pacific",
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -1673,17 +1673,17 @@
     {
       "level": "HIGH",
       "message": "26 pursue candidate(s) found",
-      "generated_at": "2026-07-21 06:22 AM Pacific"
+      "generated_at": "2026-07-21 07:29 AM Pacific"
     },
     {
       "level": "WARNING",
       "message": "Atlas health is DEGRADED: 2 API error(s)",
-      "generated_at": "2026-07-21 06:22 AM Pacific"
+      "generated_at": "2026-07-21 07:29 AM Pacific"
     },
     {
       "level": "CRITICAL",
       "message": "Alex is not searching: zero completed queries after automatic retry",
-      "generated_at": "2026-07-21 06:22 AM Pacific"
+      "generated_at": "2026-07-21 07:29 AM Pacific"
     }
   ],
   "system_status": "DEGRADED",
@@ -1700,7 +1700,7 @@
       "score": 100.0,
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-21T13:22:08.196344+00:00"
+      "reserved_at": "2026-07-21T14:29:09.483728+00:00"
     },
     {
       "worker": "Alex",
@@ -1712,7 +1712,7 @@
       "score": 100.0,
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-21T13:22:08.196344+00:00"
+      "reserved_at": "2026-07-21T14:29:09.483728+00:00"
     }
   ],
   "automation_boundary": "Atlas and Alex automatically dispatch up to two simple, uncontested tasks. Submission still depends on configured GitHub and AI credentials; payment remains controlled by maintainers.",
@@ -1721,7 +1721,7 @@
   "api_errors": [
     {
       "url": "https://api.github.com/search/issues?q=is%3Aissue%20is%3Aopen%20%22%2415%22%20in%3Atitle%2Cbody&sort=updated&order=desc&per_page=100",
-      "error": "HTTP 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID D841:80164:998B11C:9BFC139:6A5F72A8 and timestamp 2026-07-21 13:22:48 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Ser"
+      "error": "HTTP 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID 2460:71096:14A03BE:48A6E7C:6A5F8254 and timestamp 2026-07-21 14:29:40 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Ser"
     },
     {
       "worker": "Alex",
@@ -1729,11 +1729,11 @@
       "error": "Alex completed zero search queries after automatic retry"
     }
   ],
-  "raw_issues_found": 2142,
-  "aggregator_pages_rejected": 654,
-  "unsafe_items_rejected": 94,
-  "items_without_extractable_reward_rejected": 1289,
-  "eligible_candidates_found": 105,
+  "raw_issues_found": 2288,
+  "aggregator_pages_rejected": 714,
+  "unsafe_items_rejected": 96,
+  "items_without_extractable_reward_rejected": 1372,
+  "eligible_candidates_found": 106,
   "deep_verified_candidates": 30,
   "counts": {
     "PURSUE": 26,
@@ -1744,43 +1744,12 @@
   "contested_count": 0,
   "assigned_count": 0,
   "strong_uncontested_targets": 26,
-  "meaningful_changes": [
-    {
-      "type": "NEW",
-      "title": "Add is-halfwidth-katakana-letter-hi-present API utility",
-      "url": "https://github.com/xevrion-v2/agent-playground/issues/8200",
-      "decision": "PURSUE"
-    },
-    {
-      "type": "NEW",
-      "title": "Add is-halfwidth-katakana-letter-hu-present API utility",
-      "url": "https://github.com/xevrion-v2/agent-playground/issues/8201",
-      "decision": "PURSUE"
-    },
-    {
-      "type": "NEW",
-      "title": "Add is-halfwidth-katakana-letter-ha-present API utility",
-      "url": "https://github.com/xevrion-v2/agent-playground/issues/8199",
-      "decision": "PURSUE"
-    },
-    {
-      "type": "NEW",
-      "title": "Add is-halfwidth-katakana-letter-no-present API utility",
-      "url": "https://github.com/xevrion-v2/agent-playground/issues/8198",
-      "decision": "PURSUE"
-    },
-    {
-      "type": "NEW",
-      "title": "Add is-halfwidth-katakana-letter-ne-present API utility",
-      "url": "https://github.com/xevrion-v2/agent-playground/issues/8197",
-      "decision": "PURSUE"
-    }
-  ],
+  "meaningful_changes": [],
   "lifecycle_summary": {
-    "new_this_run": 5,
-    "still_active": 25,
+    "new_this_run": 0,
+    "still_active": 30,
     "changed": 0,
-    "not_reverified": 5
+    "not_reverified": 0
   },
   "top_results": [
     {
@@ -1856,7 +1825,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-ni-present API utility",
@@ -1931,7 +1900,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-na-present API utility",
@@ -2006,7 +1975,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-to-present API utility",
@@ -2081,7 +2050,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-te-present API utility",
@@ -2156,7 +2125,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-hi-present API utility",
@@ -2229,9 +2198,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-hu-present API utility",
@@ -2304,9 +2273,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-ha-present API utility",
@@ -2379,9 +2348,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-no-present API utility",
@@ -2454,9 +2423,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-ne-present API utility",
@@ -2529,9 +2498,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-ti-present API utility",
@@ -2606,7 +2575,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-ta-present API utility",
@@ -2681,7 +2650,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     }
   ],
   "all_verified_results": [
@@ -2758,7 +2727,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-ni-present API utility",
@@ -2833,7 +2802,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-na-present API utility",
@@ -2908,7 +2877,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-to-present API utility",
@@ -2983,7 +2952,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-te-present API utility",
@@ -3058,7 +3027,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-hi-present API utility",
@@ -3131,9 +3100,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-hu-present API utility",
@@ -3206,9 +3175,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-ha-present API utility",
@@ -3281,9 +3250,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-no-present API utility",
@@ -3356,9 +3325,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-ne-present API utility",
@@ -3431,9 +3400,9 @@
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "NEW",
+      "change": "UNCHANGED",
       "first_seen": "2026-07-21 06:22 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-ti-present API utility",
@@ -3508,7 +3477,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-ta-present API utility",
@@ -3583,7 +3552,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-so-present API utility",
@@ -3658,7 +3627,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-se-present API utility",
@@ -3733,7 +3702,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Add is-halfwidth-katakana-letter-su-present API utility",
@@ -3808,7 +3777,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[agent] Document repository GitHub workflows",
@@ -3884,7 +3853,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -3966,7 +3935,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
@@ -4044,7 +4013,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
@@ -4127,7 +4096,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[ Config ] Fix image tag typo in docker-compose.yml",
@@ -4208,7 +4177,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[ Docs ] Fix wrong HTTP method for Create Bounty in api-reference.md",
@@ -4289,7 +4258,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[ Docs ] Fix broken markdown table in api-reference.md",
@@ -4370,7 +4339,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[ Config ] Fix misspelled database key in app.json",
@@ -4451,7 +4420,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[ Docs ] Fix missing Step 4 in setup-guide.md",
@@ -4532,7 +4501,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[Hacktoberfest] Create a Custom n8n Node for APort Verification",
@@ -4612,7 +4581,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[Hacktoberfest] n8n Workflow Node for Policy Checks",
@@ -4692,7 +4661,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "Compatible x402 service: Bug Bounty Intelligence smart contract scanner",
@@ -4767,7 +4736,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[ Docs ] Fix wrong package name in setup-guide.md",
@@ -4845,7 +4814,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[ Docs ] Fix date ordering in changelog.md",
@@ -4923,7 +4892,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     },
     {
       "title": "[Bounty] [weilixiong/TentOfTrials] [$25 BOUNTY] [Python] Add independent log parser fixtu",
@@ -5004,7 +4973,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-21 06:22 AM Pacific"
+      "last_verified": "2026-07-21 07:29 AM Pacific"
     }
   ]
 }
