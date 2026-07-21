@@ -3800,8 +3800,10 @@ jobs:
             cd worktree
             git checkout -B "atlas-test/issue-${ISSUE_NUMBER}-${WORKER,,}"
           elif [ "$EXECUTION_MODE" = "submit" ]; then
-            gh issue comment "$ISSUE_NUMBER" --repo "$REPOSITORY" \
-              --body "${WORKER} has started working on this issue. A pull request will be submitted only if the change passes validation."
+            # Do not post a start/claim comment. Some target repositories reject
+            # issue comments from this PAT, and commenting is not required to
+            # fork, implement, test, or submit a pull request.
+            echo "Skipping optional start comment for ${REPOSITORY}#${ISSUE_NUMBER}; continuing directly to execution."
 
             gh repo fork "$REPOSITORY" --clone=false --remote=false || true
             owner="$(gh api user --jq .login)"
