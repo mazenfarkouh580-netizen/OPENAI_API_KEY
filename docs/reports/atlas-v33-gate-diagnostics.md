@@ -1,19 +1,19 @@
 # Atlas + Alex V35 Gate Diagnostics
 
-Generated: 2026-07-21 03:13 AM Pacific
+Generated: 2026-07-21 06:22 AM Pacific
 
 ## Decision Counts
 
-- PURSUE: 23
+- PURSUE: 26
 - PRIORITY REVIEW: 0
-- WATCHLIST: 5
-- REJECT: 2
+- WATCHLIST: 3
+- REJECT: 1
 
 ## Gate Counts
 
-- SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED: 23
-- PAYMENT SPEED OR FUNDING NOT VERIFIED: 4
-- CRYPTO OR WALLET PAYMENT - BLOCKED: 2
+- SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED: 26
+- PAYMENT SPEED OR FUNDING NOT VERIFIED: 2
+- CRYPTO OR WALLET PAYMENT - BLOCKED: 1
 - REPOSITORY MISMATCH - MANUAL VERIFY: 1
 
 ## Candidate Details
@@ -72,6 +72,61 @@ Generated: 2026-07-21 03:13 AM Pacific
 - Quick-win risk accepted: True
 - Atlas executable: True
 - URL: https://github.com/xevrion-v2/agent-playground/issues/8187
+
+### xevrion-v2/agent-playground #8200
+- Decision: PURSUE
+- Gate: SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED
+- Reward: $50.00
+- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: True
+- Atlas executable: True
+- URL: https://github.com/xevrion-v2/agent-playground/issues/8200
+
+### xevrion-v2/agent-playground #8201
+- Decision: PURSUE
+- Gate: SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED
+- Reward: $50.00
+- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: True
+- Atlas executable: True
+- URL: https://github.com/xevrion-v2/agent-playground/issues/8201
+
+### xevrion-v2/agent-playground #8199
+- Decision: PURSUE
+- Gate: SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED
+- Reward: $50.00
+- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: True
+- Atlas executable: True
+- URL: https://github.com/xevrion-v2/agent-playground/issues/8199
+
+### xevrion-v2/agent-playground #8198
+- Decision: PURSUE
+- Gate: SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED
+- Reward: $50.00
+- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: True
+- Atlas executable: True
+- URL: https://github.com/xevrion-v2/agent-playground/issues/8198
+
+### xevrion-v2/agent-playground #8197
+- Decision: PURSUE
+- Gate: SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED
+- Reward: $50.00
+- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: True
+- Atlas executable: True
+- URL: https://github.com/xevrion-v2/agent-playground/issues/8197
 
 ### xevrion-v2/agent-playground #8181
 - Decision: PURSUE
@@ -138,17 +193,6 @@ Generated: 2026-07-21 03:13 AM Pacific
 - Quick-win risk accepted: True
 - Atlas executable: True
 - URL: https://github.com/xevrion-v2/agent-playground/issues/2681
-
-### zhangjiayang6835-cyber/bounty-plaza #588
-- Decision: PURSUE
-- Gate: SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED
-- Reward: $50.00
-- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: True
-- Atlas executable: True
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/588
 
 ### Iamgoofball/-tg-station #49
 - Decision: PURSUE
@@ -238,17 +282,6 @@ Generated: 2026-07-21 03:13 AM Pacific
 - Atlas executable: True
 - URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/305
 
-### claude-builders-bounty/claude-builders-bounty #2855
-- Decision: PURSUE
-- Gate: SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED
-- Reward: $25.00
-- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: True
-- Atlas executable: True
-- URL: https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2855
-
 ### aporthq/aport-integrations #4
 - Decision: PURSUE
 - Gate: SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED
@@ -281,39 +314,6 @@ Generated: 2026-07-21 03:13 AM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: True
 - URL: https://github.com/nirium-protocol/nirium-sdk/issues/8
-
-### solana-foundation/pay #404
-- Decision: REJECT
-- Gate: CRYPTO OR WALLET PAYMENT - BLOCKED
-- Reward: $5.00
-- Payment: UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: True
-- URL: https://github.com/solana-foundation/pay/issues/404
-
-### UnsafeLabs/Bounty-Hunters #652
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $20.00
-- Payment: FIAT METHOD MENTIONED - FUNDING/TIMING NOT PROVEN
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/652
-
-### zhangjiayang6835-cyber/bounty-plaza #599
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $50.00
-- Payment: FIAT METHOD MENTIONED - FUNDING/TIMING NOT PROVEN
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/599
 
 ### UnsafeLabs/Bounty-Hunters #306
 - Decision: WATCHLIST
