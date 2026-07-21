@@ -7,11 +7,11 @@ on:
         description: "Choose scan only, safe local test, or submit a verified pull request"
         required: true
         type: choice
-        default: scan_only
+        default: submit
         options:
-          - scan_only
-          - safe_test
           - submit
+          - safe_test
+          - scan_only
   repository_dispatch:
     types: [atlas-scheduled-run, atlas-watchdog-recovery]
   schedule:
