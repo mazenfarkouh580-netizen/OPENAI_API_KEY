@@ -1,19 +1,19 @@
 # Atlas + Alex V36 Gate Diagnostics
 
-Generated: 2026-07-22 11:55 AM Pacific
+Generated: 2026-07-22 03:37 PM Pacific
 
 ## Decision Counts
 
 - PURSUE: 16
 - PRIORITY REVIEW: 0
-- WATCHLIST: 13
-- REJECT: 1
+- WATCHLIST: 12
+- REJECT: 2
 
 ## Gate Counts
 
 - SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED: 16
-- PAYMENT SPEED OR FUNDING NOT VERIFIED: 13
-- CRYPTO OR WALLET PAYMENT - BLOCKED: 1
+- PAYMENT SPEED OR FUNDING NOT VERIFIED: 12
+- CRYPTO OR WALLET PAYMENT - BLOCKED: 2
 
 ## Candidate Details
 
@@ -292,17 +292,6 @@ Generated: 2026-07-22 11:55 AM Pacific
 - Atlas executable: False
 - URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/575
 
-### zhangjiayang6835-cyber/bounty-plaza #619
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $40.00
-- Payment: UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/619
-
 ### UnsafeLabs/Bounty-Hunters #318
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
@@ -346,3 +335,14 @@ Generated: 2026-07-22 11:55 AM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/607
+
+### DEVBUILDSTACK/DORG #33
+- Decision: REJECT
+- Gate: CRYPTO OR WALLET PAYMENT - BLOCKED
+- Reward: $30.00
+- Payment: FIAT METHOD MENTIONED - FUNDING/TIMING NOT PROVEN
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: False
+- Atlas executable: True
+- URL: https://github.com/DEVBUILDSTACK/DORG/issues/33
