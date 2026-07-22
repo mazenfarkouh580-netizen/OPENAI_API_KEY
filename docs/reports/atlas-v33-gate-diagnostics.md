@@ -1,32 +1,21 @@
-# Atlas + Alex V35 Gate Diagnostics
+# Atlas + Alex V36 Gate Diagnostics
 
-Generated: 2026-07-21 02:46 PM Pacific
+Generated: 2026-07-22 11:55 AM Pacific
 
 ## Decision Counts
 
-- PURSUE: 15
+- PURSUE: 16
 - PRIORITY REVIEW: 0
-- WATCHLIST: 14
+- WATCHLIST: 13
 - REJECT: 1
 
 ## Gate Counts
 
-- SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED: 15
-- PAYMENT SPEED OR FUNDING NOT VERIFIED: 14
+- SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED: 16
+- PAYMENT SPEED OR FUNDING NOT VERIFIED: 13
 - CRYPTO OR WALLET PAYMENT - BLOCKED: 1
 
 ## Candidate Details
-
-### xevrion-v2/agent-playground #2681
-- Decision: PURSUE
-- Gate: SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED
-- Reward: $50.00
-- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: True
-- Atlas executable: True
-- URL: https://github.com/xevrion-v2/agent-playground/issues/2681
 
 ### Iamgoofball/-tg-station #49
 - Decision: PURSUE
@@ -149,6 +138,28 @@ Generated: 2026-07-21 02:46 PM Pacific
 - Atlas executable: True
 - URL: https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2855
 
+### xevrion-v2/agent-playground #2681
+- Decision: PURSUE
+- Gate: SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED
+- Reward: $50.00
+- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: True
+- Atlas executable: True
+- URL: https://github.com/xevrion-v2/agent-playground/issues/2681
+
+### claude-builders-bounty/claude-builders-bounty #2853
+- Decision: PURSUE
+- Gate: SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED
+- Reward: $50.00
+- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: True
+- Atlas executable: True
+- URL: https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2853
+
 ### cuentaprueba244w-dotcom/TentOfTrials #10
 - Decision: PURSUE
 - Gate: SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED
@@ -192,6 +203,17 @@ Generated: 2026-07-21 02:46 PM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: True
 - URL: https://github.com/nirium-protocol/nirium-sdk/issues/8
+
+### zhangjiayang6835-cyber/bounty-plaza #633
+- Decision: WATCHLIST
+- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
+- Reward: $50.00
+- Payment: UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: False
+- Atlas executable: False
+- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/633
 
 ### UnsafeLabs/Bounty-Hunters #652
 - Decision: WATCHLIST
@@ -281,39 +303,6 @@ Generated: 2026-07-21 02:46 PM Pacific
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/619
 
-### UnsafeLabs/Bounty-Hunters #317
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $1.00
-- Payment: UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/317
-
-### UnsafeLabs/Bounty-Hunters #315
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $1.00
-- Payment: UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/315
-
-### UnsafeLabs/Bounty-Hunters #308
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $1.00
-- Payment: UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/308
-
 ### UnsafeLabs/Bounty-Hunters #318
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
@@ -335,6 +324,17 @@ Generated: 2026-07-21 02:46 PM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: False
 - URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/316
+
+### zhangjiayang6835-cyber/bounty-plaza #652
+- Decision: WATCHLIST
+- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
+- Reward: $25.00
+- Payment: UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: False
+- Atlas executable: False
+- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/652
 
 ### zhangjiayang6835-cyber/bounty-plaza #607
 - Decision: WATCHLIST

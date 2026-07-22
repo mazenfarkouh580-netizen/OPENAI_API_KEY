@@ -1,6 +1,6 @@
 {
-  "version": "V35",
-  "generated_at": "2026-07-21 02:46 PM Pacific",
+  "version": "V36",
+  "generated_at": "2026-07-22 11:55 AM Pacific",
   "automatic_execution": true,
   "workers_requested": 2,
   "tasks_dispatched": 2,
@@ -14,20 +14,22 @@
       "reward": 50.0,
       "score": 100.0,
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "claude-builders-bounty/claude-builders-bounty#1",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-21T21:46:24.383444+00:00"
+      "reserved_at": "2026-07-22T18:55:43.007523+00:00"
     },
     {
       "worker": "Alex",
-      "repository": "xevrion-v2/agent-playground",
-      "issue_number": 2681,
-      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/2681",
-      "title": "[agent] Document repository GitHub workflows",
+      "repository": "Iamgoofball/-tg-station",
+      "issue_number": 49,
+      "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
+      "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
       "reward": 50.0,
       "score": 100.0,
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "Iamgoofball/-tg-station#49",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-21T21:46:24.383444+00:00"
+      "reserved_at": "2026-07-22T18:55:43.007523+00:00"
     }
   ]
 }
