@@ -7,11 +7,11 @@ on:
         description: "Choose scan only, safe local test, or submit a verified pull request"
         required: true
         type: choice
-        default: scan_only
+        default: submit
         options:
-          - scan_only
-          - safe_test
           - submit
+          - safe_test
+          - scan_only
   repository_dispatch:
     types: [atlas-scheduled-run, atlas-watchdog-recovery]
   schedule:
@@ -27,8 +27,10 @@ concurrency:
 permissions:
   actions: write
   contents: write
-  issues: read
+  issues: write
   pull-requests: write
+  pages: write
+  id-token: write
 
 jobs:
   hunt:
@@ -54,7 +56,7 @@ jobs:
         id: atlas
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REQUESTED_EXECUTION_MODE: ${{ github.event.inputs.execution_mode || 'scan_only' }}
+          REQUESTED_EXECUTION_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode || 'submit' }}
         run: |
           python <<'PY'
           import html
@@ -67,11 +69,13 @@ jobs:
           import urllib.request
           from datetime import datetime, timezone
           from pathlib import Path
+          from zoneinfo import ZoneInfo
 
           TOKEN = os.environ["GITHUB_TOKEN"]
           API_VERSION = "2022-11-28"
           NOW = datetime.now(timezone.utc)
-          GENERATED_AT = NOW.strftime("%Y-%m-%d %H:%M UTC")
+          PACIFIC = ZoneInfo("America/Los_Angeles")
+          GENERATED_AT = NOW.astimezone(PACIFIC).strftime("%Y-%m-%d %I:%M %p Pacific")
 
           DATA_DIR = Path("data")
           DOCS_DIR = Path("docs")
@@ -83,6 +87,7 @@ jobs:
           CANDIDATE_LIFECYCLE_FILE = DATA_DIR / "candidate-lifecycle.json"
           DISCOVERY_CACHE_FILE = DATA_DIR / "discovery-cache.json"
           DASHBOARD_FILE = DOCS_DIR / "index.html"
+          STATUS_WINDOW_FILE = DOCS_DIR / "status.html"
           MONEY_WINDOW_FILE = DOCS_DIR / "money.html"
           MONEY_DATA_FILE = DOCS_DIR / "money-data.json"
           CONFIG_FILE = DATA_DIR / "atlas-config.json"
@@ -435,7 +440,7 @@ jobs:
               return default
 
           default_config = {
-              "minimum_reward": 5,
+              "minimum_reward": 0.10,
               "minimum_payment_confidence": 55,
               "minimum_expected_value": 2,
               "queue_size": 20,
@@ -444,13 +449,17 @@ jobs:
               "reinvest_percent": 25,
               "mazen_percent": 50,
               "automatic_execution": True,
-              "parallel_workers": 2,
+              "parallel_workers": 1,
               "maximum_execution_reward": 250,
               "execution_score_floor": 48,
           }
           config = load_json_file(CONFIG_FILE, default_config)
           for key, value in default_config.items():
               config.setdefault(key, value)
+
+          # CEO law: accept paid opportunities starting at ten cents.
+          # Force migration of an older persisted $5 configuration.
+          config["minimum_reward"] = 0.10
 
           split_total = sum(float(config.get(key, 0)) for key in (
               "tax_percent", "reinvest_percent", "mazen_percent"
@@ -531,7 +540,7 @@ jobs:
                           "Accept": accept,
                           "X-GitHub-Api-Version": API_VERSION,
                           "User-Agent": (
-                              "Atlas-Opportunity-Hunter-V33"
+                              "Atlas-Opportunity-Hunter-V35"
                           ),
                       },
                   )
@@ -3374,6 +3383,17 @@ jobs:
               dashboard,
               encoding="utf-8",
           )
+          STATUS_WINDOW_FILE.write_text(
+              dashboard.replace(
+                  "<title>\n              Atlas + Alex Opportunity Hunter V35\n            </title>",
+                  "<title>Atlas V35 Status Window</title>",
+              ).replace(
+                  "Atlas + Alex Opportunity Hunter V35",
+                  "Atlas V35 Status Window",
+                  1,
+              ),
+              encoding="utf-8",
+          )
 
           received_entries = [
               entry for entry in ledger
@@ -3483,7 +3503,7 @@ jobs:
                 <div><a href="index.html">Open full Atlas dashboard</a></div>
               </section>
 
-              <div class="footer" id="refresh-note">Checking for updates every 30 seconds. Money is recorded only after the ledger marks payment as received.</div>
+              <div class="footer" id="refresh-note">Checking for updates every 15 minutes. Money is recorded only after the ledger marks payment as received.</div>
             </main>
             <script>
               const money = value => '$' + Number(value || 0).toLocaleString(undefined, {{minimumFractionDigits: 2, maximumFractionDigits: 2}});
@@ -3508,7 +3528,7 @@ jobs:
                 }}
               }}
               refreshMoney();
-              setInterval(refreshMoney, 30000);
+              setInterval(refreshMoney, 900000);
               document.addEventListener('visibilitychange', () => {{ if (!document.hidden) refreshMoney(); }});
               window.addEventListener('pageshow', refreshMoney);
               window.addEventListener('focus', refreshMoney);
@@ -3730,12 +3750,13 @@ jobs:
     if: >-
       ${{ always() &&
           needs.hunt.result == 'success' &&
-          github.event_name == 'workflow_dispatch' &&
-          github.event.inputs.execution_mode != 'scan_only' &&
-          needs.hunt.outputs.execution_ready == 'true' }}
+          needs.hunt.outputs.execution_ready == 'true' &&
+          (github.event_name == 'repository_dispatch' ||
+           (github.event_name == 'schedule' && github.event.schedule == '7,22,37,52 * * * *') ||
+           (github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode != 'scan_only')) }}
     strategy:
       fail-fast: false
-      max-parallel: 2
+      max-parallel: 1
       matrix: ${{ fromJSON(needs.hunt.outputs.execution_matrix) }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -3749,16 +3770,32 @@ jobs:
         env:
           ATLAS_GITHUB_PAT: ${{ secrets.ATLAS_GITHUB_PAT }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          EXECUTION_MODE: ${{ github.event.inputs.execution_mode }}
+          EXECUTION_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode || 'submit' }}
         run: |
           set -euo pipefail
+          echo "mode=${EXECUTION_MODE}" >> "$GITHUB_OUTPUT"
+
+          # Safe test is local and read-only, so it needs only OpenAI.
+          if [ "$EXECUTION_MODE" = "safe_test" ]; then
+            if [ -z "${OPENAI_API_KEY:-}" ]; then
+              echo "ready=false" >> "$GITHUB_OUTPUT"
+              echo "reason=OPENAI_API_KEY is missing" >> "$GITHUB_OUTPUT"
+              echo "Safe test skipped because OPENAI_API_KEY is not configured." >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Submit mode needs both the execution model key and a GitHub PAT.
           if [ -z "${ATLAS_GITHUB_PAT:-}" ] || [ -z "${OPENAI_API_KEY:-}" ]; then
             echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "Execution requires repository secrets ATLAS_GITHUB_PAT and OPENAI_API_KEY."
-          else
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-            echo "mode=${EXECUTION_MODE}" >> "$GITHUB_OUTPUT"
+            echo "reason=Submit mode requires ATLAS_GITHUB_PAT and OPENAI_API_KEY" >> "$GITHUB_OUTPUT"
+            echo "Submission skipped because ATLAS_GITHUB_PAT or OPENAI_API_KEY is not configured." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
           fi
+
+          echo "ready=true" >> "$GITHUB_OUTPUT"
 
       - name: Prepare task workspace
         if: steps.credentials.outputs.ready == 'true'
@@ -3767,7 +3804,7 @@ jobs:
           REPOSITORY: ${{ matrix.repository }}
           ISSUE_NUMBER: ${{ matrix.issue_number }}
           WORKER: ${{ matrix.worker }}
-          EXECUTION_MODE: ${{ github.event.inputs.execution_mode }}
+          EXECUTION_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode || 'submit' }}
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/atlas-work"
@@ -3783,8 +3820,10 @@ jobs:
             cd worktree
             git checkout -B "atlas-test/issue-${ISSUE_NUMBER}-${WORKER,,}"
           elif [ "$EXECUTION_MODE" = "submit" ]; then
-            gh issue comment "$ISSUE_NUMBER" --repo "$REPOSITORY" \
-              --body "${WORKER} has started working on this issue. A pull request will be submitted only if the change passes validation."
+            # Do not post a start/claim comment. Some target repositories reject
+            # issue comments from this PAT, and commenting is not required to
+            # fork, implement, test, or submit a pull request.
+            echo "Skipping optional start comment for ${REPOSITORY}#${ISSUE_NUMBER}; continuing directly to execution."
 
             gh repo fork "$REPOSITORY" --clone=false --remote=false || true
             owner="$(gh api user --jq .login)"
@@ -3865,7 +3904,7 @@ jobs:
           issue_body="$(gh issue view "$ISSUE_NUMBER" --repo "$REPOSITORY" --json body --jq .body)"
           printf '%s\n' "$issue_body" > "$RUNNER_TEMP/atlas-issue.md"
 
-          aider \
+          timeout --signal=TERM --kill-after=30s 20m aider \
             --model gpt-4.1-mini \
             --yes-always \
             --no-auto-commits \
@@ -3904,7 +3943,7 @@ jobs:
           test -n "$(git diff --name-only)" || { echo "Agent produced no change."; exit 1; }
 
       - name: Save safe-test patch for review
-        if: steps.credentials.outputs.ready == 'true' && github.event.inputs.execution_mode == 'safe_test'
+        if: steps.credentials.outputs.ready == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode == 'safe_test'
         working-directory: ${{ runner.temp }}/atlas-work/worktree
         run: |
           set -euo pipefail
@@ -3914,7 +3953,7 @@ jobs:
           git diff --stat > "$RUNNER_TEMP/atlas-review/${{ matrix.worker }}-${{ matrix.issue_number }}-summary.txt"
 
       - name: Upload safe-test review package
-        if: steps.credentials.outputs.ready == 'true' && github.event.inputs.execution_mode == 'safe_test'
+        if: steps.credentials.outputs.ready == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode == 'safe_test'
         uses: actions/upload-artifact@v4
         with:
           name: atlas-safe-test-${{ matrix.worker }}-${{ matrix.issue_number }}
@@ -3923,7 +3962,7 @@ jobs:
           retention-days: 7
 
       - name: Commit, push, and open pull request
-        if: steps.credentials.outputs.ready == 'true' && github.event.inputs.execution_mode == 'submit'
+        if: steps.credentials.outputs.ready == 'true' && (github.event_name != 'workflow_dispatch' || github.event.inputs.execution_mode == 'submit')
         env:
           GH_TOKEN: ${{ secrets.ATLAS_GITHUB_PAT }}
           REPOSITORY: ${{ matrix.repository }}
@@ -3950,7 +3989,7 @@ jobs:
       - name: Record unavailable executor
         if: steps.credentials.outputs.ready != 'true'
         run: |
-          echo "${{ matrix.worker }} selected ${{ matrix.repository }}#${{ matrix.issue_number }}, but execution did not start because required secrets are missing. Add ATLAS_GITHUB_PAT and OPENAI_API_KEY as repository Actions secrets." >> "$GITHUB_STEP_SUMMARY"
+          echo "${{ matrix.worker }} selected ${{ matrix.repository }}#${{ matrix.issue_number }}, but execution was safely skipped: ${{ steps.credentials.outputs.reason }}." >> "$GITHUB_STEP_SUMMARY"
 
   alex_payment_followup:
     name: Alex payment follow-up
@@ -3986,7 +4025,7 @@ jobs:
               "Authorization": f"Bearer {token}",
               "Accept": "application/vnd.github+json",
               "X-GitHub-Api-Version": "2022-11-28",
-              "User-Agent": "Atlas-Alex-V33",
+              "User-Agent": "Atlas-Alex-V35",
           }
 
           def api(method, url, payload=None):
@@ -4110,6 +4149,97 @@ jobs:
               f"reminders sent={reminders_sent}; waiting={waiting}."
           )
           PY
+
+
+  deploy_status_window:
+    name: Deploy current-account Status window
+    needs: hunt
+    if: >-
+      ${{ always() &&
+          needs.hunt.result == 'success' &&
+          (github.event_name == 'workflow_dispatch' ||
+           github.event_name == 'repository_dispatch' ||
+           (github.event_name == 'schedule' && github.event.schedule == '7,22,37,52 * * * *')) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}status.html
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Download latest generated Status window
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          ref: ${{ github.ref_name }}
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Status window site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+
+      - name: Publish Status window
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  workflow_health:
+    name: Verify truthful workflow status
+    needs: [hunt, execute, alex_payment_followup]
+    if: >-
+      always() &&
+      (github.event_name == 'workflow_dispatch' ||
+       github.event_name == 'repository_dispatch' ||
+       (github.event_name == 'schedule' && github.event.schedule == '7,22,37,52 * * * *'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Fail degraded, incomplete, or falsely green runs
+        env:
+          HUNT_RESULT: ${{ needs.hunt.result }}
+          EXECUTE_RESULT: ${{ needs.execute.result }}
+          FOLLOWUP_RESULT: ${{ needs.alex_payment_followup.result }}
+          SYSTEM_STATUS: ${{ needs.hunt.outputs.system_status }}
+          EXECUTION_READY: ${{ needs.hunt.outputs.execution_ready }}
+        run: |
+          set -euo pipefail
+          {
+            echo "## Atlas V35 Workflow Health"
+            echo "- Hunt job: ${HUNT_RESULT}"
+            echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
+            echo "- Execution ready: ${EXECUTION_READY:-false}"
+            echo "- Execute job: ${EXECUTE_RESULT}"
+            echo "- Payment follow-up: ${FOLLOWUP_RESULT}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          failed=false
+          [ "$HUNT_RESULT" = "success" ] || failed=true
+          [ "${SYSTEM_STATUS:-FAILED}" = "HEALTHY" ] || failed=true
+
+          if [ "${EXECUTION_READY:-false}" = "true" ]; then
+            case "$EXECUTE_RESULT" in
+              success) ;;
+              *) failed=true ;;
+            esac
+          elif [ "$EXECUTE_RESULT" = "failure" ] || [ "$EXECUTE_RESULT" = "cancelled" ]; then
+            failed=true
+          fi
+
+          if [ "$FOLLOWUP_RESULT" = "failure" ] || [ "$FOLLOWUP_RESULT" = "cancelled" ]; then
+            failed=true
+          fi
+
+          if [ "$failed" = true ]; then
+            echo "Atlas V35 is not fully healthy; this run must not appear green." >&2
+            exit 1
+          fi
+
+          echo "Atlas V35 completed with truthful healthy status."
 
   watchdog:
     if: >-
