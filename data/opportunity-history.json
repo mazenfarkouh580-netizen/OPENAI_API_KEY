@@ -435,5 +435,28 @@
       "changed": 0,
       "not_reverified": 0
     }
+  },
+  {
+    "generated_at": "2026-07-22 10:01 PM Pacific",
+    "system_status": "HEALTHY_WITH_WARNINGS",
+    "raw_issues_found": 3775,
+    "eligible_candidates_found": 188,
+    "deep_verified_candidates": 30,
+    "counts": {
+      "PURSUE": 28,
+      "PRIORITY REVIEW": 0,
+      "WATCHLIST": 1,
+      "REJECT": 1
+    },
+    "contested_count": 0,
+    "assigned_count": 0,
+    "strong_uncontested_targets": 28,
+    "meaningful_change_count": 24,
+    "lifecycle_summary": {
+      "new_this_run": 24,
+      "still_active": 6,
+      "changed": 0,
+      "not_reverified": 24
+    }
   }
 ]
