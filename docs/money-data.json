@@ -6,7 +6,7 @@
   "waiting_total": 0.0,
   "last_payment": "No verified payment yet",
   "status": "HEALTHY_WITH_WARNINGS",
-  "pursue": 0,
+  "pursue": 15,
   "priority_review": 0,
-  "generated_at": "2026-07-23 03:21 AM Pacific"
+  "generated_at": "2026-07-23 03:52 AM Pacific"
 }
