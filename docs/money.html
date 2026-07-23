@@ -54,15 +54,17 @@
       <div class="card"><div class="value" id="today">$0.00</div><div class="name">Today</div></div>
       <div class="card"><div class="value" id="week">$0.00</div><div class="name">This week</div></div>
       <div class="card"><div class="value" id="month">$0.00</div><div class="name">This month</div></div>
-      <div class="card"><div class="value" id="waiting">$0.00</div><div class="name">Pending / waiting</div></div>
+      <div class="card"><div class="value" id="reserved">$186.00</div><div class="name">Reserved — not earned</div></div>
+      <div class="card"><div class="value" id="submitted">$157.00</div><div class="name">Submitted — pending acceptance</div></div>
+      <div class="card"><div class="value" id="waiting">$0.00</div><div class="name">Payment waiting</div></div>
     </section>
 
     <section class="status">
       <div><strong>Last payment:</strong> <span id="last-payment">No verified payment yet</span></div>
       <div><strong>Atlas:</strong> <span id="atlas-status">HEALTHY_WITH_WARNINGS</span> — scanning every 15 minutes</div>
       <div><strong>Alex:</strong> independently searching and verifying small, executable paid tasks</div>
-      <div><strong>Pursue:</strong> <span id="pursue">15</span> &nbsp; <strong>Priority review:</strong> <span id="priority">0</span></div>
-      <div><strong>Last updated:</strong> <span id="updated">2026-07-23 04:40 AM Pacific</span></div>
+      <div><strong>Pursue:</strong> <span id="pursue">0</span> &nbsp; <strong>Priority review:</strong> <span id="priority">0</span></div>
+      <div><strong>Last updated:</strong> <span id="updated">2026-07-23 12:50 PM Pacific</span></div>
       <div><a href="index.html">Open full Atlas dashboard</a></div>
     </section>
 
@@ -79,6 +81,8 @@
         document.getElementById('today').textContent = money(data.today);
         document.getElementById('week').textContent = money(data.week);
         document.getElementById('month').textContent = money(data.month);
+        document.getElementById('reserved').textContent = money(data.reserved_total);
+        document.getElementById('submitted').textContent = money(data.submitted_pending_total);
         document.getElementById('waiting').textContent = money(data.waiting_total);
         document.getElementById('last-payment').textContent = data.last_payment || 'No verified payment yet';
         document.getElementById('atlas-status').textContent = data.status || 'UNKNOWN';
