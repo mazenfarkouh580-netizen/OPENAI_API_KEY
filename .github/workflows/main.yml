@@ -1,5 +1,8 @@
-name: Atlas + Alex V41 — Isolated Task Results Production
-# Refresh scheduled workflow registration
+name: Atlas + Alex V41 — Confirmed Execution and Scheduler Repair
+
+run-name: >-
+  ${{ github.event_name == 'schedule' && github.event.schedule == '13,28,43,58 * * * *' && 'Atlas V41 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V41 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V41 Watchdog Recovery' || format('Atlas V41 Manual — {0}', github.event.inputs.execution_mode) }}
+
 on:
   workflow_dispatch:
     inputs:
@@ -21,7 +24,9 @@ on:
     - cron: "13,28,43,58 * * * *"
 
 concurrency:
-  group: atlas-alex-opportunity-hunter-v41
+  # Keep production runs serialized, but never make the watchdog wait behind
+  # a long execution job. The original single group blocked watchdog recovery.
+  group: ${{ github.event_name == 'schedule' && github.event.schedule == '13,28,43,58 * * * *' && 'atlas-alex-v41-watchdog' || 'atlas-alex-v41-production' }}
   cancel-in-progress: false
 
 permissions:
@@ -3749,8 +3754,9 @@ jobs:
               ),
               "",
               (
-                  "> Manual verification is "
-                  "required before any work begins."
+                  "> Autonomous execution is enabled for dispatched tasks. "
+                  "A task is blocked only when its specific credentials, "
+                  "baseline, implementation, validation, or submission gate fails."
               ),
               "",
               "## Top Candidates",
@@ -4106,6 +4112,7 @@ jobs:
           echo "ready=true" >> "$GITHUB_OUTPUT"
           echo "reason=Baseline passed" >> "$GITHUB_OUTPUT"
       - name: Implement the issue
+        id: implement
         if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -4473,6 +4480,7 @@ jobs:
           echo "${{ matrix.worker }} selected ${{ matrix.repository }}#${{ matrix.issue_number }}, but execution was safely skipped: ${{ steps.credentials.outputs.reason }}." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Record isolated task outcome
+        id: task_outcome
         if: always()
         env:
           WORKER: ${{ matrix.worker }}
@@ -4511,18 +4519,29 @@ jobs:
           elif [ "${IMPLEMENT_OUTCOME:-skipped}" = "failure" ]; then
             result="failed"
             reason="implementation_failed_or_no_useful_change"
+          elif [ "${IMPLEMENT_OUTCOME:-skipped}" = "skipped" ]; then
+            result="skipped"
+            reason="implementation_not_run"
           elif [ "${VALIDATE_OUTCOME:-skipped}" = "failure" ]; then
             result="failed"
             reason="post_change_validation_failed"
+          elif [ "${VALIDATE_OUTCOME:-skipped}" = "skipped" ]; then
+            result="skipped"
+            reason="validation_not_run"
           elif [ "${SUBMIT_OUTCOME:-skipped}" = "failure" ]; then
             result="failed"
             reason="push_or_pull_request_failed"
+          elif [ "${EXECUTION_MODE}" = "submit" ] && [ "${SUBMIT_OUTCOME:-skipped}" = "skipped" ]; then
+            result="skipped"
+            reason="submission_not_run"
           fi
 
           echo "## ${WORKER}: ${REPOSITORY}#${ISSUE_NUMBER}" >> "$GITHUB_STEP_SUMMARY"
           echo "- Result: **${result}**" >> "$GITHUB_STEP_SUMMARY"
           echo "- Reason: ${reason}" >> "$GITHUB_STEP_SUMMARY"
           [ -z "${PR_URL:-}" ] || echo "- Pull request: ${PR_URL}" >> "$GITHUB_STEP_SUMMARY"
+          echo "task_result=${result}" >> "$GITHUB_OUTPUT"
+          echo "task_reason=${reason}" >> "$GITHUB_OUTPUT"
           echo "task_result=${result}"
           echo "task_reason=${reason}"
           exit 0
@@ -4749,7 +4768,8 @@ jobs:
             echo "- Hunt job: ${HUNT_RESULT}"
             echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
             echo "- Execution ready: ${EXECUTION_READY:-false}"
-            echo "- Task batch result: ${EXECUTE_RESULT}"
+            echo "- Executor job status: ${EXECUTE_RESULT}"
+            echo "- Task outcomes: see each 'Record isolated task outcome' section above; job success only means the matrix job completed without a system-level crash."
             echo "- Payment follow-up: ${FOLLOWUP_RESULT}"
           } >> "$GITHUB_STEP_SUMMARY"
 
@@ -4799,19 +4819,14 @@ jobs:
           set -euo pipefail
 
           now_epoch="$(date -u +%s)"
-          last_success="$(
-            gh api "repos/${REPOSITORY}/actions/workflows/${GITHUB_WORKFLOW_REF#${REPOSITORY}/}/runs?status=success&per_page=10" \
-              --jq '[.workflow_runs[] | select(.event != "schedule" or .name == "Atlas + Alex V41 — Active Search Recovery")][0].updated_at // empty' \
-              2>/dev/null || true
-          )"
-
-          # More reliable fallback: inspect recent successful runs of this workflow ID.
+          # Inspect only successful MAIN or RECOVERY runs. The original query could
+          # treat a prior successful watchdog run as proof that production was healthy.
           workflow_id="${GITHUB_WORKFLOW_REF#${REPOSITORY}/}"
           workflow_id="${workflow_id%@*}"
           last_success="$(
-            gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=20" \
-              --jq '[.workflow_runs[] | select(.run_started_at != null)][0].updated_at // empty' \
-              2>/dev/null || printf '%s' "${last_success}"
+            gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=50" \
+              --jq '[.workflow_runs[] | select(.display_title == "Atlas V41 Main Production" or .display_title == "Atlas V41 Watchdog Recovery")][0].updated_at // empty' \
+              2>/dev/null || true
           )"
 
           dispatch_needed=false
@@ -4864,3 +4879,12 @@ jobs:
             echo "Main hunt is current. No recovery run is needed."
           fi
 
+
+
+# Reporting additions
+# Successful submissions: <count>
+# Accepted submissions: <count>
+# Paid submissions: <count>
+# Total earnings: $<amount>
+# Workflow jobs completed: <count>
+# Opportunity tasks submitted: <count>
