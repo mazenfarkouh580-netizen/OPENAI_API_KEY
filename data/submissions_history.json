@@ -24,15 +24,16 @@
     "workflow_run_id": "29975117794"
   },
   "Iamgoofball/-tg-station#50": {
-    "state": "reserved",
+    "state": "submitted",
     "repository": "Iamgoofball/-tg-station",
     "issue_number": 50,
     "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/50",
     "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
-    "reward": 10.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T02:55:54.192883+00:00",
-    "reserved_at_ts": 1784775383.6686397,
+    "reward": 10.0,
+    "pr_url": "https://github.com/Iamgoofball/-tg-station/pull/244",
+    "submitted_at": "2026-07-23T03:02:00.141453+00:00",
+    "submitted_at_ts": 1784775720.1414654,
     "workflow_run_id": "29975638572"
   },
   "Saiaaax/CyberNinja-Dojo#10": {
