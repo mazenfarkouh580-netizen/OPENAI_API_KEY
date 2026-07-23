@@ -4029,39 +4029,86 @@ jobs:
           python -m pip install --disable-pip-version-check --quiet "aider-chat>=0.86,<1"
 
       - name: Validate clean repository baseline
-        if: steps.credentials.outputs.ready == 'true'
+        id: baseline
+        if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true'
         working-directory: ${{ runner.temp }}/atlas-work/worktree
         env:
           OPENAI_API_KEY: ""
           GH_TOKEN: ""
           GITHUB_TOKEN: ""
+          CI: "true"
+          NEXT_TELEMETRY_DISABLED: "1"
           npm_config_ignore_scripts: "true"
           PIP_DISABLE_PIP_VERSION_CHECK: "1"
         run: |
-          set -euo pipefail
+          set -u
           echo "Testing the untouched repository before Atlas changes anything."
+          baseline_status=0
+          baseline_reason=""
+
           if [ -f package.json ]; then
-            if [ -f package-lock.json ]; then npm ci --ignore-scripts; else npm install --ignore-scripts; fi
-            npm test --if-present
-            npm run lint --if-present
+            if [ -f package-lock.json ]; then
+              npm ci --ignore-scripts || baseline_status=$?
+            else
+              npm install --ignore-scripts || baseline_status=$?
+            fi
+            if [ "$baseline_status" -eq 0 ]; then
+              npm test --if-present || baseline_status=$?
+            fi
+            if [ "$baseline_status" -eq 0 ]; then
+              # Next.js lint can open an interactive ESLint setup prompt when the
+              # untouched repository has no ESLint configuration. That is not an
+              # Atlas failure, so do not invoke that prompt as a baseline test.
+              if [ -f eslint.config.js ] || [ -f eslint.config.mjs ] || [ -f eslint.config.cjs ] ||                  [ -f .eslintrc ] || [ -f .eslintrc.js ] || [ -f .eslintrc.cjs ] ||                  [ -f .eslintrc.json ] || [ -f .eslintrc.yml ] || [ -f .eslintrc.yaml ]; then
+                npm run lint --if-present || baseline_status=$?
+              else
+                echo "No committed ESLint configuration; skipping potentially interactive baseline lint."
+              fi
+            fi
           elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then
-            python -m venv "$RUNNER_TEMP/atlas-validation-venv"
-            . "$RUNNER_TEMP/atlas-validation-venv/bin/activate"
-            python -m pip install --quiet --upgrade pip
-            if [ -f requirements.txt ]; then pip install --quiet -r requirements.txt; fi
-            pip install --quiet pytest || true
-            pytest -q
+            python -m venv "$RUNNER_TEMP/atlas-validation-venv" || baseline_status=$?
+            if [ "$baseline_status" -eq 0 ]; then
+              . "$RUNNER_TEMP/atlas-validation-venv/bin/activate"
+              python -m pip install --quiet --upgrade pip || baseline_status=$?
+              if [ "$baseline_status" -eq 0 ] && [ -f requirements.txt ]; then
+                pip install --quiet -r requirements.txt || baseline_status=$?
+              fi
+              if [ "$baseline_status" -eq 0 ]; then
+                pip install --quiet pytest || true
+                pytest -q || baseline_status=$?
+              fi
+            fi
           elif [ -f go.mod ]; then
-            go test ./...
+            go test ./... || baseline_status=$?
           elif [ -f Cargo.toml ]; then
-            cargo test
+            cargo test || baseline_status=$?
           else
             echo "No supported baseline test command detected; diff validation will be used after editing."
           fi
-          git diff --quiet || { echo "Baseline setup modified tracked files; refusing unsafe task."; git status --short; exit 1; }
 
+          if ! git diff --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+            baseline_reason="Baseline setup modified repository files"
+            baseline_status=1
+          elif [ "$baseline_status" -ne 0 ]; then
+            baseline_reason="Untouched repository baseline did not pass"
+          fi
+
+          # Always restore the untouched checkout. A rejected individual task is
+          # logged and skipped; it must not turn the complete production run red.
+          git reset --hard HEAD >/dev/null 2>&1 || true
+          git clean -fd >/dev/null 2>&1 || true
+
+          if [ "$baseline_status" -ne 0 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "reason=${baseline_reason:-Baseline validation unavailable}" >> "$GITHUB_OUTPUT"
+            echo "Task skipped safely: ${baseline_reason:-baseline validation unavailable}." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+          echo "reason=Baseline passed" >> "$GITHUB_OUTPUT"
       - name: Implement the issue
-        if: steps.credentials.outputs.ready == 'true'
+        if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GH_TOKEN: ${{ secrets.ATLAS_GITHUB_PAT }}
@@ -4268,7 +4315,7 @@ jobs:
           test -n "$(git diff --name-only)" || { echo "Agent produced no change."; exit 1; }
 
       - name: Save safe-test patch for review
-        if: steps.credentials.outputs.ready == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode == 'safe_test'
+        if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode == 'safe_test'
         working-directory: ${{ runner.temp }}/atlas-work/worktree
         run: |
           set -euo pipefail
@@ -4278,7 +4325,7 @@ jobs:
           git diff --stat > "$RUNNER_TEMP/atlas-review/${{ matrix.worker }}-${{ matrix.issue_number }}-summary.txt"
 
       - name: Upload safe-test review package
-        if: steps.credentials.outputs.ready == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode == 'safe_test'
+        if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode == 'safe_test'
         uses: actions/upload-artifact@v4
         with:
           name: atlas-safe-test-${{ matrix.worker }}-${{ matrix.issue_number }}
@@ -4288,7 +4335,7 @@ jobs:
 
       - name: Commit, push, and open pull request
         id: submit_pr
-        if: steps.credentials.outputs.ready == 'true' && (github.event_name != 'workflow_dispatch' || github.event.inputs.execution_mode == 'submit')
+        if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true' && (github.event_name != 'workflow_dispatch' || github.event.inputs.execution_mode == 'submit')
         env:
           GH_TOKEN: ${{ secrets.ATLAS_GITHUB_PAT }}
           REPOSITORY: ${{ matrix.repository }}
@@ -4411,6 +4458,11 @@ jobs:
           done
           echo "Unable to persist submitted-task history after retries." >&2
           exit 1
+
+      - name: Record rejected repository baseline
+        if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready != 'true'
+        run: |
+          echo "${{ matrix.worker }} safely skipped ${{ matrix.repository }}#${{ matrix.issue_number }}: ${{ steps.baseline.outputs.reason }}. Other matrix tasks continue." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Record unavailable executor
         if: steps.credentials.outputs.ready != 'true'
