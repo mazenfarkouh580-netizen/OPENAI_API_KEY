@@ -63,15 +63,16 @@
     "workflow_run_id": "29979811221"
   },
   "aporthq/aport-integrations#4": {
-    "state": "reserved",
+    "state": "submitted",
     "repository": "aporthq/aport-integrations",
     "issue_number": 4,
     "issue_url": "https://github.com/aporthq/aport-integrations/issues/4",
     "title": "[Hacktoberfest] Create a Custom n8n Node for APort Verification",
-    "reward": 50.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T04:32:49.573114+00:00",
-    "reserved_at_ts": 1784781206.8083837,
+    "reward": 50.0,
+    "pr_url": "https://github.com/aporthq/aport-integrations/pull/124",
+    "submitted_at": "2026-07-23T04:34:53.467632+00:00",
+    "submitted_at_ts": 1784781293.4676437,
     "workflow_run_id": "29979811221"
   },
   "cuentaprueba244w-dotcom/TentOfTrials#10": {
