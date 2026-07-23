@@ -395,6 +395,26 @@ jobs:
               "first valid submission",
           ]
 
+          FAST_ACCEPTANCE_TERMS = [
+              "accepted immediately",
+              "immediate acceptance",
+              "instant acceptance",
+              "same day acceptance",
+              "same-day acceptance",
+              "reviewed immediately",
+              "reviewed same day",
+              "review within 24 hours",
+              "accepted within 24 hours",
+              "accepted within 1 day",
+              "accepted within 2 days",
+              "accepted within 3 days",
+              "review within 3 days",
+              "first valid submission",
+              "first accepted submission",
+              "automatic acceptance",
+              "auto-accepted",
+          ]
+
           AI_ALLOWED_TERMS = [
               "ai allowed",
               "ai-assisted allowed",
@@ -1149,6 +1169,7 @@ jobs:
               paypal_signals = sorted({term for term in PAYPAL_TERMS if term in lowered})
               fiat_payment_signals = sorted({term for term in FIAT_PAYMENT_TERMS if term in lowered})
               fast_payment_signals = sorted({term for term in FAST_PAYMENT_TERMS if term in lowered})
+              fast_acceptance_signals = sorted({term for term in FAST_ACCEPTANCE_TERMS if term in lowered})
               ai_allowed_signals = sorted({term for term in AI_ALLOWED_TERMS if term in lowered})
               human_only_signals = sorted({term for term in HUMAN_ONLY_TERMS if term in lowered})
               approval_authority_signals = sorted({term for term in APPROVAL_AUTHORITY_TERMS if term in lowered})
@@ -1203,6 +1224,7 @@ jobs:
               )
 
               instant_payment_verified = bool(direct_payment_proof)
+              fast_acceptance_verified = bool(fast_acceptance_signals)
 
               payout_source = (
                   "Issue-level funded fiat payment evidence"
@@ -1285,6 +1307,19 @@ jobs:
                   (claimability_signals or inferred_pr_claim_path)
                   and not blocked_claim_signals
                   and not assignees
+              )
+
+              fast_cash_execution_qualified = bool(
+                  instant_payment_verified
+                  and fast_acceptance_verified
+                  and claimable_now
+                  and not human_only_signals
+                  and not crypto_signals
+                  and not repository_mismatch
+                  and not assignees
+                  and open_pr_count == 0
+                  and merged_pr_count == 0
+                  and atlas_can_execute
               )
 
               score = 0
@@ -1525,15 +1560,7 @@ jobs:
               # EXTRA EXTRA priority. This is a ranking signal, not a payment guarantee.
               instant_payment_priority = bool(
                   0.10 <= reward <= 50
-                  and fast_payment_signals
-                  and (fiat_payment_signals or paypal_signals)
-                  and not human_only_signals
-                  and not crypto_signals
-                  and not repository_mismatch
-                  and not assignees
-                  and open_pr_count == 0
-                  and merged_pr_count == 0
-                  and atlas_can_execute
+                  and fast_cash_execution_qualified
               )
 
               if quick_win_risk_accepted:
@@ -1671,17 +1698,11 @@ jobs:
                   )
                   decision = "PURSUE"
 
-              elif quick_win_risk_accepted and score >= 48:
-                  availability = (
-                      "SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED"
-                  )
-                  decision = "PURSUE"
-
               elif quick_win_risk_accepted:
                   availability = (
-                      "SMALL REWARD - TECHNICALLY DOABLE, LOW SCORE"
+                      "FAST ACCEPTANCE/PAYMENT NOT VERIFIED - DO NOT DISPATCH"
                   )
-                  decision = "PRIORITY REVIEW"
+                  decision = "WATCHLIST"
 
               elif not instant_payment_verified:
                   availability = "PAYMENT SPEED OR FUNDING NOT VERIFIED"
@@ -1758,11 +1779,7 @@ jobs:
 
               fast_pay_candidate = bool(
                   0.10 <= reward <= 50
-                  and (quick_win_risk_accepted or (fiat_payment_signals and fast_payment_signals))
-                  and not human_only_signals
-                  and not assignees
-                  and open_pr_count == 0
-                  and merged_pr_count == 0
+                  and fast_cash_execution_qualified
               )
 
               fast_pay_status = (
@@ -1822,6 +1839,9 @@ jobs:
                   "paypal_signals": paypal_signals,
                   "fiat_payment_signals": fiat_payment_signals,
                   "fast_payment_signals": fast_payment_signals,
+                  "fast_acceptance_signals": fast_acceptance_signals,
+                  "fast_acceptance_verified": fast_acceptance_verified,
+                  "fast_cash_execution_qualified": fast_cash_execution_qualified,
                   "ai_eligibility": ai_eligibility,
                   "approval_authority": approval_authority,
                   "direct_payment_proof": direct_payment_proof,
@@ -1854,7 +1874,7 @@ jobs:
                       or not claimable_now
                       or not atlas_can_execute
                       or not (
-                          fast_pay_candidate
+                          fast_cash_execution_qualified
                           and ai_allowed_signals
                           and approval_authority_signals
                       )
@@ -2716,7 +2736,7 @@ jobs:
           )
           execution_queue = execution_queue[:int(config.get("queue_size", 20))]
 
-          operations["version"] = "V37"
+          operations["version"] = "V43"
           operations["last_updated"] = GENERATED_AT
           operations["pipeline"] = execution_queue
           operations["source_performance"] = source_performance
@@ -2748,6 +2768,7 @@ jobs:
               and not item.get("repository_mismatch")
               and item.get("atlas_can_execute")
               and item.get("ai_eligibility") != "PROHIBITED"
+              and item.get("fast_cash_execution_qualified") is True
               and execution_history_allows(item)
           ]
           executable_candidates.sort(
@@ -2803,9 +2824,34 @@ jobs:
               encoding="utf-8",
           )
 
+          # Financial pipeline totals are separate from received cash.
+          # "Reserved" means Atlas selected and locked the task for execution;
+          # it is advertised value at risk, not earned revenue.
+          active_pipeline_states = {"reserved", "attempted", "submitted", "accepted", "approved", "merged"}
+          reserved_states = {"reserved", "attempted"}
+          submitted_states = {"submitted", "accepted", "approved", "merged"}
+          reserved_total = round(sum(
+              float(record.get("reward", 0) or 0)
+              for record in submissions_history.values()
+              if str(record.get("state", "")).lower() in reserved_states
+          ), 2)
+          submitted_pending_total = round(sum(
+              float(record.get("reward", 0) or 0)
+              for record in submissions_history.values()
+              if str(record.get("state", "")).lower() in submitted_states
+          ), 2)
+          advertised_pipeline_total = round(sum(
+              float(record.get("reward", 0) or 0)
+              for record in submissions_history.values()
+              if str(record.get("state", "")).lower() in active_pipeline_states
+          ), 2)
+          earnings["reserved_total"] = reserved_total
+          earnings["submitted_pending_total"] = submitted_pending_total
+          earnings["advertised_pipeline_total"] = advertised_pipeline_total
+
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V37",
+                  "version": "V44",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": int(config.get("parallel_workers", 2)),
@@ -3439,7 +3485,9 @@ jobs:
               <div class="card"><div class="value">${earnings['month']:,.2f}</div><div>This Month</div></div>
               <div class="card"><div class="value">${earnings['year']:,.2f}</div><div>This Year</div></div>
               <div class="card"><div class="value">${earnings['lifetime']:,.2f}</div><div>Lifetime</div></div>
-              <div class="card"><div class="value">${earnings['waiting_total']:,.2f}</div><div>Waiting Total</div></div>
+              <div class="card"><div class="value">${earnings['reserved_total']:,.2f}</div><div>Reserved for Work — Not Earned</div></div>
+              <div class="card"><div class="value">${earnings['submitted_pending_total']:,.2f}</div><div>Submitted — Awaiting Acceptance</div></div>
+              <div class="card"><div class="value">${earnings['waiting_total']:,.2f}</div><div>Payment Scheduled / Waiting</div></div>
               <div class="card"><div class="value">${earnings['waiting_today']:,.2f}</div><div>Waiting Today</div></div>
               <div class="card"><div class="value">${earnings['waiting_later']:,.2f}</div><div>Waiting Later</div></div>
               <div class="card"><div class="value">${earnings['overdue']:,.2f}</div><div>Overdue</div></div>
@@ -3513,8 +3561,7 @@ jobs:
             <p class="small">
               V33 runs two independent search universes on every
               run and keeps a discovery cache so temporary API limits do not erase
-              sources. Up to 30 candidates receive a fast technical and competition check, with reserved capacity for small rewards from both workers. Small-reward PURSUE does not require deep payment proof; it requires an open task, no active competition, repository integrity, and work Atlas can realistically execute. The page refreshes every
-              15 minutes.
+              sources. Up to 30 candidates receive a fast technical and competition check, with reserved capacity for small rewards from both workers. Small-reward PURSUE does not require deep payment proof; it requires an open task, no active competition, repository integrity, and work Atlas can realistically execute. The money window checks for fresh data every 60 seconds. Reserved and submitted amounts are advertised pipeline value, never cash received.
             </p>
           </body>
           </html>
@@ -3565,6 +3612,9 @@ jobs:
               "week": earnings["week"],
               "month": earnings["month"],
               "waiting_total": earnings["waiting_total"],
+              "reserved_total": earnings["reserved_total"],
+              "submitted_pending_total": earnings["submitted_pending_total"],
+              "advertised_pipeline_total": earnings["advertised_pipeline_total"],
               "last_payment": last_payment_text,
               "status": status,
               "pursue": counts["PURSUE"],
@@ -3632,7 +3682,9 @@ jobs:
                 <div class="card"><div class="value" id="today">${earnings['today']:,.2f}</div><div class="name">Today</div></div>
                 <div class="card"><div class="value" id="week">${earnings['week']:,.2f}</div><div class="name">This week</div></div>
                 <div class="card"><div class="value" id="month">${earnings['month']:,.2f}</div><div class="name">This month</div></div>
-                <div class="card"><div class="value" id="waiting">${earnings['waiting_total']:,.2f}</div><div class="name">Pending / waiting</div></div>
+                <div class="card"><div class="value" id="reserved">${earnings['reserved_total']:,.2f}</div><div class="name">Reserved — not earned</div></div>
+                <div class="card"><div class="value" id="submitted">${earnings['submitted_pending_total']:,.2f}</div><div class="name">Submitted — pending acceptance</div></div>
+                <div class="card"><div class="value" id="waiting">${earnings['waiting_total']:,.2f}</div><div class="name">Payment waiting</div></div>
               </section>
 
               <section class="status">
@@ -3657,6 +3709,8 @@ jobs:
                   document.getElementById('today').textContent = money(data.today);
                   document.getElementById('week').textContent = money(data.week);
                   document.getElementById('month').textContent = money(data.month);
+                  document.getElementById('reserved').textContent = money(data.reserved_total);
+                  document.getElementById('submitted').textContent = money(data.submitted_pending_total);
                   document.getElementById('waiting').textContent = money(data.waiting_total);
                   document.getElementById('last-payment').textContent = data.last_payment || 'No verified payment yet';
                   document.getElementById('atlas-status').textContent = data.status || 'UNKNOWN';
@@ -4486,6 +4540,7 @@ jobs:
           WORKER: ${{ matrix.worker }}
           REPOSITORY: ${{ matrix.repository }}
           ISSUE_NUMBER: ${{ matrix.issue_number }}
+          REWARD: ${{ matrix.reward }}
           CREDENTIALS_READY: ${{ steps.credentials.outputs.ready }}
           CREDENTIALS_REASON: ${{ steps.credentials.outputs.reason }}
           PREPARE_OUTCOME: ${{ steps.prepare.outcome }}
@@ -4536,8 +4591,11 @@ jobs:
             reason="submission_not_run"
           fi
 
+          reward_display="$(printf '$%.2f' "${REWARD:-0}")"
+          cash_received='$0.00'
           echo "## ${WORKER}: ${REPOSITORY}#${ISSUE_NUMBER}" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Result: **${result}**" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Result: **${result} — ${reward_display} advertised**" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Cash received: **${cash_received}**" >> "$GITHUB_STEP_SUMMARY"
           echo "- Reason: ${reason}" >> "$GITHUB_STEP_SUMMARY"
           [ -z "${PR_URL:-}" ] || echo "- Pull request: ${PR_URL}" >> "$GITHUB_STEP_SUMMARY"
           echo "task_result=${result}" >> "$GITHUB_OUTPUT"
@@ -4708,10 +4766,11 @@ jobs:
 
   deploy_status_window:
     name: Deploy current-account Status window
-    needs: hunt
+    needs: [hunt, execute, alex_payment_followup]
     if: >-
       ${{ always() &&
           needs.hunt.result == 'success' &&
+          needs.execute.result != 'cancelled' &&
           (github.event_name == 'workflow_dispatch' ||
            github.event_name == 'repository_dispatch' ||
            (github.event_name == 'schedule' && github.event.schedule == '8,23,38,53 * * * *')) }}
