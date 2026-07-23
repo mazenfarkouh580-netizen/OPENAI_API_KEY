@@ -1,5 +1,5 @@
 name: Atlas + Alex V41 — Isolated Task Results Production
-
+# Refresh scheduled workflow registration
 on:
   workflow_dispatch:
     inputs:
