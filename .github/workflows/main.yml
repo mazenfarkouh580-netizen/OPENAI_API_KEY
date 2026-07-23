@@ -3895,7 +3895,10 @@ jobs:
             # fork, implement, test, or submit a pull request.
             echo "Skipping optional start comment for ${REPOSITORY}#${ISSUE_NUMBER}; continuing directly to execution."
 
-            gh repo fork "$REPOSITORY" --clone=false --remote=false || true
+            # Create the fork through the GitHub REST API instead of `gh repo fork`.
+            # The runner's gh version rejects --remote when a repository argument is supplied.
+            # A 422 response means the fork already exists, which is safe to continue past.
+            gh api --method POST "repos/${REPOSITORY}/forks" --silent || true
             owner="$(gh api user --jq .login)"
 
             # Fork creation is asynchronous; wait until it is available.
