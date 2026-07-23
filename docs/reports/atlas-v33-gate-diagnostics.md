@@ -1,6 +1,6 @@
 # Atlas + Alex V36 Gate Diagnostics
 
-Generated: 2026-07-22 06:29 PM Pacific
+Generated: 2026-07-22 07:16 PM Pacific
 
 ## Decision Counts
 
@@ -292,6 +292,17 @@ Generated: 2026-07-22 06:29 PM Pacific
 - Atlas executable: False
 - URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/575
 
+### UnsafeLabs/Bounty-Hunters #317
+- Decision: WATCHLIST
+- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
+- Reward: $1.00
+- Payment: UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: False
+- Atlas executable: False
+- URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/317
+
 ### UnsafeLabs/Bounty-Hunters #318
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
@@ -313,17 +324,6 @@ Generated: 2026-07-22 06:29 PM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: False
 - URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/316
-
-### zhangjiayang6835-cyber/bounty-plaza #607
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $40.00
-- Payment: UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/607
 
 ### zhangjiayang6835-cyber/bounty-plaza #674
 - Decision: WATCHLIST

@@ -7,9 +7,9 @@
     "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
     "reward": 50.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T01:29:03.063723+00:00",
-    "reserved_at_ts": 1784770181.3984141,
-    "workflow_run_id": "29971903078"
+    "reserved_at": "2026-07-23T02:16:02.030528+00:00",
+    "reserved_at_ts": 1784773007.1238554,
+    "workflow_run_id": "29973952869"
   },
   "Iamgoofball/-tg-station#49": {
     "state": "reserved",
@@ -19,9 +19,9 @@
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
     "worker": "Alex",
-    "reserved_at": "2026-07-23T01:29:03.063723+00:00",
-    "reserved_at_ts": 1784770181.3984315,
-    "workflow_run_id": "29971903078"
+    "reserved_at": "2026-07-23T02:16:02.030528+00:00",
+    "reserved_at_ts": 1784773007.1238706,
+    "workflow_run_id": "29973952869"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "reserved",
