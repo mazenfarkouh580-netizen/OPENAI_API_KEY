@@ -1,7 +1,4 @@
-name: Atlas Golden V44 — Production Money Maker and Result Confirmation
-
-run-name: >-
-  ${{ github.event_name == 'schedule' && github.event.schedule == '13,28,43,58 * * * *' && 'Atlas V41 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V41 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V41 Watchdog Recovery' || format('Atlas V41 Manual — {0}', github.event.inputs.execution_mode) }}
+name: Atlas + Alex V41 — Isolated Task Results Production
 
 on:
   workflow_dispatch:
@@ -24,9 +21,7 @@ on:
     - cron: "13,28,43,58 * * * *"
 
 concurrency:
-  # Keep production runs serialized, but never make the watchdog wait behind
-  # a long execution job. The original single group blocked watchdog recovery.
-  group: ${{ github.event_name == 'schedule' && github.event.schedule == '13,28,43,58 * * * *' && 'atlas-alex-v41-watchdog' || 'atlas-alex-v41-production' }}
+  group: atlas-alex-opportunity-hunter-v41
   cancel-in-progress: false
 
 permissions:
@@ -393,26 +388,6 @@ jobs:
               "auto payout",
               "first accepted",
               "first valid submission",
-          ]
-
-          FAST_ACCEPTANCE_TERMS = [
-              "accepted immediately",
-              "immediate acceptance",
-              "instant acceptance",
-              "same day acceptance",
-              "same-day acceptance",
-              "reviewed immediately",
-              "reviewed same day",
-              "review within 24 hours",
-              "accepted within 24 hours",
-              "accepted within 1 day",
-              "accepted within 2 days",
-              "accepted within 3 days",
-              "review within 3 days",
-              "first valid submission",
-              "first accepted submission",
-              "automatic acceptance",
-              "auto-accepted",
           ]
 
           AI_ALLOWED_TERMS = [
@@ -1169,7 +1144,6 @@ jobs:
               paypal_signals = sorted({term for term in PAYPAL_TERMS if term in lowered})
               fiat_payment_signals = sorted({term for term in FIAT_PAYMENT_TERMS if term in lowered})
               fast_payment_signals = sorted({term for term in FAST_PAYMENT_TERMS if term in lowered})
-              fast_acceptance_signals = sorted({term for term in FAST_ACCEPTANCE_TERMS if term in lowered})
               ai_allowed_signals = sorted({term for term in AI_ALLOWED_TERMS if term in lowered})
               human_only_signals = sorted({term for term in HUMAN_ONLY_TERMS if term in lowered})
               approval_authority_signals = sorted({term for term in APPROVAL_AUTHORITY_TERMS if term in lowered})
@@ -1224,7 +1198,6 @@ jobs:
               )
 
               instant_payment_verified = bool(direct_payment_proof)
-              fast_acceptance_verified = bool(fast_acceptance_signals)
 
               payout_source = (
                   "Issue-level funded fiat payment evidence"
@@ -1307,19 +1280,6 @@ jobs:
                   (claimability_signals or inferred_pr_claim_path)
                   and not blocked_claim_signals
                   and not assignees
-              )
-
-              fast_cash_execution_qualified = bool(
-                  instant_payment_verified
-                  and fast_acceptance_verified
-                  and claimable_now
-                  and not human_only_signals
-                  and not crypto_signals
-                  and not repository_mismatch
-                  and not assignees
-                  and open_pr_count == 0
-                  and merged_pr_count == 0
-                  and atlas_can_execute
               )
 
               score = 0
@@ -1560,7 +1520,15 @@ jobs:
               # EXTRA EXTRA priority. This is a ranking signal, not a payment guarantee.
               instant_payment_priority = bool(
                   0.10 <= reward <= 50
-                  and fast_cash_execution_qualified
+                  and fast_payment_signals
+                  and (fiat_payment_signals or paypal_signals)
+                  and not human_only_signals
+                  and not crypto_signals
+                  and not repository_mismatch
+                  and not assignees
+                  and open_pr_count == 0
+                  and merged_pr_count == 0
+                  and atlas_can_execute
               )
 
               if quick_win_risk_accepted:
@@ -1698,11 +1666,17 @@ jobs:
                   )
                   decision = "PURSUE"
 
+              elif quick_win_risk_accepted and score >= 48:
+                  availability = (
+                      "SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED"
+                  )
+                  decision = "PURSUE"
+
               elif quick_win_risk_accepted:
                   availability = (
-                      "FAST ACCEPTANCE/PAYMENT NOT VERIFIED - DO NOT DISPATCH"
+                      "SMALL REWARD - TECHNICALLY DOABLE, LOW SCORE"
                   )
-                  decision = "WATCHLIST"
+                  decision = "PRIORITY REVIEW"
 
               elif not instant_payment_verified:
                   availability = "PAYMENT SPEED OR FUNDING NOT VERIFIED"
@@ -1779,7 +1753,11 @@ jobs:
 
               fast_pay_candidate = bool(
                   0.10 <= reward <= 50
-                  and fast_cash_execution_qualified
+                  and (quick_win_risk_accepted or (fiat_payment_signals and fast_payment_signals))
+                  and not human_only_signals
+                  and not assignees
+                  and open_pr_count == 0
+                  and merged_pr_count == 0
               )
 
               fast_pay_status = (
@@ -1839,9 +1817,6 @@ jobs:
                   "paypal_signals": paypal_signals,
                   "fiat_payment_signals": fiat_payment_signals,
                   "fast_payment_signals": fast_payment_signals,
-                  "fast_acceptance_signals": fast_acceptance_signals,
-                  "fast_acceptance_verified": fast_acceptance_verified,
-                  "fast_cash_execution_qualified": fast_cash_execution_qualified,
                   "ai_eligibility": ai_eligibility,
                   "approval_authority": approval_authority,
                   "direct_payment_proof": direct_payment_proof,
@@ -1874,7 +1849,7 @@ jobs:
                       or not claimable_now
                       or not atlas_can_execute
                       or not (
-                          fast_cash_execution_qualified
+                          fast_pay_candidate
                           and ai_allowed_signals
                           and approval_authority_signals
                       )
@@ -2736,7 +2711,7 @@ jobs:
           )
           execution_queue = execution_queue[:int(config.get("queue_size", 20))]
 
-          operations["version"] = "V43"
+          operations["version"] = "V37"
           operations["last_updated"] = GENERATED_AT
           operations["pipeline"] = execution_queue
           operations["source_performance"] = source_performance
@@ -2768,7 +2743,6 @@ jobs:
               and not item.get("repository_mismatch")
               and item.get("atlas_can_execute")
               and item.get("ai_eligibility") != "PROHIBITED"
-              and item.get("fast_cash_execution_qualified") is True
               and execution_history_allows(item)
           ]
           executable_candidates.sort(
@@ -2826,7 +2800,7 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V43",
+                  "version": "V37",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": int(config.get("parallel_workers", 2)),
@@ -3775,9 +3749,8 @@ jobs:
               ),
               "",
               (
-                  "> Autonomous execution is enabled for dispatched tasks. "
-                  "A task is blocked only when its specific credentials, "
-                  "baseline, implementation, validation, or submission gate fails."
+                  "> Manual verification is "
+                  "required before any work begins."
               ),
               "",
               "## Top Candidates",
@@ -4133,7 +4106,6 @@ jobs:
           echo "ready=true" >> "$GITHUB_OUTPUT"
           echo "reason=Baseline passed" >> "$GITHUB_OUTPUT"
       - name: Implement the issue
-        id: implement
         if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -4501,13 +4473,11 @@ jobs:
           echo "${{ matrix.worker }} selected ${{ matrix.repository }}#${{ matrix.issue_number }}, but execution was safely skipped: ${{ steps.credentials.outputs.reason }}." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Record isolated task outcome
-        id: task_outcome
         if: always()
         env:
           WORKER: ${{ matrix.worker }}
           REPOSITORY: ${{ matrix.repository }}
           ISSUE_NUMBER: ${{ matrix.issue_number }}
-          REWARD: ${{ matrix.reward }}
           CREDENTIALS_READY: ${{ steps.credentials.outputs.ready }}
           CREDENTIALS_REASON: ${{ steps.credentials.outputs.reason }}
           PREPARE_OUTCOME: ${{ steps.prepare.outcome }}
@@ -4541,315 +4511,25 @@ jobs:
           elif [ "${IMPLEMENT_OUTCOME:-skipped}" = "failure" ]; then
             result="failed"
             reason="implementation_failed_or_no_useful_change"
-          elif [ "${IMPLEMENT_OUTCOME:-skipped}" = "skipped" ]; then
-            result="skipped"
-            reason="implementation_not_run"
           elif [ "${VALIDATE_OUTCOME:-skipped}" = "failure" ]; then
             result="failed"
             reason="post_change_validation_failed"
-          elif [ "${VALIDATE_OUTCOME:-skipped}" = "skipped" ]; then
-            result="skipped"
-            reason="validation_not_run"
           elif [ "${SUBMIT_OUTCOME:-skipped}" = "failure" ]; then
             result="failed"
             reason="push_or_pull_request_failed"
-          elif [ "${EXECUTION_MODE}" = "submit" ] && [ "${SUBMIT_OUTCOME:-skipped}" = "skipped" ]; then
-            result="skipped"
-            reason="submission_not_run"
           fi
 
-          reward_display="$(printf '$%.2f' "${REWARD:-0}")"
-          cash_received='$0.00'
           echo "## ${WORKER}: ${REPOSITORY}#${ISSUE_NUMBER}" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Result: **${result} — ${reward_display} advertised**" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Cash received: **${cash_received}**" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Result: **${result}**" >> "$GITHUB_STEP_SUMMARY"
           echo "- Reason: ${reason}" >> "$GITHUB_STEP_SUMMARY"
           [ -z "${PR_URL:-}" ] || echo "- Pull request: ${PR_URL}" >> "$GITHUB_STEP_SUMMARY"
-          echo "task_result=${result}" >> "$GITHUB_OUTPUT"
-          echo "task_reason=${reason}" >> "$GITHUB_OUTPUT"
           echo "task_result=${result}"
           echo "task_reason=${reason}"
           exit 0
 
-
-  confirm_results:
-    name: Confirm every recorded Atlas result
-    needs: [hunt, execute]
-    if: >-
-      ${{ always() &&
-          needs.hunt.result == 'success' &&
-          (github.event_name == 'workflow_dispatch' ||
-           github.event_name == 'repository_dispatch' ||
-           (github.event_name == 'schedule' && github.event.schedule == '8,23,38,53 * * * *')) }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    permissions:
-      contents: write
-      pull-requests: read
-      issues: read
-    steps:
-      - name: Download current Atlas records
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-          ref: ${{ github.ref_name }}
-          token: ${{ secrets.ATLAS_GITHUB_PAT || secrets.GITHUB_TOKEN }}
-
-      - name: Reconcile submissions with objective GitHub evidence
-        env:
-          GH_TOKEN: ${{ secrets.ATLAS_GITHUB_PAT || secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          python <<'PY'
-          import json
-          import os
-          import re
-          import urllib.error
-          import urllib.request
-          from datetime import datetime, timezone
-          from pathlib import Path
-
-          token = os.environ.get("GH_TOKEN", "").strip()
-          headers = {
-              "Accept": "application/vnd.github+json",
-              "X-GitHub-Api-Version": "2022-11-28",
-              "User-Agent": "Atlas-Golden-V44",
-          }
-          if token:
-              headers["Authorization"] = f"Bearer {token}"
-
-          def api(url):
-              request = urllib.request.Request(url, headers=headers)
-              try:
-                  with urllib.request.urlopen(request, timeout=30) as response:
-                      return json.loads(response.read().decode("utf-8"))
-              except urllib.error.HTTPError as error:
-                  detail = error.read().decode("utf-8", errors="replace")[:300]
-                  print(f"GitHub confirmation error {error.code} for {url}: {detail}")
-                  return None
-              except Exception as error:
-                  print(f"GitHub confirmation error for {url}: {error}")
-                  return None
-
-          data_dir = Path("data")
-          docs_dir = Path("docs")
-          data_dir.mkdir(exist_ok=True)
-          docs_dir.mkdir(exist_ok=True)
-          submissions_path = data_dir / "submissions_history.json"
-          ledger_path = data_dir / "earnings-ledger.json"
-          confirmation_path = data_dir / "result-confirmation.json"
-          public_path = docs_dir / "result-confirmation.json"
-
-          try:
-              submissions = json.loads(submissions_path.read_text(encoding="utf-8")) if submissions_path.exists() else {}
-              if not isinstance(submissions, dict):
-                  submissions = {}
-          except Exception:
-              submissions = {}
-
-          try:
-              ledger = json.loads(ledger_path.read_text(encoding="utf-8")) if ledger_path.exists() else []
-              if not isinstance(ledger, list):
-                  ledger = []
-          except Exception:
-              ledger = []
-
-          now = datetime.now(timezone.utc).isoformat()
-          totals = {
-              "recorded": 0,
-              "verified_submitted": 0,
-              "under_review": 0,
-              "changes_requested": 0,
-              "approved": 0,
-              "merged": 0,
-              "payment_confirmed": 0,
-              "paid": 0,
-              "unverified": 0,
-              "verified_submitted_value": 0.0,
-              "approved_value": 0.0,
-              "merged_value": 0.0,
-              "payment_confirmed_value": 0.0,
-              "cash_received": 0.0,
-          }
-          evidence_rows = []
-          paid_terms = (
-              "payment sent", "payment has been sent", "reward paid",
-              "bounty paid", "payment completed", "paid via", "payment issued",
-          )
-          payment_due_terms = (
-              "payment approved", "payment scheduled", "will pay", "payment due",
-              "send payment", "payout approved", "bounty approved",
-          )
-
-          for key, record in submissions.items():
-              if not isinstance(record, dict):
-                  continue
-              totals["recorded"] += 1
-              reward = float(record.get("reward", 0) or 0)
-              pr_url = str(record.get("pr_url", ""))
-              match = re.match(r"https://github\\.com/([^/]+/[^/]+)/pull/(\\d+)", pr_url)
-              evidence = {
-                  "submission_key": key,
-                  "reward": reward,
-                  "pr_url": pr_url,
-                  "checked_at": now,
-                  "evidence": [],
-              }
-              if not match:
-                  record["confirmation_state"] = "unverified"
-                  record["confirmation_reason"] = "missing_or_invalid_pr_url"
-                  totals["unverified"] += 1
-                  evidence["state"] = "unverified"
-                  evidence_rows.append(evidence)
-                  continue
-
-              repository, pr_number_text = match.groups()
-              pr_number = int(pr_number_text)
-              pr = api(f"https://api.github.com/repos/{repository}/pulls/{pr_number}")
-              if not isinstance(pr, dict) or not pr.get("html_url"):
-                  record["confirmation_state"] = "unverified"
-                  record["confirmation_reason"] = "pull_request_not_found_or_inaccessible"
-                  totals["unverified"] += 1
-                  evidence["state"] = "unverified"
-                  evidence_rows.append(evidence)
-                  continue
-
-              state = "verified_submitted"
-              evidence["evidence"].append("GitHub API confirms pull request exists")
-              totals["verified_submitted"] += 1
-              totals["verified_submitted_value"] += reward
-
-              reviews = api(f"https://api.github.com/repos/{repository}/pulls/{pr_number}/reviews?per_page=100") or []
-              comments = api(f"https://api.github.com/repos/{repository}/issues/{pr_number}/comments?per_page=100") or []
-              review_states = [str(x.get("state", "")).upper() for x in reviews if isinstance(x, dict)]
-              combined = "\n".join(str(x.get("body", "")) for x in comments if isinstance(x, dict)).lower()
-
-              if pr.get("merged_at"):
-                  state = "merged"
-                  totals["merged"] += 1
-                  totals["merged_value"] += reward
-                  evidence["evidence"].append(f"Merged at {pr.get('merged_at')}")
-              elif "APPROVED" in review_states:
-                  state = "approved"
-                  totals["approved"] += 1
-                  totals["approved_value"] += reward
-                  evidence["evidence"].append("At least one GitHub review is APPROVED")
-              elif "CHANGES_REQUESTED" in review_states:
-                  state = "changes_requested"
-                  totals["changes_requested"] += 1
-                  evidence["evidence"].append("A GitHub review requested changes")
-              elif pr.get("state") == "open":
-                  state = "under_review"
-                  totals["under_review"] += 1
-                  evidence["evidence"].append("Pull request remains open")
-
-              payment_confirmed = any(term in combined for term in payment_due_terms)
-              paid_claim = any(term in combined for term in paid_terms)
-              if paid_claim:
-                  # A public maintainer statement confirms payment was sent, but it is
-                  # not cash received until the private ledger/payment account records it.
-                  state = "payment_confirmed"
-                  payment_confirmed = True
-                  evidence["evidence"].append("Public PR discussion states payment was sent")
-              elif payment_confirmed:
-                  state = "payment_confirmed"
-                  evidence["evidence"].append("Public PR discussion confirms payment approval/due")
-
-              if payment_confirmed:
-                  totals["payment_confirmed"] += 1
-                  totals["payment_confirmed_value"] += reward
-
-              # Cash is counted only from an explicit paid/received ledger entry.
-              ledger_matches = [
-                  entry for entry in ledger
-                  if isinstance(entry, dict)
-                  and (str(entry.get("pr_url", "")) == pr_url or str(entry.get("submission_key", "")) == key)
-                  and str(entry.get("status", "")).lower() in {"paid", "received", "completed"}
-              ]
-              if ledger_matches:
-                  state = "paid"
-                  paid_amount = sum(float(x.get("amount", 0) or 0) for x in ledger_matches)
-                  totals["paid"] += 1
-                  totals["cash_received"] += paid_amount
-                  evidence["evidence"].append(f"Private earnings ledger records ${paid_amount:.2f} received")
-
-              record.update({
-                  "state": state if state in {"approved", "merged", "paid"} else record.get("state", "submitted"),
-                  "confirmation_state": state,
-                  "confirmed_at": now,
-                  "github_pr_state": pr.get("state"),
-                  "github_merged_at": pr.get("merged_at"),
-                  "github_review_states": review_states,
-                  "confirmation_evidence": evidence["evidence"],
-              })
-              evidence["state"] = state
-              evidence_rows.append(evidence)
-
-          for key in list(totals):
-              if key.endswith("_value") or key == "cash_received":
-                  totals[key] = round(totals[key], 2)
-
-          report = {
-              "generated_at": now,
-              "truth_rules": {
-                  "submitted": "GitHub API confirms the PR exists",
-                  "approved": "GitHub review is APPROVED",
-                  "merged": "GitHub API reports merged_at",
-                  "payment_confirmed": "Public maintainer discussion confirms payment approval or sending",
-                  "cash_received": "Private earnings ledger/payment record marks paid, received, or completed",
-              },
-              "totals": totals,
-              "results": evidence_rows,
-          }
-
-          submissions_path.write_text(json.dumps(submissions, indent=2, ensure_ascii=False), encoding="utf-8")
-          confirmation_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
-          public_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
-
-          print(json.dumps(totals, indent=2))
-          summary = Path(os.environ.get("GITHUB_STEP_SUMMARY", "/tmp/atlas-summary"))
-          with summary.open("a", encoding="utf-8") as handle:
-              handle.write("## Golden result confirmation\n")
-              handle.write(f"- Recorded submissions: **{totals['recorded']}**\n")
-              handle.write(f"- GitHub-verified submitted value: **${totals['verified_submitted_value']:.2f}**\n")
-              handle.write(f"- Approved value: **${totals['approved_value']:.2f}**\n")
-              handle.write(f"- Merged value: **${totals['merged_value']:.2f}**\n")
-              handle.write(f"- Payment-confirmed value: **${totals['payment_confirmed_value']:.2f}**\n")
-              handle.write(f"- Cash received: **${totals['cash_received']:.2f}**\n")
-              handle.write("- Evidence file: `data/result-confirmation.json`\n")
-          PY
-
-      - name: Save confirmation evidence safely
-        env:
-          BRANCH_NAME: ${{ github.ref_name }}
-        run: |
-          set -euo pipefail
-          git config user.name "Atlas Result Verifier"
-          git config user.email "atlas-verifier@users.noreply.github.com"
-          git add data/submissions_history.json data/result-confirmation.json docs/result-confirmation.json
-          if git diff --cached --quiet; then
-            echo "No confirmation-state changes to save."
-            exit 0
-          fi
-          snapshot="$RUNNER_TEMP/atlas-confirmation.tar"
-          tar -cf "$snapshot" data/submissions_history.json data/result-confirmation.json docs/result-confirmation.json
-          for attempt in 1 2 3 4 5 6; do
-            git fetch origin "$BRANCH_NAME"
-            git reset --hard "origin/$BRANCH_NAME"
-            tar -xf "$snapshot"
-            git add data/submissions_history.json data/result-confirmation.json docs/result-confirmation.json
-            git commit -m "Confirm Atlas submissions and payment evidence"
-            if git push origin "HEAD:$BRANCH_NAME"; then
-              exit 0
-            fi
-            sleep $((attempt * 3))
-          done
-          echo "Unable to save confirmation evidence after retries." >&2
-          exit 1
-
   alex_payment_followup:
     name: Alex payment follow-up
-    needs: [hunt, execute, confirm_results]
+    needs: [hunt, execute]
     if: >-
       always() &&
       (github.event_name == 'workflow_dispatch' ||
@@ -5046,7 +4726,7 @@ jobs:
 
   workflow_health:
     name: Verify truthful workflow status
-    needs: [hunt, execute, confirm_results, alex_payment_followup]
+    needs: [hunt, execute, alex_payment_followup]
     if: >-
       always() &&
       (github.event_name == 'workflow_dispatch' ||
@@ -5059,20 +4739,17 @@ jobs:
         env:
           HUNT_RESULT: ${{ needs.hunt.result }}
           EXECUTE_RESULT: ${{ needs.execute.result }}
-          CONFIRM_RESULT: ${{ needs.confirm_results.result }}
           FOLLOWUP_RESULT: ${{ needs.alex_payment_followup.result }}
           SYSTEM_STATUS: ${{ needs.hunt.outputs.system_status }}
           EXECUTION_READY: ${{ needs.hunt.outputs.execution_ready }}
         run: |
           set -euo pipefail
           {
-            echo "## Atlas Golden V44 Workflow Health"
+            echo "## Atlas V41 Workflow Health"
             echo "- Hunt job: ${HUNT_RESULT}"
             echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
             echo "- Execution ready: ${EXECUTION_READY:-false}"
-            echo "- Executor job status: ${EXECUTE_RESULT}"
-            echo "- Task outcomes: see each 'Record isolated task outcome' section above; job success only means the matrix job completed without a system-level crash."
-            echo "- Result confirmation: ${CONFIRM_RESULT}"
+            echo "- Task batch result: ${EXECUTE_RESULT}"
             echo "- Payment follow-up: ${FOLLOWUP_RESULT}"
           } >> "$GITHUB_STEP_SUMMARY"
 
@@ -5100,7 +4777,7 @@ jobs:
             echo "Payment follow-up had a non-critical warning; production work remains healthy." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          echo "Atlas Golden V44 completed: only passing submissions are persisted; task failures are isolated."
+          echo "Atlas V41 completed: only passing submissions are persisted; task failures are isolated."
 
   watchdog:
     if: >-
@@ -5122,14 +4799,19 @@ jobs:
           set -euo pipefail
 
           now_epoch="$(date -u +%s)"
-          # Inspect only successful MAIN or RECOVERY runs. The original query could
-          # treat a prior successful watchdog run as proof that production was healthy.
+          last_success="$(
+            gh api "repos/${REPOSITORY}/actions/workflows/${GITHUB_WORKFLOW_REF#${REPOSITORY}/}/runs?status=success&per_page=10" \
+              --jq '[.workflow_runs[] | select(.event != "schedule" or .name == "Atlas + Alex V41 — Active Search Recovery")][0].updated_at // empty' \
+              2>/dev/null || true
+          )"
+
+          # More reliable fallback: inspect recent successful runs of this workflow ID.
           workflow_id="${GITHUB_WORKFLOW_REF#${REPOSITORY}/}"
           workflow_id="${workflow_id%@*}"
           last_success="$(
-            gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=50" \
-              --jq '[.workflow_runs[] | select(.display_title == "Atlas V41 Main Production" or .display_title == "Atlas V41 Watchdog Recovery")][0].updated_at // empty' \
-              2>/dev/null || true
+            gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=20" \
+              --jq '[.workflow_runs[] | select(.run_started_at != null)][0].updated_at // empty' \
+              2>/dev/null || printf '%s' "${last_success}"
           )"
 
           dispatch_needed=false
@@ -5182,12 +4864,3 @@ jobs:
             echo "Main hunt is current. No recovery run is needed."
           fi
 
-
-
-# Reporting additions
-# Successful submissions: <count>
-# Accepted submissions: <count>
-# Paid submissions: <count>
-# Total earnings: $<amount>
-# Workflow jobs completed: <count>
-# Opportunity tasks submitted: <count>
