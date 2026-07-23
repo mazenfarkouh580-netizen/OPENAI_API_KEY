@@ -4,9 +4,12 @@
   "week": 0.0,
   "month": 0.0,
   "waiting_total": 0.0,
+  "reserved_total": 186.0,
+  "submitted_pending_total": 157.0,
+  "advertised_pipeline_total": 343.0,
   "last_payment": "No verified payment yet",
   "status": "HEALTHY_WITH_WARNINGS",
-  "pursue": 15,
+  "pursue": 0,
   "priority_review": 0,
-  "generated_at": "2026-07-23 01:01 AM Pacific"
+  "generated_at": "2026-07-23 01:32 AM Pacific"
 }
