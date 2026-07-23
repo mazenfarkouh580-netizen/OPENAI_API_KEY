@@ -1,22 +1,74 @@
 {
   "version": "V37",
-  "generated_at": "2026-07-23 12:35 AM Pacific",
+  "generated_at": "2026-07-23 01:01 AM Pacific",
   "automatic_execution": true,
   "workers_requested": 20,
-  "tasks_dispatched": 1,
+  "tasks_dispatched": 5,
   "tasks": [
     {
       "worker": "Atlas",
+      "repository": "Iamgoofball/-tg-station",
+      "issue_number": 49,
+      "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
+      "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
+      "reward": 50.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "Iamgoofball/-tg-station#49",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T08:01:16.921350+00:00"
+    },
+    {
+      "worker": "Alex",
+      "repository": "xevrion-v2/agent-playground",
+      "issue_number": 2681,
+      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/2681",
+      "title": "[agent] Document repository GitHub workflows",
+      "reward": 50.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "xevrion-v2/agent-playground#2681",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T08:01:16.921350+00:00"
+    },
+    {
+      "worker": "Atlas",
+      "repository": "cuentaprueba244w-dotcom/TentOfTrials",
+      "issue_number": 10,
+      "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
+      "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
+      "reward": 35.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "cuentaprueba244w-dotcom/TentOfTrials#10",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T08:01:16.921350+00:00"
+    },
+    {
+      "worker": "Alex",
       "repository": "UnsafeLabs/Bounty-Hunters",
-      "issue_number": 303,
-      "issue_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/303",
-      "title": "[ Docs ] Fix broken markdown table in api-reference.md",
+      "issue_number": 304,
+      "issue_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/304",
+      "title": "[ Docs ] Fix wrong HTTP method for Create Bounty in api-reference.md",
       "reward": 1.0,
       "score": 100.0,
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
-      "submission_key": "UnsafeLabs/Bounty-Hunters#303",
+      "submission_key": "UnsafeLabs/Bounty-Hunters#304",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-23T07:35:27.799651+00:00"
+      "reserved_at": "2026-07-23T08:01:16.921350+00:00"
+    },
+    {
+      "worker": "Atlas",
+      "repository": "aporthq/aport-integrations",
+      "issue_number": 31,
+      "issue_url": "https://github.com/aporthq/aport-integrations/issues/31",
+      "title": "[Hacktoberfest] n8n Workflow Node for Policy Checks",
+      "reward": 10.0,
+      "score": 99.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "aporthq/aport-integrations#31",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T08:01:16.921350+00:00"
     }
   ]
 }
