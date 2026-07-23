@@ -1,14 +1,15 @@
 {
   "claude-builders-bounty/claude-builders-bounty#1": {
-    "state": "reserved",
+    "state": "submitted",
     "repository": "claude-builders-bounty/claude-builders-bounty",
     "issue_number": 1,
     "issue_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1",
     "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
-    "reward": 50.0,
     "worker": "Alex",
-    "reserved_at": "2026-07-23T04:16:01.501006+00:00",
-    "reserved_at_ts": 1784780208.790205,
+    "reward": 50.0,
+    "pr_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3580",
+    "submitted_at": "2026-07-23T04:22:30.259003+00:00",
+    "submitted_at_ts": 1784780550.2590172,
     "workflow_run_id": "29979115010"
   },
   "Iamgoofball/-tg-station#49": {
