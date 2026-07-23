@@ -1,6 +1,6 @@
 # Atlas + Alex V36 Gate Diagnostics
 
-Generated: 2026-07-22 03:37 PM Pacific
+Generated: 2026-07-22 05:50 PM Pacific
 
 ## Decision Counts
 
@@ -204,17 +204,6 @@ Generated: 2026-07-22 03:37 PM Pacific
 - Atlas executable: True
 - URL: https://github.com/nirium-protocol/nirium-sdk/issues/8
 
-### zhangjiayang6835-cyber/bounty-plaza #633
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $50.00
-- Payment: UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/633
-
 ### UnsafeLabs/Bounty-Hunters #652
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
@@ -281,6 +270,17 @@ Generated: 2026-07-22 03:37 PM Pacific
 - Atlas executable: False
 - URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/319
 
+### zhangjiayang6835-cyber/bounty-plaza #633
+- Decision: WATCHLIST
+- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
+- Reward: $50.00
+- Payment: UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: False
+- Atlas executable: False
+- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/633
+
 ### UnsafeLabs/Bounty-Hunters #575
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
@@ -314,17 +314,6 @@ Generated: 2026-07-22 03:37 PM Pacific
 - Atlas executable: False
 - URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/316
 
-### zhangjiayang6835-cyber/bounty-plaza #652
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $25.00
-- Payment: UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/652
-
 ### zhangjiayang6835-cyber/bounty-plaza #607
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
@@ -335,6 +324,17 @@ Generated: 2026-07-22 03:37 PM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/607
+
+### zhangjiayang6835-cyber/bounty-plaza #674
+- Decision: WATCHLIST
+- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
+- Reward: $25.00
+- Payment: UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: False
+- Atlas executable: False
+- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/674
 
 ### DEVBUILDSTACK/DORG #33
 - Decision: REJECT
