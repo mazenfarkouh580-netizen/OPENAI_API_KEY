@@ -22,11 +22,9 @@
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T08:01:16.921350+00:00",
-    "reserved_at_ts": 1784793715.269408,
-    "workflow_run_id": "29989943139",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-23T21:05:39.109896+00:00",
+    "reserved_at_ts": 1784840775.452779,
+    "workflow_run_id": "30044796284"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -66,11 +64,9 @@
     "title": "[agent] Document repository GitHub workflows",
     "reward": 50.0,
     "worker": "Alex",
-    "reserved_at": "2026-07-23T08:01:16.921350+00:00",
-    "reserved_at_ts": 1784793715.2694292,
-    "workflow_run_id": "29989943139",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-23T21:05:39.109896+00:00",
+    "reserved_at_ts": 1784840775.4527938,
+    "workflow_run_id": "30044796284"
   },
   "aporthq/aport-integrations#4": {
     "state": "submitted",
@@ -95,11 +91,9 @@
     "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
     "reward": 35.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T08:01:16.921350+00:00",
-    "reserved_at_ts": 1784793715.2694395,
-    "workflow_run_id": "29989943139",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-23T21:05:39.109896+00:00",
+    "reserved_at_ts": 1784840775.4528008,
+    "workflow_run_id": "30044796284"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -183,10 +177,20 @@
     "title": "[ Docs ] Fix broken markdown table in api-reference.md",
     "reward": 1.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T07:35:27.799651+00:00",
-    "reserved_at_ts": 1784792167.1361701,
-    "workflow_run_id": "29988678642",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-23T21:05:39.109896+00:00",
+    "reserved_at_ts": 1784840775.452811,
+    "workflow_run_id": "30044796284"
+  },
+  "jackjin1997/zeroeye#1": {
+    "state": "reserved",
+    "repository": "jackjin1997/zeroeye",
+    "issue_number": 1,
+    "issue_url": "https://github.com/jackjin1997/zeroeye/issues/1",
+    "title": "[$30 BOUNTY] [Python] Expand backend API contract edge-case tests",
+    "reward": 30.0,
+    "worker": "Alex",
+    "reserved_at": "2026-07-23T21:05:39.109896+00:00",
+    "reserved_at_ts": 1784840775.4528065,
+    "workflow_run_id": "30044796284"
   }
 }

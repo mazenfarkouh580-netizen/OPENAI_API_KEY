@@ -1,8 +1,74 @@
 {
-  "version": "V43",
-  "generated_at": "2026-07-23 01:52 PM Pacific",
+  "version": "V37",
+  "generated_at": "2026-07-23 02:05 PM Pacific",
   "automatic_execution": true,
   "workers_requested": 20,
-  "tasks_dispatched": 0,
-  "tasks": []
+  "tasks_dispatched": 5,
+  "tasks": [
+    {
+      "worker": "Atlas",
+      "repository": "Iamgoofball/-tg-station",
+      "issue_number": 49,
+      "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
+      "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
+      "reward": 50.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "Iamgoofball/-tg-station#49",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T21:05:39.109896+00:00"
+    },
+    {
+      "worker": "Alex",
+      "repository": "xevrion-v2/agent-playground",
+      "issue_number": 2681,
+      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/2681",
+      "title": "[agent] Document repository GitHub workflows",
+      "reward": 50.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "xevrion-v2/agent-playground#2681",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T21:05:39.109896+00:00"
+    },
+    {
+      "worker": "Atlas",
+      "repository": "cuentaprueba244w-dotcom/TentOfTrials",
+      "issue_number": 10,
+      "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
+      "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
+      "reward": 35.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "cuentaprueba244w-dotcom/TentOfTrials#10",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T21:05:39.109896+00:00"
+    },
+    {
+      "worker": "Alex",
+      "repository": "jackjin1997/zeroeye",
+      "issue_number": 1,
+      "issue_url": "https://github.com/jackjin1997/zeroeye/issues/1",
+      "title": "[$30 BOUNTY] [Python] Expand backend API contract edge-case tests",
+      "reward": 30.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "jackjin1997/zeroeye#1",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T21:05:39.109896+00:00"
+    },
+    {
+      "worker": "Atlas",
+      "repository": "UnsafeLabs/Bounty-Hunters",
+      "issue_number": 303,
+      "issue_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/303",
+      "title": "[ Docs ] Fix broken markdown table in api-reference.md",
+      "reward": 1.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "UnsafeLabs/Bounty-Hunters#303",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T21:05:39.109896+00:00"
+    }
+  ]
 }
