@@ -4048,10 +4048,32 @@ jobs:
         run: |
           set -euo pipefail
           branch="$(git branch --show-current)"
-          git add -A
-          git commit -m "Fix #${ISSUE_NUMBER}: ${ISSUE_TITLE}"
-          git push --force-with-lease origin "$branch"
           owner="$(gh api user --jq .login)"
+          repo_name="${REPOSITORY#*/}"
+
+          git add -A
+          changed_files="$(git diff --cached --name-only)"
+          test -n "$changed_files" || {
+            echo "Atlas produced no real change."
+            exit 1
+          }
+
+          if [ "$changed_files" = ".gitignore" ]; then
+            echo "Atlas changed only .gitignore; refusing to submit a useless pull request."
+            exit 1
+          fi
+
+          git commit -m "Fix #${ISSUE_NUMBER}: ${ISSUE_TITLE}"
+
+          # Restore authenticated fork URL only for the push.
+          git remote set-url origin \
+            "https://x-access-token:${GH_TOKEN}@github.com/${owner}/${repo_name}.git"
+          git push --force-with-lease origin "$branch"
+
+          # Remove the credential-bearing URL immediately after pushing.
+          git remote set-url origin \
+            "https://github.com/${owner}/${repo_name}.git"
+
           default_branch="$(gh api "repos/${REPOSITORY}" --jq .default_branch)"
           pr_url="$(gh pr create \
             --repo "$REPOSITORY" \
