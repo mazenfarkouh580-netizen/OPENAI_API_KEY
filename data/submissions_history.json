@@ -20,9 +20,9 @@
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T04:32:49.573114+00:00",
-    "reserved_at_ts": 1784781206.808356,
-    "workflow_run_id": "29979811221"
+    "reserved_at": "2026-07-23T05:09:55.403369+00:00",
+    "reserved_at_ts": 1784783443.050976,
+    "workflow_run_id": "29981411707"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -58,9 +58,9 @@
     "title": "[agent] Document repository GitHub workflows",
     "reward": 50.0,
     "worker": "Alex",
-    "reserved_at": "2026-07-23T04:32:49.573114+00:00",
-    "reserved_at_ts": 1784781206.8083754,
-    "workflow_run_id": "29979811221"
+    "reserved_at": "2026-07-23T05:09:55.403369+00:00",
+    "reserved_at_ts": 1784783443.0509934,
+    "workflow_run_id": "29981411707"
   },
   "aporthq/aport-integrations#4": {
     "state": "submitted",
@@ -82,10 +82,10 @@
     "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
     "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
     "reward": 35.0,
-    "worker": "Alex",
-    "reserved_at": "2026-07-23T04:32:49.573114+00:00",
-    "reserved_at_ts": 1784781206.80839,
-    "workflow_run_id": "29979811221"
+    "worker": "Atlas",
+    "reserved_at": "2026-07-23T05:09:55.403369+00:00",
+    "reserved_at_ts": 1784783443.051004,
+    "workflow_run_id": "29981411707"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -124,5 +124,29 @@
     "reserved_at": "2026-07-23T05:01:05.989934+00:00",
     "reserved_at_ts": 1784782977.0550826,
     "workflow_run_id": "29981015444"
+  },
+  "UnsafeLabs/Bounty-Hunters#304": {
+    "state": "reserved",
+    "repository": "UnsafeLabs/Bounty-Hunters",
+    "issue_number": 304,
+    "issue_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/304",
+    "title": "[ Docs ] Fix wrong HTTP method for Create Bounty in api-reference.md",
+    "reward": 1.0,
+    "worker": "Alex",
+    "reserved_at": "2026-07-23T05:09:55.403369+00:00",
+    "reserved_at_ts": 1784783443.051012,
+    "workflow_run_id": "29981411707"
+  },
+  "aporthq/aport-integrations#31": {
+    "state": "reserved",
+    "repository": "aporthq/aport-integrations",
+    "issue_number": 31,
+    "issue_url": "https://github.com/aporthq/aport-integrations/issues/31",
+    "title": "[Hacktoberfest] n8n Workflow Node for Policy Checks",
+    "reward": 10.0,
+    "worker": "Atlas",
+    "reserved_at": "2026-07-23T05:09:55.403369+00:00",
+    "reserved_at_ts": 1784783443.0510204,
+    "workflow_run_id": "29981411707"
   }
 }
