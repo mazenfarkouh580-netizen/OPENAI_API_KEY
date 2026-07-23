@@ -1,6 +1,6 @@
-# Atlas + Alex V40 Gate Diagnostics
+# Atlas + Alex V41 Gate Diagnostics
 
-Generated: 2026-07-22 10:09 PM Pacific
+Generated: 2026-07-22 10:35 PM Pacific
 
 ## Decision Counts
 
