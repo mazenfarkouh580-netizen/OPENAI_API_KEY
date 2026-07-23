@@ -3170,7 +3170,7 @@ jobs:
               content="{int(config.get('dashboard_refresh_seconds', 900))}"
             >
             <title>
-              Atlas + Alex Opportunity Hunter V37
+              Atlas + Alex Opportunity Hunter V41
             </title>
             <style>
               :root {{
@@ -3287,7 +3287,7 @@ jobs:
           </head>
           <body>
             <h1>
-              Atlas + Alex Opportunity Hunter V37
+              Atlas + Alex Opportunity Hunter V41
             </h1>
 
             <p>
@@ -3308,13 +3308,7 @@ jobs:
             </p>
 
             <div class="warning">
-              Atlas does not verify that money is
-              funded, guarantee payment, claim work,
-              or submit code. Every candidate
-              requires human verification of
-              funding, eligibility, competition,
-              rules, acceptance criteria, and
-              payment terms before work begins.
+              Autonomous execution enabled. Individual task failures are isolated. Atlas continues processing other opportunities when one repository is skipped or fails.
             </div>
 
             <div class="grid">
@@ -3527,11 +3521,11 @@ jobs:
           )
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
-                  "<title>\n              Atlas + Alex Opportunity Hunter V37\n            </title>",
-                  "<title>Atlas V40 Status Window</title>",
+                  "<title>\n              Atlas + Alex Opportunity Hunter V41\n            </title>",
+                  "<title>Atlas V41 Status Window</title>",
               ).replace(
-                  "Atlas + Alex Opportunity Hunter V37",
-                  "Atlas V40 Status Window",
+                  "Atlas + Alex Opportunity Hunter V41",
+                  "Atlas V41 Status Window",
                   1,
               ),
               encoding="utf-8",
@@ -3684,7 +3678,7 @@ jobs:
               f"<tr><td>{i}</td><td>{html.escape(item['decision'])}</td><td>${item['reward']:,.2f}</td><td>${item['expected_value']:,.2f}</td><td>{html.escape(item['title'])}</td></tr>"
               for i, item in enumerate(execution_queue, 1)
           )
-          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V28 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V37 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
+          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V28 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V41 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
           (REPORTS_DIR / "latest.html").write_text(report_html, encoding="utf-8")
           csv_lines = ["rank,decision,reward,expected_value,payment_confidence,competition_advantage,title,url"]
           for i, item in enumerate(execution_queue, 1):
@@ -3696,14 +3690,14 @@ jobs:
               ]))
           (REPORTS_DIR / "latest.csv").write_text("\n".join(csv_lines) + "\n", encoding="utf-8")
           (REPORTS_DIR / "latest.txt").write_text(
-              "Atlas + Alex Opportunity Hunter V37\n" +
+              "Atlas + Alex Opportunity Hunter V41\n" +
               f"Generated: {GENERATED_AT}\nStatus: {status}\n" +
               f"Today: ${earnings['today']:,.2f}\nWeek: ${earnings['week']:,.2f}\nMonth: ${earnings['month']:,.2f}\nYear: ${earnings['year']:,.2f}\nLifetime: ${earnings['lifetime']:,.2f}\n",
               encoding="utf-8",
           )
 
           summary_lines = [
-              "# Atlas + Alex Opportunity Hunter V37",
+              "# Atlas + Alex Opportunity Hunter V41",
               "",
               (
                   f"- System status: "
@@ -3897,7 +3891,7 @@ jobs:
             fi
 
             git commit \
-              -m "Atlas + Alex V40 opportunity scan"
+              -m "Atlas + Alex V41 opportunity scan"
 
             if git push origin "HEAD:$BRANCH_NAME"
             then
@@ -3966,6 +3960,8 @@ jobs:
           echo "ready=true" >> "$GITHUB_OUTPUT"
 
       - name: Prepare task workspace
+        id: prepare
+        continue-on-error: true
         if: steps.credentials.outputs.ready == 'true'
         env:
           GH_TOKEN: ${{ secrets.ATLAS_GITHUB_PAT }}
@@ -4024,13 +4020,15 @@ jobs:
           git config user.email "atlas-bot@users.noreply.github.com"
 
       - name: Install execution agent
+        id: install_agent
+        continue-on-error: true
         if: steps.credentials.outputs.ready == 'true'
         run: |
           python -m pip install --disable-pip-version-check --quiet "aider-chat>=0.86,<1"
 
       - name: Validate clean repository baseline
         id: baseline
-        if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true'
+        if: steps.credentials.outputs.ready == 'true' && steps.prepare.outcome == 'success'
         working-directory: ${{ runner.temp }}/atlas-work/worktree
         env:
           OPENAI_API_KEY: ""
@@ -4283,7 +4281,9 @@ jobs:
           printf '%s\n' "$meaningful"
 
       - name: Validate change without secrets
-        if: steps.credentials.outputs.ready == 'true'
+        id: validate_change
+        continue-on-error: true
+        if: steps.credentials.outputs.ready == 'true' && steps.prepare.outcome == 'success' && steps.baseline.outputs.ready == 'true' && steps.implement.outcome == 'success'
         working-directory: ${{ runner.temp }}/atlas-work/worktree
         env:
           OPENAI_API_KEY: ""
@@ -4335,7 +4335,8 @@ jobs:
 
       - name: Commit, push, and open pull request
         id: submit_pr
-        if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true' && (github.event_name != 'workflow_dispatch' || github.event.inputs.execution_mode == 'submit')
+        continue-on-error: true
+        if: steps.credentials.outputs.ready == 'true' && steps.prepare.outcome == 'success' && steps.baseline.outputs.ready == 'true' && steps.implement.outcome == 'success' && steps.validate_change.outcome == 'success' && (github.event_name != 'workflow_dispatch' || github.event.inputs.execution_mode == 'submit')
         env:
           GH_TOKEN: ${{ secrets.ATLAS_GITHUB_PAT }}
           REPOSITORY: ${{ matrix.repository }}
@@ -4384,6 +4385,8 @@ jobs:
           echo "Submitted pull request: ${pr_url}" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Persist submitted-task history
+        id: persist_submission
+        continue-on-error: true
         if: steps.submit_pr.outcome == 'success'
         env:
           ATLAS_REPOSITORY: ${{ github.repository }}
@@ -4468,6 +4471,61 @@ jobs:
         if: steps.credentials.outputs.ready != 'true'
         run: |
           echo "${{ matrix.worker }} selected ${{ matrix.repository }}#${{ matrix.issue_number }}, but execution was safely skipped: ${{ steps.credentials.outputs.reason }}." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Record isolated task outcome
+        if: always()
+        env:
+          WORKER: ${{ matrix.worker }}
+          REPOSITORY: ${{ matrix.repository }}
+          ISSUE_NUMBER: ${{ matrix.issue_number }}
+          CREDENTIALS_READY: ${{ steps.credentials.outputs.ready }}
+          CREDENTIALS_REASON: ${{ steps.credentials.outputs.reason }}
+          PREPARE_OUTCOME: ${{ steps.prepare.outcome }}
+          BASELINE_READY: ${{ steps.baseline.outputs.ready }}
+          BASELINE_REASON: ${{ steps.baseline.outputs.reason }}
+          IMPLEMENT_OUTCOME: ${{ steps.implement.outcome }}
+          VALIDATE_OUTCOME: ${{ steps.validate_change.outcome }}
+          SUBMIT_OUTCOME: ${{ steps.submit_pr.outcome }}
+          PR_URL: ${{ steps.submit_pr.outputs.pr_url }}
+          EXECUTION_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode || 'submit' }}
+        run: |
+          set -u
+          result="skipped"
+          reason="not_attempted"
+
+          if [ -n "${PR_URL:-}" ]; then
+            result="submitted"
+            reason="pull_request_opened"
+          elif [ "${EXECUTION_MODE}" = "safe_test" ] && [ "${VALIDATE_OUTCOME:-}" = "success" ]; then
+            result="submitted"
+            reason="safe_test_patch_generated"
+          elif [ "${CREDENTIALS_READY:-false}" != "true" ]; then
+            result="skipped"
+            reason="${CREDENTIALS_REASON:-credentials_unavailable}"
+          elif [ "${PREPARE_OUTCOME:-skipped}" = "failure" ]; then
+            result="failed"
+            reason="repository_preparation_failed"
+          elif [ "${BASELINE_READY:-false}" != "true" ]; then
+            result="skipped"
+            reason="${BASELINE_REASON:-baseline_unavailable}"
+          elif [ "${IMPLEMENT_OUTCOME:-skipped}" = "failure" ]; then
+            result="failed"
+            reason="implementation_failed_or_no_useful_change"
+          elif [ "${VALIDATE_OUTCOME:-skipped}" = "failure" ]; then
+            result="failed"
+            reason="post_change_validation_failed"
+          elif [ "${SUBMIT_OUTCOME:-skipped}" = "failure" ]; then
+            result="failed"
+            reason="push_or_pull_request_failed"
+          fi
+
+          echo "## ${WORKER}: ${REPOSITORY}#${ISSUE_NUMBER}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Result: **${result}**" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Reason: ${reason}" >> "$GITHUB_STEP_SUMMARY"
+          [ -z "${PR_URL:-}" ] || echo "- Pull request: ${PR_URL}" >> "$GITHUB_STEP_SUMMARY"
+          echo "task_result=${result}"
+          echo "task_reason=${reason}"
+          exit 0
 
   alex_payment_followup:
     name: Alex payment follow-up
@@ -4687,7 +4745,7 @@ jobs:
         run: |
           set -euo pipefail
           {
-            echo "## Atlas V40 Workflow Health"
+            echo "## Atlas V41 Workflow Health"
             echo "- Hunt job: ${HUNT_RESULT}"
             echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
             echo "- Execution ready: ${EXECUTION_READY:-false}"
@@ -4719,7 +4777,7 @@ jobs:
             echo "Payment follow-up had a non-critical warning; production work remains healthy." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          echo "Atlas V40 completed: only passing submissions are persisted; task failures are isolated."
+          echo "Atlas V41 completed: only passing submissions are persisted; task failures are isolated."
 
   watchdog:
     if: >-
