@@ -1,7 +1,7 @@
 {
   "version": "V37",
   "owner": "Mazen Farkouh",
-  "generated_at": "2026-07-22 09:16 PM Pacific",
+  "generated_at": "2026-07-22 09:32 PM Pacific",
   "config": {
     "minimum_reward": 0.1,
     "minimum_payment_confidence": 55,
@@ -12,7 +12,7 @@
     "reinvest_percent": 25,
     "mazen_percent": 50,
     "automatic_execution": true,
-    "parallel_workers": 2,
+    "parallel_workers": 20,
     "maximum_execution_reward": 250,
     "execution_score_floor": 48
   },
@@ -114,7 +114,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 68.6,
       "source_rank": 0,
@@ -203,7 +203,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 68.6,
       "source_rank": 0,
@@ -292,7 +292,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 68.6,
       "source_rank": 0,
@@ -381,7 +381,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 68.6,
       "source_rank": 0,
@@ -470,7 +470,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 68.6,
       "source_rank": 0,
@@ -559,7 +559,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 68.6,
       "source_rank": 0,
@@ -568,6 +568,176 @@
       "clarity_score": 50,
       "effort_risk": 55,
       "expected_value": 0.22
+    },
+    {
+      "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
+      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1",
+      "repository": "claude-builders-bounty/claude-builders-bounty",
+      "issue_number": 1,
+      "author": "claudebounty",
+      "reward": 50.0,
+      "reward_priority": "HIGHEST",
+      "score": 100,
+      "decision": "PURSUE",
+      "availability": "SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED",
+      "created_at": "2026-03-27T00:55:36Z",
+      "updated_at": "2026-07-23T03:45:22Z",
+      "comments": 0,
+      "labels": [
+        "bounty",
+        "good first issue",
+        "skill"
+      ],
+      "assignees": [],
+      "open_competing_prs": 0,
+      "merged_linked_prs": 0,
+      "linked_pull_requests": [],
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "paypal_signals": [],
+      "fiat_payment_signals": [],
+      "fast_payment_signals": [],
+      "ai_eligibility": "EXPLICITLY ALLOWED",
+      "approval_authority": "NOT VERIFIED",
+      "direct_payment_proof": false,
+      "instant_payment_verified": false,
+      "instant_payment_priority": false,
+      "funded_payment_platform": false,
+      "trusted_payout_source": false,
+      "trusted_platform": null,
+      "platform_signals": [],
+      "trusted_repository": false,
+      "payout_program_repository": false,
+      "payout_source": "Unverified promise or discovery signal",
+      "claimable_now": true,
+      "quick_win_risk_accepted": true,
+      "claimability_signals": [],
+      "atlas_can_execute": true,
+      "atlas_capability_signals": [
+        "python"
+      ],
+      "external_execution_blockers": [],
+      "repository_mismatch": false,
+      "advertised_repository": "",
+      "fast_pay_candidate": true,
+      "fast_pay_status": "FAST-PAY LEAD - PAYMENT NOT GUARANTEED",
+      "manual_verification_required": true,
+      "reasons": [
+        "Good stated reward",
+        "Useful requirements",
+        "Capability match: claude, fix, python, test",
+        "No visible comments",
+        "Recently updated",
+        "Explicit acceptance criteria",
+        "AI/automation participation appears allowed",
+        "Small-reward prototype law accepts unverified-payment risk",
+        "Claim path confirmed or normal pull-request claim path inferred",
+        "Task matches Atlas execution capabilities",
+        "Highest-priority first-payment reward band",
+        "No assignee and no competing pull request",
+        "Very recent activity"
+      ],
+      "risks": [
+        "Payment unverified; risk accepted under small-reward prototype law"
+      ],
+      "discovered_by": [
+        "Atlas"
+      ],
+      "primary_hunter": "Atlas",
+      "change": "UNCHANGED",
+      "first_seen": "2026-07-21 03:13 AM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
+      "source": "Claude Builders",
+      "source_focus_score": 45.5,
+      "source_rank": 1,
+      "payment_confidence": 49,
+      "competition_score": 100,
+      "clarity_score": 50,
+      "effort_risk": 55,
+      "expected_value": 11.14
+    },
+    {
+      "title": "[BOUNTY $25] AGENT: Create a `CLAUDE.md` at the repo root.",
+      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2855",
+      "repository": "claude-builders-bounty/claude-builders-bounty",
+      "issue_number": 2855,
+      "author": "ghost",
+      "reward": 25.0,
+      "reward_priority": "HIGHEST",
+      "score": 100,
+      "decision": "PURSUE",
+      "availability": "SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED",
+      "created_at": "2026-06-17T05:29:09Z",
+      "updated_at": "2026-07-22T13:30:59Z",
+      "comments": 0,
+      "labels": [],
+      "assignees": [],
+      "open_competing_prs": 0,
+      "merged_linked_prs": 0,
+      "linked_pull_requests": [],
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "paypal_signals": [],
+      "fiat_payment_signals": [
+        "ach"
+      ],
+      "fast_payment_signals": [],
+      "ai_eligibility": "EXPLICITLY ALLOWED",
+      "approval_authority": "NOT VERIFIED",
+      "direct_payment_proof": false,
+      "instant_payment_verified": false,
+      "instant_payment_priority": false,
+      "funded_payment_platform": false,
+      "trusted_payout_source": false,
+      "trusted_platform": null,
+      "platform_signals": [],
+      "trusted_repository": false,
+      "payout_program_repository": false,
+      "payout_source": "Unverified promise or discovery signal",
+      "claimable_now": true,
+      "quick_win_risk_accepted": true,
+      "claimability_signals": [],
+      "atlas_can_execute": true,
+      "atlas_capability_signals": [
+        "python"
+      ],
+      "external_execution_blockers": [],
+      "repository_mismatch": false,
+      "advertised_repository": "",
+      "fast_pay_candidate": true,
+      "fast_pay_status": "FAST-PAY LEAD - PAYMENT NOT GUARANTEED",
+      "manual_verification_required": true,
+      "reasons": [
+        "Stated paid reward",
+        "Useful requirements",
+        "Capability match: claude, python, workflow",
+        "No visible comments",
+        "Recently updated",
+        "Explicit acceptance criteria",
+        "AI/automation participation appears allowed",
+        "Small-reward prototype law accepts unverified-payment risk",
+        "Claim path confirmed or normal pull-request claim path inferred",
+        "Task matches Atlas execution capabilities",
+        "Highest-priority first-payment reward band",
+        "No assignee and no competing pull request",
+        "Very recent activity"
+      ],
+      "risks": [
+        "Payment unverified; risk accepted under small-reward prototype law"
+      ],
+      "discovered_by": [
+        "Atlas"
+      ],
+      "primary_hunter": "Atlas",
+      "change": "UNCHANGED",
+      "first_seen": "2026-07-21 03:13 AM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
+      "source": "Claude Builders",
+      "source_focus_score": 45.5,
+      "source_rank": 1,
+      "payment_confidence": 49,
+      "competition_score": 100,
+      "clarity_score": 50,
+      "effort_risk": 55,
+      "expected_value": 5.57
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -649,10 +819,10 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "Opire",
       "source_focus_score": 44.0,
-      "source_rank": 1,
+      "source_rank": 2,
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -740,10 +910,10 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "Opire",
       "source_focus_score": 44.0,
-      "source_rank": 1,
+      "source_rank": 2,
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -829,185 +999,15 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "CyberNinja",
       "source_focus_score": 30.0,
-      "source_rank": 2,
+      "source_rank": 3,
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
       "expected_value": 2.23
-    },
-    {
-      "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
-      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1",
-      "repository": "claude-builders-bounty/claude-builders-bounty",
-      "issue_number": 1,
-      "author": "claudebounty",
-      "reward": 50.0,
-      "reward_priority": "HIGHEST",
-      "score": 100,
-      "decision": "PURSUE",
-      "availability": "SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED",
-      "created_at": "2026-03-27T00:55:36Z",
-      "updated_at": "2026-07-23T03:45:22Z",
-      "comments": 0,
-      "labels": [
-        "bounty",
-        "good first issue",
-        "skill"
-      ],
-      "assignees": [],
-      "open_competing_prs": 0,
-      "merged_linked_prs": 0,
-      "linked_pull_requests": [],
-      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
-      "paypal_signals": [],
-      "fiat_payment_signals": [],
-      "fast_payment_signals": [],
-      "ai_eligibility": "EXPLICITLY ALLOWED",
-      "approval_authority": "NOT VERIFIED",
-      "direct_payment_proof": false,
-      "instant_payment_verified": false,
-      "instant_payment_priority": false,
-      "funded_payment_platform": false,
-      "trusted_payout_source": false,
-      "trusted_platform": null,
-      "platform_signals": [],
-      "trusted_repository": false,
-      "payout_program_repository": false,
-      "payout_source": "Unverified promise or discovery signal",
-      "claimable_now": true,
-      "quick_win_risk_accepted": true,
-      "claimability_signals": [],
-      "atlas_can_execute": true,
-      "atlas_capability_signals": [
-        "python"
-      ],
-      "external_execution_blockers": [],
-      "repository_mismatch": false,
-      "advertised_repository": "",
-      "fast_pay_candidate": true,
-      "fast_pay_status": "FAST-PAY LEAD - PAYMENT NOT GUARANTEED",
-      "manual_verification_required": true,
-      "reasons": [
-        "Good stated reward",
-        "Useful requirements",
-        "Capability match: claude, fix, python, test",
-        "No visible comments",
-        "Recently updated",
-        "Explicit acceptance criteria",
-        "AI/automation participation appears allowed",
-        "Small-reward prototype law accepts unverified-payment risk",
-        "Claim path confirmed or normal pull-request claim path inferred",
-        "Task matches Atlas execution capabilities",
-        "Highest-priority first-payment reward band",
-        "No assignee and no competing pull request",
-        "Very recent activity"
-      ],
-      "risks": [
-        "Payment unverified; risk accepted under small-reward prototype law"
-      ],
-      "discovered_by": [
-        "Atlas"
-      ],
-      "primary_hunter": "Atlas",
-      "change": "UNCHANGED",
-      "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
-      "source": "Claude Builders",
-      "source_focus_score": 25.5,
-      "source_rank": 3,
-      "payment_confidence": 49,
-      "competition_score": 100,
-      "clarity_score": 50,
-      "effort_risk": 55,
-      "expected_value": 11.14
-    },
-    {
-      "title": "[BOUNTY $25] AGENT: Create a `CLAUDE.md` at the repo root.",
-      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2855",
-      "repository": "claude-builders-bounty/claude-builders-bounty",
-      "issue_number": 2855,
-      "author": "ghost",
-      "reward": 25.0,
-      "reward_priority": "HIGHEST",
-      "score": 100,
-      "decision": "PURSUE",
-      "availability": "SMALL REWARD PROTOTYPE - PAYMENT RISK ACCEPTED",
-      "created_at": "2026-06-17T05:29:09Z",
-      "updated_at": "2026-07-22T13:30:59Z",
-      "comments": 0,
-      "labels": [],
-      "assignees": [],
-      "open_competing_prs": 0,
-      "merged_linked_prs": 0,
-      "linked_pull_requests": [],
-      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
-      "paypal_signals": [],
-      "fiat_payment_signals": [
-        "ach"
-      ],
-      "fast_payment_signals": [],
-      "ai_eligibility": "EXPLICITLY ALLOWED",
-      "approval_authority": "NOT VERIFIED",
-      "direct_payment_proof": false,
-      "instant_payment_verified": false,
-      "instant_payment_priority": false,
-      "funded_payment_platform": false,
-      "trusted_payout_source": false,
-      "trusted_platform": null,
-      "platform_signals": [],
-      "trusted_repository": false,
-      "payout_program_repository": false,
-      "payout_source": "Unverified promise or discovery signal",
-      "claimable_now": true,
-      "quick_win_risk_accepted": true,
-      "claimability_signals": [],
-      "atlas_can_execute": true,
-      "atlas_capability_signals": [
-        "python"
-      ],
-      "external_execution_blockers": [],
-      "repository_mismatch": false,
-      "advertised_repository": "",
-      "fast_pay_candidate": true,
-      "fast_pay_status": "FAST-PAY LEAD - PAYMENT NOT GUARANTEED",
-      "manual_verification_required": true,
-      "reasons": [
-        "Stated paid reward",
-        "Useful requirements",
-        "Capability match: claude, python, workflow",
-        "No visible comments",
-        "Recently updated",
-        "Explicit acceptance criteria",
-        "AI/automation participation appears allowed",
-        "Small-reward prototype law accepts unverified-payment risk",
-        "Claim path confirmed or normal pull-request claim path inferred",
-        "Task matches Atlas execution capabilities",
-        "Highest-priority first-payment reward band",
-        "No assignee and no competing pull request",
-        "Very recent activity"
-      ],
-      "risks": [
-        "Payment unverified; risk accepted under small-reward prototype law"
-      ],
-      "discovered_by": [
-        "Atlas"
-      ],
-      "primary_hunter": "Atlas",
-      "change": "UNCHANGED",
-      "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
-      "source": "Claude Builders",
-      "source_focus_score": 25.5,
-      "source_rank": 3,
-      "payment_confidence": 49,
-      "competition_score": 100,
-      "clarity_score": 50,
-      "effort_risk": 55,
-      "expected_value": 5.57
     },
     {
       "title": "[Hacktoberfest] Create a Custom n8n Node for APort Verification",
@@ -1087,7 +1087,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "APort",
       "source_focus_score": 24.0,
       "source_rank": 4,
@@ -1175,7 +1175,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "APort",
       "source_focus_score": 24.0,
       "source_rank": 4,
@@ -1258,7 +1258,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "Xevrion",
       "source_focus_score": 14.0,
       "source_rank": 5,
@@ -1344,7 +1344,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "cuentaprueba244w-dotcom",
       "source_focus_score": 12.5,
       "source_rank": 6,
@@ -1432,7 +1432,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 68.6,
       "source_rank": 0,
@@ -1520,7 +1520,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 68.6,
       "source_rank": 0,
@@ -1606,7 +1606,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 68.6,
       "source_rank": 0,
@@ -1692,7 +1692,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 68.6,
       "source_rank": 0,
@@ -1778,7 +1778,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific",
+      "last_verified": "2026-07-22 09:32 PM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 68.6,
       "source_rank": 0,
@@ -1793,17 +1793,17 @@
     {
       "level": "HIGH",
       "message": "15 pursue candidate(s) found",
-      "generated_at": "2026-07-22 09:16 PM Pacific"
+      "generated_at": "2026-07-22 09:32 PM Pacific"
     },
     {
       "level": "WARNING",
       "message": "Atlas health is HEALTHY_WITH_WARNINGS: 2 API error(s)",
-      "generated_at": "2026-07-22 09:16 PM Pacific"
+      "generated_at": "2026-07-22 09:32 PM Pacific"
     },
     {
       "level": "CRITICAL",
       "message": "Alex is not searching: zero completed queries after automatic retry",
-      "generated_at": "2026-07-22 09:16 PM Pacific"
+      "generated_at": "2026-07-22 09:32 PM Pacific"
     }
   ],
   "system_status": "HEALTHY_WITH_WARNINGS",
@@ -1821,29 +1821,81 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "Iamgoofball/-tg-station#49",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-23T04:16:01.501006+00:00"
+      "reserved_at": "2026-07-23T04:32:49.573114+00:00"
     },
     {
       "worker": "Alex",
-      "repository": "claude-builders-bounty/claude-builders-bounty",
-      "issue_number": 1,
-      "issue_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1",
-      "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
+      "repository": "xevrion-v2/agent-playground",
+      "issue_number": 2681,
+      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/2681",
+      "title": "[agent] Document repository GitHub workflows",
       "reward": 50.0,
       "score": 100.0,
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
-      "submission_key": "claude-builders-bounty/claude-builders-bounty#1",
+      "submission_key": "xevrion-v2/agent-playground#2681",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-23T04:16:01.501006+00:00"
+      "reserved_at": "2026-07-23T04:32:49.573114+00:00"
+    },
+    {
+      "worker": "Atlas",
+      "repository": "aporthq/aport-integrations",
+      "issue_number": 4,
+      "issue_url": "https://github.com/aporthq/aport-integrations/issues/4",
+      "title": "[Hacktoberfest] Create a Custom n8n Node for APort Verification",
+      "reward": 50.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "aporthq/aport-integrations#4",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T04:32:49.573114+00:00"
+    },
+    {
+      "worker": "Alex",
+      "repository": "cuentaprueba244w-dotcom/TentOfTrials",
+      "issue_number": 10,
+      "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
+      "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
+      "reward": 35.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "cuentaprueba244w-dotcom/TentOfTrials#10",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T04:32:49.573114+00:00"
+    },
+    {
+      "worker": "Atlas",
+      "repository": "claude-builders-bounty/claude-builders-bounty",
+      "issue_number": 2855,
+      "issue_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2855",
+      "title": "[BOUNTY $25] AGENT: Create a `CLAUDE.md` at the repo root.",
+      "reward": 25.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "claude-builders-bounty/claude-builders-bounty#2855",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T04:32:49.573114+00:00"
+    },
+    {
+      "worker": "Alex",
+      "repository": "UnsafeLabs/Bounty-Hunters",
+      "issue_number": 310,
+      "issue_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/310",
+      "title": "[ Config ] Fix image tag typo in docker-compose.yml",
+      "reward": 1.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "UnsafeLabs/Bounty-Hunters#310",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-23T04:32:49.573114+00:00"
     }
   ],
-  "automation_boundary": "Atlas and Alex automatically dispatch up to two simple, uncontested tasks. Submission still depends on configured GitHub and AI credentials; payment remains controlled by maintainers.",
+  "automation_boundary": "Atlas and Alex automatically dispatch every eligible simple, uncontested tasks. Submission still depends on configured GitHub and AI credentials; payment remains controlled by maintainers.",
   "searches_completed": 30,
   "api_calls": 31,
   "api_errors": [
     {
       "url": "https://api.github.com/search/issues?q=is%3Aissue%20is%3Aopen%20%22%2415%22%20in%3Atitle%2Cbody&sort=updated&order=desc&per_page=100",
-      "error": "HTTP 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID DC23:41A90:031B:0CD5:6A6195AF and timestamp 2026-07-23 04:16:47 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service ("
+      "error": "HTTP 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID 6018:EF3B7:A5E4B:23FD01:6A619995 and timestamp 2026-07-23 04:33:26 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Servic"
     },
     {
       "worker": "Alex",
@@ -1851,10 +1903,10 @@
       "error": "Alex completed zero search queries after automatic retry"
     }
   ],
-  "raw_issues_found": 2359,
-  "aggregator_pages_rejected": 873,
-  "unsafe_items_rejected": 95,
-  "items_without_extractable_reward_rejected": 1280,
+  "raw_issues_found": 2370,
+  "aggregator_pages_rejected": 886,
+  "unsafe_items_rejected": 96,
+  "items_without_extractable_reward_rejected": 1277,
   "eligible_candidates_found": 111,
   "deep_verified_candidates": 30,
   "counts": {
@@ -1952,7 +2004,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[agent] Document repository GitHub workflows",
@@ -2027,7 +2079,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
@@ -2105,7 +2157,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -2187,7 +2239,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -2265,7 +2317,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[BOUNTY $25] AGENT: Create a `CLAUDE.md` at the repo root.",
@@ -2341,7 +2393,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[$10 BOUNTY] [TypeScript] Add telemetry batch flush threshold tests",
@@ -2422,7 +2474,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
@@ -2505,7 +2557,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Config ] Fix image tag typo in docker-compose.yml",
@@ -2586,7 +2638,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Docs ] Fix wrong HTTP method for Create Bounty in api-reference.md",
@@ -2667,7 +2719,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Docs ] Fix broken markdown table in api-reference.md",
@@ -2748,7 +2800,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Config ] Fix misspelled database key in app.json",
@@ -2829,7 +2881,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     }
   ],
   "all_verified_results": [
@@ -2911,7 +2963,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[agent] Document repository GitHub workflows",
@@ -2986,7 +3038,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
@@ -3064,7 +3116,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -3146,7 +3198,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -3224,7 +3276,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[BOUNTY $25] AGENT: Create a `CLAUDE.md` at the repo root.",
@@ -3300,7 +3352,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[$10 BOUNTY] [TypeScript] Add telemetry batch flush threshold tests",
@@ -3381,7 +3433,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
@@ -3464,7 +3516,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Config ] Fix image tag typo in docker-compose.yml",
@@ -3545,7 +3597,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Docs ] Fix wrong HTTP method for Create Bounty in api-reference.md",
@@ -3626,7 +3678,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Docs ] Fix broken markdown table in api-reference.md",
@@ -3707,7 +3759,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Config ] Fix misspelled database key in app.json",
@@ -3788,7 +3840,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Docs ] Fix missing Step 4 in setup-guide.md",
@@ -3869,7 +3921,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Config ] Fix port mapping in docker-compose.yml",
@@ -3950,7 +4002,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[Hacktoberfest] n8n Workflow Node for Policy Checks",
@@ -4030,7 +4082,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "Compatible x402 service: Bug Bounty Intelligence smart contract scanner",
@@ -4105,7 +4157,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Brainfuck ] Implement a program that prints the first 20 prime numbers",
@@ -4185,7 +4237,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ English ] Complete the missing acrostic poems in acrostics.md",
@@ -4265,7 +4317,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Docs ] Fix wrong package name in setup-guide.md",
@@ -4343,7 +4395,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Docs ] Fix date ordering in changelog.md",
@@ -4421,7 +4473,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Config ] Fix missing semicolon in nginx.conf",
@@ -4499,7 +4551,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Scripts ] Fix string vs arithmetic comparison in cleanup.sh",
@@ -4577,7 +4629,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[Bounty] [BOUNTY] [$50] Fix SSinput Deadlocking",
@@ -4651,7 +4703,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-22 11:55 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ English ] Complete missing lines in acrostics.md — finish UNSAFE acrostic and write BOUNTY acrostic",
@@ -4731,7 +4783,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Scripts ] Fix dangerous rm -rf with unset variable guard in deploy.sh",
@@ -4809,7 +4861,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Scripts ] Fix unquoted variable in backup.sh",
@@ -4887,7 +4939,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Scripts ] Add missing shebang to cleanup.sh",
@@ -4965,7 +5017,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[ Scripts ] Add missing set -e to deploy.sh",
@@ -5043,7 +5095,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "[Bounty] [BOUNTY] [$25] [NO CODE] [REQUEST] Instructions are in issue body",
@@ -5116,7 +5168,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-22 05:50 PM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     },
     {
       "title": "Juice Node API Integration - Complete Structure",
@@ -5204,7 +5256,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-22 03:37 PM Pacific",
-      "last_verified": "2026-07-22 09:16 PM Pacific"
+      "last_verified": "2026-07-22 09:32 PM Pacific"
     }
   ]
 }

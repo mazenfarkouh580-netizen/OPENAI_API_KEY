@@ -8,7 +8,7 @@
   "reinvest_percent": 25,
   "mazen_percent": 50,
   "automatic_execution": true,
-  "parallel_workers": 2,
+  "parallel_workers": 20,
   "maximum_execution_reward": 250,
   "execution_score_floor": 48
 }

@@ -20,9 +20,9 @@
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T04:16:01.501006+00:00",
-    "reserved_at_ts": 1784780208.790188,
-    "workflow_run_id": "29979115010"
+    "reserved_at": "2026-07-23T04:32:49.573114+00:00",
+    "reserved_at_ts": 1784781206.808356,
+    "workflow_run_id": "29979811221"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -49,5 +49,65 @@
     "submitted_at": "2026-07-23T03:06:38.195690+00:00",
     "submitted_at_ts": 1784775998.1957016,
     "workflow_run_id": "29975638572"
+  },
+  "xevrion-v2/agent-playground#2681": {
+    "state": "reserved",
+    "repository": "xevrion-v2/agent-playground",
+    "issue_number": 2681,
+    "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/2681",
+    "title": "[agent] Document repository GitHub workflows",
+    "reward": 50.0,
+    "worker": "Alex",
+    "reserved_at": "2026-07-23T04:32:49.573114+00:00",
+    "reserved_at_ts": 1784781206.8083754,
+    "workflow_run_id": "29979811221"
+  },
+  "aporthq/aport-integrations#4": {
+    "state": "reserved",
+    "repository": "aporthq/aport-integrations",
+    "issue_number": 4,
+    "issue_url": "https://github.com/aporthq/aport-integrations/issues/4",
+    "title": "[Hacktoberfest] Create a Custom n8n Node for APort Verification",
+    "reward": 50.0,
+    "worker": "Atlas",
+    "reserved_at": "2026-07-23T04:32:49.573114+00:00",
+    "reserved_at_ts": 1784781206.8083837,
+    "workflow_run_id": "29979811221"
+  },
+  "cuentaprueba244w-dotcom/TentOfTrials#10": {
+    "state": "reserved",
+    "repository": "cuentaprueba244w-dotcom/TentOfTrials",
+    "issue_number": 10,
+    "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
+    "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
+    "reward": 35.0,
+    "worker": "Alex",
+    "reserved_at": "2026-07-23T04:32:49.573114+00:00",
+    "reserved_at_ts": 1784781206.80839,
+    "workflow_run_id": "29979811221"
+  },
+  "claude-builders-bounty/claude-builders-bounty#2855": {
+    "state": "reserved",
+    "repository": "claude-builders-bounty/claude-builders-bounty",
+    "issue_number": 2855,
+    "issue_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2855",
+    "title": "[BOUNTY $25] AGENT: Create a `CLAUDE.md` at the repo root.",
+    "reward": 25.0,
+    "worker": "Atlas",
+    "reserved_at": "2026-07-23T04:32:49.573114+00:00",
+    "reserved_at_ts": 1784781206.808396,
+    "workflow_run_id": "29979811221"
+  },
+  "UnsafeLabs/Bounty-Hunters#310": {
+    "state": "reserved",
+    "repository": "UnsafeLabs/Bounty-Hunters",
+    "issue_number": 310,
+    "issue_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/310",
+    "title": "[ Config ] Fix image tag typo in docker-compose.yml",
+    "reward": 1.0,
+    "worker": "Alex",
+    "reserved_at": "2026-07-23T04:32:49.573114+00:00",
+    "reserved_at_ts": 1784781206.8084025,
+    "workflow_run_id": "29979811221"
   }
 }
