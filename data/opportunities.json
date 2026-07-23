@@ -1,7 +1,7 @@
 {
   "version": "V37",
   "owner": "Mazen Farkouh",
-  "generated_at": "2026-07-23 02:44 AM Pacific",
+  "generated_at": "2026-07-23 03:21 AM Pacific",
   "config": {
     "minimum_reward": 0.1,
     "minimum_payment_confidence": 55,
@@ -26,10 +26,7 @@
     "waiting_later": 0.0,
     "overdue": 0.0,
     "waiting_unknown": 0.0,
-    "waiting_total": 0.0,
-    "reserved_total": 186.0,
-    "submitted_pending_total": 157.0,
-    "advertised_pipeline_total": 343.0
+    "waiting_total": 0.0
   },
   "allocations": {
     "tax": 0.0,
@@ -119,7 +116,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -211,7 +208,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -303,7 +300,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -395,7 +392,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -487,7 +484,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -579,7 +576,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -671,7 +668,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -762,7 +759,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -851,7 +848,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -940,7 +937,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -1029,7 +1026,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -1118,7 +1115,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -1209,7 +1206,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -1298,7 +1295,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -1387,7 +1384,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -1476,7 +1473,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -1565,7 +1562,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 60.6,
       "source_rank": 0,
@@ -1654,7 +1651,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "Claude Builders",
       "source_focus_score": 49.5,
       "source_rank": 1,
@@ -1741,7 +1738,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "Claude Builders",
       "source_focus_score": 49.5,
       "source_rank": 1,
@@ -1832,7 +1829,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific",
+      "last_verified": "2026-07-23 03:21 AM Pacific",
       "source": "APort",
       "source_focus_score": 48.0,
       "source_rank": 2,
@@ -1847,12 +1844,12 @@
     {
       "level": "WARNING",
       "message": "Atlas health is HEALTHY_WITH_WARNINGS: 2 API error(s)",
-      "generated_at": "2026-07-23 02:44 AM Pacific"
+      "generated_at": "2026-07-23 03:21 AM Pacific"
     },
     {
       "level": "CRITICAL",
       "message": "Alex is not searching: zero completed queries after automatic retry",
-      "generated_at": "2026-07-23 02:44 AM Pacific"
+      "generated_at": "2026-07-23 03:21 AM Pacific"
     }
   ],
   "system_status": "HEALTHY_WITH_WARNINGS",
@@ -1865,7 +1862,7 @@
   "api_errors": [
     {
       "url": "https://api.github.com/search/issues?q=is%3Aissue%20is%3Aopen%20%22%2415%22%20in%3Atitle%2Cbody&sort=updated&order=desc&per_page=100",
-      "error": "HTTP 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID 3C43:10E305:4D1EA7:112D464:6A61E2B5 and timestamp 2026-07-23 09:45:25 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Ser"
+      "error": "HTTP 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID C03A:C63EE:97F545:221BF96:6A61EB64 and timestamp 2026-07-23 10:22:29 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Serv"
     },
     {
       "worker": "Alex",
@@ -1873,10 +1870,10 @@
       "error": "Alex completed zero search queries after automatic retry"
     }
   ],
-  "raw_issues_found": 2427,
-  "aggregator_pages_rejected": 738,
-  "unsafe_items_rejected": 95,
-  "items_without_extractable_reward_rejected": 1486,
+  "raw_issues_found": 2452,
+  "aggregator_pages_rejected": 747,
+  "unsafe_items_rejected": 97,
+  "items_without_extractable_reward_rejected": 1500,
   "eligible_candidates_found": 108,
   "deep_verified_candidates": 30,
   "counts": {
@@ -1977,7 +1974,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[agent] Document repository GitHub workflows",
@@ -2055,7 +2052,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
@@ -2136,7 +2133,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -2221,7 +2218,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -2302,7 +2299,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[BOUNTY $25] AGENT: Create a `CLAUDE.md` at the repo root.",
@@ -2381,7 +2378,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[$10 BOUNTY] [TypeScript] Add telemetry batch flush threshold tests",
@@ -2465,7 +2462,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
@@ -2551,7 +2548,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Config ] Fix image tag typo in docker-compose.yml",
@@ -2635,7 +2632,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Docs ] Fix wrong HTTP method for Create Bounty in api-reference.md",
@@ -2719,7 +2716,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Docs ] Fix broken markdown table in api-reference.md",
@@ -2803,7 +2800,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Config ] Fix misspelled database key in app.json",
@@ -2887,7 +2884,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     }
   ],
   "all_verified_results": [
@@ -2972,7 +2969,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[agent] Document repository GitHub workflows",
@@ -3050,7 +3047,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
@@ -3131,7 +3128,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -3216,7 +3213,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -3297,7 +3294,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[BOUNTY $25] AGENT: Create a `CLAUDE.md` at the repo root.",
@@ -3376,7 +3373,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[$10 BOUNTY] [TypeScript] Add telemetry batch flush threshold tests",
@@ -3460,7 +3457,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
@@ -3546,7 +3543,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Config ] Fix image tag typo in docker-compose.yml",
@@ -3630,7 +3627,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Docs ] Fix wrong HTTP method for Create Bounty in api-reference.md",
@@ -3714,7 +3711,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Docs ] Fix broken markdown table in api-reference.md",
@@ -3798,7 +3795,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Config ] Fix misspelled database key in app.json",
@@ -3882,7 +3879,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Docs ] Fix missing Step 4 in setup-guide.md",
@@ -3966,7 +3963,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Config ] Fix port mapping in docker-compose.yml",
@@ -4050,7 +4047,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[Hacktoberfest] n8n Workflow Node for Policy Checks",
@@ -4133,7 +4130,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "Compatible x402 service: Bug Bounty Intelligence smart contract scanner",
@@ -4211,7 +4208,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Brainfuck ] Implement a program that prints the first 20 prime numbers",
@@ -4294,7 +4291,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ English ] Complete the missing acrostic poems in acrostics.md",
@@ -4377,7 +4374,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Docs ] Fix wrong package name in setup-guide.md",
@@ -4458,7 +4455,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Docs ] Fix date ordering in changelog.md",
@@ -4539,7 +4536,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Config ] Fix missing semicolon in nginx.conf",
@@ -4620,7 +4617,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Scripts ] Fix string vs arithmetic comparison in cleanup.sh",
@@ -4701,7 +4698,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[Bounty] [BOUNTY] [$50] Fix SSinput Deadlocking",
@@ -4778,7 +4775,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-22 11:55 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ English ] Complete missing lines in acrostics.md — finish UNSAFE acrostic and write BOUNTY acrostic",
@@ -4861,7 +4858,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Scripts ] Fix dangerous rm -rf with unset variable guard in deploy.sh",
@@ -4942,7 +4939,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Scripts ] Fix unquoted variable in backup.sh",
@@ -5023,7 +5020,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Scripts ] Add missing shebang to cleanup.sh",
@@ -5104,7 +5101,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[ Scripts ] Add missing set -e to deploy.sh",
@@ -5185,7 +5182,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "[Bounty] [BOUNTY] [$25] [NO CODE] [REQUEST] Instructions are in issue body",
@@ -5261,7 +5258,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-22 05:50 PM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     },
     {
       "title": "Juice Node API Integration - Complete Structure",
@@ -5352,7 +5349,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-22 03:37 PM Pacific",
-      "last_verified": "2026-07-23 02:44 AM Pacific"
+      "last_verified": "2026-07-23 03:21 AM Pacific"
     }
   ]
 }
