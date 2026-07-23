@@ -87,15 +87,16 @@
     "workflow_run_id": "29979811221"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
-    "state": "reserved",
+    "state": "submitted",
     "repository": "claude-builders-bounty/claude-builders-bounty",
     "issue_number": 2855,
     "issue_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2855",
     "title": "[BOUNTY $25] AGENT: Create a `CLAUDE.md` at the repo root.",
-    "reward": 25.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T04:32:49.573114+00:00",
-    "reserved_at_ts": 1784781206.808396,
+    "reward": 25.0,
+    "pr_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3581",
+    "submitted_at": "2026-07-23T04:34:28.632385+00:00",
+    "submitted_at_ts": 1784781268.6324015,
     "workflow_run_id": "29979811221"
   },
   "UnsafeLabs/Bounty-Hunters#310": {
