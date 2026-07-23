@@ -6,10 +6,10 @@
     "issue_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1",
     "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
     "reward": 50.0,
-    "worker": "Atlas",
-    "reserved_at": "2026-07-23T02:43:20.074860+00:00",
-    "reserved_at_ts": 1784774637.9571655,
-    "workflow_run_id": "29975117794"
+    "worker": "Alex",
+    "reserved_at": "2026-07-23T03:51:32.685424+00:00",
+    "reserved_at_ts": 1784778721.8930602,
+    "workflow_run_id": "29978053065"
   },
   "Iamgoofball/-tg-station#49": {
     "state": "reserved",
@@ -18,10 +18,10 @@
     "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
-    "worker": "Alex",
-    "reserved_at": "2026-07-23T02:43:20.074860+00:00",
-    "reserved_at_ts": 1784774637.957183,
-    "workflow_run_id": "29975117794"
+    "worker": "Atlas",
+    "reserved_at": "2026-07-23T03:51:32.685424+00:00",
+    "reserved_at_ts": 1784778721.893043,
+    "workflow_run_id": "29978053065"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
