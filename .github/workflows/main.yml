@@ -1,4 +1,4 @@
-name: Atlas + Alex V38 — Build-From-Scratch Execution Fix
+name: Atlas + Alex V39 — All Eligible Opportunities Batch Execution
 
 on:
   workflow_dispatch:
@@ -21,7 +21,7 @@ on:
     - cron: "13,28,43,58 * * * *"
 
 concurrency:
-  group: atlas-alex-opportunity-hunter-v38
+  group: atlas-alex-opportunity-hunter-v39
   cancel-in-progress: false
 
 permissions:
@@ -451,7 +451,7 @@ jobs:
               "reinvest_percent": 25,
               "mazen_percent": 50,
               "automatic_execution": True,
-              "parallel_workers": 1,
+              "parallel_workers": 20,
               "maximum_execution_reward": 250,
               "execution_score_floor": 48,
           }
@@ -462,6 +462,11 @@ jobs:
           # CEO law: accept paid opportunities starting at ten cents.
           # Force migration of an older persisted $5 configuration.
           config["minimum_reward"] = 0.10
+
+          # CEO law: dispatch every eligible opportunity found in this run,
+          # bounded only by the queue safety cap. Existing saved configurations
+          # from older versions must not keep Atlas limited to one worker.
+          config["parallel_workers"] = max(1, int(config.get("queue_size", 20)))
 
           split_total = sum(float(config.get(key, 0)) for key in (
               "tax_percent", "reinvest_percent", "mazen_percent"
@@ -481,7 +486,7 @@ jobs:
               EARNINGS_FILE.write_text("[]\n", encoding="utf-8")
 
           operations = load_json_file(OPERATIONS_FILE, {
-              "version": "V37",
+              "version": "V39",
               "pipeline": [],
               "last_updated": GENERATED_AT,
           })
@@ -2889,7 +2894,7 @@ jobs:
               "automatic_execution": True,
               "selected_executions": selected_executions,
               "automation_boundary": (
-                  "Atlas and Alex automatically dispatch up to two simple, "
+                  "Atlas and Alex automatically dispatch every eligible simple, "
                   "uncontested tasks. Submission still depends on configured "
                   "GitHub and AI credentials; payment remains controlled by maintainers."
               ),
@@ -3919,7 +3924,7 @@ jobs:
            (github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode != 'scan_only')) }}
     strategy:
       fail-fast: false
-      max-parallel: 1
+      max-parallel: 5
       matrix: ${{ fromJSON(needs.hunt.outputs.execution_matrix) }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
