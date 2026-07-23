@@ -1546,7 +1546,7 @@ jobs:
               # Atlas still requires a real open repository, no crypto, no AI ban,
               # no competing PR, no assignee, matching repository, and executable work.
               quick_win_risk_accepted = bool(
-                  0.10 <= reward <= 50
+                  0.10 <= reward <= 100
                   and not human_only_signals
                   and not crypto_signals
                   and not repository_mismatch
@@ -1700,9 +1700,9 @@ jobs:
 
               elif quick_win_risk_accepted:
                   availability = (
-                      "FAST ACCEPTANCE/PAYMENT NOT VERIFIED - DO NOT DISPATCH"
+                      "SMALL-REWARD RISK ACCEPTED - READY TO DISPATCH"
                   )
-                  decision = "WATCHLIST"
+                  decision = "PURSUE"
 
               elif not instant_payment_verified:
                   availability = "PAYMENT SPEED OR FUNDING NOT VERIFIED"
