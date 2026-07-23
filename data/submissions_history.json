@@ -31,9 +31,9 @@
     "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
     "reward": 10.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T01:01:24.111401+00:00",
-    "reserved_at_ts": 1784768525.2506502,
-    "workflow_run_id": "29970685513"
+    "reserved_at": "2026-07-23T02:55:54.192883+00:00",
+    "reserved_at_ts": 1784775383.6686397,
+    "workflow_run_id": "29975638572"
   },
   "Saiaaax/CyberNinja-Dojo#10": {
     "state": "reserved",
@@ -43,8 +43,8 @@
     "title": "[$10 BOUNTY] [TypeScript] Add telemetry batch flush threshold tests",
     "reward": 10.0,
     "worker": "Alex",
-    "reserved_at": "2026-07-23T01:01:24.111401+00:00",
-    "reserved_at_ts": 1784768525.2506661,
-    "workflow_run_id": "29970685513"
+    "reserved_at": "2026-07-23T02:55:54.192883+00:00",
+    "reserved_at_ts": 1784775383.6686566,
+    "workflow_run_id": "29975638572"
   }
 }
