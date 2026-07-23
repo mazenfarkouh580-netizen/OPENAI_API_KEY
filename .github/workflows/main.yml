@@ -1,7 +1,7 @@
-name: Atlas Golden V44 — Production Money Maker and Result Confirmation
+name: Atlas + Alex V45 — Production Payment Intelligence
 
 run-name: >-
-  ${{ github.event_name == 'schedule' && github.event.schedule == '13,28,43,58 * * * *' && 'Atlas V41 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V41 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V41 Watchdog Recovery' || format('Atlas V41 Manual — {0}', github.event.inputs.execution_mode) }}
+  ${{ github.event_name == 'schedule' && github.event.schedule == '13,28,43,58 * * * *' && 'Atlas V45 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V45 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V45 Watchdog Recovery' || format('Atlas V45 Manual — {0}', github.event.inputs.execution_mode) }}
 
 on:
   workflow_dispatch:
@@ -104,6 +104,9 @@ jobs:
           EARNINGS_FILE = DATA_DIR / "earnings-ledger.json"
           ALERTS_FILE = DATA_DIR / "atlas-alerts.json"
           WORKER_HEALTH_FILE = DATA_DIR / "worker-health.json"
+          PAYMENT_HISTORY_FILE = DATA_DIR / "previous-payment-history.json"
+          PAYMENT_REPORT_FILE = DOCS_DIR / "reports" / "previous-payments.html"
+          PAYMENT_REPORT_JSON_FILE = DOCS_DIR / "reports" / "previous-payments.json"
           REPORTS_DIR = DOCS_DIR / "reports"
           REPORTS_DIR.mkdir(exist_ok=True)
 
@@ -510,8 +513,13 @@ jobs:
               ledger = []
               EARNINGS_FILE.write_text("[]\n", encoding="utf-8")
 
+          payment_history = load_json_file(PAYMENT_HISTORY_FILE, [])
+          if not isinstance(payment_history, list):
+              payment_history = []
+          payment_history_cache = {}
+
           operations = load_json_file(OPERATIONS_FILE, {
-              "version": "V39",
+              "version": "V45",
               "pipeline": [],
               "last_updated": GENERATED_AT,
           })
@@ -572,7 +580,7 @@ jobs:
                           "Accept": accept,
                           "X-GitHub-Api-Version": API_VERSION,
                           "User-Agent": (
-                              "Atlas-Opportunity-Hunter-V41"
+                              "Atlas-Opportunity-Hunter-V45"
                           ),
                       },
                   )
@@ -963,6 +971,131 @@ jobs:
 
               return list(found.values())
 
+          def payment_delay_hours(accepted_at, paid_at):
+              accepted = parse_datetime(accepted_at)
+              paid = parse_datetime(paid_at)
+              if not accepted or not paid or paid < accepted:
+                  return None
+              return round((paid - accepted).total_seconds() / 3600, 2)
+
+          def previous_payment_intelligence(repository, payer_hint="", platform_signals=None):
+              """Mandatory pre-ranking payer check. Only explicit, documented receipt evidence counts as paid."""
+              cache_key = (repository or "").lower()
+              if cache_key in payment_history_cache:
+                  return payment_history_cache[cache_key]
+
+              findings = []
+              disputes = []
+              for row in payment_history:
+                  if not isinstance(row, dict):
+                      continue
+                  same_repo = str(row.get("repository", "")).lower() == cache_key
+                  same_payer = payer_hint and str(row.get("payer", "")).lower() == str(payer_hint).lower()
+                  if not (same_repo or same_payer):
+                      continue
+                  status = str(row.get("status", "")).lower()
+                  if status in {"paid", "received", "confirmed"} and row.get("evidence_url"):
+                      findings.append(dict(row))
+                  elif status in {"unpaid", "disputed", "nonpayment", "misleading"}:
+                      disputes.append(dict(row))
+
+              # Public GitHub evidence: closed reward issues with explicit payment-confirmation language.
+              # A closed issue, merged PR, advertised reward, or promise alone never counts.
+              if repository and len(findings) < 5:
+                  query = urllib.parse.quote(
+                      f'repo:{repository} is:issue is:closed ("payment sent" OR "payment received" OR "reward paid" OR "bounty paid" OR "payment completed")'
+                  )
+                  results = safe_api_get(
+                      f"https://api.github.com/search/issues?q={query}&sort=updated&order=desc&per_page=10",
+                      optional=True,
+                  ) or {}
+                  for prior in results.get("items", []) if isinstance(results, dict) else []:
+                      prior_number = int(prior.get("number") or 0)
+                      prior_comments = collect_issue_comments(repository, prior_number)
+                      bodies = [(prior.get("body") or "", prior.get("html_url") or "", prior.get("closed_at") or prior.get("updated_at") or "")]
+                      bodies.extend((c.get("body") or "", c.get("html_url") or "", c.get("created_at") or "") for c in prior_comments)
+                      for body_text, evidence_url, evidence_date in bodies:
+                          lowered_body = body_text.lower()
+                          confirmed = any(term in lowered_body for term in (
+                              "payment sent", "payment received", "reward paid", "bounty paid",
+                              "payment completed", "payment issued", "paid via paypal", "paid via stripe",
+                          ))
+                          promise_only = any(term in lowered_body for term in (
+                              "will pay", "payment promised", "payment pending", "payment scheduled",
+                              "upon merge", "pay after", "eligible for payment",
+                          ))
+                          if not confirmed or promise_only or not evidence_url:
+                              continue
+                          amount = extract_reward(body_text)
+                          accepted_at = prior.get("closed_at") or prior.get("updated_at") or ""
+                          finding = {
+                              "status": "paid",
+                              "repository": repository,
+                              "payer": payer_hint or ((prior.get("user") or {}).get("login") or "Unknown"),
+                              "amount": amount,
+                              "currency": "USD" if "$" in body_text or "usd" in lowered_body else "Unknown",
+                              "evidence_url": evidence_url,
+                              "evidence_source": "GitHub payment-confirmation comment",
+                              "evidence_date": evidence_date,
+                              "issue_url": prior.get("html_url") or "",
+                              "pull_request_url": "",
+                              "accepted_at": accepted_at,
+                              "paid_at": evidence_date,
+                              "payment_delay_hours": payment_delay_hours(accepted_at, evidence_date),
+                              "required_repeated_followup": "follow-up #2" in lowered_body or "follow-up #3" in lowered_body,
+                              "confidence": "HIGH",
+                              "last_verified_pacific": GENERATED_AT,
+                          }
+                          findings.append(finding)
+                          break
+
+              delays = [float(x["payment_delay_hours"]) for x in findings if x.get("payment_delay_hours") is not None]
+              if disputes:
+                  classification = "High-Risk Payer"
+              elif delays and min(delays) <= 24 and (sum(delays) / len(delays)) <= 24:
+                  classification = "Verified Fast Payer"
+              elif delays and (sum(delays) / len(delays)) <= 72:
+                  classification = "Verified Three-Day Payer"
+              elif findings:
+                  classification = "Verified Slow Payer"
+              else:
+                  classification = "Unverified Payer"
+
+              result = {
+                  "classification": classification,
+                  "confirmed_payments": len(findings),
+                  "total_paid": round(sum(float(x.get("amount", 0) or 0) for x in findings), 2),
+                  "average_delay_hours": round(sum(delays) / len(delays), 2) if delays else None,
+                  "fastest_delay_hours": min(delays) if delays else None,
+                  "slowest_delay_hours": max(delays) if delays else None,
+                  "unpaid_count": sum(1 for x in disputes if str(x.get("status", "")).lower() == "unpaid"),
+                  "disputed_count": len(disputes),
+                  "repeated_followup_count": sum(1 for x in findings if x.get("required_repeated_followup")),
+                  "evidence": findings,
+                  "risk_evidence": disputes,
+                  "last_verified_pacific": GENERATED_AT,
+              }
+              payment_history_cache[cache_key] = result
+              return result
+
+          def payer_priority_rank(classification):
+              return {
+                  "Verified Fast Payer": 4,
+                  "Verified Three-Day Payer": 3,
+                  "Verified Slow Payer": 1,
+                  "Unverified Payer": 2,
+                  "High-Risk Payer": 0,
+              }.get(classification, 0)
+
+          def payment_gate_allows(item):
+              classification = item.get("payer_classification", "Unverified Payer")
+              reward = float(item.get("reward", 0) or 0)
+              if classification == "High-Risk Payer":
+                  return False
+              if classification == "Unverified Payer" and reward > 50:
+                  return False
+              return True
+
           def verify_candidate(issue):
               title = issue.get("title") or ""
               body = issue.get("body") or ""
@@ -1187,6 +1320,10 @@ jobs:
                   if any(term in lowered for term in terms)
               })
               trusted_platform = None  # No platform is trusted automatically.
+
+              payer_hint = ((issue.get("user") or {}).get("login") or "")
+              payer_history = previous_payment_intelligence(repository, payer_hint, platform_signals)
+              payer_classification = payer_history.get("classification", "Unverified Payer")
 
               repository_full_name = (
                   repository.lower()
@@ -1546,7 +1683,7 @@ jobs:
               # Atlas still requires a real open repository, no crypto, no AI ban,
               # no competing PR, no assignee, matching repository, and executable work.
               quick_win_risk_accepted = bool(
-                  0.10 <= reward <= 100
+                  0.10 <= reward <= 50
                   and not human_only_signals
                   and not crypto_signals
                   and not repository_mismatch
@@ -1700,9 +1837,9 @@ jobs:
 
               elif quick_win_risk_accepted:
                   availability = (
-                      "SMALL-REWARD RISK ACCEPTED - READY TO DISPATCH"
+                      "FAST ACCEPTANCE/PAYMENT NOT VERIFIED - DO NOT DISPATCH"
                   )
-                  decision = "PURSUE"
+                  decision = "WATCHLIST"
 
               elif not instant_payment_verified:
                   availability = "PAYMENT SPEED OR FUNDING NOT VERIFIED"
@@ -1745,6 +1882,16 @@ jobs:
                       "LOW VALUE OR HIGH RISK"
                   )
                   decision = "REJECT"
+
+              # Mandatory previous-payment gate runs before ranking and dispatch.
+              if payer_classification == "High-Risk Payer":
+                  availability = "HIGH-RISK PAYER - MANUAL APPROVAL REQUIRED"
+                  decision = "REJECT"
+              elif payer_classification == "Unverified Payer" and reward > 50 and decision == "PURSUE":
+                  availability = "UNVERIFIED LARGE REWARD - DEEP VERIFICATION REQUIRED"
+                  decision = "PRIORITY REVIEW"
+              elif payer_classification == "Verified Slow Payer" and decision == "PURSUE":
+                  availability = "VERIFIED SLOW PAYER - DEPRIORITIZED"
 
               # CEO reward law: over $250 stays visible but never enters the main pursue queue.
               if reward > 250 and decision not in {"REJECT"}:
@@ -1836,6 +1983,11 @@ jobs:
                       reverse=True,
                   ),
                   "payment_verification": payment_verification,
+                  "payer_classification": payer_classification,
+                  "payer_priority_rank": payer_priority_rank(payer_classification),
+                  "previous_payment_summary": payer_history,
+                  "previous_payment_checked": True,
+                  "payment_gate_allowed": payment_gate_allows({"payer_classification": payer_classification, "reward": reward}),
                   "paypal_signals": paypal_signals,
                   "fiat_payment_signals": fiat_payment_signals,
                   "fast_payment_signals": fast_payment_signals,
@@ -1950,7 +2102,7 @@ jobs:
               "created",
           )
 
-          # V41 operational guarantee: Alex must perform real searches, not merely
+          # V45 operational guarantee: Alex must perform real searches, not merely
           # appear in telemetry. If the first search pass completes zero queries,
           # immediately retry with a compact fallback universe.
           alex_retry_triggered = False
@@ -2233,6 +2385,7 @@ jobs:
 
           verified_results.sort(
               key=lambda item: (
+                  item.get("payer_priority_rank", 0),
                   bool(item.get("instant_payment_priority")),
                   bool(item.get("fast_pay_candidate")),
                   item["score"],
@@ -2456,7 +2609,7 @@ jobs:
               gate_counts[gate] = gate_counts.get(gate, 0) + 1
 
           diagnostic_lines = [
-              "# Atlas + Alex V41 Gate Diagnostics",
+              "# Atlas + Alex V45 Gate Diagnostics",
               "",
               f"Generated: {GENERATED_AT}",
               "",
@@ -2679,6 +2832,7 @@ jobs:
                       + (18 if item.get("direct_payment_proof") else 0)
                       + (12 if item.get("approval_authority") != "NOT VERIFIED" else 0)
                       + (10 if item.get("fast_payment_signals") else 0)
+                      + ({"Verified Fast Payer": 28, "Verified Three-Day Payer": 20, "Verified Slow Payer": 4, "Unverified Payer": 0, "High-Risk Payer": -60}.get(item.get("payer_classification"), 0))
                       - item.get("open_competing_prs", 0) * 18
                       - (22 if item.get("assignees") else 0),
                   ),
@@ -2724,6 +2878,7 @@ jobs:
           execution_queue.sort(
               key=lambda x: (
                   x["decision"] == "PURSUE",
+                  x.get("payer_priority_rank", 0),
                   bool(x.get("instant_payment_priority")),
                   bool(x.get("fast_pay_candidate")),
                   reward_priority_rank(x),
@@ -2736,7 +2891,7 @@ jobs:
           )
           execution_queue = execution_queue[:int(config.get("queue_size", 20))]
 
-          operations["version"] = "V43"
+          operations["version"] = "V45"
           operations["last_updated"] = GENERATED_AT
           operations["pipeline"] = execution_queue
           operations["source_performance"] = source_performance
@@ -2769,10 +2924,13 @@ jobs:
               and item.get("atlas_can_execute")
               and item.get("ai_eligibility") != "PROHIBITED"
               and item.get("fast_cash_execution_qualified") is True
+              and item.get("previous_payment_checked") is True
+              and item.get("payment_gate_allowed") is True
               and execution_history_allows(item)
           ]
           executable_candidates.sort(
               key=lambda item: (
+                  item.get("payer_priority_rank", 0),
                   bool(item.get("instant_payment_priority")),
                   bool(item.get("fast_pay_candidate")),
                   item.get("score", 0),
@@ -2826,7 +2984,7 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V43",
+                  "version": "V45",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": int(config.get("parallel_workers", 2)),
@@ -3183,6 +3341,48 @@ jobs:
                   "</td></tr>"
               )
 
+          # Persist only documented payment findings; advertised rewards and promises are excluded.
+          known_evidence_urls = {str(row.get("evidence_url", "")) for row in payment_history if isinstance(row, dict)}
+          for intelligence in payment_history_cache.values():
+              for finding in intelligence.get("evidence", []):
+                  if finding.get("evidence_url") and finding.get("evidence_url") not in known_evidence_urls:
+                      payment_history.append(finding)
+                      known_evidence_urls.add(finding.get("evidence_url"))
+          PAYMENT_HISTORY_FILE.write_text(json.dumps(payment_history, indent=2, ensure_ascii=False), encoding="utf-8")
+
+          payer_summaries = []
+          for repository, intelligence in sorted(payment_history_cache.items()):
+              evidence = intelligence.get("evidence", [])
+              payer_summaries.append({
+                  "repository": repository,
+                  "payer": (evidence[0].get("payer") if evidence else "Unknown"),
+                  **intelligence,
+              })
+          PAYMENT_REPORT_JSON_FILE.write_text(json.dumps({
+              "generated_at_pacific": GENERATED_AT,
+              "rules": "Only documented, confirmed payment evidence counts as paid activity.",
+              "payers": payer_summaries,
+              "evidence": payment_history,
+          }, indent=2, ensure_ascii=False), encoding="utf-8")
+
+          payment_history_rows = "".join(
+              "<tr>"
+              f"<td>{html.escape(str(row.get('repository', 'Unknown')))}</td>"
+              f"<td>{html.escape(str(row.get('payer', 'Unknown')))}</td>"
+              f"<td>{html.escape(str(row.get('classification', 'Unverified Payer')))}</td>"
+              f"<td>{int(row.get('confirmed_payments', 0) or 0)}</td>"
+              f"<td>${float(row.get('total_paid', 0) or 0):,.2f}</td>"
+              f"<td>{html.escape(str(row.get('average_delay_hours') if row.get('average_delay_hours') is not None else 'Unknown'))}</td>"
+              f"<td>{int(row.get('unpaid_count', 0) or 0)}</td>"
+              f"<td>{int(row.get('disputed_count', 0) or 0)}</td>"
+              "</tr>" for row in payer_summaries
+          ) or "<tr><td colspan='8'>No documented previous-payment evidence recorded yet.</td></tr>"
+          PAYMENT_REPORT_FILE.write_text(f"""<!doctype html><html><head><meta charset='utf-8'><title>Atlas V45 Previous Payment Report</title></head><body>
+          <h1>Atlas V45 Previous Payment Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p>
+          <p>Only documented and confirmed payment evidence is counted. Advertised rewards, promises, and merged pull requests alone are excluded.</p>
+          <table border='1' cellpadding='8'><thead><tr><th>Repository</th><th>Payer</th><th>Classification</th><th>Confirmed Payments</th><th>Total Paid</th><th>Average Delay Hours</th><th>Unpaid</th><th>Disputed</th></tr></thead><tbody>{payment_history_rows}</tbody></table>
+          </body></html>""", encoding="utf-8")
+
           dashboard = f"""<!doctype html>
           <html lang="en">
           <head>
@@ -3196,7 +3396,7 @@ jobs:
               content="{int(config.get('dashboard_refresh_seconds', 900))}"
             >
             <title>
-              Atlas + Alex Opportunity Hunter V41
+              Atlas + Alex Opportunity Hunter V45
             </title>
             <style>
               :root {{
@@ -3313,7 +3513,7 @@ jobs:
           </head>
           <body>
             <h1>
-              Atlas + Alex Opportunity Hunter V41
+              Atlas + Alex Opportunity Hunter V45
             </h1>
 
             <p>
@@ -3452,15 +3652,16 @@ jobs:
               </table>
             </div>
 
-            <h2>Money</h2>
-            <p><a href="money.html"><strong>Open permanent MONEY MADE window</strong></a></p>
+            <h2>Verified Money Received</h2>
+            <p>Only confirmed deposits or documented receipts appear as income. Advertised and estimated rewards are excluded.</p>
+            <p><a href="money.html"><strong>Open permanent verified money window</strong></a></p>
             <div class="grid">
               <div class="card"><div class="value">${earnings['today']:,.2f}</div><div>Today</div></div>
               <div class="card"><div class="value">${earnings['week']:,.2f}</div><div>This Week</div></div>
               <div class="card"><div class="value">${earnings['month']:,.2f}</div><div>This Month</div></div>
               <div class="card"><div class="value">${earnings['year']:,.2f}</div><div>This Year</div></div>
               <div class="card"><div class="value">${earnings['lifetime']:,.2f}</div><div>Lifetime</div></div>
-              <div class="card"><div class="value">${earnings['waiting_total']:,.2f}</div><div>Waiting Total</div></div>
+              <div class="card"><div class="value">${earnings['waiting_total']:,.2f}</div><div>Waiting For Payment</div></div>
               <div class="card"><div class="value">${earnings['waiting_today']:,.2f}</div><div>Waiting Today</div></div>
               <div class="card"><div class="value">${earnings['waiting_later']:,.2f}</div><div>Waiting Later</div></div>
               <div class="card"><div class="value">${earnings['overdue']:,.2f}</div><div>Overdue</div></div>
@@ -3478,6 +3679,13 @@ jobs:
 
             <h2>Execution Queue</h2>
             <div class="table-wrap"><table><thead><tr><th>#</th><th>Decision</th><th>Expected Value</th><th>Payment Confidence</th><th>Competition Advantage</th><th>Opportunity</th></tr></thead><tbody>{queue_rows}</tbody></table></div>
+
+            <h2>Submitted And Waiting For Payment</h2>
+            <p>Submitted, reserved, and waiting amounts are operational pipeline values, not verified income.</p>
+
+            <h2>Historical Payment Statistics</h2>
+            <p><a href="reports/previous-payments.html"><strong>Open previous-payment verification report</strong></a> · <a href="reports/previous-payments.json">Open evidence data</a></p>
+            <div class="table-wrap"><table><thead><tr><th>Repository</th><th>Payer</th><th>Classification</th><th>Confirmed Payments</th><th>Total Paid</th><th>Average Delay Hours</th><th>Unpaid</th><th>Disputed</th></tr></thead><tbody>{payment_history_rows}</tbody></table></div>
 
             <h2>Payment Timing</h2>
             <div class="table-wrap"><table><thead><tr><th>Payment</th><th>Amount</th><th>Expected</th><th>Timing</th></tr></thead><tbody>{payment_rows}</tbody></table></div>
@@ -3534,8 +3742,7 @@ jobs:
             <p class="small">
               V33 runs two independent search universes on every
               run and keeps a discovery cache so temporary API limits do not erase
-              sources. Up to 30 candidates receive a fast technical and competition check, with reserved capacity for small rewards from both workers. Small-reward PURSUE does not require deep payment proof; it requires an open task, no active competition, repository integrity, and work Atlas can realistically execute. The page refreshes every
-              15 minutes.
+              sources. Up to 30 candidates receive a fast technical and competition check, with reserved capacity for small rewards from both workers. Small-reward PURSUE does not require deep payment proof; it requires an open task, no active competition, repository integrity, and work Atlas can realistically execute. The page refreshes every {max(1, int(config.get("dashboard_refresh_seconds", 900)) // 60)} minutes.
             </p>
           </body>
           </html>
@@ -3547,11 +3754,11 @@ jobs:
           )
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
-                  "<title>\n              Atlas + Alex Opportunity Hunter V41\n            </title>",
-                  "<title>Atlas V41 Status Window</title>",
+                  "<title>\n              Atlas + Alex Opportunity Hunter V45\n            </title>",
+                  "<title>Atlas V45 Status Window</title>",
               ).replace(
-                  "Atlas + Alex Opportunity Hunter V41",
-                  "Atlas V41 Status Window",
+                  "Atlas + Alex Opportunity Hunter V45",
+                  "Atlas V45 Status Window",
                   1,
               ),
               encoding="utf-8",
@@ -3704,7 +3911,7 @@ jobs:
               f"<tr><td>{i}</td><td>{html.escape(item['decision'])}</td><td>${item['reward']:,.2f}</td><td>${item['expected_value']:,.2f}</td><td>{html.escape(item['title'])}</td></tr>"
               for i, item in enumerate(execution_queue, 1)
           )
-          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V28 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V41 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
+          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V28 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V45 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
           (REPORTS_DIR / "latest.html").write_text(report_html, encoding="utf-8")
           csv_lines = ["rank,decision,reward,expected_value,payment_confidence,competition_advantage,title,url"]
           for i, item in enumerate(execution_queue, 1):
@@ -3716,14 +3923,14 @@ jobs:
               ]))
           (REPORTS_DIR / "latest.csv").write_text("\n".join(csv_lines) + "\n", encoding="utf-8")
           (REPORTS_DIR / "latest.txt").write_text(
-              "Atlas + Alex Opportunity Hunter V41\n" +
+              "Atlas + Alex Opportunity Hunter V45\n" +
               f"Generated: {GENERATED_AT}\nStatus: {status}\n" +
               f"Today: ${earnings['today']:,.2f}\nWeek: ${earnings['week']:,.2f}\nMonth: ${earnings['month']:,.2f}\nYear: ${earnings['year']:,.2f}\nLifetime: ${earnings['lifetime']:,.2f}\n",
               encoding="utf-8",
           )
 
           summary_lines = [
-              "# Atlas + Alex Opportunity Hunter V41",
+              "# Atlas + Alex Opportunity Hunter V45",
               "",
               (
                   f"- System status: "
@@ -3843,7 +4050,7 @@ jobs:
                   )
 
           print(
-              f"Atlas + Alex V41 status={status}; "
+              f"Atlas + Alex V45 status={status}; "
               f"checked {len(raw_issues)} "
               "raw issues; "
               f"found {len(initial_candidates)} "
@@ -3865,12 +4072,12 @@ jobs:
 
           if searches_completed == 0:
               raise SystemExit(
-                  "Atlas + Alex V41 could not complete "
+                  "Atlas + Alex V45 could not complete "
                   "any GitHub search query."
               )
           PY
 
-      - name: Save Atlas + Alex V41 results
+      - name: Save Atlas + Alex V45 results
         if: >-
           ${{ github.event_name != 'workflow_dispatch' ||
               github.event.inputs.execution_mode != 'safe_test' }}
@@ -3918,7 +4125,7 @@ jobs:
             fi
 
             git commit \
-              -m "Atlas + Alex V41 opportunity scan"
+              -m "Atlas + Alex V45 opportunity scan"
 
             if git push origin "HEAD:$BRANCH_NAME"
             then
@@ -4527,8 +4734,8 @@ jobs:
             result="submitted"
             reason="pull_request_opened"
           elif [ "${EXECUTION_MODE}" = "safe_test" ] && [ "${VALIDATE_OUTCOME:-}" = "success" ]; then
-            result="submitted"
-            reason="safe_test_patch_generated"
+            result="validated"
+            reason="safe_test_patch_validated_no_submission"
           elif [ "${CREDENTIALS_READY:-false}" != "true" ]; then
             result="skipped"
             reason="${CREDENTIALS_REASON:-credentials_unavailable}"
@@ -4613,7 +4820,7 @@ jobs:
           headers = {
               "Accept": "application/vnd.github+json",
               "X-GitHub-Api-Version": "2022-11-28",
-              "User-Agent": "Atlas-Golden-V44",
+              "User-Agent": "Atlas-Alex-V45",
           }
           if token:
               headers["Authorization"] = f"Bearer {token}"
@@ -4874,14 +5081,18 @@ jobs:
 
           token = os.environ.get("GH_TOKEN", "").strip()
           if not token:
-              print("Alex payment follow-up skipped: ATLAS_GITHUB_PAT is not configured.")
+              print("Alex payment follow-up: Skipped — Credentials unavailable (ATLAS_GITHUB_PAT is not configured).")
+              summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+              if summary_path:
+                  with open(summary_path, "a", encoding="utf-8") as summary:
+                      summary.write("## Alex Payment Follow-Up\n- Status: **Skipped**\n- Reason: **Credentials unavailable**\n")
               raise SystemExit(0)
 
           headers = {
               "Authorization": f"Bearer {token}",
               "Accept": "application/vnd.github+json",
               "X-GitHub-Api-Version": "2022-11-28",
-              "User-Agent": "Atlas-Alex-V41",
+              "User-Agent": "Atlas-Alex-V45",
           }
 
           def api(method, url, payload=None):
@@ -5066,7 +5277,7 @@ jobs:
         run: |
           set -euo pipefail
           {
-            echo "## Atlas Golden V44 Workflow Health"
+            echo "## Atlas + Alex V45 Workflow Health"
             echo "- Hunt job: ${HUNT_RESULT}"
             echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
             echo "- Execution ready: ${EXECUTION_READY:-false}"
@@ -5100,7 +5311,7 @@ jobs:
             echo "Payment follow-up had a non-critical warning; production work remains healthy." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          echo "Atlas Golden V44 completed: only passing submissions are persisted; task failures are isolated."
+          echo "Atlas + Alex V45 completed: only passing submissions are persisted; task failures are isolated."
 
   watchdog:
     if: >-
@@ -5128,7 +5339,7 @@ jobs:
           workflow_id="${workflow_id%@*}"
           last_success="$(
             gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=50" \
-              --jq '[.workflow_runs[] | select(.display_title == "Atlas V41 Main Production" or .display_title == "Atlas V41 Watchdog Recovery")][0].updated_at // empty' \
+              --jq '[.workflow_runs[] | select(.display_title == "Atlas V45 Main Production" or .display_title == "Atlas V45 Watchdog Recovery")][0].updated_at // empty' \
               2>/dev/null || true
           )"
 
