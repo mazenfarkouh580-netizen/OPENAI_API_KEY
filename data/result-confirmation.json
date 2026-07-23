@@ -1,0 +1,132 @@
+{
+  "generated_at": "2026-07-23T10:22:41.826440+00:00",
+  "truth_rules": {
+    "submitted": "GitHub API confirms the PR exists",
+    "approved": "GitHub review is APPROVED",
+    "merged": "GitHub API reports merged_at",
+    "payment_confirmed": "Public maintainer discussion confirms payment approval or sending",
+    "cash_received": "Private earnings ledger/payment record marks paid, received, or completed"
+  },
+  "totals": {
+    "recorded": 13,
+    "verified_submitted": 0,
+    "under_review": 0,
+    "changes_requested": 0,
+    "approved": 0,
+    "merged": 0,
+    "payment_confirmed": 0,
+    "paid": 0,
+    "unverified": 13,
+    "verified_submitted_value": 0.0,
+    "approved_value": 0.0,
+    "merged_value": 0.0,
+    "payment_confirmed_value": 0.0,
+    "cash_received": 0.0
+  },
+  "results": [
+    {
+      "submission_key": "claude-builders-bounty/claude-builders-bounty#1",
+      "reward": 50.0,
+      "pr_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3580",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    },
+    {
+      "submission_key": "Iamgoofball/-tg-station#49",
+      "reward": 50.0,
+      "pr_url": "",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    },
+    {
+      "submission_key": "Iamgoofball/-tg-station#50",
+      "reward": 10.0,
+      "pr_url": "https://github.com/Iamgoofball/-tg-station/pull/244",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    },
+    {
+      "submission_key": "Saiaaax/CyberNinja-Dojo#10",
+      "reward": 10.0,
+      "pr_url": "https://github.com/Saiaaax/CyberNinja-Dojo/pull/72",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    },
+    {
+      "submission_key": "xevrion-v2/agent-playground#2681",
+      "reward": 50.0,
+      "pr_url": "",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    },
+    {
+      "submission_key": "aporthq/aport-integrations#4",
+      "reward": 50.0,
+      "pr_url": "https://github.com/aporthq/aport-integrations/pull/124",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    },
+    {
+      "submission_key": "cuentaprueba244w-dotcom/TentOfTrials#10",
+      "reward": 35.0,
+      "pr_url": "",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    },
+    {
+      "submission_key": "claude-builders-bounty/claude-builders-bounty#2855",
+      "reward": 25.0,
+      "pr_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3581",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    },
+    {
+      "submission_key": "UnsafeLabs/Bounty-Hunters#310",
+      "reward": 1.0,
+      "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8186",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    },
+    {
+      "submission_key": "xevrion-v2/agent-playground#8345",
+      "reward": 50.0,
+      "pr_url": "",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    },
+    {
+      "submission_key": "UnsafeLabs/Bounty-Hunters#304",
+      "reward": 1.0,
+      "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8187",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    },
+    {
+      "submission_key": "aporthq/aport-integrations#31",
+      "reward": 10.0,
+      "pr_url": "https://github.com/aporthq/aport-integrations/pull/125",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    },
+    {
+      "submission_key": "UnsafeLabs/Bounty-Hunters#303",
+      "reward": 1.0,
+      "pr_url": "",
+      "checked_at": "2026-07-23T10:22:41.826440+00:00",
+      "evidence": [],
+      "state": "unverified"
+    }
+  ]
+}

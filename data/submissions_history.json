@@ -10,7 +10,9 @@
     "pr_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3580",
     "submitted_at": "2026-07-23T04:22:30.259003+00:00",
     "submitted_at_ts": 1784780550.2590172,
-    "workflow_run_id": "29979115010"
+    "workflow_run_id": "29979115010",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "Iamgoofball/-tg-station#49": {
     "state": "reserved",
@@ -22,7 +24,9 @@
     "worker": "Atlas",
     "reserved_at": "2026-07-23T08:01:16.921350+00:00",
     "reserved_at_ts": 1784793715.269408,
-    "workflow_run_id": "29989943139"
+    "workflow_run_id": "29989943139",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -35,7 +39,9 @@
     "pr_url": "https://github.com/Iamgoofball/-tg-station/pull/244",
     "submitted_at": "2026-07-23T03:02:00.141453+00:00",
     "submitted_at_ts": 1784775720.1414654,
-    "workflow_run_id": "29975638572"
+    "workflow_run_id": "29975638572",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "Saiaaax/CyberNinja-Dojo#10": {
     "state": "submitted",
@@ -48,7 +54,9 @@
     "pr_url": "https://github.com/Saiaaax/CyberNinja-Dojo/pull/72",
     "submitted_at": "2026-07-23T03:06:38.195690+00:00",
     "submitted_at_ts": 1784775998.1957016,
-    "workflow_run_id": "29975638572"
+    "workflow_run_id": "29975638572",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#2681": {
     "state": "reserved",
@@ -60,7 +68,9 @@
     "worker": "Alex",
     "reserved_at": "2026-07-23T08:01:16.921350+00:00",
     "reserved_at_ts": 1784793715.2694292,
-    "workflow_run_id": "29989943139"
+    "workflow_run_id": "29989943139",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "aporthq/aport-integrations#4": {
     "state": "submitted",
@@ -73,7 +83,9 @@
     "pr_url": "https://github.com/aporthq/aport-integrations/pull/124",
     "submitted_at": "2026-07-23T04:34:53.467632+00:00",
     "submitted_at_ts": 1784781293.4676437,
-    "workflow_run_id": "29979811221"
+    "workflow_run_id": "29979811221",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "cuentaprueba244w-dotcom/TentOfTrials#10": {
     "state": "reserved",
@@ -85,7 +97,9 @@
     "worker": "Atlas",
     "reserved_at": "2026-07-23T08:01:16.921350+00:00",
     "reserved_at_ts": 1784793715.2694395,
-    "workflow_run_id": "29989943139"
+    "workflow_run_id": "29989943139",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -98,7 +112,9 @@
     "pr_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3581",
     "submitted_at": "2026-07-23T04:34:28.632385+00:00",
     "submitted_at_ts": 1784781268.6324015,
-    "workflow_run_id": "29979811221"
+    "workflow_run_id": "29979811221",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "UnsafeLabs/Bounty-Hunters#310": {
     "state": "submitted",
@@ -111,7 +127,9 @@
     "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8186",
     "submitted_at": "2026-07-23T04:35:53.007139+00:00",
     "submitted_at_ts": 1784781353.007151,
-    "workflow_run_id": "29979811221"
+    "workflow_run_id": "29979811221",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8345": {
     "state": "reserved",
@@ -123,7 +141,9 @@
     "worker": "Atlas",
     "reserved_at": "2026-07-23T05:01:05.989934+00:00",
     "reserved_at_ts": 1784782977.0550826,
-    "workflow_run_id": "29981015444"
+    "workflow_run_id": "29981015444",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "UnsafeLabs/Bounty-Hunters#304": {
     "state": "submitted",
@@ -136,7 +156,9 @@
     "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8187",
     "submitted_at": "2026-07-23T08:03:22.035514+00:00",
     "submitted_at_ts": 1784793802.0355444,
-    "workflow_run_id": "29989943139"
+    "workflow_run_id": "29989943139",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "aporthq/aport-integrations#31": {
     "state": "submitted",
@@ -149,7 +171,9 @@
     "pr_url": "https://github.com/aporthq/aport-integrations/pull/125",
     "submitted_at": "2026-07-23T08:10:44.384484+00:00",
     "submitted_at_ts": 1784794244.3845022,
-    "workflow_run_id": "29989943139"
+    "workflow_run_id": "29989943139",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "UnsafeLabs/Bounty-Hunters#303": {
     "state": "reserved",
@@ -161,6 +185,8 @@
     "worker": "Atlas",
     "reserved_at": "2026-07-23T07:35:27.799651+00:00",
     "reserved_at_ts": 1784792167.1361701,
-    "workflow_run_id": "29988678642"
+    "workflow_run_id": "29988678642",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   }
 }
