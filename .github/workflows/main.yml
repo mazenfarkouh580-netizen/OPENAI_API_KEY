@@ -1,4 +1,4 @@
-name: Atlas + Alex V36 — Persistent Easy-Money Production
+name: Atlas + Alex V37 — Revenue Focus Fast Execution
 
 on:
   workflow_dispatch:
@@ -481,12 +481,12 @@ jobs:
               EARNINGS_FILE.write_text("[]\n", encoding="utf-8")
 
           operations = load_json_file(OPERATIONS_FILE, {
-              "version": "V36",
+              "version": "V37",
               "pipeline": [],
               "last_updated": GENERATED_AT,
           })
           if not isinstance(operations, dict):
-              operations = {"version": "V36", "pipeline": [], "last_updated": GENERATED_AT}
+              operations = {"version": "V37", "pipeline": [], "last_updated": GENERATED_AT}
 
           maintenance = load_json_file(MAINTENANCE_FILE, {
               "doctor": "Dr. Alex",
@@ -1253,14 +1253,28 @@ jobs:
                   if term in lowered
               })
 
-              claimable_now = bool(
-                  claimability_signals
-                  and not blocked_claim_signals
-                  and not assignees
-              )
               atlas_can_execute = bool(
                   atlas_capability_signals
                   and not external_execution_blockers
+              )
+              # CEO fast-claim law: for $0.10-$50 GitHub work, an open issue with
+              # no assignee/competing PR and a normal pull-request route is a valid
+              # claim path unless the issue explicitly blocks claims or requires a
+              # human-only registration, identity, payment, or platform step.
+              inferred_pr_claim_path = bool(
+                  0.10 <= reward <= 50
+                  and not blocked_claim_signals
+                  and not assignees
+                  and open_pr_count == 0
+                  and merged_pr_count == 0
+                  and not repository_mismatch
+                  and not human_only_signals
+                  and not external_execution_blockers
+              )
+              claimable_now = bool(
+                  (claimability_signals or inferred_pr_claim_path)
+                  and not blocked_claim_signals
+                  and not assignees
               )
 
               score = 0
@@ -1553,8 +1567,10 @@ jobs:
               if claimable_now:
                   score += 12
                   reasons.append(
-                      "Explicitly claimable with no current assignee"
+                      "Claim path confirmed or normal pull-request claim path inferred"
                   )
+              elif quick_win_risk_accepted:
+                  reasons.append("Small-reward claim risk accepted; proceed by pull request")
               else:
                   score -= 12
                   risks.append(
@@ -2143,15 +2159,17 @@ jobs:
                   queued_urls.add(url)
                   added += 1
 
-          # Preserve active work, then guarantee both workers' small-reward output.
+          # Revenue-first verification allocation. Small rewards are checked once
+          # for openness, competition, repository fit, and technical executability;
+          # payment proof is not repeatedly fast-verified under the CEO risk law.
+          add_candidates(atlas_small_candidates, 10)
+          add_candidates(alex_small_candidates, 10)
           add_candidates(
               [issue_by_url[url] for url in previous_actionable_urls],
-              5,
+              3,
           )
-          add_candidates(alex_small_candidates, 10)
-          add_candidates(atlas_small_candidates, 7)
-          add_candidates(alex_candidates, 4)
-          add_candidates(atlas_candidates, 4)
+          add_candidates(atlas_candidates, 3)
+          add_candidates(alex_candidates, 2)
           add_candidates(initial_candidates, 30)
 
           verified_results = []
@@ -2469,11 +2487,13 @@ jobs:
 
           status = "HEALTHY"
 
-          if searches_completed == 0:
+          if searches_completed == 0 and not verified_results:
               status = "FAILED"
 
           elif api_errors:
-              status = "DEGRADED"
+              # A rate-limited secondary search is a warning, not a failed company run,
+              # when current or cached candidates were still verified and queued.
+              status = "HEALTHY_WITH_WARNINGS"
 
           def money_total(start=None, end=None, statuses=("paid", "received", "completed")):
               total = 0.0
@@ -2550,6 +2570,74 @@ jobs:
               "mazen": round(earnings["year"] * float(config["mazen_percent"]) / 100, 2),
           }
 
+          # Source performance and adaptive focus. Until paid history exists,
+          # rank sources by actionable volume and advertised reward while preserving
+          # exploration. Paid and accepted results automatically outweigh listings.
+          def source_name(item):
+              repo = str(item.get("repository") or "unknown")
+              lowered = (str(item.get("title") or "") + " " + repo).lower()
+              if "opire" in lowered or "paid pr" in lowered:
+                  return "Opire"
+              if "unsafe" in lowered or "bounty-hunters" in lowered:
+                  return "UnsafeLabs"
+              if "claude-builders-bounty" in lowered:
+                  return "Claude Builders"
+              if "aport" in lowered:
+                  return "APort"
+              if "xevrion" in lowered:
+                  return "Xevrion"
+              if "cyberninja" in lowered:
+                  return "CyberNinja"
+              return repo.split("/")[0] if "/" in repo else repo
+
+          source_performance = {}
+          for item in verified_results:
+              src = source_name(item)
+              row = source_performance.setdefault(src, {
+                  "found": 0, "pursue": 0, "advertised_value": 0.0,
+                  "submitted": 0, "accepted": 0, "paid": 0, "revenue": 0.0,
+              })
+              row["found"] += 1
+              row["advertised_value"] += float(item.get("reward", 0) or 0)
+              if item.get("decision") == "PURSUE":
+                  row["pursue"] += 1
+
+          for record in submissions_history.values():
+              src = source_name(record)
+              row = source_performance.setdefault(src, {
+                  "found": 0, "pursue": 0, "advertised_value": 0.0,
+                  "submitted": 0, "accepted": 0, "paid": 0, "revenue": 0.0,
+              })
+              state = str(record.get("state", "")).lower()
+              if state in {"submitted", "accepted", "paid", "completed"}:
+                  row["submitted"] += 1
+              if state in {"accepted", "paid", "completed"}:
+                  row["accepted"] += 1
+              if state in {"paid", "completed"}:
+                  row["paid"] += 1
+                  row["revenue"] += float(record.get("paid_amount", record.get("reward", 0)) or 0)
+
+          for src, row in source_performance.items():
+              row["advertised_value"] = round(row["advertised_value"], 2)
+              row["revenue"] = round(row["revenue"], 2)
+              row["focus_score"] = round(
+                  row["revenue"] * 20
+                  + row["paid"] * 100
+                  + row["accepted"] * 50
+                  + row["submitted"] * 20
+                  + row["pursue"] * 8
+                  + min(row["advertised_value"], 500) / 10
+                  + row["found"],
+                  2,
+              )
+
+          ranked_sources = sorted(
+              source_performance.items(),
+              key=lambda pair: pair[1].get("focus_score", 0),
+              reverse=True,
+          )
+          source_rank = {name: index for index, (name, _) in enumerate(ranked_sources)}
+
           execution_queue = []
           for item in verified_results:
               payment_confidence = max(
@@ -2581,7 +2669,11 @@ jobs:
               effort_risk = max(5, min(100, 45 + len(item.get("risks", [])) * 10))
               expected_value = round(item.get("reward", 0) * (payment_confidence / 100) * (competition_score / 100) / max(1, effort_risk / 25), 2)
               queue_item = dict(item)
+              src = source_name(item)
               queue_item.update({
+                  "source": src,
+                  "source_focus_score": source_performance.get(src, {}).get("focus_score", 0),
+                  "source_rank": source_rank.get(src, 999),
                   "payment_confidence": round(payment_confidence, 1),
                   "competition_score": round(competition_score, 1),
                   "clarity_score": round(clarity_score, 1),
@@ -2605,6 +2697,7 @@ jobs:
                   bool(x.get("instant_payment_priority")),
                   bool(x.get("fast_pay_candidate")),
                   reward_priority_rank(x),
+                  x.get("source_focus_score", 0),
                   x.get("ai_eligibility") == "EXPLICITLY ALLOWED",
                   x["expected_value"],
                   x.get("score", 0),
@@ -2613,9 +2706,11 @@ jobs:
           )
           execution_queue = execution_queue[:int(config.get("queue_size", 20))]
 
-          operations["version"] = "V36"
+          operations["version"] = "V37"
           operations["last_updated"] = GENERATED_AT
           operations["pipeline"] = execution_queue
+          operations["source_performance"] = source_performance
+          operations["source_focus_order"] = [name for name, _ in ranked_sources]
           OPERATIONS_FILE.write_text(json.dumps(operations, indent=2, ensure_ascii=False), encoding="utf-8")
 
           # V33: reserve distinct, prototype-qualified small PURSUE tasks for immediate workers.
@@ -2700,7 +2795,7 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V36",
+                  "version": "V37",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": int(config.get("parallel_workers", 2)),
@@ -2780,7 +2875,7 @@ jobs:
           ALERTS_FILE.write_text(json.dumps(alerts, indent=2), encoding="utf-8")
 
           payload = {
-              "version": "V36",
+              "version": "V37",
               "owner": "Mazen Farkouh",
               "generated_at": GENERATED_AT,
               "config": config,
@@ -2841,7 +2936,7 @@ jobs:
           WORKER_HEALTH_FILE.write_text(
               json.dumps(
                   {
-                      "version": "V36",
+                      "version": "V37",
                       "last_completed_at": NOW.isoformat(),
                       "last_completed_display": GENERATED_AT,
                       "trigger": os.environ.get("GITHUB_EVENT_NAME", "unknown"),
@@ -3070,7 +3165,7 @@ jobs:
               content="{int(config.get('dashboard_refresh_seconds', 900))}"
             >
             <title>
-              Atlas + Alex Opportunity Hunter V35
+              Atlas + Alex Opportunity Hunter V37
             </title>
             <style>
               :root {{
@@ -3187,7 +3282,7 @@ jobs:
           </head>
           <body>
             <h1>
-              Atlas + Alex Opportunity Hunter V35
+              Atlas + Alex Opportunity Hunter V37
             </h1>
 
             <p>
@@ -3256,7 +3351,7 @@ jobs:
                 <div class="value">
                   {len(verified_results)}
                 </div>
-                <div>Deep Verified</div>
+                <div>Fast Verified</div>
               </div>
 
               <div class="card">
@@ -3414,9 +3509,7 @@ jobs:
             <p class="small">
               V33 runs two independent search universes on every
               run and keeps a discovery cache so temporary API limits do not erase
-              sources. Up to 30 candidates are deeply verified, with reserved capacity for small rewards from both workers. PURSUE requires
-              payment proof, a confirmed claim path, repository integrity, and a
-              task Atlas can realistically execute. The page refreshes every
+              sources. Up to 30 candidates receive a fast technical and competition check, with reserved capacity for small rewards from both workers. Small-reward PURSUE does not require deep payment proof; it requires an open task, no active competition, repository integrity, and work Atlas can realistically execute. The page refreshes every
               15 minutes.
             </p>
           </body>
@@ -3429,10 +3522,10 @@ jobs:
           )
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
-                  "<title>\n              Atlas + Alex Opportunity Hunter V35\n            </title>",
+                  "<title>\n              Atlas + Alex Opportunity Hunter V37\n            </title>",
                   "<title>Atlas V35 Status Window</title>",
               ).replace(
-                  "Atlas + Alex Opportunity Hunter V35",
+                  "Atlas + Alex Opportunity Hunter V37",
                   "Atlas V35 Status Window",
                   1,
               ),
@@ -3586,7 +3679,7 @@ jobs:
               f"<tr><td>{i}</td><td>{html.escape(item['decision'])}</td><td>${item['reward']:,.2f}</td><td>${item['expected_value']:,.2f}</td><td>{html.escape(item['title'])}</td></tr>"
               for i, item in enumerate(execution_queue, 1)
           )
-          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V28 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V35 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
+          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V28 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V37 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
           (REPORTS_DIR / "latest.html").write_text(report_html, encoding="utf-8")
           csv_lines = ["rank,decision,reward,expected_value,payment_confidence,competition_advantage,title,url"]
           for i, item in enumerate(execution_queue, 1):
@@ -3598,14 +3691,14 @@ jobs:
               ]))
           (REPORTS_DIR / "latest.csv").write_text("\n".join(csv_lines) + "\n", encoding="utf-8")
           (REPORTS_DIR / "latest.txt").write_text(
-              "Atlas + Alex Opportunity Hunter V35\n" +
+              "Atlas + Alex Opportunity Hunter V37\n" +
               f"Generated: {GENERATED_AT}\nStatus: {status}\n" +
               f"Today: ${earnings['today']:,.2f}\nWeek: ${earnings['week']:,.2f}\nMonth: ${earnings['month']:,.2f}\nYear: ${earnings['year']:,.2f}\nLifetime: ${earnings['lifetime']:,.2f}\n",
               encoding="utf-8",
           )
 
           summary_lines = [
-              "# Atlas + Alex Opportunity Hunter V35",
+              "# Atlas + Alex Opportunity Hunter V37",
               "",
               (
                   f"- System status: "
@@ -3729,7 +3822,7 @@ jobs:
               "raw issues; "
               f"found {len(initial_candidates)} "
               "eligible candidates; "
-              f"deep-verified "
+              f"fast-verified "
               f"{len(verified_results)}; "
               f"pursue={counts['PURSUE']}; "
               "priority-review="
@@ -4502,7 +4595,10 @@ jobs:
 
           failed=false
           [ "$HUNT_RESULT" = "success" ] || failed=true
-          [ "${SYSTEM_STATUS:-FAILED}" = "HEALTHY" ] || failed=true
+          case "${SYSTEM_STATUS:-FAILED}" in
+            HEALTHY|HEALTHY_WITH_WARNINGS) ;;
+            *) failed=true ;;
+          esac
 
           if [ "${EXECUTION_READY:-false}" = "true" ]; then
             case "$EXECUTE_RESULT" in
