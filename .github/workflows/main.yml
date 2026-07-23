@@ -16,9 +16,9 @@ on:
     types: [atlas-scheduled-run, atlas-watchdog-recovery]
   schedule:
     # Main hunt: every 15 minutes.
-    - cron: "7,22,37,52 * * * *"
+    - cron: "8,23,38,53 * * * *"
     # Watchdog: five minutes after each main slot.
-    - cron: "12,27,42,57 * * * *"
+    - cron: "13,28,43,58 * * * *"
 
 concurrency:
   group: atlas-alex-opportunity-hunter-v36
@@ -42,7 +42,7 @@ jobs:
     if: >-
       github.event_name == 'workflow_dispatch' ||
       github.event_name == 'repository_dispatch' ||
-      github.event.schedule == '7,22,37,52 * * * *'
+      github.event.schedule == '8,23,38,53 * * * *'
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -3776,17 +3776,43 @@ jobs:
             exit 0
           fi
 
-          git commit \
-            -m "Atlas + Alex V36 opportunity scan"
+          # Save this run's generated data/docs snapshot before synchronizing.
+          # These files are machine-generated, so restoring the complete snapshot
+          # is safer than trying to text-merge competing generated versions.
+          snapshot="${RUNNER_TEMP}/atlas-v36-generated-${GITHUB_RUN_ID}.tar"
+          tar -cf "$snapshot" data docs
 
-          git pull \
-            --rebase \
-            origin \
-            "$BRANCH_NAME"
+          # A dashboard or prior Atlas run may commit while this job is running.
+          # Retry from the newest remote branch each time, restore this run's
+          # complete generated snapshot, create a fresh commit, and push.
+          for attempt in 1 2 3 4 5 6
+          do
+            git fetch origin "$BRANCH_NAME"
+            git reset --hard "origin/$BRANCH_NAME"
+            tar -xf "$snapshot"
+            git add -A data docs
 
-          git push \
-            origin \
-            "HEAD:$BRANCH_NAME"
+            if git diff --cached --quiet
+            then
+              echo "Atlas results already match the latest branch."
+              exit 0
+            fi
+
+            git commit \
+              -m "Atlas + Alex V36 opportunity scan"
+
+            if git push origin "HEAD:$BRANCH_NAME"
+            then
+              echo "Atlas results saved successfully on attempt $attempt."
+              exit 0
+            fi
+
+            echo "Push race detected; retrying from the newest branch (attempt $attempt)."
+            sleep $((attempt * 3))
+          done
+
+          echo "Unable to save Atlas results after conflict-safe retries." >&2
+          exit 1
 
   execute:
     name: Execute ${{ matrix.worker }} task
@@ -3796,7 +3822,7 @@ jobs:
           needs.hunt.result == 'success' &&
           needs.hunt.outputs.execution_ready == 'true' &&
           (github.event_name == 'repository_dispatch' ||
-           (github.event_name == 'schedule' && github.event.schedule == '7,22,37,52 * * * *') ||
+           (github.event_name == 'schedule' && github.event.schedule == '8,23,38,53 * * * *') ||
            (github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode != 'scan_only')) }}
     strategy:
       fail-fast: false
@@ -4121,7 +4147,7 @@ jobs:
       always() &&
       (github.event_name == 'workflow_dispatch' ||
        github.event_name == 'repository_dispatch' ||
-       github.event.schedule == '7,22,37,52 * * * *')
+       github.event.schedule == '8,23,38,53 * * * *')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -4282,7 +4308,7 @@ jobs:
           needs.hunt.result == 'success' &&
           (github.event_name == 'workflow_dispatch' ||
            github.event_name == 'repository_dispatch' ||
-           (github.event_name == 'schedule' && github.event.schedule == '7,22,37,52 * * * *')) }}
+           (github.event_name == 'schedule' && github.event.schedule == '8,23,38,53 * * * *')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     environment:
@@ -4318,7 +4344,7 @@ jobs:
       always() &&
       (github.event_name == 'workflow_dispatch' ||
        github.event_name == 'repository_dispatch' ||
-       (github.event_name == 'schedule' && github.event.schedule == '7,22,37,52 * * * *'))
+       (github.event_name == 'schedule' && github.event.schedule == '8,23,38,53 * * * *'))
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -4367,7 +4393,7 @@ jobs:
   watchdog:
     if: >-
       github.event_name == 'schedule' &&
-      github.event.schedule == '12,27,42,57 * * * *'
+      github.event.schedule == '13,28,43,58 * * * *'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
