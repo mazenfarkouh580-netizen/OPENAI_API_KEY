@@ -139,15 +139,16 @@
     "workflow_run_id": "29989943139"
   },
   "aporthq/aport-integrations#31": {
-    "state": "reserved",
+    "state": "submitted",
     "repository": "aporthq/aport-integrations",
     "issue_number": 31,
     "issue_url": "https://github.com/aporthq/aport-integrations/issues/31",
     "title": "[Hacktoberfest] n8n Workflow Node for Policy Checks",
-    "reward": 10.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T08:01:16.921350+00:00",
-    "reserved_at_ts": 1784793715.2694561,
+    "reward": 10.0,
+    "pr_url": "https://github.com/aporthq/aport-integrations/pull/125",
+    "submitted_at": "2026-07-23T08:10:44.384484+00:00",
+    "submitted_at_ts": 1784794244.3845022,
     "workflow_run_id": "29989943139"
   },
   "UnsafeLabs/Bounty-Hunters#303": {
