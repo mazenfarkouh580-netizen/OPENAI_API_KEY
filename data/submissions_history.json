@@ -22,9 +22,9 @@
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T21:36:12.752287+00:00",
-    "reserved_at_ts": 1784842614.0803216,
-    "workflow_run_id": "30046818705"
+    "reserved_at": "2026-07-23T23:42:48.006330+00:00",
+    "reserved_at_ts": 1784850203.049006,
+    "workflow_run_id": "30054023555"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -64,9 +64,9 @@
     "title": "[agent] Document repository GitHub workflows",
     "reward": 50.0,
     "worker": "Alex",
-    "reserved_at": "2026-07-23T21:36:12.752287+00:00",
-    "reserved_at_ts": 1784842614.0803378,
-    "workflow_run_id": "30046818705"
+    "reserved_at": "2026-07-23T23:42:48.006330+00:00",
+    "reserved_at_ts": 1784850203.0490246,
+    "workflow_run_id": "30054023555"
   },
   "aporthq/aport-integrations#4": {
     "state": "submitted",
@@ -91,9 +91,9 @@
     "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
     "reward": 35.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T21:36:12.752287+00:00",
-    "reserved_at_ts": 1784842614.0803483,
-    "workflow_run_id": "30046818705"
+    "reserved_at": "2026-07-23T23:42:48.006330+00:00",
+    "reserved_at_ts": 1784850203.0490348,
+    "workflow_run_id": "30054023555"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -177,9 +177,9 @@
     "title": "[ Docs ] Fix broken markdown table in api-reference.md",
     "reward": 1.0,
     "worker": "Atlas",
-    "reserved_at": "2026-07-23T21:36:12.752287+00:00",
-    "reserved_at_ts": 1784842614.080363,
-    "workflow_run_id": "30046818705"
+    "reserved_at": "2026-07-23T23:42:48.006330+00:00",
+    "reserved_at_ts": 1784850203.04905,
+    "workflow_run_id": "30054023555"
   },
   "jackjin1997/zeroeye#1": {
     "state": "reserved",
@@ -189,8 +189,8 @@
     "title": "[$30 BOUNTY] [Python] Expand backend API contract edge-case tests",
     "reward": 30.0,
     "worker": "Alex",
-    "reserved_at": "2026-07-23T21:36:12.752287+00:00",
-    "reserved_at_ts": 1784842614.080356,
-    "workflow_run_id": "30046818705"
+    "reserved_at": "2026-07-23T23:42:48.006330+00:00",
+    "reserved_at_ts": 1784850203.0490425,
+    "workflow_run_id": "30054023555"
   }
 }
