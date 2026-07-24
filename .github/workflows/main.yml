@@ -1,7 +1,7 @@
-name: Atlas + Alex V59 — Clean Worker Outcomes
+name: Atlas + Alex V60 — Truthful Deduplicated Dashboard Fix
 
 run-name: >-
-  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V59 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V59 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V59 Watchdog Recovery' || format('Atlas V59 Manual — {0}', github.event.inputs.execution_mode) }}
+  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V60 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V60 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V60 Watchdog Recovery' || format('Atlas V60 Manual — {0}', github.event.inputs.execution_mode) }}
 
 on:
   workflow_dispatch:
@@ -26,7 +26,7 @@ on:
 concurrency:
   # Keep production runs serialized, but never make the watchdog wait behind
   # a long execution job. The original single group blocked watchdog recovery.
-  group: ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'atlas-alex-v55-watchdog' || 'atlas-alex-v55-production' }}
+  group: ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'atlas-alex-v60-watchdog' || 'atlas-alex-v60-production' }}
   cancel-in-progress: false
 
 permissions:
@@ -44,6 +44,11 @@ jobs:
       pursue_count: ${{ steps.atlas.outputs.pursue_count }}
       system_status: ${{ steps.atlas.outputs.system_status }}
       execution_ready: ${{ steps.atlas.outputs.execution_ready }}
+      executable_count: ${{ steps.atlas.outputs.executable_count }}
+      matrix_records: ${{ steps.atlas.outputs.matrix_records }}
+      unique_opportunities: ${{ steps.atlas.outputs.unique_opportunities }}
+      duplicates_removed: ${{ steps.atlas.outputs.duplicates_removed }}
+      dispatched_count: ${{ steps.atlas.outputs.dispatched_count }}
     if: >-
       github.event_name == 'workflow_dispatch' ||
       github.event_name == 'repository_dispatch' ||
@@ -521,12 +526,12 @@ jobs:
               EARNINGS_FILE.write_text("[]\n", encoding="utf-8")
 
           operations = load_json_file(OPERATIONS_FILE, {
-              "version": "V59",
+              "version": "V60",
               "pipeline": [],
               "last_updated": GENERATED_AT,
           })
           if not isinstance(operations, dict):
-              operations = {"version": "V59", "pipeline": [], "last_updated": GENERATED_AT}
+              operations = {"version": "V60", "pipeline": [], "last_updated": GENERATED_AT}
 
           maintenance = load_json_file(MAINTENANCE_FILE, {
               "doctor": "Dr. Alex",
@@ -2898,7 +2903,7 @@ jobs:
           # a run may legitimately contain 30, 50, or more assignments.
           execution_queue = execution_queue[:200]
 
-          operations["version"] = "V59"
+          operations["version"] = "V60"
           operations["last_updated"] = GENERATED_AT
           operations["pipeline"] = execution_queue
           operations["source_performance"] = source_performance
@@ -2906,8 +2911,23 @@ jobs:
           OPERATIONS_FILE.write_text(json.dumps(operations, indent=2, ensure_ascii=False), encoding="utf-8")
 
           # V33: reserve distinct, prototype-qualified small PURSUE tasks for immediate workers.
+          def canonical_repository(value):
+              value = str(value or "").strip()
+              value = re.sub(r"^https?://api\.github\.com/repos/", "", value, flags=re.I)
+              value = re.sub(r"^https?://github\.com/", "", value, flags=re.I)
+              value = re.sub(r"/(issues|pull)/\d+/?$", "", value, flags=re.I)
+              value = value.strip("/ ")
+              parts = [part for part in value.split("/") if part]
+              return "/".join(parts[:2]).lower() if len(parts) >= 2 else value.lower()
+
+          def canonical_key(repository, issue_number):
+              return f"{canonical_repository(repository)}#{int(issue_number or 0)}"
+
           def execution_key(item):
-              return f"{item.get('repository', '')}#{int(item.get('issue_number') or 0)}"
+              return canonical_key(
+                  item.get("repository") or item.get("repository_url") or item.get("url"),
+                  item.get("issue_number") or item.get("number"),
+              )
 
           def execution_history_allows(item):
               # Only permanently completed/submitted work is excluded. A reservation
@@ -2952,16 +2972,26 @@ jobs:
               reverse=True,
           )
 
-          selected_executions = []
-          # Every safe PURSUE task enters the execution matrix. GitHub runs up to
-          # 30 jobs concurrently and automatically starts remaining queued jobs
-          # as active jobs finish. Safe test remains limited to one local task.
-          safe_test = os.environ.get("REQUESTED_EXECUTION_MODE", "scan_only") == "safe_test"
-          dispatch_limit = 1 if safe_test else len(executable_candidates)
+          # V60 canonical deduplication after candidate collection. Preserve the
+          # highest-ranked record for each lowercase owner/repository#issue key.
+          matrix_records = len(executable_candidates)
+          deduplicated_candidates = []
+          seen_candidate_keys = set()
           for item in executable_candidates:
-              if len(selected_executions) >= dispatch_limit:
-                  break
-              repository = item.get("repository") or ""
+              key = execution_key(item)
+              if not key.endswith("#0") and key not in seen_candidate_keys:
+                  item["canonical_key"] = key
+                  item["repository"] = canonical_repository(item.get("repository"))
+                  deduplicated_candidates.append(item)
+                  seen_candidate_keys.add(key)
+          unique_opportunities = len(deduplicated_candidates)
+          duplicates_removed = matrix_records - unique_opportunities
+
+          selected_executions = []
+          safe_test = os.environ.get("REQUESTED_EXECUTION_MODE", "scan_only") == "safe_test"
+          dispatch_limit = 1 if safe_test else 30
+          for item in deduplicated_candidates[:dispatch_limit]:
+              repository = canonical_repository(item.get("repository"))
               if not repository or blocked_source({
                   "repository_url": f"https://api.github.com/repos/{repository}",
                   "title": item.get("title") or "",
@@ -2971,22 +3001,26 @@ jobs:
                   continue
               task_sequence = len(selected_executions) + 1
               worker = f"Atlas Job {task_sequence}"
+              key = canonical_key(repository, item.get("issue_number"))
               selected_executions.append({
                   "worker": worker,
+                  "worker_number": task_sequence,
                   "task_sequence": task_sequence,
-                  "repository": normalize_repository(repository),
+                  "canonical_key": key,
+                  "repository": repository,
                   "issue_number": int(item.get("issue_number") or 0),
                   "issue_url": item.get("url") or "",
                   "title": item.get("title") or "",
                   "reward": float(item.get("reward", 0) or 0),
                   "score": float(item.get("score", 0) or 0),
                   "payment_verification": item.get("payment_verification") or "UNVERIFIED",
-                  "submission_key": execution_key(item),
+                  "submission_key": key,
                   "status": "DISPATCHED",
                   "reserved_at": NOW.isoformat(),
               })
-              submissions_history[execution_key(item)] = {
+              submissions_history[key] = {
                   "state": "reserved",
+                  "canonical_key": key,
                   "repository": repository,
                   "issue_number": int(item.get("issue_number") or 0),
                   "issue_url": item.get("url") or "",
@@ -3005,10 +3039,10 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V59",
+                  "version": "V60",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
-                  "workers_requested": 5,
+                  "workers_requested": 30,
                   "tasks_dispatched": len(selected_executions),
                   "tasks": selected_executions,
               }, indent=2, ensure_ascii=False),
@@ -3085,7 +3119,7 @@ jobs:
           ALERTS_FILE.write_text(json.dumps(alerts, indent=2), encoding="utf-8")
 
           payload = {
-              "version": "V59",
+              "version": "V60",
               "owner": "Mazen Farkouh",
               "generated_at": GENERATED_AT,
               "config": config,
@@ -3146,7 +3180,7 @@ jobs:
           WORKER_HEALTH_FILE.write_text(
               json.dumps(
                   {
-                      "version": "V59",
+                      "version": "V60",
                       "last_completed_at": NOW.isoformat(),
                       "last_completed_display": GENERATED_AT,
                       "trigger": os.environ.get("GITHUB_EVENT_NAME", "unknown"),
@@ -3727,10 +3761,10 @@ jobs:
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
                   "<title>\n              Atlas + Alex Opportunity Hunter V50\n            </title>",
-                  "<title>Atlas V59 Status Window</title>",
+                  "<title>Atlas V60 Status Window</title>",
               ).replace(
                   "Atlas + Alex Opportunity Hunter V50",
-                  "Atlas V59 Status Window",
+                  "Atlas V60 Status Window",
                   1,
               ),
               encoding="utf-8",
@@ -3793,7 +3827,7 @@ jobs:
               else:
                   stage = state.upper() if state else "FOUND"
               normalized_pipeline.append({**record, "submission_key": key, "stage": stage, "current_status": state, "last_synced_at": record.get("confirmed_at") or record.get("submitted_at") or GENERATED_AT})
-          PIPELINE_FILE.write_text(json.dumps({"version": "V59", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
+          PIPELINE_FILE.write_text(json.dumps({"version": "V60", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
           def record_value(record):
               try:
                   return float(record.get("reward", record.get("amount", 0)) or 0)
@@ -4103,13 +4137,28 @@ jobs:
                   blocked_matrix_removals = pre_firewall_count - len(selected_executions)
                   if blocked_matrix_removals:
                       print(
-                          f"V59 dispatch firewall removed {blocked_matrix_removals} blocked task(s) before matrix creation."
+                          f"V60 dispatch firewall removed {blocked_matrix_removals} blocked task(s) before matrix creation."
                       )
 
-                  # Re-number workers only after final filtering so job totals and
-                  # visible worker numbering exactly match executable opportunities.
+                  # V60 second deduplication immediately before matrix creation.
+                  pre_matrix_records = len(selected_executions)
+                  unique_matrix = []
+                  seen_matrix_keys = set()
+                  for task in selected_executions:
+                      key = canonical_key(task.get("repository"), task.get("issue_number"))
+                      if key in seen_matrix_keys:
+                          continue
+                      seen_matrix_keys.add(key)
+                      task["canonical_key"] = key
+                      task["submission_key"] = key
+                      task["repository"] = canonical_repository(task.get("repository"))
+                      unique_matrix.append(task)
+                  duplicates_removed += pre_matrix_records - len(unique_matrix)
+                  selected_executions = unique_matrix[:30]
+
                   for index, task in enumerate(selected_executions, start=1):
                       task["task_sequence"] = index
+                      task["worker_number"] = index
                       task["worker"] = f"Atlas Job {index}"
 
                   matrix = {"include": selected_executions}
@@ -4122,7 +4171,10 @@ jobs:
                       + ("true" if selected_executions else "false")
                       + "\n"
                   )
-                  output.write(f"executable_count={len(executable_candidates)}\n")
+                  output.write(f"executable_count={len(deduplicated_candidates)}\n")
+                  output.write(f"matrix_records={matrix_records}\n")
+                  output.write(f"unique_opportunities={unique_opportunities}\n")
+                  output.write(f"duplicates_removed={duplicates_removed}\n")
                   output.write(f"dispatched_count={len(selected_executions)}\n")
                   output.write(f"persistent_queue_count={len(execution_queue)}\n")
 
@@ -4137,7 +4189,7 @@ jobs:
                   )
 
           print(
-              f"Atlas + Alex V59 status={status}; "
+              f"Atlas + Alex V60 status={status}; "
               f"checked {len(raw_issues)} "
               "raw issues; "
               f"found {len(initial_candidates)} "
@@ -4159,12 +4211,12 @@ jobs:
 
           if searches_completed == 0:
               raise SystemExit(
-                  "Atlas + Alex V51 could not complete "
+                  "Atlas + Alex V60 could not complete "
                   "any GitHub search query."
               )
           PY
 
-      - name: Save Atlas + Alex V51 results
+      - name: Save Atlas + Alex V60 hunt records
         if: >-
           ${{ github.event_name != 'workflow_dispatch' ||
               github.event.inputs.execution_mode != 'safe_test' }}
@@ -4212,7 +4264,7 @@ jobs:
             fi
 
             git commit \
-              -m "Atlas + Alex V51 opportunity scan"
+              -m "Atlas + Alex V60 opportunity scan"
 
             if git push origin "HEAD:$BRANCH_NAME"
             then
@@ -4227,13 +4279,6 @@ jobs:
           echo "Unable to save Atlas results after conflict-safe retries." >&2
           exit 1
 
-      - name: Freeze this run's exact ATM site
-        uses: actions/upload-artifact@v7
-        with:
-          name: atlas-atm-site-${{ github.run_id }}-${{ github.run_attempt }}
-          path: docs
-          if-no-files-found: error
-          retention-days: 2
 
   worker-status:
     name: ${{ matrix.worker }} — assignment status
@@ -4971,11 +5016,13 @@ jobs:
         run: |
           echo "${{ matrix.worker }} selected ${{ matrix.repository }}#${{ matrix.issue_number }}, but execution was safely skipped: ${{ steps.credentials.outputs.reason }}." >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Record isolated task outcome
+      - name: Create truthful worker result artifact
         id: task_outcome
         if: always()
         env:
           WORKER: ${{ matrix.worker }}
+          WORKER_NUMBER: ${{ matrix.worker_number }}
+          CANONICAL_KEY: ${{ matrix.canonical_key }}
           REPOSITORY: ${{ matrix.repository }}
           ISSUE_NUMBER: ${{ matrix.issue_number }}
           REWARD: ${{ matrix.reward }}
@@ -5000,340 +5047,240 @@ jobs:
           PR_URL: ${{ steps.submit_pr.outputs.pr_url }}
           EXECUTION_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode || 'submit' }}
         run: |
-          set -u
-          result="skipped"
-          reason="not_attempted"
+          python - <<'PY'
+          import json, os, re
+          from pathlib import Path
 
-          if [ -n "${PR_URL:-}" ]; then
-            result="submitted"
-            reason="pull_request_opened"
-          elif [ "${EXECUTION_MODE}" = "safe_test" ] && [ "${VALIDATE_OUTCOME:-}" = "success" ]; then
-            result="submitted"
-            reason="safe_test_patch_generated"
-          elif [ "${CREDENTIALS_READY:-false}" != "true" ]; then
-            result="skipped"
-            reason="${CREDENTIALS_REASON:-credentials_unavailable}"
-          elif [ "${PREPARE_READY:-false}" != "true" ]; then
-            result="skipped"
-            reason="${PREPARE_REASON:-repository_preparation_unavailable}"
-          elif [ "${INSTALL_READY:-false}" != "true" ]; then
-            result="skipped"
-            reason="${INSTALL_REASON:-execution_agent_unavailable}"
-          elif [ "${BASELINE_READY:-false}" != "true" ]; then
-            result="skipped"
-            reason="${BASELINE_REASON:-baseline_unavailable}"
-          elif [ "${IMPLEMENT_READY:-false}" != "true" ]; then
-            result="failed"
-            reason="${IMPLEMENT_REASON:-implementation_failed_or_no_useful_change}"
-          elif [ "${IMPLEMENT_OUTCOME:-skipped}" = "skipped" ]; then
-            result="skipped"
-            reason="implementation_not_run"
-          elif [ "${VALIDATE_OUTCOME:-skipped}" = "failure" ]; then
-            result="failed"
-            reason="${VALIDATE_REASON:-post_change_validation_failed} (exit ${VALIDATE_EXIT_CODE:-unknown})"
-          elif [ "${VALIDATE_OUTCOME:-skipped}" = "skipped" ]; then
-            result="skipped"
-            reason="validation_not_run"
-          elif [ "${EXECUTION_MODE}" = "submit" ] && [ "${SUBMIT_READY:-false}" != "true" ]; then
-            result="failed"
-            reason="${SUBMIT_REASON:-push_or_pull_request_failed}"
-          elif [ "${EXECUTION_MODE}" = "submit" ] && [ "${SUBMIT_OUTCOME:-skipped}" = "skipped" ]; then
-            result="skipped"
-            reason="submission_not_run"
-          fi
+          def clean(value):
+              value = str(value or "").replace("\n", " ").replace("\r", " ")
+              value = re.sub(r"(ghp_|github_pat_|sk-)[A-Za-z0-9_\-]{12,}", "[REDACTED]", value)
+              return value[:500]
 
-          reward_display="$(printf '$%.2f' "${REWARD:-0}")"
-          cash_received='$0.00'
-          echo "## ${WORKER}: ${REPOSITORY}#${ISSUE_NUMBER}" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Result: **${result} — ${reward_display} advertised**" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Cash received: **${cash_received}**" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Reason: ${reason}" >> "$GITHUB_STEP_SUMMARY"
-          [ -z "${PR_URL:-}" ] || echo "- Pull request: ${PR_URL}" >> "$GITHUB_STEP_SUMMARY"
-          echo "task_result=${result}" >> "$GITHUB_OUTPUT"
-          echo "task_reason=${reason}" >> "$GITHUB_OUTPUT"
-          echo "task_result=${result}"
-          echo "task_reason=${reason}"
-          exit 0
+          pr_url = clean(os.environ.get("PR_URL"))
+          submitted = bool(re.fullmatch(r"https://github\.com/[^/]+/[^/]+/pull/\d+", pr_url))
+          failed = False
+          skipped = False
+          stage = ""
+          reason = "verified_pull_request_created" if submitted else "not_attempted"
+
+          if not submitted:
+              if os.environ.get("CREDENTIALS_READY") != "true":
+                  skipped, stage, reason = True, "authentication", clean(os.environ.get("CREDENTIALS_REASON") or "authentication_failure")
+              elif os.environ.get("PREPARE_READY") != "true":
+                  skipped, stage, reason = True, "clone", clean(os.environ.get("PREPARE_REASON") or "clone_failure_or_inaccessible_repository")
+              elif os.environ.get("INSTALL_READY") != "true":
+                  failed, stage, reason = True, "dependency", clean(os.environ.get("INSTALL_REASON") or "dependency_failure")
+              elif os.environ.get("BASELINE_READY") != "true":
+                  skipped, stage, reason = True, "baseline", clean(os.environ.get("BASELINE_REASON") or "missing_branch_or_repository_baseline_failure")
+              elif os.environ.get("IMPLEMENT_READY") != "true":
+                  failed, stage, reason = True, "implementation", clean(os.environ.get("IMPLEMENT_REASON") or "implementation_failure")
+              elif os.environ.get("VALIDATE_OUTCOME") == "failure":
+                  failed, stage = True, "test"
+                  reason = clean((os.environ.get("VALIDATE_REASON") or "test_failure") + " exit=" + (os.environ.get("VALIDATE_EXIT_CODE") or "unknown"))
+              elif os.environ.get("EXECUTION_MODE") == "safe_test" and os.environ.get("VALIDATE_OUTCOME") == "success":
+                  skipped, stage, reason = True, "safe_test", "safe_test_completed_without_pull_request"
+              elif os.environ.get("SUBMIT_READY") != "true" or os.environ.get("SUBMIT_OUTCOME") == "failure":
+                  failed, stage, reason = True, "pull_request_creation", clean(os.environ.get("SUBMIT_REASON") or "push_or_pull_request_creation_failure")
+              else:
+                  skipped, stage, reason = True, "execution", "execution_did_not_produce_verified_submission"
+
+          result = {
+              "canonical_opportunity_key": os.environ["CANONICAL_KEY"].lower(),
+              "repository": os.environ["REPOSITORY"].lower(),
+              "issue_number": int(os.environ["ISSUE_NUMBER"]),
+              "worker_number": int(os.environ.get("WORKER_NUMBER") or 0),
+              "worker": os.environ.get("WORKER", ""),
+              "reward": float(os.environ.get("REWARD") or 0),
+              "submitted": submitted,
+              "failed": failed,
+              "skipped": skipped,
+              "exact_outcome_reason": reason,
+              "failed_stage": stage,
+              "verified_pull_request_url": pr_url if submitted else "",
+              "workflow_run_id": os.environ.get("GITHUB_RUN_ID", ""),
+              "commit_sha": os.environ.get("GITHUB_SHA", ""),
+          }
+          out = Path("worker-results")
+          out.mkdir(exist_ok=True)
+          filename = f"worker-{result['worker_number']:02d}-{result['repository'].replace('/', '__')}-{result['issue_number']}.json"
+          (out / filename).write_text(json.dumps(result, indent=2), encoding="utf-8")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as h:
+              h.write(f"## {result['worker']}: {result['canonical_opportunity_key']}\n")
+              h.write(f"- Submitted: **{submitted}**\n- Failed: **{failed}**\n- Skipped: **{skipped}**\n")
+              h.write(f"- Stage: `{stage or 'completed'}`\n- Reason: {reason}\n")
+              if submitted: h.write(f"- Verified pull request: {pr_url}\n")
+          PY
+
+      - name: Upload unique truthful worker artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: atlas-worker-result-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.worker_number }}-${{ matrix.issue_number }}
+          path: worker-results/*.json
+          if-no-files-found: error
+          retention-days: 14
 
   confirm_results:
-    name: Confirm every recorded Atlas result
+    name: Aggregate truthful results and regenerate dashboard
     needs: [hunt, execute]
     if: >-
-      ${{ always() &&
-          needs.hunt.result == 'success' &&
-          (github.event_name == 'workflow_dispatch' ||
-           github.event_name == 'repository_dispatch' ||
+      ${{ always() && needs.hunt.result == 'success' &&
+          (github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' ||
            (github.event_name == 'schedule' && github.event.schedule == '8,23,38,53 * * * *')) }}
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 18
     permissions:
+      actions: read
       contents: write
       pull-requests: read
       issues: read
+    outputs:
+      final_status: ${{ steps.aggregate.outputs.final_status }}
+      succeeded: ${{ steps.aggregate.outputs.succeeded }}
+      failed: ${{ steps.aggregate.outputs.failed }}
+      skipped: ${{ steps.aggregate.outputs.skipped }}
+      verified_submissions: ${{ steps.aggregate.outputs.verified_submissions }}
     steps:
-      - name: Download current Atlas records
+      - name: Download latest repository state
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          ref: ${{ github.ref_name }}
-          token: ${{ secrets.ATLAS_GITHUB_PAT || secrets.GITHUB_TOKEN }}
 
-      - name: Reconcile submissions with objective GitHub evidence
+      - name: Download every worker result artifact
+        continue-on-error: true
+        uses: actions/download-artifact@v8
+        with:
+          pattern: atlas-worker-result-${{ github.run_id }}-${{ github.run_attempt }}-*
+          path: aggregated-worker-artifacts
+          merge-multiple: true
+
+      - name: Aggregate truthful outcomes and rebuild run-specific dashboard
+        id: aggregate
         env:
-          GH_TOKEN: ${{ secrets.ATLAS_GITHUB_PAT || secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PURSUE_COUNT: ${{ needs.hunt.outputs.pursue_count }}
+          EXECUTABLE_COUNT: ${{ needs.hunt.outputs.executable_count }}
+          MATRIX_RECORDS: ${{ needs.hunt.outputs.matrix_records }}
+          UNIQUE_OPPORTUNITIES: ${{ needs.hunt.outputs.unique_opportunities }}
+          DUPLICATES_REMOVED: ${{ needs.hunt.outputs.duplicates_removed }}
+          DISPATCHED_COUNT: ${{ needs.hunt.outputs.dispatched_count }}
         run: |
-          set -euo pipefail
-          python <<'PY'
-          import json
-          import os
-          import re
-          import urllib.error
-          import urllib.request
+          python - <<'PY'
+          import html, json, os, re, urllib.request
           from datetime import datetime, timezone
           from pathlib import Path
+          from zoneinfo import ZoneInfo
 
-          token = os.environ.get("GH_TOKEN", "").strip()
-          headers = {
-              "Accept": "application/vnd.github+json",
-              "X-GitHub-Api-Version": "2022-11-28",
-              "User-Agent": "Atlas-Golden-V44",
-          }
-          if token:
-              headers["Authorization"] = f"Bearer {token}"
+          token=os.environ['GITHUB_TOKEN']
+          run_id=str(os.environ['GITHUB_RUN_ID'])
+          sha=os.environ['GITHUB_SHA']
+          pacific=datetime.now(timezone.utc).astimezone(ZoneInfo('America/Los_Angeles')).strftime('%Y-%m-%d %I:%M:%S %p Pacific')
+          files=sorted(Path('aggregated-worker-artifacts').glob('*.json'))
+          results=[]
+          seen=set()
+          duplicate_worker_records=0
+          for path in files:
+              try: row=json.loads(path.read_text(encoding='utf-8'))
+              except Exception: continue
+              key=str(row.get('canonical_opportunity_key','')).lower()
+              if key in seen:
+                  duplicate_worker_records += 1
+                  continue
+              seen.add(key); results.append(row)
 
-          def api(url):
-              request = urllib.request.Request(url, headers=headers)
+          def verify_pr(row):
+              url=str(row.get('verified_pull_request_url',''))
+              m=re.fullmatch(r'https://github\.com/([^/]+/[^/]+)/pull/(\d+)',url)
+              if not (row.get('submitted') and m): return None
+              req=urllib.request.Request(f'https://api.github.com/repos/{m.group(1)}/pulls/{m.group(2)}',headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'})
               try:
-                  with urllib.request.urlopen(request, timeout=30) as response:
-                      return json.loads(response.read().decode("utf-8"))
-              except urllib.error.HTTPError as error:
-                  detail = error.read().decode("utf-8", errors="replace")[:300]
-                  print(f"GitHub confirmation error {error.code} for {url}: {detail}")
-                  return None
-              except Exception as error:
-                  print(f"GitHub confirmation error for {url}: {error}")
-                  return None
+                  with urllib.request.urlopen(req,timeout=20) as r: pr=json.load(r)
+              except Exception: return None
+              return pr if pr.get('html_url')==url else None
 
-          data_dir = Path("data")
-          docs_dir = Path("docs")
-          data_dir.mkdir(exist_ok=True)
-          docs_dir.mkdir(exist_ok=True)
-          submissions_path = data_dir / "submissions_history.json"
-          ledger_path = data_dir / "earnings-ledger.json"
-          confirmation_path = data_dir / "result-confirmation.json"
-          public_path = docs_dir / "result-confirmation.json"
+          succeeded=failed=skipped=verified=0
+          submitted_value=merged_value=approved_value=0.0
+          for row in results:
+              pr=verify_pr(row)
+              reward=float(row.get('reward') or 0)
+              if pr:
+                  row['verified_pull_request_url']=pr['html_url']; row['submitted']=True; row['failed']=False; row['skipped']=False
+                  succeeded+=1; verified+=1; submitted_value+=reward
+                  if pr.get('merged_at'): merged_value+=reward
+                  elif pr.get('state')=='open':
+                      repo=re.fullmatch(r'https://github\.com/([^/]+/[^/]+)/pull/(\d+)',pr['html_url']).group(1)
+                      num=pr['number']
+                      req=urllib.request.Request(f'https://api.github.com/repos/{repo}/pulls/{num}/reviews?per_page=100',headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json'})
+                      try:
+                          with urllib.request.urlopen(req,timeout=20) as r: reviews=json.load(r)
+                          if any(str(x.get('state')).upper()=='APPROVED' for x in reviews): approved_value+=reward
+                      except Exception: pass
+              else:
+                  row['submitted']=False; row['verified_pull_request_url']=''
+                  if row.get('failed'): failed+=1
+                  else: skipped+=1
 
-          try:
-              submissions = json.loads(submissions_path.read_text(encoding="utf-8")) if submissions_path.exists() else {}
-              if not isinstance(submissions, dict):
-                  submissions = {}
-          except Exception:
-              submissions = {}
-
-          try:
-              ledger = json.loads(ledger_path.read_text(encoding="utf-8")) if ledger_path.exists() else []
-              if not isinstance(ledger, list):
-                  ledger = []
-          except Exception:
-              ledger = []
-
-          now = datetime.now(timezone.utc).isoformat()
-          totals = {
-              "recorded": 0,
-              "verified_submitted": 0,
-              "under_review": 0,
-              "changes_requested": 0,
-              "approved": 0,
-              "merged": 0,
-              "payment_confirmed": 0,
-              "paid": 0,
-              "rejected": 0,
-              "unverified": 0,
-              "verified_submitted_value": 0.0,
-              "approved_value": 0.0,
-              "merged_value": 0.0,
-              "payment_confirmed_value": 0.0,
-              "cash_received": 0.0,
+          ledger_path=Path('data/earnings-ledger.json')
+          try: ledger=json.loads(ledger_path.read_text()) if ledger_path.exists() else []
+          except Exception: ledger=[]
+          cash_received=sum(float(x.get('amount') or 0) for x in ledger if isinstance(x,dict) and str(x.get('status','')).lower() in {'paid','received','completed'})
+          final_status='HEALTHY' if failed==0 and skipped==0 else 'HEALTHY_WITH_EXECUTION_FAILURES'
+          report={
+            'workflow_version':'V60','run_id':run_id,'commit_sha':sha,'generated_at_pacific':pacific,'last_completed_run':run_id,
+            'pursue_candidates':int(os.environ.get('PURSUE_COUNT') or 0),'executable_candidates':int(os.environ.get('EXECUTABLE_COUNT') or 0),
+            'matrix_records':int(os.environ.get('MATRIX_RECORDS') or 0),'unique_opportunities':int(os.environ.get('UNIQUE_OPPORTUNITIES') or 0),
+            'duplicates_removed':int(os.environ.get('DUPLICATES_REMOVED') or 0)+duplicate_worker_records,'unique_jobs_dispatched':int(os.environ.get('DISPATCHED_COUNT') or 0),
+            'succeeded':succeeded,'failed':failed,'skipped':skipped,'verified_pull_requests':verified,
+            'submitted_value':round(submitted_value,2),'merged_value':round(merged_value,2),'approved_value':round(approved_value,2),'cash_received':round(cash_received,2),
+            'final_truthful_system_status':final_status,'worker_results':results
           }
-          evidence_rows = []
-          paid_terms = (
-              "payment sent", "payment has been sent", "reward paid",
-              "bounty paid", "payment completed", "paid via", "payment issued",
-          )
-          payment_due_terms = (
-              "payment approved", "payment scheduled", "will pay", "payment due",
-              "send payment", "payout approved", "bounty approved",
-          )
-
-          for key, record in submissions.items():
-              if not isinstance(record, dict):
-                  continue
-              totals["recorded"] += 1
-              reward = float(record.get("reward", 0) or 0)
-              pr_url = str(record.get("pr_url", ""))
-              match = re.match(r"https://github\\.com/([^/]+/[^/]+)/pull/(\\d+)", pr_url)
-              evidence = {
-                  "submission_key": key,
-                  "reward": reward,
-                  "pr_url": pr_url,
-                  "checked_at": now,
-                  "evidence": [],
-              }
-              if not match:
-                  record["confirmation_state"] = "unverified"
-                  record["confirmation_reason"] = "missing_or_invalid_pr_url"
-                  totals["unverified"] += 1
-                  evidence["state"] = "unverified"
-                  evidence_rows.append(evidence)
-                  continue
-
-              repository, pr_number_text = match.groups()
-              pr_number = int(pr_number_text)
-              pr = api(f"https://api.github.com/repos/{repository}/pulls/{pr_number}")
-              if not isinstance(pr, dict) or not pr.get("html_url"):
-                  record["confirmation_state"] = "unverified"
-                  record["confirmation_reason"] = "pull_request_not_found_or_inaccessible"
-                  totals["unverified"] += 1
-                  evidence["state"] = "unverified"
-                  evidence_rows.append(evidence)
-                  continue
-
-              state = "verified_submitted"
-              evidence["evidence"].append("GitHub API confirms pull request exists")
-              totals["verified_submitted"] += 1
-              totals["verified_submitted_value"] += reward
-
-              reviews = api(f"https://api.github.com/repos/{repository}/pulls/{pr_number}/reviews?per_page=100") or []
-              comments = api(f"https://api.github.com/repos/{repository}/issues/{pr_number}/comments?per_page=100") or []
-              review_states = [str(x.get("state", "")).upper() for x in reviews if isinstance(x, dict)]
-              combined = "\n".join(str(x.get("body", "")) for x in comments if isinstance(x, dict)).lower()
-
-              if pr.get("merged_at"):
-                  state = "merged"
-                  totals["merged"] += 1
-                  totals["merged_value"] += reward
-                  evidence["evidence"].append(f"Merged at {pr.get('merged_at')}")
-              elif "APPROVED" in review_states:
-                  state = "approved"
-                  totals["approved"] += 1
-                  totals["approved_value"] += reward
-                  evidence["evidence"].append("At least one GitHub review is APPROVED")
-              elif "CHANGES_REQUESTED" in review_states:
-                  state = "changes_requested"
-                  totals["changes_requested"] += 1
-                  evidence["evidence"].append("A GitHub review requested changes")
-              elif pr.get("state") == "open":
-                  state = "under_review"
-                  totals["under_review"] += 1
-                  evidence["evidence"].append("Pull request remains open")
-              elif pr.get("state") == "closed":
-                  state = "rejected"
-                  totals["rejected"] += 1
-                  evidence["evidence"].append("Pull request was closed without merge")
-
-              payment_confirmed = any(term in combined for term in payment_due_terms)
-              paid_claim = any(term in combined for term in paid_terms)
-              if paid_claim:
-                  # A public maintainer statement confirms payment was sent, but it is
-                  # not cash received until the private ledger/payment account records it.
-                  state = "payment_confirmed"
-                  payment_confirmed = True
-                  evidence["evidence"].append("Public PR discussion states payment was sent")
-              elif payment_confirmed:
-                  state = "payment_confirmed"
-                  evidence["evidence"].append("Public PR discussion confirms payment approval/due")
-
-              if payment_confirmed:
-                  totals["payment_confirmed"] += 1
-                  totals["payment_confirmed_value"] += reward
-
-              # Cash is counted only from an explicit paid/received ledger entry.
-              ledger_matches = [
-                  entry for entry in ledger
-                  if isinstance(entry, dict)
-                  and (str(entry.get("pr_url", "")) == pr_url or str(entry.get("submission_key", "")) == key)
-                  and str(entry.get("status", "")).lower() in {"paid", "received", "completed"}
-              ]
-              if ledger_matches:
-                  state = "paid"
-                  paid_amount = sum(float(x.get("amount", 0) or 0) for x in ledger_matches)
-                  totals["paid"] += 1
-                  totals["cash_received"] += paid_amount
-                  evidence["evidence"].append(f"Private earnings ledger records ${paid_amount:.2f} received")
-
-              record.update({
-                  "state": state,
-                  "confirmation_state": state,
-                  "confirmed_at": now,
-                  "github_pr_state": pr.get("state"),
-                  "github_merged_at": pr.get("merged_at"),
-                  "github_review_states": review_states,
-                  "confirmation_evidence": evidence["evidence"],
-              })
-              evidence["state"] = state
-              evidence_rows.append(evidence)
-
-          for key in list(totals):
-              if key.endswith("_value") or key == "cash_received":
-                  totals[key] = round(totals[key], 2)
-
-          report = {
-              "generated_at": now,
-              "truth_rules": {
-                  "submitted": "GitHub API confirms the PR exists",
-                  "approved": "GitHub review is APPROVED",
-                  "merged": "GitHub API reports merged_at",
-                  "payment_confirmed": "Public maintainer discussion confirms payment approval or sending",
-                  "cash_received": "Private earnings ledger/payment record marks paid, received, or completed",
-              },
-              "totals": totals,
-              "results": evidence_rows,
-          }
-
-          submissions_path.write_text(json.dumps(submissions, indent=2, ensure_ascii=False), encoding="utf-8")
-          confirmation_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
-          public_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
-
-          print(json.dumps(totals, indent=2))
-          summary = Path(os.environ.get("GITHUB_STEP_SUMMARY", "/tmp/atlas-summary"))
-          with summary.open("a", encoding="utf-8") as handle:
-              handle.write("## Golden result confirmation\n")
-              handle.write(f"- Recorded submissions: **{totals['recorded']}**\n")
-              handle.write(f"- GitHub-verified submitted value: **${totals['verified_submitted_value']:.2f}**\n")
-              handle.write(f"- Approved value: **${totals['approved_value']:.2f}**\n")
-              handle.write(f"- Merged value: **${totals['merged_value']:.2f}**\n")
-              handle.write(f"- Payment-confirmed value: **${totals['payment_confirmed_value']:.2f}**\n")
-              handle.write(f"- Cash received: **${totals['cash_received']:.2f}**\n")
-              handle.write("- Evidence file: `data/result-confirmation.json`\n")
+          Path('data').mkdir(exist_ok=True); Path('docs').mkdir(exist_ok=True)
+          Path('data/truthful-run-results.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+          run_file=f'run-data-{run_id}.json'
+          Path('docs',run_file).write_text(json.dumps(report,indent=2),encoding='utf-8')
+          Path('docs','latest-run.json').write_text(json.dumps({'run_id':run_id,'data_file':run_file,'generated_at_pacific':pacific},indent=2),encoding='utf-8')
+          cards=''.join(f'<div><b>{html.escape(k.replace("_"," ").title())}</b><span>{html.escape(str(v))}</span></div>' for k,v in report.items() if k!='worker_results')
+          page=f"""<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATLAS ATM V60</title><style>body{{font-family:system-ui;margin:24px;background:#0b1020;color:#eef}}h1{{font-size:2rem}}main{{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}}main div{{background:#17213d;padding:14px;border-radius:10px}}span{{display:block;font-size:1.35rem;margin-top:6px}}</style></head><body><h1>ATLAS ATM V60</h1><p>Truthful finalized run {run_id}</p><main>{cards}</main><script>fetch('{run_file}?run={run_id}',{{cache:'no-store'}}).then(r=>r.json()).then(d=>{{if(String(d.run_id)!=='{run_id}')document.body.innerHTML='<h1>Dashboard run verification failed</h1>';}})</script></body></html>"""
+          Path('docs','index.html').write_text(page,encoding='utf-8')
+          Path('docs','status.html').write_text(page,encoding='utf-8')
+          Path('docs','report.html').write_text(page,encoding='utf-8')
+          out=Path(os.environ['GITHUB_OUTPUT'])
+          with out.open('a') as h:
+              for k,v in {'final_status':final_status,'succeeded':succeeded,'failed':failed,'skipped':skipped,'verified_submissions':verified}.items(): h.write(f'{k}={v}\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as h:
+              h.write('## Atlas + Alex V60 Truthful Final Report\n')
+              for k in ['pursue_candidates','executable_candidates','matrix_records','unique_opportunities','duplicates_removed','unique_jobs_dispatched','succeeded','failed','skipped','verified_pull_requests','submitted_value','merged_value','approved_value','cash_received','final_truthful_system_status']:
+                  h.write(f'- {k.replace("_"," ").title()}: **{report[k]}**\n')
           PY
 
-      - name: Save confirmation evidence safely
+      - name: Commit final truthful dashboard data
         env:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          git config user.name "Atlas Result Verifier"
+          git config user.name "Atlas V60 Truth Verifier"
           git config user.email "atlas-verifier@users.noreply.github.com"
-          git add data/submissions_history.json data/result-confirmation.json docs/result-confirmation.json
-          if git diff --cached --quiet; then
-            echo "No confirmation-state changes to save."
-            exit 0
-          fi
-          snapshot="$RUNNER_TEMP/atlas-confirmation.tar"
-          tar -cf "$snapshot" data/submissions_history.json data/result-confirmation.json docs/result-confirmation.json
+          snapshot="$RUNNER_TEMP/atlas-v60-final-${GITHUB_RUN_ID}.tar"
+          tar -cf "$snapshot" data/truthful-run-results.json docs
           for attempt in 1 2 3 4 5 6; do
             git fetch origin "$BRANCH_NAME"
             git reset --hard "origin/$BRANCH_NAME"
             tar -xf "$snapshot"
-            git add data/submissions_history.json data/result-confirmation.json docs/result-confirmation.json
-            git commit -m "Confirm Atlas submissions and payment evidence"
-            if git push origin "HEAD:$BRANCH_NAME"; then
-              exit 0
-            fi
-            sleep $((attempt * 3))
+            git add data/truthful-run-results.json docs
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Atlas V60 truthful final run ${GITHUB_RUN_ID}"
+            git push origin "HEAD:$BRANCH_NAME" && exit 0
+            sleep $((attempt*3))
           done
-          echo "Unable to save confirmation evidence after retries." >&2
           exit 1
+
+      - name: Freeze regenerated final dashboard only
+        uses: actions/upload-artifact@v7
+        with:
+          name: atlas-atm-site-${{ github.run_id }}-${{ github.run_attempt }}
+          path: docs
+          if-no-files-found: error
+          retention-days: 7
 
   alex_payment_followup:
     name: Alex payment follow-up
@@ -5527,7 +5474,9 @@ jobs:
         run: |
           set -euo pipefail
           test -s docs/index.html
-          grep -q "ATLAS ATM" docs/index.html
+          grep -q "ATLAS ATM V60" docs/index.html
+          grep -q "${GITHUB_RUN_ID}" docs/index.html
+          test -s "docs/run-data-${GITHUB_RUN_ID}.json"
           test -s docs/money-data.json
           echo "Frozen ATM artifact verified for run ${GITHUB_RUN_ID}."
 
@@ -5609,9 +5558,10 @@ jobs:
               --header 'Cache-Control: no-cache' \
               --header 'Pragma: no-cache' \
               "$url" || true)"
-            if printf '%s' "$body" | grep -q "ATLAS ATM"
+            data="$(curl --fail --silent --show-error --location --header 'Cache-Control: no-cache' "${PAGE_URL%/}/run-data-${GITHUB_RUN_ID}.json?atlas_run=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" || true)"
+            if printf '%s' "$body" | grep -q "ATLAS ATM V60" && printf '%s' "$data" | grep -q '"run_id": "'"${GITHUB_RUN_ID}"'"'
             then
-              echo "Published ATM homepage verified on attempt $attempt."
+              echo "Published ATM homepage and data verified for run ${GITHUB_RUN_ID} on attempt $attempt."
               exit 0
             fi
             echo "ATM homepage not visible yet; retry $attempt of 6."
@@ -5642,12 +5592,16 @@ jobs:
         run: |
           set -euo pipefail
           {
-            echo "## Atlas + Alex V59 Workflow Health"
+            echo "## Atlas + Alex V60 Workflow Health"
             echo "- Hunt job: ${HUNT_RESULT}"
             echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
             echo "- Execution ready: ${EXECUTION_READY:-false}"
             echo "- Executor job status: ${EXECUTE_RESULT}"
-            echo "- Task outcomes: see each 'Record isolated task outcome' section above; job success only means the matrix job completed without a system-level crash."
+            echo "- Truthful final status: ${{ needs.confirm_results.outputs.final_status }}"
+            echo "- Verified submissions: ${{ needs.confirm_results.outputs.verified_submissions }}"
+            echo "- Succeeded: ${{ needs.confirm_results.outputs.succeeded }}"
+            echo "- Failed: ${{ needs.confirm_results.outputs.failed }}"
+            echo "- Skipped: ${{ needs.confirm_results.outputs.skipped }}"
             echo "- Result confirmation: ${CONFIRM_RESULT}"
             echo "- Payment follow-up: ${FOLLOWUP_RESULT}"
           } >> "$GITHUB_STEP_SUMMARY"
@@ -5676,7 +5630,7 @@ jobs:
             echo "Payment follow-up had a non-critical warning; production work remains healthy." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          echo "Atlas + Alex V59 completed: only passing submissions are persisted; task failures are isolated."
+          echo "Atlas + Alex V60 completed: only passing submissions are persisted; task failures are isolated."
 
   watchdog:
     if: >-
@@ -5704,7 +5658,7 @@ jobs:
           workflow_id="${workflow_id%@*}"
           last_success="$(
             gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=50" \
-              --jq '[.workflow_runs[] | select(.display_title == "Atlas V59 Main Production" or .display_title == "Atlas V59 Watchdog Recovery")][0].updated_at // empty' \
+              --jq '[.workflow_runs[] | select(.display_title == "Atlas V60 Main Production" or .display_title == "Atlas V60 Watchdog Recovery")][0].updated_at // empty' \
               2>/dev/null || true
           )"
 
