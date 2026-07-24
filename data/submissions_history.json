@@ -227,7 +227,9 @@
     "worker": "Atlas 1",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5050955,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8145": {
     "state": "reserved",
@@ -239,7 +241,9 @@
     "worker": "Atlas 2",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5051117,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8146": {
     "state": "reserved",
@@ -251,7 +255,9 @@
     "worker": "Atlas 3",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5051212,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8147": {
     "state": "reserved",
@@ -263,7 +269,9 @@
     "worker": "Atlas 4",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5051286,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8148": {
     "state": "reserved",
@@ -275,7 +283,9 @@
     "worker": "Atlas 5",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5051353,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8154": {
     "state": "reserved",
@@ -287,7 +297,9 @@
     "worker": "Atlas 1",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.505142,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8155": {
     "state": "reserved",
@@ -299,7 +311,9 @@
     "worker": "Atlas 2",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5051482,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8156": {
     "state": "reserved",
@@ -311,7 +325,9 @@
     "worker": "Atlas 3",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5051548,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8157": {
     "state": "reserved",
@@ -323,7 +339,9 @@
     "worker": "Atlas 4",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5051618,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8158": {
     "state": "reserved",
@@ -335,7 +353,9 @@
     "worker": "Atlas 5",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5051677,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8164": {
     "state": "reserved",
@@ -347,7 +367,9 @@
     "worker": "Atlas 1",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5051732,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8165": {
     "state": "reserved",
@@ -359,7 +381,9 @@
     "worker": "Atlas 2",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5051792,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8166": {
     "state": "reserved",
@@ -371,7 +395,9 @@
     "worker": "Atlas 3",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5051851,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8167": {
     "state": "reserved",
@@ -383,7 +409,9 @@
     "worker": "Atlas 4",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5052052,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8168": {
     "state": "reserved",
@@ -395,7 +423,9 @@
     "worker": "Atlas 5",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5052118,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8177": {
     "state": "reserved",
@@ -407,7 +437,9 @@
     "worker": "Atlas 1",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5052178,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8178": {
     "state": "reserved",
@@ -419,7 +451,9 @@
     "worker": "Atlas 2",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5052238,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8179": {
     "state": "reserved",
@@ -431,7 +465,9 @@
     "worker": "Atlas 3",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5052295,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8180": {
     "state": "reserved",
@@ -443,7 +479,9 @@
     "worker": "Atlas 4",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5052354,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8181": {
     "state": "reserved",
@@ -455,6 +493,8 @@
     "worker": "Atlas 5",
     "reserved_at": "2026-07-24T05:52:38.086003+00:00",
     "reserved_at_ts": 1784872389.5052416,
-    "workflow_run_id": "30070620835"
+    "workflow_run_id": "30070620835",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   }
 }
