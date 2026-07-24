@@ -633,7 +633,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8643",
     "submitted_at": "2026-07-24T11:22:30.433140+00:00",
     "submitted_at_ts": 1784892150.4331572,
-    "workflow_run_id": "30089179008"
+    "workflow_run_id": "30089179008",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "zhangjiayang6835-cyber/bounty-plaza#686": {
     "state": "submitted",
@@ -736,7 +738,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8642",
     "submitted_at": "2026-07-24T11:21:59.522714+00:00",
     "submitted_at_ts": 1784892119.522733,
-    "workflow_run_id": "30089179008"
+    "workflow_run_id": "30089179008",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8631": {
     "state": "submitted",
