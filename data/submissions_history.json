@@ -225,11 +225,9 @@
     "title": "Add is-halfwidth-katakana-letter-small-i-present API utility",
     "reward": 50.0,
     "worker": "Atlas 1",
-    "reserved_at": "2026-07-24T05:52:38.086003+00:00",
-    "reserved_at_ts": 1784872389.5050955,
-    "workflow_run_id": "30070620835",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T06:15:26.142013+00:00",
+    "reserved_at_ts": 1784873760.4555972,
+    "workflow_run_id": "30071735811"
   },
   "xevrion-v2/agent-playground#8145": {
     "state": "reserved",
@@ -239,11 +237,9 @@
     "title": "Add is-halfwidth-katakana-letter-small-e-present API utility",
     "reward": 50.0,
     "worker": "Atlas 2",
-    "reserved_at": "2026-07-24T05:52:38.086003+00:00",
-    "reserved_at_ts": 1784872389.5051117,
-    "workflow_run_id": "30070620835",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T06:15:26.142013+00:00",
+    "reserved_at_ts": 1784873760.4556155,
+    "workflow_run_id": "30071735811"
   },
   "xevrion-v2/agent-playground#8146": {
     "state": "reserved",
@@ -253,11 +249,9 @@
     "title": "Add is-halfwidth-katakana-letter-small-o-present API utility",
     "reward": 50.0,
     "worker": "Atlas 3",
-    "reserved_at": "2026-07-24T05:52:38.086003+00:00",
-    "reserved_at_ts": 1784872389.5051212,
-    "workflow_run_id": "30070620835",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T06:15:26.142013+00:00",
+    "reserved_at_ts": 1784873760.455626,
+    "workflow_run_id": "30071735811"
   },
   "xevrion-v2/agent-playground#8147": {
     "state": "reserved",
@@ -267,11 +261,9 @@
     "title": "Add is-halfwidth-katakana-letter-small-ya-present API utility",
     "reward": 50.0,
     "worker": "Atlas 4",
-    "reserved_at": "2026-07-24T05:52:38.086003+00:00",
-    "reserved_at_ts": 1784872389.5051286,
-    "workflow_run_id": "30070620835",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T06:15:26.142013+00:00",
+    "reserved_at_ts": 1784873760.4556334,
+    "workflow_run_id": "30071735811"
   },
   "xevrion-v2/agent-playground#8148": {
     "state": "reserved",
@@ -281,11 +273,9 @@
     "title": "Add is-halfwidth-katakana-letter-small-yu-present API utility",
     "reward": 50.0,
     "worker": "Atlas 5",
-    "reserved_at": "2026-07-24T05:52:38.086003+00:00",
-    "reserved_at_ts": 1784872389.5051353,
-    "workflow_run_id": "30070620835",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T06:15:26.142013+00:00",
+    "reserved_at_ts": 1784873760.4556403,
+    "workflow_run_id": "30071735811"
   },
   "xevrion-v2/agent-playground#8154": {
     "state": "reserved",

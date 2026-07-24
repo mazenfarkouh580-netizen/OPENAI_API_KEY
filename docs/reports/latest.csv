@@ -18,4 +18,4 @@ rank,decision,reward,expected_value,payment_confidence,competition_advantage,tit
 17,"PURSUE",50.0,11.14,49,100,"Add is-halfwidth-katakana-letter-se-present API utility","https://github.com/xevrion-v2/agent-playground/issues/8178"
 18,"PURSUE",50.0,11.14,49,100,"Add is-halfwidth-katakana-letter-so-present API utility","https://github.com/xevrion-v2/agent-playground/issues/8179"
 19,"PURSUE",50.0,11.14,49,100,"Add is-halfwidth-katakana-letter-ta-present API utility","https://github.com/xevrion-v2/agent-playground/issues/8180"
-20,"PURSUE",50.0,11.14,49,100,"Add is-halfwidth-katakana-letter-ti-present API utility","https://github.com/xevrion-v2/agent-playground/issues/8181"
+20,"PURSUE",50.0,11.14,49,100,"[agent] Document repository GitHub workflows","https://github.com/xevrion-v2/agent-playground/issues/2681"

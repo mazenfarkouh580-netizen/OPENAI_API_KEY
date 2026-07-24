@@ -7,7 +7,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8190": {
     "title": "Add is-halfwidth-katakana-letter-ni-present API utility",
@@ -17,7 +17,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8189": {
     "title": "Add is-halfwidth-katakana-letter-na-present API utility",
@@ -27,7 +27,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8188": {
     "title": "Add is-halfwidth-katakana-letter-to-present API utility",
@@ -37,7 +37,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8187": {
     "title": "Add is-halfwidth-katakana-letter-te-present API utility",
@@ -47,7 +47,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8181": {
     "title": "Add is-halfwidth-katakana-letter-ti-present API utility",
@@ -57,13 +57,13 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8180": {
     "title": "Add is-halfwidth-katakana-letter-ta-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -73,7 +73,7 @@
     "title": "Add is-halfwidth-katakana-letter-so-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -83,7 +83,7 @@
     "title": "Add is-halfwidth-katakana-letter-se-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -93,7 +93,7 @@
     "title": "Add is-halfwidth-katakana-letter-su-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -103,11 +103,11 @@
     "title": "[agent] Document repository GitHub workflows",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-23 08:43 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "NOT REVERIFIED THIS RUN"
+    "verification_state": "VERIFIED THIS RUN"
   },
   "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/588": {
     "title": "[Bounty] [paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth orga",
@@ -133,11 +133,11 @@
     "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
     "repository": "claude-builders-bounty/claude-builders-bounty",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-23 08:43 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "NOT REVERIFIED THIS RUN"
+    "verification_state": "VERIFIED THIS RUN"
   },
   "https://github.com/Iamgoofball/-tg-station/issues/50": {
     "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
@@ -153,11 +153,11 @@
     "title": "[ Config ] Fix image tag typo in docker-compose.yml",
     "repository": "UnsafeLabs/Bounty-Hunters",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-23 08:43 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 1.0,
-    "verification_state": "NOT REVERIFIED THIS RUN"
+    "verification_state": "VERIFIED THIS RUN"
   },
   "https://github.com/UnsafeLabs/Bounty-Hunters/issues/304": {
     "title": "[ Docs ] Fix wrong HTTP method for Create Bounty in api-reference.md",
@@ -203,17 +203,17 @@
     "title": "[BOUNTY $25] AGENT: Create a `CLAUDE.md` at the repo root.",
     "repository": "claude-builders-bounty/claude-builders-bounty",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-23 08:43 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 25.0,
-    "verification_state": "NOT REVERIFIED THIS RUN"
+    "verification_state": "VERIFIED THIS RUN"
   },
   "https://github.com/aporthq/aport-integrations/issues/4": {
     "title": "[Hacktoberfest] Create a Custom n8n Node for APort Verification",
     "repository": "aporthq/aport-integrations",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -223,11 +223,11 @@
     "title": "[Hacktoberfest] n8n Workflow Node for Policy Checks",
     "repository": "aporthq/aport-integrations",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-23 08:43 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 10.0,
-    "verification_state": "NOT REVERIFIED THIS RUN"
+    "verification_state": "VERIFIED THIS RUN"
   },
   "https://github.com/nirium-protocol/nirium-sdk/issues/8": {
     "title": "Compatible x402 service: Bug Bounty Intelligence smart contract scanner",
@@ -327,7 +327,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8198": {
     "title": "Add is-halfwidth-katakana-letter-no-present API utility",
@@ -337,7 +337,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8197": {
     "title": "Add is-halfwidth-katakana-letter-ne-present API utility",
@@ -347,17 +347,17 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/607": {
     "title": "[Bounty] [BOUNTY] [EASY AI TASK] [$40] [AGENTIC] [AGENT READY][PAID BOUNTY] [UNCLAIMED] [",
     "repository": "zhangjiayang6835-cyber/bounty-plaza",
     "first_seen": "2026-07-21 08:30 AM Pacific",
-    "last_verified": "2026-07-22 06:29 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "WATCHLIST",
     "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
     "last_reward": 40.0,
-    "verification_state": "NOT REVERIFIED THIS RUN"
+    "verification_state": "VERIFIED THIS RUN"
   },
   "https://github.com/speeduino/speeduino/issues/298": {
     "title": "Request: 4agze DLI ignition Mode",
@@ -373,7 +373,7 @@
     "title": "[$10 BOUNTY] [TypeScript] Add telemetry batch flush threshold tests",
     "repository": "Saiaaax/CyberNinja-Dojo",
     "first_seen": "2026-07-21 10:48 AM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 10.0,
@@ -483,11 +483,11 @@
     "title": "[Bounty] [BOUNTY] [$40] Add a Nix flake and an agentic screenshot harness using Wine + xv",
     "repository": "zhangjiayang6835-cyber/bounty-plaza",
     "first_seen": "2026-07-21 02:46 PM Pacific",
-    "last_verified": "2026-07-22 11:55 AM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "WATCHLIST",
     "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
     "last_reward": 40.0,
-    "verification_state": "NOT REVERIFIED THIS RUN"
+    "verification_state": "VERIFIED THIS RUN"
   },
   "https://github.com/UnsafeLabs/Bounty-Hunters/issues/308": {
     "title": "[ Config ] Fix trailing comma in app.json",
@@ -513,11 +513,11 @@
     "title": "[Bounty] [BOUNTY] [$50] Fix SSinput Deadlocking",
     "repository": "zhangjiayang6835-cyber/bounty-plaza",
     "first_seen": "2026-07-22 11:55 AM Pacific",
-    "last_verified": "2026-07-23 08:43 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "WATCHLIST",
     "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
     "last_reward": 50.0,
-    "verification_state": "NOT REVERIFIED THIS RUN"
+    "verification_state": "VERIFIED THIS RUN"
   },
   "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/652": {
     "title": "[Bounty] [BOUNTY] [$25] Open a duplicate of this issue to test our external duplicate iss",
@@ -793,11 +793,11 @@
     "title": "[$30 BOUNTY] [Python] Expand backend API contract edge-case tests",
     "repository": "jackjin1997/zeroeye",
     "first_seen": "2026-07-23 12:50 PM Pacific",
-    "last_verified": "2026-07-23 08:43 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 30.0,
-    "verification_state": "NOT REVERIFIED THIS RUN"
+    "verification_state": "VERIFIED THIS RUN"
   },
   "https://github.com/tailcallhq/tailcall/issues/3551": {
     "title": "Re: Bounty #272 — Reimplement analyze.sh in JS (graphql-benchmarks archived)",
@@ -963,7 +963,7 @@
     "title": "Add is-halfwidth-katakana-letter-small-i-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -973,7 +973,7 @@
     "title": "Add is-halfwidth-katakana-letter-small-e-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -983,7 +983,7 @@
     "title": "Add is-halfwidth-katakana-letter-small-o-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -993,7 +993,7 @@
     "title": "Add is-halfwidth-katakana-letter-small-ya-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -1003,7 +1003,7 @@
     "title": "Add is-halfwidth-katakana-letter-small-yu-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -1013,7 +1013,7 @@
     "title": "Add is-halfwidth-katakana-letter-small-yo-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -1023,7 +1023,7 @@
     "title": "Add is-halfwidth-katakana-letter-small-tu-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -1033,7 +1033,7 @@
     "title": "Add is-halfwidth-katakana-prolonged-sound-mark-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -1043,7 +1043,7 @@
     "title": "Add is-halfwidth-katakana-letter-ka-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -1053,7 +1053,7 @@
     "title": "Add is-halfwidth-katakana-letter-ki-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -1063,7 +1063,7 @@
     "title": "Add is-halfwidth-katakana-letter-ku-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -1073,7 +1073,7 @@
     "title": "Add is-halfwidth-katakana-letter-ke-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -1083,7 +1083,7 @@
     "title": "Add is-halfwidth-katakana-letter-ko-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -1093,7 +1093,7 @@
     "title": "Add is-halfwidth-katakana-letter-sa-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -1103,7 +1103,7 @@
     "title": "Add is-halfwidth-katakana-letter-si-present API utility",
     "repository": "xevrion-v2/agent-playground",
     "first_seen": "2026-07-23 09:29 PM Pacific",
-    "last_verified": "2026-07-23 10:52 PM Pacific",
+    "last_verified": "2026-07-23 11:15 PM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,

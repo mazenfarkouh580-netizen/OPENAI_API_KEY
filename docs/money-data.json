@@ -1,6 +1,6 @@
 {
-  "potential": 1460.0,
-  "assigned": 1000.0,
+  "potential": 1176.0,
+  "assigned": 250.0,
   "submitted": 0,
   "approved": 0,
   "payment_pending": 0,
@@ -46,6 +46,6 @@
       "reward": 50.0
     }
   ],
-  "generated_at": "2026-07-23 10:52 PM Pacific",
+  "generated_at": "2026-07-23 11:15 PM Pacific",
   "cash_rule": "Pipeline amounts are not cash; cash received requires documented payment"
 }
