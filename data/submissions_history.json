@@ -24,7 +24,9 @@
     "worker": "Atlas Job 1",
     "reserved_at": "2026-07-24T13:36:30.525948+00:00",
     "reserved_at_ts": 1784900229.898921,
-    "workflow_run_id": "30097551643"
+    "workflow_run_id": "30097551643",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -96,7 +98,9 @@
     "worker": "Atlas Job 5",
     "reserved_at": "2026-07-24T13:36:30.525948+00:00",
     "reserved_at_ts": 1784900229.8989606,
-    "workflow_run_id": "30097551643"
+    "workflow_run_id": "30097551643",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -554,7 +558,9 @@
     "worker": "Atlas Job 3",
     "reserved_at": "2026-07-24T13:36:30.525948+00:00",
     "reserved_at_ts": 1784900229.8989432,
-    "workflow_run_id": "30097551643"
+    "workflow_run_id": "30097551643",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8603": {
     "state": "submitted",
@@ -804,7 +810,9 @@
     "worker": "Atlas Job 2",
     "reserved_at": "2026-07-24T13:36:30.525948+00:00",
     "reserved_at_ts": 1784900229.898933,
-    "workflow_run_id": "30097551643"
+    "workflow_run_id": "30097551643",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "2lll5/tentoftrials#1": {
     "state": "reserved",
@@ -816,7 +824,9 @@
     "worker": "Atlas Job 4",
     "reserved_at": "2026-07-24T13:36:30.525948+00:00",
     "reserved_at_ts": 1784900229.8989522,
-    "workflow_run_id": "30097551643"
+    "workflow_run_id": "30097551643",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "cuentaprueba244w-dotcom/tentoftrials#10": {
     "state": "reserved",
@@ -828,7 +838,9 @@
     "worker": "Atlas Job 6",
     "reserved_at": "2026-07-24T13:36:30.525948+00:00",
     "reserved_at_ts": 1784900229.8989685,
-    "workflow_run_id": "30097551643"
+    "workflow_run_id": "30097551643",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "iamgoofball/-tg-station#50": {
     "state": "reserved",
@@ -840,7 +852,9 @@
     "worker": "Atlas Job 7",
     "reserved_at": "2026-07-24T13:36:30.525948+00:00",
     "reserved_at_ts": 1784900229.8989773,
-    "workflow_run_id": "30097551643"
+    "workflow_run_id": "30097551643",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "saiaaax/cyberninja-dojo#10": {
     "state": "submitted",
