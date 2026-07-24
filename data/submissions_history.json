@@ -22,11 +22,9 @@
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
     "worker": "Atlas 1",
-    "reserved_at": "2026-07-24T08:44:26.692346+00:00",
-    "reserved_at_ts": 1784882700.4328115,
-    "workflow_run_id": "30079992365",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T09:12:24.564231+00:00",
+    "reserved_at_ts": 1784884383.5018961,
+    "workflow_run_id": "30081706398"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -561,5 +559,77 @@
     "workflow_run_id": "30079992365",
     "confirmation_state": "unverified",
     "confirmation_reason": "missing_or_invalid_pr_url"
+  },
+  "xevrion-v2/agent-playground#8603": {
+    "state": "reserved",
+    "repository": "xevrion-v2/agent-playground",
+    "issue_number": 8603,
+    "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8603",
+    "title": "Add is-hangul-jamo-chieuch-khieukh-present API utility",
+    "reward": 50.0,
+    "worker": "Atlas 1",
+    "reserved_at": "2026-07-24T09:12:24.564231+00:00",
+    "reserved_at_ts": 1784884383.5018466,
+    "workflow_run_id": "30081706398"
+  },
+  "xevrion-v2/agent-playground#8602": {
+    "state": "reserved",
+    "repository": "xevrion-v2/agent-playground",
+    "issue_number": 8602,
+    "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8602",
+    "title": "Add is-hangul-jamo-ceongchieumssangcieuc-present API utility",
+    "reward": 50.0,
+    "worker": "Atlas 2",
+    "reserved_at": "2026-07-24T09:12:24.564231+00:00",
+    "reserved_at_ts": 1784884383.5018647,
+    "workflow_run_id": "30081706398"
+  },
+  "xevrion-v2/agent-playground#8601": {
+    "state": "reserved",
+    "repository": "xevrion-v2/agent-playground",
+    "issue_number": 8601,
+    "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8601",
+    "title": "Add is-hangul-jamo-ceongchieumcieuc-present API utility",
+    "reward": 50.0,
+    "worker": "Atlas 3",
+    "reserved_at": "2026-07-24T09:12:24.564231+00:00",
+    "reserved_at_ts": 1784884383.5018744,
+    "workflow_run_id": "30081706398"
+  },
+  "xevrion-v2/agent-playground#8600": {
+    "state": "reserved",
+    "repository": "xevrion-v2/agent-playground",
+    "issue_number": 8600,
+    "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8600",
+    "title": "Add is-hangul-jamo-chitueumssangcieuc-present API utility",
+    "reward": 50.0,
+    "worker": "Atlas 4",
+    "reserved_at": "2026-07-24T09:12:24.564231+00:00",
+    "reserved_at_ts": 1784884383.5018814,
+    "workflow_run_id": "30081706398"
+  },
+  "xevrion-v2/agent-playground#8599": {
+    "state": "reserved",
+    "repository": "xevrion-v2/agent-playground",
+    "issue_number": 8599,
+    "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8599",
+    "title": "Add is-hangul-jamo-chitueumcieuc-present API utility",
+    "reward": 50.0,
+    "worker": "Atlas 5",
+    "reserved_at": "2026-07-24T09:12:24.564231+00:00",
+    "reserved_at_ts": 1784884383.5018892,
+    "workflow_run_id": "30081706398"
+  },
+  "zhangjiayang6835-cyber/bounty-plaza#686": {
+    "state": "reserved",
+    "repository": "zhangjiayang6835-cyber/bounty-plaza",
+    "issue_number": 686,
+    "issue_url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/686",
+    "title": "[Bounty] Bounty: end-to-end test copperhead create (brief → clean full run) + findings re",
+    "reward": 50.0,
+    "worker": "Atlas 2",
+    "reserved_at": "2026-07-24T09:12:24.564231+00:00",
+    "reserved_at_ts": 1784884383.5019052,
+    "workflow_run_id": "30081706398"
   }
 }
