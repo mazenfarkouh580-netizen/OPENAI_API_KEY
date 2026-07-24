@@ -1,7 +1,7 @@
-name: Atlas + Alex V52 — Runtime, Worker, and Pages Repair
+name: Atlas + Alex V53 — Runtime, Worker, and Pages Repair
 
 run-name: >-
-  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V52 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V52 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V52 Watchdog Recovery' || format('Atlas V52 Manual — {0}', github.event.inputs.execution_mode) }}
+  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V53 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V53 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V53 Watchdog Recovery' || format('Atlas V53 Manual — {0}', github.event.inputs.execution_mode) }}
 
 on:
   workflow_dispatch:
@@ -519,12 +519,12 @@ jobs:
               EARNINGS_FILE.write_text("[]\n", encoding="utf-8")
 
           operations = load_json_file(OPERATIONS_FILE, {
-              "version": "V51",
+              "version": "V53",
               "pipeline": [],
               "last_updated": GENERATED_AT,
           })
           if not isinstance(operations, dict):
-              operations = {"version": "V51", "pipeline": [], "last_updated": GENERATED_AT}
+              operations = {"version": "V53", "pipeline": [], "last_updated": GENERATED_AT}
 
           maintenance = load_json_file(MAINTENANCE_FILE, {
               "doctor": "Dr. Alex",
@@ -2849,9 +2849,9 @@ jobs:
               ),
               reverse=True,
           )
-          execution_queue = execution_queue[:int(config.get("queue_size", 20))]
+          execution_queue = execution_queue[:int(config.get("queue_size", 100))]
 
-          operations["version"] = "V51"
+          operations["version"] = "V53"
           operations["last_updated"] = GENERATED_AT
           operations["pipeline"] = execution_queue
           operations["source_performance"] = source_performance
@@ -2883,13 +2883,9 @@ jobs:
               and not item.get("repository_mismatch")
               and item.get("atlas_can_execute")
               and item.get("ai_eligibility") != "PROHIBITED"
-              and (
-                  item.get("fast_cash_execution_qualified") is True
-                  or (
-                      0.10 <= float(item.get("reward", 0) or 0) <= 50
-                      and item.get("quick_win_risk_accepted") is True
-                  )
-              )
+              # CEO throughput law: a safe PURSUE decision is sufficient for dispatch.
+              # Payment speed and payer history determine queue order, not whether an
+              # otherwise executable opportunity is denied a worker.
               and execution_history_allows(item)
           ]
           executable_candidates.sort(
@@ -2903,8 +2899,10 @@ jobs:
           )
 
           selected_executions = []
-          # Five Atlas lanes are concurrency, not a five-task quota. Every eligible
-          # task is queued and GitHub keeps at most five running simultaneously.
+          # Five Atlas lanes are concurrency, not a five-task quota. Every safe
+          # PURSUE task is queued (up to the high safety ceiling), GitHub keeps five
+          # running simultaneously, and each released lane immediately takes the
+          # next assignment after its mandatory five-minute recovery break.
           worker_names = ["Atlas 1", "Atlas 2", "Atlas 3", "Atlas 4", "Atlas 5"]
           safe_test = os.environ.get("REQUESTED_EXECUTION_MODE", "scan_only") == "safe_test"
           dispatch_limit = 1 if safe_test else int(config.get("maximum_tasks_per_run", 100))
@@ -2955,7 +2953,7 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V51",
+                  "version": "V53",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": 5,
@@ -3035,7 +3033,7 @@ jobs:
           ALERTS_FILE.write_text(json.dumps(alerts, indent=2), encoding="utf-8")
 
           payload = {
-              "version": "V51",
+              "version": "V53",
               "owner": "Mazen Farkouh",
               "generated_at": GENERATED_AT,
               "config": config,
@@ -3096,7 +3094,7 @@ jobs:
           WORKER_HEALTH_FILE.write_text(
               json.dumps(
                   {
-                      "version": "V51",
+                      "version": "V53",
                       "last_completed_at": NOW.isoformat(),
                       "last_completed_display": GENERATED_AT,
                       "trigger": os.environ.get("GITHUB_EVENT_NAME", "unknown"),
@@ -3677,10 +3675,10 @@ jobs:
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
                   "<title>\n              Atlas + Alex Opportunity Hunter V50\n            </title>",
-                  "<title>Atlas V52 Status Window</title>",
+                  "<title>Atlas V53 Status Window</title>",
               ).replace(
                   "Atlas + Alex Opportunity Hunter V50",
-                  "Atlas V52 Status Window",
+                  "Atlas V53 Status Window",
                   1,
               ),
               encoding="utf-8",
@@ -3743,7 +3741,7 @@ jobs:
               else:
                   stage = state.upper() if state else "FOUND"
               normalized_pipeline.append({**record, "submission_key": key, "stage": stage, "current_status": state, "last_synced_at": record.get("confirmed_at") or record.get("submitted_at") or GENERATED_AT})
-          PIPELINE_FILE.write_text(json.dumps({"version": "V51", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
+          PIPELINE_FILE.write_text(json.dumps({"version": "V53", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
           def record_value(record):
               try:
                   return float(record.get("reward", record.get("amount", 0)) or 0)
@@ -4210,7 +4208,7 @@ jobs:
       max-parallel: 5
       matrix: ${{ fromJSON(needs.hunt.outputs.execution_matrix) }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 18
     permissions:
       contents: write
       issues: write
@@ -4577,7 +4575,7 @@ jobs:
             local model="$1"
             local message="$2"
             shift 2
-            timeout --signal=TERM --kill-after=30s 20m "${AIDER_COMMAND[@]}" \
+            timeout --signal=TERM --kill-after=30s 10m "${AIDER_COMMAND[@]}" \
               --model "$model" \
               --yes-always \
               --no-auto-commits \
@@ -4701,10 +4699,15 @@ jobs:
             fail_validation 1 "agent_produced_no_change"
           fi
 
+          if [ "$validation_status" -eq 0 ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
           echo "reason=$validation_reason" >> "$GITHUB_OUTPUT"
           echo "exit_code=$validation_status" >> "$GITHUB_OUTPUT"
-          echo "Validation result: $validation_reason (exit $validation_status)" >> "$GITHUB_STEP_SUMMARY"
-          exit "$validation_status"
+          echo "Validation result: $validation_reason (recorded task result $validation_status)" >> "$GITHUB_STEP_SUMMARY"
+          exit 0
 
       - name: Save safe-test patch for review
         if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode == 'safe_test'
@@ -4728,7 +4731,7 @@ jobs:
       - name: Commit, push, and open pull request
         id: submit_pr
         continue-on-error: true
-        if: steps.credentials.outputs.ready == 'true' && steps.prepare.outcome == 'success' && steps.baseline.outputs.ready == 'true' && steps.implement.outcome == 'success' && steps.implement.outputs.ready == 'true' && steps.validate_change.outcome == 'success' && (github.event_name != 'workflow_dispatch' || github.event.inputs.execution_mode == 'submit')
+        if: steps.credentials.outputs.ready == 'true' && steps.prepare.outcome == 'success' && steps.baseline.outputs.ready == 'true' && steps.implement.outcome == 'success' && steps.implement.outputs.ready == 'true' && steps.validate_change.outputs.ready == 'true' && (github.event_name != 'workflow_dispatch' || github.event.inputs.execution_mode == 'submit')
         env:
           GH_TOKEN: ${{ secrets.ATLAS_GITHUB_PAT }}
           REPOSITORY: ${{ matrix.repository }}
@@ -4746,13 +4749,15 @@ jobs:
           git add -A
           changed_files="$(git diff --cached --name-only)"
           test -n "$changed_files" || {
-            echo "Atlas produced no real change."
-            exit 1
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Atlas produced no real change; submission skipped safely."
+            exit 0
           }
 
           if [ "$changed_files" = ".gitignore" ]; then
-            echo "Atlas changed only .gitignore; refusing to submit a useless pull request."
-            exit 1
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Atlas changed only .gitignore; submission skipped safely."
+            exit 0
           fi
 
           git commit -m "Fix #${ISSUE_NUMBER}: ${ISSUE_TITLE}"
@@ -4773,13 +4778,14 @@ jobs:
             --base "$default_branch" \
             --title "Fix #${ISSUE_NUMBER}: ${ISSUE_TITLE}" \
             --body "Automated contribution prepared by ${WORKER}.\n\nCloses #${ISSUE_NUMBER}\n\nStated reward: \$${REWARD}. Tests and repository validation were run before submission.")"
+          echo "ready=true" >> "$GITHUB_OUTPUT"
           echo "pr_url=${pr_url}" >> "$GITHUB_OUTPUT"
           echo "Submitted pull request: ${pr_url}" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Persist submitted-task history
         id: persist_submission
         continue-on-error: true
-        if: steps.submit_pr.outcome == 'success'
+        if: steps.submit_pr.outputs.ready == 'true'
         env:
           ATLAS_REPOSITORY: ${{ github.repository }}
           ATLAS_BRANCH: ${{ github.ref_name }}
@@ -4863,6 +4869,12 @@ jobs:
         if: steps.credentials.outputs.ready != 'true'
         run: |
           echo "${{ matrix.worker }} selected ${{ matrix.repository }}#${{ matrix.issue_number }}, but execution was safely skipped: ${{ steps.credentials.outputs.reason }}." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Atlas worker five-minute recovery break
+        if: always()
+        run: |
+          echo "${{ matrix.worker }} completed its task cycle and is resting for 5 minutes before the next queued assignment." >> "$GITHUB_STEP_SUMMARY"
+          sleep 300
 
       - name: Record isolated task outcome
         id: task_outcome
@@ -5586,7 +5598,7 @@ jobs:
           workflow_id="${workflow_id%@*}"
           last_success="$(
             gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=50" \
-              --jq '[.workflow_runs[] | select(.display_title == "Atlas V52 Main Production" or .display_title == "Atlas V52 Watchdog Recovery")][0].updated_at // empty' \
+              --jq '[.workflow_runs[] | select(.display_title == "Atlas V53 Main Production" or .display_title == "Atlas V53 Watchdog Recovery")][0].updated_at // empty' \
               2>/dev/null || true
           )"
 
