@@ -24,7 +24,9 @@
     "worker": "Atlas 1",
     "reserved_at": "2026-07-24T09:12:24.564231+00:00",
     "reserved_at_ts": 1784884383.5018961,
-    "workflow_run_id": "30081706398"
+    "workflow_run_id": "30081706398",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -571,7 +573,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8610",
     "submitted_at": "2026-07-24T09:14:39.709455+00:00",
     "submitted_at_ts": 1784884479.709472,
-    "workflow_run_id": "30081706398"
+    "workflow_run_id": "30081706398",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8602": {
     "state": "submitted",
@@ -584,7 +588,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8612",
     "submitted_at": "2026-07-24T09:14:59.533611+00:00",
     "submitted_at_ts": 1784884499.5336256,
-    "workflow_run_id": "30081706398"
+    "workflow_run_id": "30081706398",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8601": {
     "state": "submitted",
@@ -597,7 +603,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8611",
     "submitted_at": "2026-07-24T09:14:45.192852+00:00",
     "submitted_at_ts": 1784884485.192867,
-    "workflow_run_id": "30081706398"
+    "workflow_run_id": "30081706398",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8600": {
     "state": "submitted",
@@ -610,7 +618,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8609",
     "submitted_at": "2026-07-24T09:14:35.797430+00:00",
     "submitted_at_ts": 1784884475.7974434,
-    "workflow_run_id": "30081706398"
+    "workflow_run_id": "30081706398",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8599": {
     "state": "reserved",
@@ -622,7 +632,9 @@
     "worker": "Atlas 5",
     "reserved_at": "2026-07-24T09:12:24.564231+00:00",
     "reserved_at_ts": 1784884383.5018892,
-    "workflow_run_id": "30081706398"
+    "workflow_run_id": "30081706398",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "zhangjiayang6835-cyber/bounty-plaza#686": {
     "state": "submitted",
@@ -635,6 +647,8 @@
     "pr_url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/pull/688",
     "submitted_at": "2026-07-24T09:15:34.329732+00:00",
     "submitted_at_ts": 1784884534.3297446,
-    "workflow_run_id": "30081706398"
+    "workflow_run_id": "30081706398",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   }
 }
