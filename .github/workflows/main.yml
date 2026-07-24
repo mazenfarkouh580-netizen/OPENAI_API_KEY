@@ -1,7 +1,7 @@
-name: Atlas + Alex V58 — Blocked Resources Zero Jobs
+name: Atlas + Alex V59 — Clean Worker Outcomes
 
 run-name: >-
-  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V58 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V58 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V58 Watchdog Recovery' || format('Atlas V58 Manual — {0}', github.event.inputs.execution_mode) }}
+  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V59 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V59 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V59 Watchdog Recovery' || format('Atlas V59 Manual — {0}', github.event.inputs.execution_mode) }}
 
 on:
   workflow_dispatch:
@@ -498,7 +498,7 @@ jobs:
           # bounded only by the queue safety cap. Existing saved configurations
           # from older versions must not keep Atlas limited to one worker.
           config["parallel_workers"] = 5
-          # V58: keep a large persistent backlog. GitHub matrix expansion has a hard
+          # V59: keep a large persistent backlog. GitHub matrix expansion has a hard
           # platform ceiling, so 200 leaves safe headroom while allowing 30+ jobs.
           config["queue_size"] = 200
           config["maximum_tasks_per_run"] = 200
@@ -521,12 +521,12 @@ jobs:
               EARNINGS_FILE.write_text("[]\n", encoding="utf-8")
 
           operations = load_json_file(OPERATIONS_FILE, {
-              "version": "V58",
+              "version": "V59",
               "pipeline": [],
               "last_updated": GENERATED_AT,
           })
           if not isinstance(operations, dict):
-              operations = {"version": "V58", "pipeline": [], "last_updated": GENERATED_AT}
+              operations = {"version": "V59", "pipeline": [], "last_updated": GENERATED_AT}
 
           maintenance = load_json_file(MAINTENANCE_FILE, {
               "doctor": "Dr. Alex",
@@ -2852,7 +2852,7 @@ jobs:
                   return 1
               return 0
 
-          # V58 persistent queue: merge unfinished work from prior runs with all
+          # V59 persistent queue: merge unfinished work from prior runs with all
           # newly qualified PURSUE opportunities. New scan data replaces stale
           # metadata for the same repository/issue; terminal records are removed.
           prior_pipeline = operations.get("pipeline", []) if isinstance(operations, dict) else []
@@ -2898,7 +2898,7 @@ jobs:
           # a run may legitimately contain 30, 50, or more assignments.
           execution_queue = execution_queue[:200]
 
-          operations["version"] = "V58"
+          operations["version"] = "V59"
           operations["last_updated"] = GENERATED_AT
           operations["pipeline"] = execution_queue
           operations["source_performance"] = source_performance
@@ -3005,7 +3005,7 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V58",
+                  "version": "V59",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": 5,
@@ -3085,7 +3085,7 @@ jobs:
           ALERTS_FILE.write_text(json.dumps(alerts, indent=2), encoding="utf-8")
 
           payload = {
-              "version": "V58",
+              "version": "V59",
               "owner": "Mazen Farkouh",
               "generated_at": GENERATED_AT,
               "config": config,
@@ -3146,7 +3146,7 @@ jobs:
           WORKER_HEALTH_FILE.write_text(
               json.dumps(
                   {
-                      "version": "V58",
+                      "version": "V59",
                       "last_completed_at": NOW.isoformat(),
                       "last_completed_display": GENERATED_AT,
                       "trigger": os.environ.get("GITHUB_EVENT_NAME", "unknown"),
@@ -3727,10 +3727,10 @@ jobs:
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
                   "<title>\n              Atlas + Alex Opportunity Hunter V50\n            </title>",
-                  "<title>Atlas V58 Status Window</title>",
+                  "<title>Atlas V59 Status Window</title>",
               ).replace(
                   "Atlas + Alex Opportunity Hunter V50",
-                  "Atlas V58 Status Window",
+                  "Atlas V59 Status Window",
                   1,
               ),
               encoding="utf-8",
@@ -3793,7 +3793,7 @@ jobs:
               else:
                   stage = state.upper() if state else "FOUND"
               normalized_pipeline.append({**record, "submission_key": key, "stage": stage, "current_status": state, "last_synced_at": record.get("confirmed_at") or record.get("submitted_at") or GENERATED_AT})
-          PIPELINE_FILE.write_text(json.dumps({"version": "V58", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
+          PIPELINE_FILE.write_text(json.dumps({"version": "V59", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
           def record_value(record):
               try:
                   return float(record.get("reward", record.get("amount", 0)) or 0)
@@ -4085,7 +4085,7 @@ jobs:
                       f"{counts['PURSUE']}\n"
                   )
 
-                  # V58 final dispatch firewall: blocked owners/repositories are
+                  # V59 final dispatch firewall: blocked owners/repositories are
                   # removed immediately before matrix serialization. This is the last
                   # point before GitHub creates jobs, so blocked resources can never
                   # become matrix jobs even if malformed cached data bypassed an earlier gate.
@@ -4103,7 +4103,7 @@ jobs:
                   blocked_matrix_removals = pre_firewall_count - len(selected_executions)
                   if blocked_matrix_removals:
                       print(
-                          f"V58 dispatch firewall removed {blocked_matrix_removals} blocked task(s) before matrix creation."
+                          f"V59 dispatch firewall removed {blocked_matrix_removals} blocked task(s) before matrix creation."
                       )
 
                   # Re-number workers only after final filtering so job totals and
@@ -4137,7 +4137,7 @@ jobs:
                   )
 
           print(
-              f"Atlas + Alex V58 status={status}; "
+              f"Atlas + Alex V59 status={status}; "
               f"checked {len(raw_issues)} "
               "raw issues; "
               f"found {len(initial_candidates)} "
@@ -4340,6 +4340,7 @@ jobs:
           EXECUTION_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode || 'submit' }}
         run: |
           set -euo pipefail
+          trap 'status=$?; trap - ERR; echo "ready=false" >> "$GITHUB_OUTPUT"; echo "reason=repository_preparation_failed_exit_${status}" >> "$GITHUB_OUTPUT"; echo "Repository preparation failed safely with exit ${status}; no execution error annotation is required." >> "$GITHUB_STEP_SUMMARY"; exit 0' ERR
           mkdir -p "$RUNNER_TEMP/atlas-work"
           cd "$RUNNER_TEMP/atlas-work"
 
@@ -4435,10 +4436,19 @@ jobs:
 
       - name: Install execution agent
         id: install_agent
-        continue-on-error: true
         if: steps.credentials.outputs.ready == 'true'
         run: |
+          set +e
           python -m pip install --disable-pip-version-check --quiet "aider-chat>=0.86,<1"
+          status=$?
+          if [ "$status" -ne 0 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "reason=execution_agent_install_failed_exit_${status}" >> "$GITHUB_OUTPUT"
+            echo "Execution agent installation failed safely; task skipped without a red workflow annotation." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+          echo "reason=execution_agent_ready" >> "$GITHUB_OUTPUT"
 
       - name: Validate clean repository baseline
         id: baseline
@@ -4524,7 +4534,7 @@ jobs:
       - name: Implement the issue
         id: implement
         continue-on-error: true
-        if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true' && steps.install_agent.outcome == 'success'
+        if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true' && steps.install_agent.outputs.ready == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GH_TOKEN: ${{ secrets.ATLAS_GITHUB_PAT }}
@@ -4535,6 +4545,7 @@ jobs:
         working-directory: ${{ runner.temp }}/atlas-work/worktree
         run: |
           set -euo pipefail
+          trap 'status=$?; trap - ERR; echo "ready=false" >> "$GITHUB_OUTPUT"; echo "reason=implementation_failed_exit_${status}" >> "$GITHUB_OUTPUT"; echo "Implementation stopped safely with exit ${status}; outcome recorded without a red workflow annotation." >> "$GITHUB_STEP_SUMMARY"; exit 0' ERR
           issue_body="$(gh issue view "$ISSUE_NUMBER" --repo "$REPOSITORY" --json body --jq .body)"
           printf '%s\n' "$issue_body" > "$RUNNER_TEMP/atlas-issue.md"
 
@@ -4830,6 +4841,7 @@ jobs:
         working-directory: ${{ runner.temp }}/atlas-work/worktree
         run: |
           set -euo pipefail
+          trap 'status=$?; trap - ERR; echo "ready=false" >> "$GITHUB_OUTPUT"; echo "reason=push_or_pull_request_failed_exit_${status}" >> "$GITHUB_OUTPUT"; echo "Submission failed safely with exit ${status}; outcome recorded without a red workflow annotation." >> "$GITHUB_STEP_SUMMARY"; exit 0' ERR
           branch="$(git branch --show-current)"
           owner="$(gh api user --jq .login)"
           repo_name="${REPOSITORY#*/}"
@@ -4888,6 +4900,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
+          trap 'status=$?; trap - ERR; echo "Shared submission-history persistence failed safely with exit ${status}; confirmation will reconcile it later." >> "$GITHUB_STEP_SUMMARY"; exit 0' ERR
           state_dir="$RUNNER_TEMP/atlas-state"
           rm -rf "$state_dir"
           git clone --depth 1 --branch "$ATLAS_BRANCH" \
@@ -4969,13 +4982,21 @@ jobs:
           CREDENTIALS_READY: ${{ steps.credentials.outputs.ready }}
           CREDENTIALS_REASON: ${{ steps.credentials.outputs.reason }}
           PREPARE_OUTCOME: ${{ steps.prepare.outcome }}
+          PREPARE_READY: ${{ steps.prepare.outputs.ready }}
+          PREPARE_REASON: ${{ steps.prepare.outputs.reason }}
+          INSTALL_READY: ${{ steps.install_agent.outputs.ready }}
+          INSTALL_REASON: ${{ steps.install_agent.outputs.reason }}
           BASELINE_READY: ${{ steps.baseline.outputs.ready }}
           BASELINE_REASON: ${{ steps.baseline.outputs.reason }}
           IMPLEMENT_OUTCOME: ${{ steps.implement.outcome }}
+          IMPLEMENT_READY: ${{ steps.implement.outputs.ready }}
+          IMPLEMENT_REASON: ${{ steps.implement.outputs.reason }}
           VALIDATE_OUTCOME: ${{ steps.validate_change.outcome }}
           VALIDATE_REASON: ${{ steps.validate_change.outputs.reason }}
           VALIDATE_EXIT_CODE: ${{ steps.validate_change.outputs.exit_code }}
           SUBMIT_OUTCOME: ${{ steps.submit_pr.outcome }}
+          SUBMIT_READY: ${{ steps.submit_pr.outputs.ready }}
+          SUBMIT_REASON: ${{ steps.submit_pr.outputs.reason }}
           PR_URL: ${{ steps.submit_pr.outputs.pr_url }}
           EXECUTION_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode || 'submit' }}
         run: |
@@ -4992,15 +5013,18 @@ jobs:
           elif [ "${CREDENTIALS_READY:-false}" != "true" ]; then
             result="skipped"
             reason="${CREDENTIALS_REASON:-credentials_unavailable}"
-          elif [ "${PREPARE_OUTCOME:-skipped}" = "failure" ]; then
-            result="failed"
-            reason="repository_preparation_failed"
+          elif [ "${PREPARE_READY:-false}" != "true" ]; then
+            result="skipped"
+            reason="${PREPARE_REASON:-repository_preparation_unavailable}"
+          elif [ "${INSTALL_READY:-false}" != "true" ]; then
+            result="skipped"
+            reason="${INSTALL_REASON:-execution_agent_unavailable}"
           elif [ "${BASELINE_READY:-false}" != "true" ]; then
             result="skipped"
             reason="${BASELINE_REASON:-baseline_unavailable}"
-          elif [ "${IMPLEMENT_OUTCOME:-skipped}" = "failure" ]; then
+          elif [ "${IMPLEMENT_READY:-false}" != "true" ]; then
             result="failed"
-            reason="implementation_failed_or_no_useful_change"
+            reason="${IMPLEMENT_REASON:-implementation_failed_or_no_useful_change}"
           elif [ "${IMPLEMENT_OUTCOME:-skipped}" = "skipped" ]; then
             result="skipped"
             reason="implementation_not_run"
@@ -5010,9 +5034,9 @@ jobs:
           elif [ "${VALIDATE_OUTCOME:-skipped}" = "skipped" ]; then
             result="skipped"
             reason="validation_not_run"
-          elif [ "${SUBMIT_OUTCOME:-skipped}" = "failure" ]; then
+          elif [ "${EXECUTION_MODE}" = "submit" ] && [ "${SUBMIT_READY:-false}" != "true" ]; then
             result="failed"
-            reason="push_or_pull_request_failed"
+            reason="${SUBMIT_REASON:-push_or_pull_request_failed}"
           elif [ "${EXECUTION_MODE}" = "submit" ] && [ "${SUBMIT_OUTCOME:-skipped}" = "skipped" ]; then
             result="skipped"
             reason="submission_not_run"
@@ -5618,7 +5642,7 @@ jobs:
         run: |
           set -euo pipefail
           {
-            echo "## Atlas + Alex V58 Workflow Health"
+            echo "## Atlas + Alex V59 Workflow Health"
             echo "- Hunt job: ${HUNT_RESULT}"
             echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
             echo "- Execution ready: ${EXECUTION_READY:-false}"
@@ -5652,7 +5676,7 @@ jobs:
             echo "Payment follow-up had a non-critical warning; production work remains healthy." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          echo "Atlas + Alex V58 completed: only passing submissions are persisted; task failures are isolated."
+          echo "Atlas + Alex V59 completed: only passing submissions are persisted; task failures are isolated."
 
   watchdog:
     if: >-
@@ -5680,7 +5704,7 @@ jobs:
           workflow_id="${workflow_id%@*}"
           last_success="$(
             gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=50" \
-              --jq '[.workflow_runs[] | select(.display_title == "Atlas V58 Main Production" or .display_title == "Atlas V58 Watchdog Recovery")][0].updated_at // empty' \
+              --jq '[.workflow_runs[] | select(.display_title == "Atlas V59 Main Production" or .display_title == "Atlas V59 Watchdog Recovery")][0].updated_at // empty' \
               2>/dev/null || true
           )"
 
