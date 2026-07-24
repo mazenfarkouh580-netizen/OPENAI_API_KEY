@@ -24,7 +24,9 @@
     "worker": "Atlas",
     "reserved_at": "2026-07-23T23:42:48.006330+00:00",
     "reserved_at_ts": 1784850203.049006,
-    "workflow_run_id": "30054023555"
+    "workflow_run_id": "30054023555",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -66,7 +68,9 @@
     "worker": "Alex",
     "reserved_at": "2026-07-23T23:42:48.006330+00:00",
     "reserved_at_ts": 1784850203.0490246,
-    "workflow_run_id": "30054023555"
+    "workflow_run_id": "30054023555",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "aporthq/aport-integrations#4": {
     "state": "submitted",
@@ -93,7 +97,9 @@
     "worker": "Atlas",
     "reserved_at": "2026-07-23T23:42:48.006330+00:00",
     "reserved_at_ts": 1784850203.0490348,
-    "workflow_run_id": "30054023555"
+    "workflow_run_id": "30054023555",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -179,7 +185,9 @@
     "worker": "Atlas",
     "reserved_at": "2026-07-23T23:42:48.006330+00:00",
     "reserved_at_ts": 1784850203.04905,
-    "workflow_run_id": "30054023555"
+    "workflow_run_id": "30054023555",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "jackjin1997/zeroeye#1": {
     "state": "reserved",
@@ -191,6 +199,8 @@
     "worker": "Alex",
     "reserved_at": "2026-07-23T23:42:48.006330+00:00",
     "reserved_at_ts": 1784850203.0490425,
-    "workflow_run_id": "30054023555"
+    "workflow_run_id": "30054023555",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   }
 }
