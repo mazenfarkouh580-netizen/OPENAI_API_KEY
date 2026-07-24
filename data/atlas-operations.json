@@ -1,5 +1,5 @@
 {
-  "version": "V46",
+  "version": "V50",
   "pipeline": [
     {
       "title": "Add is-hangul-jamo-choseong-filler-present API utility",
@@ -77,7 +77,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -85,7 +85,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-tikeut-rieul-present API utility",
@@ -163,7 +168,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -171,7 +176,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-nieun-hieuh-present API utility",
@@ -249,7 +259,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -257,7 +267,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-nieun-cieuc-present API utility",
@@ -335,7 +350,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -343,7 +358,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-yeorinhieuh-present API utility",
@@ -421,7 +441,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -429,7 +449,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-ssanghieuh-present API utility",
@@ -507,7 +532,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -515,7 +540,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-kapyeounphieuph-present API utility",
@@ -593,7 +623,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -601,7 +631,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-ceongchieumchieuch-present API utility",
@@ -679,7 +714,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -687,7 +722,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-chitueumchieuch-present API utility",
@@ -765,7 +805,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -773,7 +813,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-chieuch-hieuh-present API utility",
@@ -851,7 +896,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -859,7 +904,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-chieuch-khieukh-present API utility",
@@ -937,7 +987,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -945,7 +995,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-ceongchieumssangcieuc-present API utility",
@@ -1023,7 +1078,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -1031,7 +1086,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-ceongchieumcieuc-present API utility",
@@ -1109,7 +1169,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -1117,7 +1177,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-chitueumssangcieuc-present API utility",
@@ -1195,7 +1260,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -1203,7 +1268,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "Add is-hangul-jamo-chitueumcieuc-present API utility",
@@ -1281,7 +1351,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -1289,7 +1359,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "[agent] Document repository GitHub workflows",
@@ -1367,7 +1442,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -1375,7 +1450,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "[ Config ] Fix image tag typo in docker-compose.yml",
@@ -1458,7 +1538,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "UnsafeLabs",
       "source_focus_score": 129.1,
       "source_rank": 1,
@@ -1466,7 +1546,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 0.22
+      "expected_value": 0.13,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
@@ -1547,7 +1632,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Claude Builders",
       "source_focus_score": 65.5,
       "source_rank": 2,
@@ -1555,7 +1640,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 11.14
+      "expected_value": 6.68,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "[BOUNTY $25] AGENT: Create a `CLAUDE.md` at the repo root.",
@@ -1634,7 +1724,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "Claude Builders",
       "source_focus_score": 65.5,
       "source_rank": 2,
@@ -1642,7 +1732,12 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 55,
-      "expected_value": 5.57
+      "expected_value": 3.34,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     },
     {
       "title": "[Hacktoberfest] Create a Custom n8n Node for APort Verification",
@@ -1725,7 +1820,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 03:28 AM Pacific",
+      "last_verified": "2026-07-24 04:04 AM Pacific",
       "source": "APort",
       "source_focus_score": 64.0,
       "source_rank": 3,
@@ -1733,10 +1828,15 @@
       "competition_score": 100,
       "clarity_score": 50,
       "effort_risk": 65,
-      "expected_value": 9.42
+      "expected_value": 5.65,
+      "payer_classification": "UNVERIFIED_PAYER",
+      "payer_stars": "★☆☆☆☆",
+      "payer_multiplier": 0.6,
+      "historical_acceptance_percentage": 0.0,
+      "historical_payment_percentage": 0.0
     }
   ],
-  "last_updated": "2026-07-24 03:28 AM Pacific",
+  "last_updated": "2026-07-24 04:04 AM Pacific",
   "source_performance": {
     "zhangjiayang6835-cyber": {
       "found": 4,

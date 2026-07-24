@@ -630,11 +630,9 @@
     "title": "Add is-hangul-jamo-chitueumcieuc-present API utility",
     "reward": 50.0,
     "worker": "Atlas 2",
-    "reserved_at": "2026-07-24T10:28:29.063840+00:00",
-    "reserved_at_ts": 1784888947.932037,
-    "workflow_run_id": "30086280267",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T11:04:02.687881+00:00",
+    "reserved_at_ts": 1784891082.1127925,
+    "workflow_run_id": "30088295002"
   },
   "zhangjiayang6835-cyber/bounty-plaza#686": {
     "state": "submitted",
@@ -734,11 +732,9 @@
     "title": "Add is-hangul-jamo-choseong-filler-present API utility",
     "reward": 50.0,
     "worker": "Atlas 1",
-    "reserved_at": "2026-07-24T10:28:29.063840+00:00",
-    "reserved_at_ts": 1784888947.9320195,
-    "workflow_run_id": "30086280267",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T11:04:02.687881+00:00",
+    "reserved_at_ts": 1784891082.112775,
+    "workflow_run_id": "30088295002"
   },
   "xevrion-v2/agent-playground#8631": {
     "state": "submitted",

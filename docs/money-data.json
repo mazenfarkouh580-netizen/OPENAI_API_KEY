@@ -46,6 +46,20 @@
       "reward": 0.0
     }
   ],
-  "generated_at": "2026-07-24 03:28 AM Pacific",
+  "generated_at": "2026-07-24 04:04 AM Pacific",
+  "pipeline_counts": {
+    "open_prs": 0,
+    "awaiting_review": 0,
+    "approved": 0,
+    "rejected": 0,
+    "paid": 0,
+    "submitted": 0,
+    "assigned": 2
+  },
+  "open_prs": 0,
+  "awaiting_review": 0,
+  "approved_count": 0,
+  "rejected_count": 0,
+  "paid_count": 0,
   "cash_rule": "Pipeline amounts are not cash; cash received requires documented payment"
 }

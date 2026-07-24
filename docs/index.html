@@ -39,6 +39,14 @@
       <div class="card"><div class="value" id="payment_pending">$0.00</div><div class="name">Payment Pending</div></div>
       <div class="card cash"><div class="value" id="cash_received">$0.00</div><div class="name">Verified Cash Received</div></div>
     </section>
+    <h2>Live PR Counts</h2>
+    <section class="grid">
+      <div class="card"><div class="value" id="open_prs">0</div><div class="name">Open PRs</div></div>
+      <div class="card"><div class="value" id="awaiting_review">0</div><div class="name">Awaiting Review</div></div>
+      <div class="card"><div class="value" id="approved_count">0</div><div class="name">Approved</div></div>
+      <div class="card"><div class="value" id="rejected_count">0</div><div class="name">Rejected</div></div>
+      <div class="card cash"><div class="value" id="paid_count">0</div><div class="name">Paid</div></div>
+    </section>
     <h2>Atlas Workers</h2>
     <section class="worker-grid" id="workers"><div class='worker-card'><strong>Atlas 1</strong><span class='worker-status'>ASSIGNED</span><div class='worker-money'>$50.00</div><div class='worker-task'>xevrion-v2/agent-playground#8632</div></div><div class='worker-card'><strong>Atlas 2</strong><span class='worker-status'>ASSIGNED</span><div class='worker-money'>$50.00</div><div class='worker-task'>xevrion-v2/agent-playground#8599</div></div><div class='worker-card'><strong>Atlas 3</strong><span class='worker-status'>IDLE</span><div class='worker-money'>$0.00</div><div class='worker-task'></div></div><div class='worker-card'><strong>Atlas 4</strong><span class='worker-status'>IDLE</span><div class='worker-money'>$0.00</div><div class='worker-task'></div></div><div class='worker-card'><strong>Atlas 5</strong><span class='worker-status'>IDLE</span><div class='worker-money'>$0.00</div><div class='worker-task'></div></div></section>
     <h2>Verified Cash Periods</h2>
@@ -65,6 +73,7 @@
           const node = document.getElementById(key);
           if (node) node.textContent = money(data[key]);
         }
+        for (const key of ['open_prs','awaiting_review','approved_count','rejected_count','paid_count']) { const node = document.getElementById(key); if (node) node.textContent = Number(data[key] || 0).toLocaleString(); }
         document.getElementById('workers').innerHTML = (data.workers || []).map(workerCard).join('');
         document.getElementById('note').textContent = 'Pipeline is not cash · Updated ' + (data.generated_at || 'recently');
       } catch (error) { document.getElementById('note').textContent = 'Refresh failed; retrying automatically.'; }
