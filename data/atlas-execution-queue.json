@@ -1,8 +1,79 @@
 {
   "version": "V48",
-  "generated_at": "2026-07-24 02:22 AM Pacific",
+  "generated_at": "2026-07-24 02:37 AM Pacific",
   "automatic_execution": true,
   "workers_requested": 5,
-  "tasks_dispatched": 0,
-  "tasks": []
+  "tasks_dispatched": 5,
+  "tasks": [
+    {
+      "worker": "Atlas 1",
+      "task_sequence": 1,
+      "repository": "xevrion-v2/agent-playground",
+      "issue_number": 8617,
+      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8617",
+      "title": "Add is-hangul-jamo-ssanghieuh-present API utility",
+      "reward": 50.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "xevrion-v2/agent-playground#8617",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-24T09:37:08.113605+00:00"
+    },
+    {
+      "worker": "Atlas 2",
+      "task_sequence": 2,
+      "repository": "xevrion-v2/agent-playground",
+      "issue_number": 8616,
+      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8616",
+      "title": "Add is-hangul-jamo-kapyeounphieuph-present API utility",
+      "reward": 50.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "xevrion-v2/agent-playground#8616",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-24T09:37:08.113605+00:00"
+    },
+    {
+      "worker": "Atlas 3",
+      "task_sequence": 3,
+      "repository": "xevrion-v2/agent-playground",
+      "issue_number": 8615,
+      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8615",
+      "title": "Add is-hangul-jamo-ceongchieumchieuch-present API utility",
+      "reward": 50.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "xevrion-v2/agent-playground#8615",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-24T09:37:08.113605+00:00"
+    },
+    {
+      "worker": "Atlas 4",
+      "task_sequence": 4,
+      "repository": "xevrion-v2/agent-playground",
+      "issue_number": 8614,
+      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8614",
+      "title": "Add is-hangul-jamo-chitueumchieuch-present API utility",
+      "reward": 50.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "xevrion-v2/agent-playground#8614",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-24T09:37:08.113605+00:00"
+    },
+    {
+      "worker": "Atlas 5",
+      "task_sequence": 5,
+      "repository": "xevrion-v2/agent-playground",
+      "issue_number": 8613,
+      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8613",
+      "title": "Add is-hangul-jamo-chieuch-hieuh-present API utility",
+      "reward": 50.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "xevrion-v2/agent-playground#8613",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-24T09:37:08.113605+00:00"
+    }
+  ]
 }
