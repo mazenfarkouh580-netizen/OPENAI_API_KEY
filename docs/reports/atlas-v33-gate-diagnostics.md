@@ -1,6 +1,6 @@
 # Atlas + Alex V51 Gate Diagnostics
 
-Generated: 2026-07-24 12:44 PM Pacific
+Generated: 2026-07-24 12:54 PM Pacific
 
 ## Decision Counts
 
@@ -227,17 +227,6 @@ Generated: 2026-07-24 12:44 PM Pacific
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/587
 
-### zhangjiayang6835-cyber/bounty-plaza #681
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $100.00
-- Payment: FIAT METHOD MENTIONED - FUNDING/TIMING NOT PROVEN
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/681
-
 ### zhangjiayang6835-cyber/bounty-plaza #649
 - Decision: REJECT
 - Gate: CRYPTO OR WALLET PAYMENT - BLOCKED
@@ -259,6 +248,17 @@ Generated: 2026-07-24 12:44 PM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/674
+
+### zhangjiayang6835-cyber/bounty-plaza #681
+- Decision: WATCHLIST
+- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
+- Reward: $100.00
+- Payment: FIAT METHOD MENTIONED - FUNDING/TIMING NOT PROVEN
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: False
+- Atlas executable: False
+- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/681
 
 ### zhangjiayang6835-cyber/bounty-plaza #690
 - Decision: WATCHLIST
