@@ -2,356 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
-  <meta
-    http-equiv="refresh"
-    content="900"
-  >
-  <title>
-    Atlas + Alex Opportunity Hunter V46
-  </title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>Atlas ATM</title>
   <style>
-    :root {
-      color-scheme: light dark;
-    }
-
-    body {
-      font-family:
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      max-width: 1500px;
-      margin: auto;
-      padding: 20px;
-      line-height: 1.45;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns:
-        repeat(
-          auto-fit,
-          minmax(150px, 1fr)
-        );
-      gap: 12px;
-      margin: 18px 0;
-    }
-
-    .card {
-      border: 1px solid #8885;
-      border-radius: 12px;
-      padding: 14px;
-    }
-
-    .value {
-      font-size: 1.7rem;
-      font-weight: 750;
-    }
-
-    .warning {
-      background: #fff3cd;
-      color: #3d3300;
-      padding: 14px;
-      border-radius: 10px;
-    }
-
-    .status {
-      font-weight: 800;
-    }
-
-    .table-wrap {
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 1150px;
-    }
-
-    th,
-    td {
-      border: 1px solid #8885;
-      padding: 9px;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    th {
-      position: sticky;
-      top: 0;
-      background: Canvas;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 4px 8px;
-      border-radius: 999px;
-      font-weight: 750;
-    }
-
-    .pursue {
-      background: #d1e7dd;
-      color: #0f5132;
-    }
-
-    .review {
-      background: #cff4fc;
-      color: #055160;
-    }
-
-    .watch {
-      background: #fff3cd;
-      color: #664d03;
-    }
-
-    .reject {
-      background: #f8d7da;
-      color: #842029;
-    }
-
-    .small {
-      font-size: .85rem;
-      opacity: .78;
-      margin-top: 4px;
-    }
-
-    a {
-      overflow-wrap: anywhere;
-    }
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body { margin:0; min-height:100vh; padding:18px; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; background:#080c11; color:#f4f7fb; }
+    main { width:min(1100px,100%); margin:auto; }
+    h1 { text-align:center; margin:0 0 6px; font-size:1.2rem; letter-spacing:.12em; }
+    h2 { margin:26px 0 10px; font-size:1rem; }
+    .subtitle { text-align:center; opacity:.68; margin-bottom:18px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(175px,1fr)); gap:12px; }
+    .card,.worker-card { padding:18px; border:1px solid #303945; border-radius:16px; background:#111821; }
+    .value { font-size:clamp(1.7rem,5vw,3rem); font-weight:850; }
+    .name { margin-top:5px; opacity:.72; }
+    .pipeline .card:first-child,.pipeline .card:nth-child(2) { border-color:#6b5d24; }
+    .cash { border-color:#275f42 !important; }
+    .worker-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; }
+    .worker-card { position:relative; min-height:140px; }
+    .worker-status { float:right; font-size:.75rem; opacity:.7; }
+    .worker-money { font-size:1.9rem; font-weight:850; margin-top:18px; }
+    .worker-task { margin-top:8px; opacity:.7; overflow-wrap:anywhere; font-size:.82rem; }
+    .note { margin-top:18px; text-align:center; opacity:.62; font-size:.84rem; }
   </style>
 </head>
 <body>
-  <h1>
-    Atlas + Alex Opportunity Hunter V46
-  </h1>
-
-  <p>
-    <strong>Owner:</strong>
-    Mazen Farkouh
-  </p>
-
-  <p>
-    <strong>Last scan:</strong>
-    2026-07-23 10:33 PM Pacific
-  </p>
-
-  <p>
-    <strong>System status:</strong>
-    <span class="status">
-      HEALTHY_WITH_WARNINGS
-    </span>
-  </p>
-
-  <div class="warning">
-    Autonomous execution enabled. Individual task failures are isolated. Atlas continues processing other opportunities when one repository is skipped or fails.
-  </div>
-
-  <div class="grid">
-    <div class="card">
-      <div class="value">
-        2476
-      </div>
-      <div>Raw Issues</div>
-    </div>
-
-    <div class="card">
-      <div class="value">
-        176
-      </div>
-      <div>Eligible Candidates</div>
-    </div>
-
-    <div class="card">
-      <div class="value">31</div>
-      <div>Atlas Searches</div>
-    </div>
-
-    <div class="card">
-      <div class="value">0</div>
-      <div>Alex Searches</div>
-    </div>
-
-    <div class="card">
-      <div class="value">1877</div>
-      <div>Atlas Fresh Discoveries</div>
-    </div>
-
-    <div class="card">
-      <div class="value">0</div>
-      <div>Alex Fresh Discoveries</div>
-    </div>
-
-    <div class="card">
-      <div class="value">
-        30
-      </div>
-      <div>Fast Verified</div>
-    </div>
-
-    <div class="card">
-      <div class="value">
-        30
-      </div>
-      <div>Pursue</div>
-    </div>
-
-    <div class="card">
-      <div class="value">
-        0
-      </div>
-      <div>Priority Review</div>
-    </div>
-
-    <div class="card">
-      <div class="value">
-        0
-      </div>
-      <div>Contested</div>
-    </div>
-
-    <div class="card">
-      <div class="value">
-        0
-      </div>
-      <div>Assigned</div>
-    </div>
-
-    <div class="card">
-      <div class="value">
-        30
-      </div>
-      <div>Strong Uncontested</div>
-    </div>
-  </div>
-
-  <h2>Prototype Small-Reward Validation — Atlas + Alex</h2>
-  <div class="note">
-    <strong>Important:</strong> Reward is the advertised payment.
-    Expected Value is a risk-adjusted estimate and is not the amount paid.
-    Execution is allowed only when the individual issue shows explicit
-    funding or escrow, a normal fiat payment method, fast-payment timing,
-    a clear claim path, and no active competition. Platform names and
-    payment promises alone remain Watchlist and are not worked.
-  </div>
-
-  <div class="grid">
-    <div class="card"><div class="value">30</div><div>Total Verified $0.10–$100</div></div>
-    <div class="card"><div class="value">30</div><div>Atlas Small Rewards</div></div>
-    <div class="card"><div class="value">0</div><div>Alex Small Rewards</div></div>
-    <div class="card"><div class="value">30</div><div>Prototype-Payment Ready</div></div>
-    <div class="card"><div class="value">0</div><div>Automatically Trusted Sources</div></div>
-    <div class="card"><div class="value">0</div><div>Actual Rewards $0.10–$4.99</div></div>
-    <div class="card"><div class="value">ACHIEVED</div><div>At Least 2 Prototype-Qualified Samples Per Run</div></div>
-  </div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Hunter</th>
-          <th>Decision</th>
-          <th>Reward</th>
-          <th>Claimable</th>
-          <th>Payment Proof</th>
-          <th>Executable</th>
-          <th>Opportunity</th>
-          <th>Remaining Blockers</th>
-        </tr>
-      </thead>
-      <tbody><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/aporthq/aport-integrations/issues/4'>[Hacktoberfest] Create a Custom n8n Node for APort Verification</a></td><td class='small'>Issue may be stale; Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/tailcallhq/tailcall/issues/3551'>Re: Bounty #272 — Reimplement analyze.sh in JS (graphql-benchmarks archived)</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8144'>Add is-halfwidth-katakana-letter-small-i-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8145'>Add is-halfwidth-katakana-letter-small-e-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8146'>Add is-halfwidth-katakana-letter-small-o-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8147'>Add is-halfwidth-katakana-letter-small-ya-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8148'>Add is-halfwidth-katakana-letter-small-yu-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8154'>Add is-halfwidth-katakana-letter-small-yo-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8155'>Add is-halfwidth-katakana-letter-small-tu-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8474'>Add is-hangul-jamo-yesieung-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8473'>Add is-hangul-jamo-ieung-phieuph-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8472'>Add is-hangul-jamo-ieung-thieuth-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8156'>Add is-halfwidth-katakana-prolonged-sound-mark-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8157'>Add is-halfwidth-katakana-letter-ka-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8158'>Add is-halfwidth-katakana-letter-ki-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8164'>Add is-halfwidth-katakana-letter-ku-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8165'>Add is-halfwidth-katakana-letter-ke-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8166'>Add is-halfwidth-katakana-letter-ko-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8167'>Add is-halfwidth-katakana-letter-sa-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8168'>Add is-halfwidth-katakana-letter-si-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8177'>Add is-halfwidth-katakana-letter-su-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8178'>Add is-halfwidth-katakana-letter-se-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8179'>Add is-halfwidth-katakana-letter-so-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8180'>Add is-halfwidth-katakana-letter-ta-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8181'>Add is-halfwidth-katakana-letter-ti-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8187'>Add is-halfwidth-katakana-letter-te-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8188'>Add is-halfwidth-katakana-letter-to-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8189'>Add is-halfwidth-katakana-letter-na-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$50.00</td><td>Yes</td><td>No</td><td>Yes</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8190'>Add is-halfwidth-katakana-letter-ni-present API utility</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td>Atlas</td><td><span class='badge review'>PURSUE</span></td><td>$10.00</td><td>No</td><td>No</td><td>Yes</td><td><a href='https://github.com/Saiaaax/CyberNinja-Dojo/issues/10'>[$10 BOUNTY] [TypeScript] Add telemetry batch flush threshold tests</a></td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr></tbody>
-    </table>
-  </div>
-
-  <h2>Money</h2>
-  <p><a href="money.html"><strong>Open permanent MONEY MADE window</strong></a></p>
-  <div class="grid">
-    <div class="card"><div class="value">$0.00</div><div>Today</div></div>
-    <div class="card"><div class="value">$0.00</div><div>This Week</div></div>
-    <div class="card"><div class="value">$0.00</div><div>This Month</div></div>
-    <div class="card"><div class="value">$0.00</div><div>This Year</div></div>
-    <div class="card"><div class="value">$0.00</div><div>Lifetime</div></div>
-    <div class="card"><div class="value">$0.00</div><div>Waiting Total</div></div>
-    <div class="card"><div class="value">$0.00</div><div>Waiting Today</div></div>
-    <div class="card"><div class="value">$0.00</div><div>Waiting Later</div></div>
-    <div class="card"><div class="value">$0.00</div><div>Overdue</div></div>
-  </div>
-
-  <h2>Year Allocation</h2>
-  <div class="grid">
-    <div class="card"><div class="value">$0.00</div><div>Tax (25%)</div></div>
-    <div class="card"><div class="value">$0.00</div><div>Reinvesting (25%)</div></div>
-    <div class="card"><div class="value">$0.00</div><div>Mazen (50%)</div></div>
-    <div class="card"><div class="value">HEALTHY_WITH_WARNINGS</div><div>Dr. Alex Status</div></div>
-  </div>
-
-  <p><a href="reports/latest.html">Open printable report</a> · <a href="reports/latest.csv">Download CSV report</a></p>
-
-  <h2>Execution Queue</h2>
-  <div class="table-wrap"><table><thead><tr><th>#</th><th>Decision</th><th>Expected Value</th><th>Payment Confidence</th><th>Competition Advantage</th><th>Opportunity</th></tr></thead><tbody><tr><td>1</td><td><span class='badge pursue'>PURSUE</span></td><td>$11.14</td><td>49%</td><td>100%</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8144' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-i-present API utility</a></td></tr><tr><td>2</td><td><span class='badge pursue'>PURSUE</span></td><td>$11.14</td><td>49%</td><td>100%</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8145' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-e-present API utility</a></td></tr><tr><td>3</td><td><span class='badge pursue'>PURSUE</span></td><td>$11.14</td><td>49%</td><td>100%</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8146' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-o-present API utility</a></td></tr><tr><td>4</td><td><span class='badge pursue'>PURSUE</span></td><td>$11.14</td><td>49%</td><td>100%</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8147' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-ya-present API utility</a></td></tr><tr><td>5</td><td><span class='badge pursue'>PURSUE</span></td><td>$11.14</td><td>49%</td><td>100%</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8148' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-yu-present API utility</a></td></tr><tr><td>6</td><td><span class='badge pursue'>PURSUE</span></td><td>$11.14</td><td>49%</td><td>100%</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8154' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-yo-present API utility</a></td></tr><tr><td>7</td><td><span class='badge pursue'>PURSUE</span></td><td>$11.14</td><td>49%</td><td>100%</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8155' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-tu-present API utility</a></td></tr><tr><td>8</td><td><span class='badge pursue'>PURSUE</span></td><td>$11.14</td><td>49%</td><td>100%</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8474' target='_blank' rel='noopener'>Add is-hangul-jamo-yesieung-present API utility</a></td></tr><tr><td>9</td><td><span class='badge pursue'>PURSUE</span></td><td>$11.14</td><td>49%</td><td>100%</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8473' target='_blank' rel='noopener'>Add is-hangul-jamo-ieung-phieuph-present API utility</a></td></tr><tr><td>10</td><td><span class='badge pursue'>PURSUE</span></td><td>$11.14</td><td>49%</td><td>100%</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8472' target='_blank' rel='noopener'>Add is-hangul-jamo-ieung-thieuth-present API utility</a></td></tr><tr><td>11</td><td><span class='badge pursue'>PURSUE</span></td><td>$11.14</td><td>49%</td><td>100%</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8156' target='_blank' rel='noopener'>Add is-halfwidth-katakana-prolonged-sound-mark-present API utility</a></td></tr><tr><td>12</td><td><span class='badge pursue'>PURSUE</span></td><td>$11.14</td><td>49%</td><td>100%</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8157' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-ka-present API utility</a></td></tr></tbody></table></div>
-
-  <h2>Payment Timing</h2>
-  <div class="table-wrap"><table><thead><tr><th>Payment</th><th>Amount</th><th>Expected</th><th>Timing</th></tr></thead><tbody><tr><td colspan='4'>No pending payments recorded.</td></tr></tbody></table></div>
-
-  <h2>Opportunity History</h2>
-  <div class="grid">
-    <div class="card"><div class="value">0</div><div>New This Run</div></div>
-    <div class="card"><div class="value">30</div><div>Still Active</div></div>
-    <div class="card"><div class="value">0</div><div>Status Changed</div></div>
-    <div class="card"><div class="value">0</div><div>Not Reverified This Run</div></div>
-  </div>
-  <p class="small">
-    “Not reverified” does not mean closed. It means the candidate was outside this run’s API-safe verification queue.
-  </p>
-
-  <h2>Meaningful Changes</h2>
-
-  <ul>
-    <li>No meaningful changes detected in verified candidates.</li>
-  </ul>
-
-  <h2>Top Verified Candidates</h2>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Decision</th>
-          <th>Score</th>
-          <th>Reward</th>
-          <th>Opportunity</th>
-          <th>Availability</th>
-          <th>Open PRs</th>
-          <th>Assignees</th>
-          <th>Change</th>
-          <th>First Seen</th>
-          <th>Last Verified</th>
-          <th>Main Risks</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr><td><span class='badge pursue'>PURSUE</span></td><td>100</td><td>$50.00</td><td><a href='https://github.com/aporthq/aport-integrations/issues/4' target='_blank' rel='noopener'>[Hacktoberfest] Create a Custom n8n Node for APort Verification</a><div class='small'>aporthq/aport-integrations #4</div></td><td>SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED</td><td>0</td><td>None</td><td>UNCHANGED</td><td class='small'>2026-07-21 03:13 AM Pacific</td><td class='small'>2026-07-23 10:33 PM Pacific</td><td class='small'>Issue may be stale; Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td><span class='badge pursue'>PURSUE</span></td><td>100</td><td>$50.00</td><td><a href='https://github.com/tailcallhq/tailcall/issues/3551' target='_blank' rel='noopener'>Re: Bounty #272 — Reimplement analyze.sh in JS (graphql-benchmarks archived)</a><div class='small'>tailcallhq/tailcall #3551</div></td><td>SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED</td><td>0</td><td>None</td><td>UNCHANGED</td><td class='small'>2026-07-23 08:23 PM Pacific</td><td class='small'>2026-07-23 10:33 PM Pacific</td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td><span class='badge pursue'>PURSUE</span></td><td>100</td><td>$50.00</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8144' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-i-present API utility</a><div class='small'>xevrion-v2/agent-playground #8144</div></td><td>SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED</td><td>0</td><td>None</td><td>UNCHANGED</td><td class='small'>2026-07-23 09:29 PM Pacific</td><td class='small'>2026-07-23 10:33 PM Pacific</td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td><span class='badge pursue'>PURSUE</span></td><td>100</td><td>$50.00</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8145' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-e-present API utility</a><div class='small'>xevrion-v2/agent-playground #8145</div></td><td>SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED</td><td>0</td><td>None</td><td>UNCHANGED</td><td class='small'>2026-07-23 09:29 PM Pacific</td><td class='small'>2026-07-23 10:33 PM Pacific</td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td><span class='badge pursue'>PURSUE</span></td><td>100</td><td>$50.00</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8146' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-o-present API utility</a><div class='small'>xevrion-v2/agent-playground #8146</div></td><td>SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED</td><td>0</td><td>None</td><td>UNCHANGED</td><td class='small'>2026-07-23 09:29 PM Pacific</td><td class='small'>2026-07-23 10:33 PM Pacific</td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td><span class='badge pursue'>PURSUE</span></td><td>100</td><td>$50.00</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8147' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-ya-present API utility</a><div class='small'>xevrion-v2/agent-playground #8147</div></td><td>SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED</td><td>0</td><td>None</td><td>UNCHANGED</td><td class='small'>2026-07-23 09:29 PM Pacific</td><td class='small'>2026-07-23 10:33 PM Pacific</td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td><span class='badge pursue'>PURSUE</span></td><td>100</td><td>$50.00</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8148' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-yu-present API utility</a><div class='small'>xevrion-v2/agent-playground #8148</div></td><td>SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED</td><td>0</td><td>None</td><td>UNCHANGED</td><td class='small'>2026-07-23 09:29 PM Pacific</td><td class='small'>2026-07-23 10:33 PM Pacific</td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td><span class='badge pursue'>PURSUE</span></td><td>100</td><td>$50.00</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8154' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-yo-present API utility</a><div class='small'>xevrion-v2/agent-playground #8154</div></td><td>SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED</td><td>0</td><td>None</td><td>UNCHANGED</td><td class='small'>2026-07-23 09:29 PM Pacific</td><td class='small'>2026-07-23 10:33 PM Pacific</td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td><span class='badge pursue'>PURSUE</span></td><td>100</td><td>$50.00</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8155' target='_blank' rel='noopener'>Add is-halfwidth-katakana-letter-small-tu-present API utility</a><div class='small'>xevrion-v2/agent-playground #8155</div></td><td>SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED</td><td>0</td><td>None</td><td>UNCHANGED</td><td class='small'>2026-07-23 09:29 PM Pacific</td><td class='small'>2026-07-23 10:33 PM Pacific</td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td><span class='badge pursue'>PURSUE</span></td><td>100</td><td>$50.00</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8474' target='_blank' rel='noopener'>Add is-hangul-jamo-yesieung-present API utility</a><div class='small'>xevrion-v2/agent-playground #8474</div></td><td>SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED</td><td>0</td><td>None</td><td>UNCHANGED</td><td class='small'>2026-07-23 08:23 PM Pacific</td><td class='small'>2026-07-23 10:33 PM Pacific</td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td><span class='badge pursue'>PURSUE</span></td><td>100</td><td>$50.00</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8473' target='_blank' rel='noopener'>Add is-hangul-jamo-ieung-phieuph-present API utility</a><div class='small'>xevrion-v2/agent-playground #8473</div></td><td>SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED</td><td>0</td><td>None</td><td>UNCHANGED</td><td class='small'>2026-07-23 08:23 PM Pacific</td><td class='small'>2026-07-23 10:33 PM Pacific</td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr><tr><td><span class='badge pursue'>PURSUE</span></td><td>100</td><td>$50.00</td><td><a href='https://github.com/xevrion-v2/agent-playground/issues/8472' target='_blank' rel='noopener'>Add is-hangul-jamo-ieung-thieuth-present API utility</a><div class='small'>xevrion-v2/agent-playground #8472</div></td><td>SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED</td><td>0</td><td>None</td><td>UNCHANGED</td><td class='small'>2026-07-23 08:23 PM Pacific</td><td class='small'>2026-07-23 10:33 PM Pacific</td><td class='small'>Payment unverified; risk accepted under small-reward prototype law</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2>API Errors</h2>
-
-  <ul>
-    <li>HTTP 403: {
-	&quot;message&quot;: &quot;API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID B845:BEF8B:AAB94:25A915:6A62F94F and timestamp 2026-07-24 05:34:07 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Servic</li><li>Alex completed zero search queries after automatic retry</li>
-  </ul>
-
-  <p class="small">
-    V33 runs two independent search universes on every
-    run and keeps a discovery cache so temporary API limits do not erase
-    sources. Up to 30 candidates receive a fast technical and competition check, with reserved capacity for small rewards from both workers. Small-reward PURSUE does not require deep payment proof; it requires an open task, no active competition, repository integrity, and work Atlas can realistically execute. The page refreshes every
-    15 minutes.
-  </p>
+  <main>
+    <h1>ATLAS ATM</h1>
+    <div class="subtitle">Live opportunity pipeline and verified cash</div>
+    <section class="grid pipeline">
+      <div class="card"><div class="value" id="potential">$1,460.00</div><div class="name">Potential — Pursue Queue</div></div>
+      <div class="card"><div class="value" id="assigned">$1,000.00</div><div class="name">Assigned to Atlas</div></div>
+      <div class="card"><div class="value" id="submitted">$0.00</div><div class="name">Submitted</div></div>
+      <div class="card"><div class="value" id="approved">$0.00</div><div class="name">Approved / Merged</div></div>
+      <div class="card"><div class="value" id="payment_pending">$0.00</div><div class="name">Payment Pending</div></div>
+      <div class="card cash"><div class="value" id="cash_received">$0.00</div><div class="name">Verified Cash Received</div></div>
+    </section>
+    <h2>Atlas Workers</h2>
+    <section class="worker-grid" id="workers"><div class='worker-card'><strong>Atlas 1</strong><span class='worker-status'>ASSIGNED</span><div class='worker-money'>$50.00</div><div class='worker-task'>xevrion-v2/agent-playground#8144</div></div><div class='worker-card'><strong>Atlas 2</strong><span class='worker-status'>ASSIGNED</span><div class='worker-money'>$50.00</div><div class='worker-task'>xevrion-v2/agent-playground#8145</div></div><div class='worker-card'><strong>Atlas 3</strong><span class='worker-status'>ASSIGNED</span><div class='worker-money'>$50.00</div><div class='worker-task'>xevrion-v2/agent-playground#8146</div></div><div class='worker-card'><strong>Atlas 4</strong><span class='worker-status'>ASSIGNED</span><div class='worker-money'>$50.00</div><div class='worker-task'>xevrion-v2/agent-playground#8147</div></div><div class='worker-card'><strong>Atlas 5</strong><span class='worker-status'>ASSIGNED</span><div class='worker-money'>$50.00</div><div class='worker-task'>xevrion-v2/agent-playground#8148</div></div></section>
+    <h2>Verified Cash Periods</h2>
+    <section class="grid">
+      <div class="card"><div class="value" id="today">$0.00</div><div class="name">Today</div></div>
+      <div class="card"><div class="value" id="week">$0.00</div><div class="name">This Week</div></div>
+      <div class="card"><div class="value" id="month">$0.00</div><div class="name">This Month</div></div>
+      <div class="card"><div class="value" id="year">$0.00</div><div class="name">This Year</div></div>
+    </section>
+    <div class="note" id="note">Pipeline values are opportunities, not received money.</div>
+  </main>
+  <script>
+    const money = value => '$' + Number(value || 0).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+    function workerCard(item) {
+      const issue = item.issue_number ? '#' + item.issue_number : '';
+      return '<div class="worker-card"><strong>' + item.worker + '</strong><span class="worker-status">' + item.status + '</span><div class="worker-money">' + money(item.reward) + '</div><div class="worker-task">' + (item.repository || '') + issue + '</div></div>';
+    }
+    async function refreshMoney() {
+      try {
+        const response = await fetch('money-data.json?t=' + Date.now(), {cache:'no-store'});
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        const data = await response.json();
+        for (const key of ['potential','assigned','submitted','approved','payment_pending','cash_received','today','week','month','year']) {
+          const node = document.getElementById(key);
+          if (node) node.textContent = money(data[key]);
+        }
+        document.getElementById('workers').innerHTML = (data.workers || []).map(workerCard).join('');
+        document.getElementById('note').textContent = 'Pipeline is not cash · Updated ' + (data.generated_at || 'recently');
+      } catch (error) { document.getElementById('note').textContent = 'Refresh failed; retrying automatically.'; }
+    }
+    refreshMoney(); setInterval(refreshMoney, 900000);
+    window.addEventListener('focus', refreshMoney);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshMoney(); });
+  </script>
 </body>
 </html>

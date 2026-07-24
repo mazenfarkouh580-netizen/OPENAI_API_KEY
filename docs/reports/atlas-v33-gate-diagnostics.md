@@ -1,6 +1,6 @@
 # Atlas + Alex V41 Gate Diagnostics
 
-Generated: 2026-07-23 10:33 PM Pacific
+Generated: 2026-07-23 10:52 PM Pacific
 
 ## Decision Counts
 
@@ -25,17 +25,6 @@ Generated: 2026-07-23 10:33 PM Pacific
 - Quick-win risk accepted: True
 - Atlas executable: True
 - URL: https://github.com/aporthq/aport-integrations/issues/4
-
-### tailcallhq/tailcall #3551
-- Decision: PURSUE
-- Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
-- Reward: $50.00
-- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: True
-- Quick-win risk accepted: True
-- Atlas executable: True
-- URL: https://github.com/tailcallhq/tailcall/issues/3551
 
 ### xevrion-v2/agent-playground #8144
 - Decision: PURSUE
@@ -113,39 +102,6 @@ Generated: 2026-07-23 10:33 PM Pacific
 - Quick-win risk accepted: True
 - Atlas executable: True
 - URL: https://github.com/xevrion-v2/agent-playground/issues/8155
-
-### xevrion-v2/agent-playground #8474
-- Decision: PURSUE
-- Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
-- Reward: $50.00
-- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: True
-- Quick-win risk accepted: True
-- Atlas executable: True
-- URL: https://github.com/xevrion-v2/agent-playground/issues/8474
-
-### xevrion-v2/agent-playground #8473
-- Decision: PURSUE
-- Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
-- Reward: $50.00
-- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: True
-- Quick-win risk accepted: True
-- Atlas executable: True
-- URL: https://github.com/xevrion-v2/agent-playground/issues/8473
-
-### xevrion-v2/agent-playground #8472
-- Decision: PURSUE
-- Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
-- Reward: $50.00
-- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: True
-- Quick-win risk accepted: True
-- Atlas executable: True
-- URL: https://github.com/xevrion-v2/agent-playground/issues/8472
 
 ### xevrion-v2/agent-playground #8156
 - Decision: PURSUE
@@ -333,6 +289,50 @@ Generated: 2026-07-23 10:33 PM Pacific
 - Quick-win risk accepted: True
 - Atlas executable: True
 - URL: https://github.com/xevrion-v2/agent-playground/issues/8190
+
+### xevrion-v2/agent-playground #8191
+- Decision: PURSUE
+- Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
+- Reward: $50.00
+- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: True
+- Quick-win risk accepted: True
+- Atlas executable: True
+- URL: https://github.com/xevrion-v2/agent-playground/issues/8191
+
+### xevrion-v2/agent-playground #8197
+- Decision: PURSUE
+- Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
+- Reward: $50.00
+- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: True
+- Quick-win risk accepted: True
+- Atlas executable: True
+- URL: https://github.com/xevrion-v2/agent-playground/issues/8197
+
+### xevrion-v2/agent-playground #8198
+- Decision: PURSUE
+- Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
+- Reward: $50.00
+- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: True
+- Quick-win risk accepted: True
+- Atlas executable: True
+- URL: https://github.com/xevrion-v2/agent-playground/issues/8198
+
+### xevrion-v2/agent-playground #8199
+- Decision: PURSUE
+- Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
+- Reward: $50.00
+- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: True
+- Quick-win risk accepted: True
+- Atlas executable: True
+- URL: https://github.com/xevrion-v2/agent-playground/issues/8199
 
 ### Saiaaax/CyberNinja-Dojo #10
 - Decision: PURSUE
