@@ -1,7 +1,7 @@
-name: Atlas + Alex V50 — Immutable ATM Deployment Repair
+name: Atlas + Alex V52 — Runtime, Worker, and Pages Repair
 
 run-name: >-
-  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V50 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V50 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V50 Watchdog Recovery' || format('Atlas V50 Manual — {0}', github.event.inputs.execution_mode) }}
+  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V52 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V52 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V52 Watchdog Recovery' || format('Atlas V52 Manual — {0}', github.event.inputs.execution_mode) }}
 
 on:
   workflow_dispatch:
@@ -118,13 +118,6 @@ jobs:
               'is:issue is:open label:"help wanted" "$" in:body',
               'is:issue is:open label:"good first issue" bounty in:title,body',
               'is:issue is:open label:"good first issue" reward in:title,body',
-
-              # Algora discovery only. These signals increase visibility but never
-              # prove reservation, acceptance, or payment by themselves.
-              'is:issue is:open algora bounty in:title,body',
-              'is:issue is:open "@algora" in:title,body',
-              'is:issue is:open "algora bot" in:title,body',
-              'is:issue is:open "pay on merge" algora in:title,body',
 
               # Simple AI, automation, and agent opportunities.
               'is:issue is:open AI bounty in:title,body',
@@ -353,12 +346,23 @@ jobs:
           TRUSTED_PAYOUT_REPOSITORIES = set()
           PAYOUT_PROGRAM_REPOSITORIES = set()
 
-          # Platform references are discovery metadata only. Atlas must still
-          # verify the individual issue's funding, fiat route, timing, claim path,
-          # competition, and acceptance criteria.
-          CONDITIONAL_PLATFORM_SIGNALS = {
-              "algora": ("algora", "@algora", "algora bot", "algora.io"),
+          # Permanently excluded sources. They are rejected before API-heavy
+          # verification, scoring, queueing, dispatch, or dashboard inclusion.
+          BLOCKED_SOURCE_OWNERS = {
+              "unsafelabs",
+              "claude-builders-bounty",
           }
+          BLOCKED_SOURCE_REPOSITORIES = {
+              "unsafelabs/bounty-hunters",
+              "claude-builders-bounty/claude-builders-bounty",
+          }
+          BLOCKED_SOURCE_SIGNALS = {
+              "algora",
+              "@algora",
+              "algora bot",
+              "algora.io",
+          }
+          CONDITIONAL_PLATFORM_SIGNALS = {}
 
           FIAT_PAYMENT_TERMS = [
               "paypal",
@@ -471,7 +475,8 @@ jobs:
               "minimum_reward": 0.10,
               "minimum_payment_confidence": 55,
               "minimum_expected_value": 2,
-              "queue_size": 20,
+              "queue_size": 100,
+              "maximum_tasks_per_run": 100,
               "dashboard_refresh_seconds": 900,
               "tax_percent": 25,
               "reinvest_percent": 25,
@@ -493,6 +498,8 @@ jobs:
           # bounded only by the queue safety cap. Existing saved configurations
           # from older versions must not keep Atlas limited to one worker.
           config["parallel_workers"] = 5
+          config["queue_size"] = max(100, int(config.get("queue_size", 100)))
+          config["maximum_tasks_per_run"] = max(100, int(config.get("maximum_tasks_per_run", 100)))
 
           split_total = sum(float(config.get(key, 0)) for key in (
               "tax_percent", "reinvest_percent", "mazen_percent"
@@ -512,12 +519,12 @@ jobs:
               EARNINGS_FILE.write_text("[]\n", encoding="utf-8")
 
           operations = load_json_file(OPERATIONS_FILE, {
-              "version": "V50",
+              "version": "V51",
               "pipeline": [],
               "last_updated": GENERATED_AT,
           })
           if not isinstance(operations, dict):
-              operations = {"version": "V50", "pipeline": [], "last_updated": GENERATED_AT}
+              operations = {"version": "V51", "pipeline": [], "last_updated": GENERATED_AT}
 
           maintenance = load_json_file(MAINTENANCE_FILE, {
               "doctor": "Dr. Alex",
@@ -713,6 +720,19 @@ jobs:
               )
 
               return repository, number
+
+          def blocked_source(issue):
+              repository, _ = issue_identity(issue)
+              repository_lower = repository.lower()
+              owner = repository_lower.split("/", 1)[0] if repository_lower else ""
+              title = str(issue.get("title") or "").lower()
+              body = str(issue.get("body") or "").lower()
+              combined = f"{title}\n{body}\n{repository_lower}"
+              return bool(
+                  repository_lower in BLOCKED_SOURCE_REPOSITORIES
+                  or owner in BLOCKED_SOURCE_OWNERS
+                  or any(signal in combined for signal in BLOCKED_SOURCE_SIGNALS)
+              )
 
           def title_repository_mismatch(title, repository):
               title_repositories = re.findall(
@@ -1893,7 +1913,7 @@ jobs:
           raw_issues = {
               url: issue
               for url, issue in cached_issues.items()
-              if isinstance(issue, dict)
+              if isinstance(issue, dict) and not blocked_source(issue)
           }
           discovered_by = {
               url: set(workers)
@@ -1929,7 +1949,7 @@ jobs:
                           continue
 
                       issue_url = issue.get("html_url") or ""
-                      if not issue_url:
+                      if not issue_url or blocked_source(issue):
                           continue
 
                       worker_raw_hits[worker_name] += 1
@@ -2036,6 +2056,7 @@ jobs:
 
           initial_candidates = []
           rejected_aggregators = 0
+          rejected_blocked_sources = 0
           rejected_unsafe = 0
           rejected_no_reward = 0
 
@@ -2044,6 +2065,10 @@ jobs:
               body = issue.get("body") or ""
               text = f"{title}\n{body}"
               lowered = text.lower()
+
+              if blocked_source(issue):
+                  rejected_blocked_sources += 1
+                  continue
 
               if is_aggregator(
                   issue,
@@ -2457,7 +2482,7 @@ jobs:
               gate_counts[gate] = gate_counts.get(gate, 0) + 1
 
           diagnostic_lines = [
-              "# Atlas + Alex V50 Gate Diagnostics",
+              "# Atlas + Alex V51 Gate Diagnostics",
               "",
               f"Generated: {GENERATED_AT}",
               "",
@@ -2695,10 +2720,6 @@ jobs:
               lowered = (str(item.get("title") or "") + " " + repo).lower()
               if "opire" in lowered or "paid pr" in lowered:
                   return "Opire"
-              if "unsafe" in lowered or "bounty-hunters" in lowered:
-                  return "UnsafeLabs"
-              if "claude-builders-bounty" in lowered:
-                  return "Claude Builders"
               if "aport" in lowered:
                   return "APort"
               if "xevrion" in lowered:
@@ -2830,7 +2851,7 @@ jobs:
           )
           execution_queue = execution_queue[:int(config.get("queue_size", 20))]
 
-          operations["version"] = "V50"
+          operations["version"] = "V51"
           operations["last_updated"] = GENERATED_AT
           operations["pipeline"] = execution_queue
           operations["source_performance"] = source_performance
@@ -2882,17 +2903,21 @@ jobs:
           )
 
           selected_executions = []
-          repository_dispatch_counts = {}
-          # Five execution lanes share one qualification/rule engine.
-          # Alex remains the single controller, monitor, repair, and payment-confirmation system.
-          # A single repository may occupy at most five slots per run. This prevents one
-          # broken test harness or duplicate bounty family from consuming the entire queue.
+          # Five Atlas lanes are concurrency, not a five-task quota. Every eligible
+          # task is queued and GitHub keeps at most five running simultaneously.
           worker_names = ["Atlas 1", "Atlas 2", "Atlas 3", "Atlas 4", "Atlas 5"]
+          safe_test = os.environ.get("REQUESTED_EXECUTION_MODE", "scan_only") == "safe_test"
+          dispatch_limit = 1 if safe_test else int(config.get("maximum_tasks_per_run", 100))
           for item in executable_candidates:
+              if len(selected_executions) >= dispatch_limit:
+                  break
               repository = item.get("repository") or ""
-              if not repository:
-                  continue
-              if repository_dispatch_counts.get(repository, 0) >= 5:
+              if not repository or blocked_source({
+                  "repository_url": f"https://api.github.com/repos/{repository}",
+                  "title": item.get("title") or "",
+                  "body": "",
+                  "number": item.get("issue_number") or 0,
+              }):
                   continue
               task_sequence = len(selected_executions) + 1
               worker = worker_names[(task_sequence - 1) % len(worker_names)]
@@ -2910,7 +2935,6 @@ jobs:
                   "status": "DISPATCHED",
                   "reserved_at": NOW.isoformat(),
               })
-              repository_dispatch_counts[repository] = repository_dispatch_counts.get(repository, 0) + 1
               submissions_history[execution_key(item)] = {
                   "state": "reserved",
                   "repository": repository,
@@ -2923,17 +2947,6 @@ jobs:
                   "reserved_at_ts": time.time(),
                   "workflow_run_id": os.environ.get("GITHUB_RUN_ID", ""),
               }
-              # Safe test remains one local task. Production supplies up to five tasks
-              # per worker lane. Repositories may supply multiple distinct qualified issues.
-              # GitHub's max-parallel=5 keeps five live slots and automatically starts the
-              # next queued task whenever one finishes, skips, or fails.
-              dispatch_limit = (
-                  1
-                  if os.environ.get("REQUESTED_EXECUTION_MODE", "scan_only") == "safe_test"
-                  else int(config.get("parallel_workers", 5)) * 5
-              )
-              if len(selected_executions) >= dispatch_limit:
-                  break
 
           SUBMISSIONS_FILE.write_text(
               json.dumps(submissions_history, indent=2, ensure_ascii=False),
@@ -2942,7 +2955,7 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V50",
+                  "version": "V51",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": 5,
@@ -3022,7 +3035,7 @@ jobs:
           ALERTS_FILE.write_text(json.dumps(alerts, indent=2), encoding="utf-8")
 
           payload = {
-              "version": "V50",
+              "version": "V51",
               "owner": "Mazen Farkouh",
               "generated_at": GENERATED_AT,
               "config": config,
@@ -3083,7 +3096,7 @@ jobs:
           WORKER_HEALTH_FILE.write_text(
               json.dumps(
                   {
-                      "version": "V50",
+                      "version": "V51",
                       "last_completed_at": NOW.isoformat(),
                       "last_completed_display": GENERATED_AT,
                       "trigger": os.environ.get("GITHUB_EVENT_NAME", "unknown"),
@@ -3664,10 +3677,10 @@ jobs:
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
                   "<title>\n              Atlas + Alex Opportunity Hunter V50\n            </title>",
-                  "<title>Atlas V50 Status Window</title>",
+                  "<title>Atlas V52 Status Window</title>",
               ).replace(
                   "Atlas + Alex Opportunity Hunter V50",
-                  "Atlas V50 Status Window",
+                  "Atlas V52 Status Window",
                   1,
               ),
               encoding="utf-8",
@@ -3730,7 +3743,7 @@ jobs:
               else:
                   stage = state.upper() if state else "FOUND"
               normalized_pipeline.append({**record, "submission_key": key, "stage": stage, "current_status": state, "last_synced_at": record.get("confirmed_at") or record.get("submitted_at") or GENERATED_AT})
-          PIPELINE_FILE.write_text(json.dumps({"version": "V50", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
+          PIPELINE_FILE.write_text(json.dumps({"version": "V51", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
           def record_value(record):
               try:
                   return float(record.get("reward", record.get("amount", 0)) or 0)
@@ -3905,7 +3918,7 @@ jobs:
               f"<tr><td>{i}</td><td>{html.escape(item['decision'])}</td><td>${item['reward']:,.2f}</td><td>${item['expected_value']:,.2f}</td><td>{html.escape(item['title'])}</td></tr>"
               for i, item in enumerate(execution_queue, 1)
           )
-          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V50 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V50 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
+          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V51 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V50 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
           (REPORTS_DIR / "latest.html").write_text(report_html, encoding="utf-8")
           csv_lines = ["rank,decision,reward,expected_value,payment_confidence,competition_advantage,title,url"]
           for i, item in enumerate(execution_queue, 1):
@@ -4044,7 +4057,7 @@ jobs:
                   )
 
           print(
-              f"Atlas + Alex V50 status={status}; "
+              f"Atlas + Alex V51 status={status}; "
               f"checked {len(raw_issues)} "
               "raw issues; "
               f"found {len(initial_candidates)} "
@@ -4066,12 +4079,12 @@ jobs:
 
           if searches_completed == 0:
               raise SystemExit(
-                  "Atlas + Alex V50 could not complete "
+                  "Atlas + Alex V51 could not complete "
                   "any GitHub search query."
               )
           PY
 
-      - name: Save Atlas + Alex V50 results
+      - name: Save Atlas + Alex V51 results
         if: >-
           ${{ github.event_name != 'workflow_dispatch' ||
               github.event.inputs.execution_mode != 'safe_test' }}
@@ -4119,7 +4132,7 @@ jobs:
             fi
 
             git commit \
-              -m "Atlas + Alex V50 opportunity scan"
+              -m "Atlas + Alex V51 opportunity scan"
 
             if git push origin "HEAD:$BRANCH_NAME"
             then
@@ -4135,7 +4148,7 @@ jobs:
           exit 1
 
       - name: Freeze this run's exact ATM site
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: atlas-atm-site-${{ github.run_id }}-${{ github.run_attempt }}
           path: docs
@@ -4424,7 +4437,8 @@ jobs:
           echo "reason=Baseline passed" >> "$GITHUB_OUTPUT"
       - name: Implement the issue
         id: implement
-        if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true'
+        continue-on-error: true
+        if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true' && steps.install_agent.outcome == 'success'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GH_TOKEN: ${{ secrets.ATLAS_GITHUB_PAT }}
@@ -4548,11 +4562,22 @@ jobs:
 
           mapfile -t aider_files < "$RUNNER_TEMP/atlas-aider-files.txt"
 
+          if command -v aider >/dev/null 2>&1; then
+            AIDER_COMMAND=(aider)
+          elif python -m aider --version >/dev/null 2>&1; then
+            AIDER_COMMAND=(python -m aider)
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "reason=aider_command_unavailable_after_install" >> "$GITHUB_OUTPUT"
+            echo "Task skipped safely because the execution agent was unavailable after installation." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
           run_agent() {
             local model="$1"
             local message="$2"
             shift 2
-            timeout --signal=TERM --kill-after=30s 20m aider \
+            timeout --signal=TERM --kill-after=30s 20m "${AIDER_COMMAND[@]}" \
               --model "$model" \
               --yes-always \
               --no-auto-commits \
@@ -4581,7 +4606,13 @@ jobs:
             rm -f .aider.chat.history.md .aider.input.history .aider.tags.cache.v* 2>/dev/null || true
 
             retry_message="You are ${WORKER}. Complete GitHub issue #${ISSUE_NUMBER}: ${ISSUE_TITLE} now. Read the full issue context. The repository may intentionally be empty except for documentation. You are explicitly authorized to CREATE a complete minimal implementation and tests from scratch. Infer sensible filenames and project structure from the issue requirements. Do not respond by asking for source files. Produce working files, tests, and concise usage documentation. Do not commit or push."
+            set +e
             run_agent "gpt-4.1" "$retry_message"
+            retry_status=$?
+            set -e
+            if [ "$retry_status" -ne 0 ]; then
+              echo "Second implementation attempt exited with status $retry_status; checking whether a usable change was still produced."
+            fi
           fi
 
           # Remove local-only context and any Aider housekeeping before validation.
@@ -4592,16 +4623,20 @@ jobs:
           git ls-files --others --exclude-standard -z | xargs -0 -r git add -N --
           meaningful="$(git diff --name-only | grep -Ev '^(\.gitignore|\.atlas/)' || true)"
           if [ -z "$meaningful" ]; then
-            echo "Agent produced no meaningful implementation after the build-from-scratch retry."
-            exit 1
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "reason=agent_produced_no_meaningful_change" >> "$GITHUB_OUTPUT"
+            echo "Agent produced no meaningful implementation after both attempts; task was skipped safely." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
           fi
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+          echo "reason=meaningful_change_produced" >> "$GITHUB_OUTPUT"
           echo "Meaningful implementation files produced:"
           printf '%s\n' "$meaningful"
 
       - name: Validate change without secrets
         id: validate_change
         continue-on-error: true
-        if: steps.credentials.outputs.ready == 'true' && steps.prepare.outcome == 'success' && steps.baseline.outputs.ready == 'true' && steps.implement.outcome == 'success'
+        if: steps.credentials.outputs.ready == 'true' && steps.prepare.outcome == 'success' && steps.baseline.outputs.ready == 'true' && steps.implement.outcome == 'success' && steps.implement.outputs.ready == 'true'
         working-directory: ${{ runner.temp }}/atlas-work/worktree
         env:
           OPENAI_API_KEY: ""
@@ -4683,7 +4718,7 @@ jobs:
 
       - name: Upload safe-test review package
         if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode == 'safe_test'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: atlas-safe-test-${{ matrix.worker }}-${{ matrix.issue_number }}
           path: ${{ runner.temp }}/atlas-review/
@@ -4693,7 +4728,7 @@ jobs:
       - name: Commit, push, and open pull request
         id: submit_pr
         continue-on-error: true
-        if: steps.credentials.outputs.ready == 'true' && steps.prepare.outcome == 'success' && steps.baseline.outputs.ready == 'true' && steps.implement.outcome == 'success' && steps.validate_change.outcome == 'success' && (github.event_name != 'workflow_dispatch' || github.event.inputs.execution_mode == 'submit')
+        if: steps.credentials.outputs.ready == 'true' && steps.prepare.outcome == 'success' && steps.baseline.outputs.ready == 'true' && steps.implement.outcome == 'success' && steps.implement.outputs.ready == 'true' && steps.validate_change.outcome == 'success' && (github.event_name != 'workflow_dispatch' || github.event.inputs.execution_mode == 'submit')
         env:
           GH_TOKEN: ${{ secrets.ATLAS_GITHUB_PAT }}
           REPOSITORY: ${{ matrix.repository }}
@@ -5354,7 +5389,7 @@ jobs:
     timeout-minutes: 12
     concurrency:
       group: atlas-atm-pages-deployment
-      cancel-in-progress: true
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -5365,7 +5400,7 @@ jobs:
       actions: read
     steps:
       - name: Download this run's frozen ATM site
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: atlas-atm-site-${{ github.run_id }}-${{ github.run_attempt }}
           path: docs
@@ -5379,16 +5414,70 @@ jobs:
           echo "Frozen ATM artifact verified for run ${GITHUB_RUN_ID}."
 
       - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Upload this run's frozen ATM site to Pages
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: docs
 
-      - name: Publish immutable ATM site
+      - name: Publish immutable ATM site — attempt 1
+        id: deployment_1
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          timeout: 600000
+          error_count: 20
+          reporting_interval: 5000
+
+      - name: Wait for earlier Pages deployment to clear
+        if: steps.deployment_1.outcome != 'success'
+        run: |
+          echo "A previous Pages deployment is still active. Waiting before retry."
+          sleep 75
+
+      - name: Publish immutable ATM site — attempt 2
+        id: deployment_2
+        if: steps.deployment_1.outcome != 'success'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          timeout: 600000
+          error_count: 20
+          reporting_interval: 5000
+
+      - name: Wait once more for Pages deployment lock
+        if: steps.deployment_1.outcome != 'success' && steps.deployment_2.outcome != 'success'
+        run: sleep 90
+
+      - name: Publish immutable ATM site — attempt 3
+        id: deployment_3
+        if: steps.deployment_1.outcome != 'success' && steps.deployment_2.outcome != 'success'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          timeout: 600000
+          error_count: 20
+          reporting_interval: 5000
+
+      - name: Resolve Pages deployment result
         id: deployment
-        uses: actions/deploy-pages@v4
+        env:
+          URL_1: ${{ steps.deployment_1.outputs.page_url }}
+          URL_2: ${{ steps.deployment_2.outputs.page_url }}
+          URL_3: ${{ steps.deployment_3.outputs.page_url }}
+          OUTCOME_1: ${{ steps.deployment_1.outcome }}
+          OUTCOME_2: ${{ steps.deployment_2.outcome }}
+          OUTCOME_3: ${{ steps.deployment_3.outcome }}
+        run: |
+          set -euo pipefail
+          page_url="${URL_1:-${URL_2:-${URL_3:-}}}"
+          if [ -z "$page_url" ]; then
+            echo "All three Pages deployment attempts failed after serialized waits." >&2
+            exit 1
+          fi
+          echo "page_url=$page_url" >> "$GITHUB_OUTPUT"
+          echo "Pages deployment completed successfully: $page_url" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Verify published homepage is Atlas ATM
         env:
@@ -5435,7 +5524,7 @@ jobs:
         run: |
           set -euo pipefail
           {
-            echo "## Atlas + Alex V50 Workflow Health"
+            echo "## Atlas + Alex V51 Workflow Health"
             echo "- Hunt job: ${HUNT_RESULT}"
             echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
             echo "- Execution ready: ${EXECUTION_READY:-false}"
@@ -5469,7 +5558,7 @@ jobs:
             echo "Payment follow-up had a non-critical warning; production work remains healthy." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          echo "Atlas + Alex V50 completed: only passing submissions are persisted; task failures are isolated."
+          echo "Atlas + Alex V51 completed: only passing submissions are persisted; task failures are isolated."
 
   watchdog:
     if: >-
@@ -5497,7 +5586,7 @@ jobs:
           workflow_id="${workflow_id%@*}"
           last_success="$(
             gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=50" \
-              --jq '[.workflow_runs[] | select(.display_title == "Atlas V50 Main Production" or .display_title == "Atlas V50 Watchdog Recovery")][0].updated_at // empty' \
+              --jq '[.workflow_runs[] | select(.display_title == "Atlas V52 Main Production" or .display_title == "Atlas V52 Watchdog Recovery")][0].updated_at // empty' \
               2>/dev/null || true
           )"
 
