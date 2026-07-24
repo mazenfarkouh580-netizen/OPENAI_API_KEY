@@ -1,4 +1,4 @@
-name: Atlas + Alex V46 — Five-Worker Field Test
+name: Atlas + Alex V47 — Five-Worker Field Test
 
 run-name: >-
   ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V46 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V46 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V46 Watchdog Recovery' || format('Atlas V46 Manual — {0}', github.event.inputs.execution_mode) }}
@@ -91,9 +91,9 @@ jobs:
           HISTORY_FILE = DATA_DIR / "opportunity-history.json"
           CANDIDATE_LIFECYCLE_FILE = DATA_DIR / "candidate-lifecycle.json"
           DISCOVERY_CACHE_FILE = DATA_DIR / "discovery-cache.json"
-          DASHBOARD_FILE = DOCS_DIR / "index.html"
+          DASHBOARD_FILE = DOCS_DIR / "report.html"
           STATUS_WINDOW_FILE = DOCS_DIR / "status.html"
-          MONEY_WINDOW_FILE = DOCS_DIR / "money.html"
+          MONEY_WINDOW_FILE = DOCS_DIR / "index.html"
           MONEY_DATA_FILE = DOCS_DIR / "money-data.json"
           CONFIG_FILE = DATA_DIR / "atlas-config.json"
           OPERATIONS_FILE = DATA_DIR / "atlas-operations.json"
@@ -2787,14 +2787,13 @@ jobs:
               reverse=True,
           )
 
-          reserved_repositories = set()
           selected_executions = []
           # Five execution lanes share one qualification/rule engine.
           # Alex remains the single controller, monitor, repair, and payment-confirmation system.
           worker_names = ["Atlas 1", "Atlas 2", "Atlas 3", "Atlas 4", "Atlas 5"]
           for item in executable_candidates:
               repository = item.get("repository") or ""
-              if not repository or repository in reserved_repositories:
+              if not repository:
                   continue
               task_sequence = len(selected_executions) + 1
               worker = worker_names[(task_sequence - 1) % len(worker_names)]
@@ -2824,10 +2823,10 @@ jobs:
                   "reserved_at_ts": time.time(),
                   "workflow_run_id": os.environ.get("GITHUB_RUN_ID", ""),
               }
-              reserved_repositories.add(repository)
               # Safe test remains one local task. Production supplies up to five tasks
-              # per worker lane. GitHub's max-parallel=5 keeps five live slots and
-              # automatically starts the next queued task whenever one finishes or fails.
+              # per worker lane. Repositories may supply multiple distinct qualified issues.
+              # GitHub's max-parallel=5 keeps five live slots and automatically starts the
+              # next queued task whenever one finishes, skips, or fails.
               dispatch_limit = (
                   1
                   if os.environ.get("REQUESTED_EXECUTION_MODE", "scan_only") == "safe_test"
@@ -2843,7 +2842,7 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V46",
+                  "version": "V47",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": 5,
@@ -3213,7 +3212,7 @@ jobs:
               content="{int(config.get('dashboard_refresh_seconds', 900))}"
             >
             <title>
-              Atlas + Alex Opportunity Hunter V46
+              Atlas + Alex Opportunity Hunter V47
             </title>
             <style>
               :root {{
@@ -3330,7 +3329,7 @@ jobs:
           </head>
           <body>
             <h1>
-              Atlas + Alex Opportunity Hunter V46
+              Atlas + Alex Opportunity Hunter V47
             </h1>
 
             <p>
@@ -3470,7 +3469,7 @@ jobs:
             </div>
 
             <h2>Money</h2>
-            <p><a href="money.html"><strong>Open permanent MONEY MADE window</strong></a></p>
+            <p><a href="index.html"><strong>Open permanent MONEY MADE window</strong></a></p>
             <div class="grid">
               <div class="card"><div class="value">${earnings['today']:,.2f}</div><div>Today</div></div>
               <div class="card"><div class="value">${earnings['week']:,.2f}</div><div>This Week</div></div>
@@ -3564,10 +3563,10 @@ jobs:
           )
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
-                  "<title>\n              Atlas + Alex Opportunity Hunter V46\n            </title>",
+                  "<title>\n              Atlas + Alex Opportunity Hunter V47\n            </title>",
                   "<title>Atlas V46 Status Window</title>",
               ).replace(
-                  "Atlas + Alex Opportunity Hunter V46",
+                  "Atlas + Alex Opportunity Hunter V47",
                   "Atlas V46 Status Window",
                   1,
               ),
@@ -3746,7 +3745,7 @@ jobs:
               f"<tr><td>{i}</td><td>{html.escape(item['decision'])}</td><td>${item['reward']:,.2f}</td><td>${item['expected_value']:,.2f}</td><td>{html.escape(item['title'])}</td></tr>"
               for i, item in enumerate(execution_queue, 1)
           )
-          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V28 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V46 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
+          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V28 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V47 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
           (REPORTS_DIR / "latest.html").write_text(report_html, encoding="utf-8")
           csv_lines = ["rank,decision,reward,expected_value,payment_confidence,competition_advantage,title,url"]
           for i, item in enumerate(execution_queue, 1):
@@ -3758,14 +3757,14 @@ jobs:
               ]))
           (REPORTS_DIR / "latest.csv").write_text("\n".join(csv_lines) + "\n", encoding="utf-8")
           (REPORTS_DIR / "latest.txt").write_text(
-              "Atlas + Alex Opportunity Hunter V46\n" +
+              "Atlas + Alex Opportunity Hunter V47\n" +
               f"Generated: {GENERATED_AT}\nStatus: {status}\n" +
               f"Today: ${earnings['today']:,.2f}\nWeek: ${earnings['week']:,.2f}\nMonth: ${earnings['month']:,.2f}\nYear: ${earnings['year']:,.2f}\nLifetime: ${earnings['lifetime']:,.2f}\n",
               encoding="utf-8",
           )
 
           summary_lines = [
-              "# Atlas + Alex Opportunity Hunter V46",
+              "# Atlas + Alex Opportunity Hunter V47",
               "",
               (
                   f"- System status: "
@@ -3885,7 +3884,7 @@ jobs:
                   )
 
           print(
-              f"Atlas + Alex V46 status={status}; "
+              f"Atlas + Alex V47 status={status}; "
               f"checked {len(raw_issues)} "
               "raw issues; "
               f"found {len(initial_candidates)} "
@@ -3907,7 +3906,7 @@ jobs:
 
           if searches_completed == 0:
               raise SystemExit(
-                  "Atlas + Alex V46 could not complete "
+                  "Atlas + Alex V47 could not complete "
                   "any GitHub search query."
               )
           PY
@@ -3960,7 +3959,7 @@ jobs:
             fi
 
             git commit \
-              -m "Atlas + Alex V46 opportunity scan"
+              -m "Atlas + Alex V47 opportunity scan"
 
             if git push origin "HEAD:$BRANCH_NAME"
             then
@@ -4000,17 +3999,18 @@ jobs:
           except json.JSONDecodeError:
               matrix = {"include": []}
           tasks = matrix.get("include", []) if isinstance(matrix, dict) else []
-          task = next((item for item in tasks if item.get("worker") == worker), None)
+          worker_tasks = [item for item in tasks if item.get("worker") == worker]
+          task = worker_tasks[0] if worker_tasks else None
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
               summary.write(f"## {worker}\n\n")
               if task:
-                  summary.write(f"- Status: **QUEUED / ACTIVE FIELD-TEST TASK**\n")
-                  summary.write(f"- Repository: `{task.get('repository','')}`\n")
-                  summary.write(f"- Issue: #{task.get('issue_number','')}\n")
-                  summary.write(f"- Reward: ${float(task.get('reward',0) or 0):.2f}\n")
-                  summary.write(f"- Score: {task.get('score',0)}\n")
+                  summary.write(f"- Status: **ACTIVE — {len(worker_tasks)} qualified task(s) queued**\n")
+                  summary.write(f"- First repository: `{task.get('repository','')}`\n")
+                  summary.write(f"- First issue: #{task.get('issue_number','')}\n")
+                  summary.write(f"- First reward: ${float(task.get('reward',0) or 0):.2f}\n")
+                  summary.write(f"- First score: {task.get('score',0)}\n")
               else:
-                  summary.write("- Status: **IDLE — no qualified replacement task available**\n")
+                  summary.write("- Status: **IDLE — no qualified task available**\n")
           PY
 
   execute:
@@ -4231,11 +4231,13 @@ jobs:
             echo "No supported baseline test command detected; diff validation will be used after editing."
           fi
 
-          if ! git diff --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
-            baseline_reason="Baseline setup modified repository files"
-            baseline_status=1
-          elif [ "$baseline_status" -ne 0 ]; then
+          # Dependency installation may legitimately update a lockfile or create local
+          # caches. Those setup-only changes are not an Atlas implementation failure.
+          # The checkout is restored immediately below before any issue work begins.
+          if [ "$baseline_status" -ne 0 ]; then
             baseline_reason="Untouched repository baseline did not pass"
+          elif ! git diff --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+            echo "Baseline setup created local dependency changes; restoring the clean checkout before implementation."
           fi
 
           # Always restore the untouched checkout. A rejected individual task is
@@ -5140,7 +5142,7 @@ jobs:
     timeout-minutes: 10
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}status.html
+      url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       contents: read
       pages: write
@@ -5186,7 +5188,7 @@ jobs:
         run: |
           set -euo pipefail
           {
-            echo "## Atlas + Alex V46 Workflow Health"
+            echo "## Atlas + Alex V47 Workflow Health"
             echo "- Hunt job: ${HUNT_RESULT}"
             echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
             echo "- Execution ready: ${EXECUTION_READY:-false}"
@@ -5220,7 +5222,7 @@ jobs:
             echo "Payment follow-up had a non-critical warning; production work remains healthy." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          echo "Atlas + Alex V46 completed: only passing submissions are persisted; task failures are isolated."
+          echo "Atlas + Alex V47 completed: only passing submissions are persisted; task failures are isolated."
 
   watchdog:
     if: >-
