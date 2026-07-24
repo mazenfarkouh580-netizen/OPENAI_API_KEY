@@ -24,7 +24,9 @@
     "worker": "Atlas 2",
     "reserved_at": "2026-07-24T07:13:48.970880+00:00",
     "reserved_at_ts": 1784877268.9092712,
-    "workflow_run_id": "30074762511"
+    "workflow_run_id": "30074762511",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -67,7 +69,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8598",
     "submitted_at": "2026-07-24T07:16:14.043208+00:00",
     "submitted_at_ts": 1784877374.0432203,
-    "workflow_run_id": "30074762511"
+    "workflow_run_id": "30074762511",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "aporthq/aport-integrations#4": {
     "state": "submitted",
@@ -94,7 +98,9 @@
     "worker": "Atlas 3",
     "reserved_at": "2026-07-24T07:13:48.970880+00:00",
     "reserved_at_ts": 1784877268.909282,
-    "workflow_run_id": "30074762511"
+    "workflow_run_id": "30074762511",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -181,7 +187,9 @@
     "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8191",
     "submitted_at": "2026-07-24T07:15:55.565610+00:00",
     "submitted_at_ts": 1784877355.5656247,
-    "workflow_run_id": "30074762511"
+    "workflow_run_id": "30074762511",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "jackjin1997/zeroeye#1": {
     "state": "submitted",
@@ -194,7 +202,9 @@
     "pr_url": "https://github.com/jackjin1997/zeroeye/pull/20",
     "submitted_at": "2026-07-24T07:16:00.650958+00:00",
     "submitted_at_ts": 1784877360.6509736,
-    "workflow_run_id": "30074762511"
+    "workflow_run_id": "30074762511",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8474": {
     "state": "reserved",
@@ -504,7 +514,9 @@
     "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8194",
     "submitted_at": "2026-07-24T07:17:51.090181+00:00",
     "submitted_at_ts": 1784877471.0901928,
-    "workflow_run_id": "30074762511"
+    "workflow_run_id": "30074762511",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "UnsafeLabs/Bounty-Hunters#305": {
     "state": "submitted",
@@ -517,7 +529,9 @@
     "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8193",
     "submitted_at": "2026-07-24T07:17:46.830191+00:00",
     "submitted_at_ts": 1784877466.8302026,
-    "workflow_run_id": "30074762511"
+    "workflow_run_id": "30074762511",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "UnsafeLabs/Bounty-Hunters#312": {
     "state": "submitted",
@@ -530,6 +544,8 @@
     "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8192",
     "submitted_at": "2026-07-24T07:17:40.690888+00:00",
     "submitted_at_ts": 1784877460.690908,
-    "workflow_run_id": "30074762511"
+    "workflow_run_id": "30074762511",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   }
 }
