@@ -183,15 +183,16 @@
     "workflow_run_id": "30074762511"
   },
   "jackjin1997/zeroeye#1": {
-    "state": "reserved",
+    "state": "submitted",
     "repository": "jackjin1997/zeroeye",
     "issue_number": 1,
     "issue_url": "https://github.com/jackjin1997/zeroeye/issues/1",
     "title": "[$30 BOUNTY] [Python] Expand backend API contract edge-case tests",
-    "reward": 30.0,
     "worker": "Atlas 4",
-    "reserved_at": "2026-07-24T07:13:48.970880+00:00",
-    "reserved_at_ts": 1784877268.90929,
+    "reward": 30.0,
+    "pr_url": "https://github.com/jackjin1997/zeroeye/pull/20",
+    "submitted_at": "2026-07-24T07:16:00.650958+00:00",
+    "submitted_at_ts": 1784877360.6509736,
     "workflow_run_id": "30074762511"
   },
   "xevrion-v2/agent-playground#8474": {
