@@ -21,12 +21,10 @@
     "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
-    "worker": "Atlas",
-    "reserved_at": "2026-07-23T23:42:48.006330+00:00",
-    "reserved_at_ts": 1784850203.049006,
-    "workflow_run_id": "30054023555",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas 2",
+    "reserved_at": "2026-07-24T07:13:48.970880+00:00",
+    "reserved_at_ts": 1784877268.9092712,
+    "workflow_run_id": "30074762511"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -65,12 +63,10 @@
     "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/2681",
     "title": "[agent] Document repository GitHub workflows",
     "reward": 50.0,
-    "worker": "Alex",
-    "reserved_at": "2026-07-23T23:42:48.006330+00:00",
-    "reserved_at_ts": 1784850203.0490246,
-    "workflow_run_id": "30054023555",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas 1",
+    "reserved_at": "2026-07-24T07:13:48.970880+00:00",
+    "reserved_at_ts": 1784877268.909253,
+    "workflow_run_id": "30074762511"
   },
   "aporthq/aport-integrations#4": {
     "state": "submitted",
@@ -94,12 +90,10 @@
     "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
     "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
     "reward": 35.0,
-    "worker": "Atlas",
-    "reserved_at": "2026-07-23T23:42:48.006330+00:00",
-    "reserved_at_ts": 1784850203.0490348,
-    "workflow_run_id": "30054023555",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas 3",
+    "reserved_at": "2026-07-24T07:13:48.970880+00:00",
+    "reserved_at_ts": 1784877268.909282,
+    "workflow_run_id": "30074762511"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -182,12 +176,10 @@
     "issue_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/303",
     "title": "[ Docs ] Fix broken markdown table in api-reference.md",
     "reward": 1.0,
-    "worker": "Atlas",
-    "reserved_at": "2026-07-23T23:42:48.006330+00:00",
-    "reserved_at_ts": 1784850203.04905,
-    "workflow_run_id": "30054023555",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas 5",
+    "reserved_at": "2026-07-24T07:13:48.970880+00:00",
+    "reserved_at_ts": 1784877268.909298,
+    "workflow_run_id": "30074762511"
   },
   "jackjin1997/zeroeye#1": {
     "state": "reserved",
@@ -196,12 +188,10 @@
     "issue_url": "https://github.com/jackjin1997/zeroeye/issues/1",
     "title": "[$30 BOUNTY] [Python] Expand backend API contract edge-case tests",
     "reward": 30.0,
-    "worker": "Alex",
-    "reserved_at": "2026-07-23T23:42:48.006330+00:00",
-    "reserved_at_ts": 1784850203.0490425,
-    "workflow_run_id": "30054023555",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas 4",
+    "reserved_at": "2026-07-24T07:13:48.970880+00:00",
+    "reserved_at_ts": 1784877268.90929,
+    "workflow_run_id": "30074762511"
   },
   "xevrion-v2/agent-playground#8474": {
     "state": "reserved",
@@ -499,5 +489,41 @@
     "workflow_run_id": "30070620835",
     "confirmation_state": "unverified",
     "confirmation_reason": "missing_or_invalid_pr_url"
+  },
+  "UnsafeLabs/Bounty-Hunters#309": {
+    "state": "reserved",
+    "repository": "UnsafeLabs/Bounty-Hunters",
+    "issue_number": 309,
+    "issue_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/309",
+    "title": "[ Config ] Fix misspelled database key in app.json",
+    "reward": 1.0,
+    "worker": "Atlas 1",
+    "reserved_at": "2026-07-24T07:13:48.970880+00:00",
+    "reserved_at_ts": 1784877268.909305,
+    "workflow_run_id": "30074762511"
+  },
+  "UnsafeLabs/Bounty-Hunters#305": {
+    "state": "reserved",
+    "repository": "UnsafeLabs/Bounty-Hunters",
+    "issue_number": 305,
+    "issue_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/305",
+    "title": "[ Docs ] Fix missing Step 4 in setup-guide.md",
+    "reward": 1.0,
+    "worker": "Atlas 2",
+    "reserved_at": "2026-07-24T07:13:48.970880+00:00",
+    "reserved_at_ts": 1784877268.909331,
+    "workflow_run_id": "30074762511"
+  },
+  "UnsafeLabs/Bounty-Hunters#312": {
+    "state": "reserved",
+    "repository": "UnsafeLabs/Bounty-Hunters",
+    "issue_number": 312,
+    "issue_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/312",
+    "title": "[ Config ] Fix port mapping in docker-compose.yml",
+    "reward": 1.0,
+    "worker": "Atlas 3",
+    "reserved_at": "2026-07-24T07:13:48.970880+00:00",
+    "reserved_at_ts": 1784877268.909339,
+    "workflow_run_id": "30074762511"
   }
 }
