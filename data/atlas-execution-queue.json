@@ -1,6 +1,6 @@
 {
   "version": "V45",
-  "generated_at": "2026-07-23 08:43 PM Pacific",
+  "generated_at": "2026-07-23 09:29 PM Pacific",
   "automatic_execution": true,
   "workers_requested": 5,
   "tasks_dispatched": 1,
@@ -8,15 +8,15 @@
     {
       "worker": "Atlas 1",
       "repository": "xevrion-v2/agent-playground",
-      "issue_number": 8474,
-      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8474",
-      "title": "Add is-hangul-jamo-yesieung-present API utility",
+      "issue_number": 8144,
+      "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8144",
+      "title": "Add is-halfwidth-katakana-letter-small-i-present API utility",
       "reward": 50.0,
       "score": 100.0,
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
-      "submission_key": "xevrion-v2/agent-playground#8474",
+      "submission_key": "xevrion-v2/agent-playground#8144",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T03:43:04.240893+00:00"
+      "reserved_at": "2026-07-24T04:29:43.787403+00:00"
     }
   ]
 }
