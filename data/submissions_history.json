@@ -57,15 +57,16 @@
     "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#2681": {
-    "state": "reserved",
+    "state": "submitted",
     "repository": "xevrion-v2/agent-playground",
     "issue_number": 2681,
     "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/2681",
     "title": "[agent] Document repository GitHub workflows",
-    "reward": 50.0,
     "worker": "Atlas 1",
-    "reserved_at": "2026-07-24T07:13:48.970880+00:00",
-    "reserved_at_ts": 1784877268.909253,
+    "reward": 50.0,
+    "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8598",
+    "submitted_at": "2026-07-24T07:16:14.043208+00:00",
+    "submitted_at_ts": 1784877374.0432203,
     "workflow_run_id": "30074762511"
   },
   "aporthq/aport-integrations#4": {
