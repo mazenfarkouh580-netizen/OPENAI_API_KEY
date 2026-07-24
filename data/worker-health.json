@@ -1,8 +1,8 @@
 {
-  "version": "V50",
-  "last_completed_at": "2026-07-24T11:19:49.334365+00:00",
-  "last_completed_display": "2026-07-24 04:19 AM Pacific",
-  "trigger": "schedule",
+  "version": "V51",
+  "last_completed_at": "2026-07-24T11:23:24.467417+00:00",
+  "last_completed_display": "2026-07-24 04:23 AM Pacific",
+  "trigger": "workflow_dispatch",
   "status": "HEALTHY_WITH_WARNINGS",
   "target_interval_minutes": 15,
   "atlas_role": "discover and execute first eligible task",

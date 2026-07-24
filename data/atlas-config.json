@@ -2,7 +2,7 @@
   "minimum_reward": 0.1,
   "minimum_payment_confidence": 55,
   "minimum_expected_value": 75,
-  "queue_size": 20,
+  "queue_size": 100,
   "dashboard_refresh_seconds": 900,
   "tax_percent": 25,
   "reinvest_percent": 25,
@@ -10,5 +10,6 @@
   "automatic_execution": true,
   "parallel_workers": 5,
   "maximum_execution_reward": 250,
-  "execution_score_floor": 48
+  "execution_score_floor": 48,
+  "maximum_tasks_per_run": 100
 }

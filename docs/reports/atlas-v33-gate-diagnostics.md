@@ -1,18 +1,18 @@
-# Atlas + Alex V50 Gate Diagnostics
+# Atlas + Alex V51 Gate Diagnostics
 
-Generated: 2026-07-24 04:19 AM Pacific
+Generated: 2026-07-24 04:23 AM Pacific
 
 ## Decision Counts
 
-- PURSUE: 27
+- PURSUE: 25
 - PRIORITY REVIEW: 0
-- WATCHLIST: 3
+- WATCHLIST: 5
 - REJECT: 0
 
 ## Gate Counts
 
-- SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED: 27
-- PAYMENT SPEED OR FUNDING NOT VERIFIED: 3
+- SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED: 25
+- PAYMENT SPEED OR FUNDING NOT VERIFIED: 5
 
 ## Candidate Details
 
@@ -214,7 +214,7 @@ Generated: 2026-07-24 04:19 AM Pacific
 - Atlas executable: True
 - URL: https://github.com/xevrion-v2/agent-playground/issues/2681
 
-### claude-builders-bounty/claude-builders-bounty #1
+### Iamgoofball/-tg-station #49
 - Decision: PURSUE
 - Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
 - Reward: $50.00
@@ -223,7 +223,7 @@ Generated: 2026-07-24 04:19 AM Pacific
 - Claimable: True
 - Quick-win risk accepted: True
 - Atlas executable: True
-- URL: https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1
+- URL: https://github.com/Iamgoofball/-tg-station/issues/49
 
 ### 2lll5/TentOfTrials #1
 - Decision: PURSUE
@@ -258,17 +258,6 @@ Generated: 2026-07-24 04:19 AM Pacific
 - Atlas executable: True
 - URL: https://github.com/jackjin1997/zeroeye/issues/1
 
-### claude-builders-bounty/claude-builders-bounty #2855
-- Decision: PURSUE
-- Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
-- Reward: $25.00
-- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: True
-- Quick-win risk accepted: True
-- Atlas executable: True
-- URL: https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2855
-
 ### Saiaaax/CyberNinja-Dojo #10
 - Decision: PURSUE
 - Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
@@ -290,17 +279,6 @@ Generated: 2026-07-24 04:19 AM Pacific
 - Quick-win risk accepted: True
 - Atlas executable: True
 - URL: https://github.com/Iamgoofball/-tg-station/issues/50
-
-### UnsafeLabs/Bounty-Hunters #310
-- Decision: PURSUE
-- Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
-- Reward: $1.00
-- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: True
-- Quick-win risk accepted: True
-- Atlas executable: True
-- URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/310
 
 ### aporthq/aport-integrations #31
 - Decision: PURSUE
@@ -335,6 +313,17 @@ Generated: 2026-07-24 04:19 AM Pacific
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/619
 
+### zhangjiayang6835-cyber/bounty-plaza #684
+- Decision: WATCHLIST
+- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
+- Reward: $30.00
+- Payment: UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: True
+- Quick-win risk accepted: False
+- Atlas executable: False
+- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/684
+
 ### zhangjiayang6835-cyber/bounty-plaza #607
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
@@ -345,3 +334,14 @@ Generated: 2026-07-24 04:19 AM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/607
+
+### zhangjiayang6835-cyber/bounty-plaza #674
+- Decision: WATCHLIST
+- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
+- Reward: $25.00
+- Payment: UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: True
+- Quick-win risk accepted: False
+- Atlas executable: False
+- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/674

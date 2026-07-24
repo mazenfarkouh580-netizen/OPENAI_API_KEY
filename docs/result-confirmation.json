@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T11:22:45.530409+00:00",
+  "generated_at": "2026-07-24T11:11:20.531146+00:00",
   "truth_rules": {
     "submitted": "GitHub API confirms the PR exists",
     "approved": "GitHub review is APPROVED",
@@ -29,7 +29,7 @@
       "submission_key": "claude-builders-bounty/claude-builders-bounty#1",
       "reward": 50.0,
       "pr_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3580",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -37,7 +37,7 @@
       "submission_key": "Iamgoofball/-tg-station#49",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -45,7 +45,7 @@
       "submission_key": "Iamgoofball/-tg-station#50",
       "reward": 10.0,
       "pr_url": "https://github.com/Iamgoofball/-tg-station/pull/244",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -53,7 +53,7 @@
       "submission_key": "Saiaaax/CyberNinja-Dojo#10",
       "reward": 10.0,
       "pr_url": "https://github.com/Saiaaax/CyberNinja-Dojo/pull/72",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -61,7 +61,7 @@
       "submission_key": "xevrion-v2/agent-playground#2681",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8598",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -69,7 +69,7 @@
       "submission_key": "aporthq/aport-integrations#4",
       "reward": 50.0,
       "pr_url": "https://github.com/aporthq/aport-integrations/pull/124",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -77,7 +77,7 @@
       "submission_key": "cuentaprueba244w-dotcom/TentOfTrials#10",
       "reward": 35.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -85,7 +85,7 @@
       "submission_key": "claude-builders-bounty/claude-builders-bounty#2855",
       "reward": 25.0,
       "pr_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3581",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -93,7 +93,7 @@
       "submission_key": "UnsafeLabs/Bounty-Hunters#310",
       "reward": 1.0,
       "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8186",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -101,7 +101,7 @@
       "submission_key": "xevrion-v2/agent-playground#8345",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -109,7 +109,7 @@
       "submission_key": "UnsafeLabs/Bounty-Hunters#304",
       "reward": 1.0,
       "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8187",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -117,7 +117,7 @@
       "submission_key": "aporthq/aport-integrations#31",
       "reward": 10.0,
       "pr_url": "https://github.com/aporthq/aport-integrations/pull/125",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -125,7 +125,7 @@
       "submission_key": "UnsafeLabs/Bounty-Hunters#303",
       "reward": 1.0,
       "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8191",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -133,7 +133,7 @@
       "submission_key": "jackjin1997/zeroeye#1",
       "reward": 30.0,
       "pr_url": "https://github.com/jackjin1997/zeroeye/pull/20",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -141,7 +141,7 @@
       "submission_key": "xevrion-v2/agent-playground#8474",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -149,7 +149,7 @@
       "submission_key": "xevrion-v2/agent-playground#8144",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8596",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -157,7 +157,7 @@
       "submission_key": "xevrion-v2/agent-playground#8145",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -165,7 +165,7 @@
       "submission_key": "xevrion-v2/agent-playground#8146",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8597",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -173,7 +173,7 @@
       "submission_key": "xevrion-v2/agent-playground#8147",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -181,7 +181,7 @@
       "submission_key": "xevrion-v2/agent-playground#8148",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8595",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -189,7 +189,7 @@
       "submission_key": "xevrion-v2/agent-playground#8154",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -197,7 +197,7 @@
       "submission_key": "xevrion-v2/agent-playground#8155",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -205,7 +205,7 @@
       "submission_key": "xevrion-v2/agent-playground#8156",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -213,7 +213,7 @@
       "submission_key": "xevrion-v2/agent-playground#8157",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -221,7 +221,7 @@
       "submission_key": "xevrion-v2/agent-playground#8158",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -229,7 +229,7 @@
       "submission_key": "xevrion-v2/agent-playground#8164",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -237,7 +237,7 @@
       "submission_key": "xevrion-v2/agent-playground#8165",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -245,7 +245,7 @@
       "submission_key": "xevrion-v2/agent-playground#8166",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -253,7 +253,7 @@
       "submission_key": "xevrion-v2/agent-playground#8167",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -261,7 +261,7 @@
       "submission_key": "xevrion-v2/agent-playground#8168",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -269,7 +269,7 @@
       "submission_key": "xevrion-v2/agent-playground#8177",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -277,7 +277,7 @@
       "submission_key": "xevrion-v2/agent-playground#8178",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -285,7 +285,7 @@
       "submission_key": "xevrion-v2/agent-playground#8179",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -293,7 +293,7 @@
       "submission_key": "xevrion-v2/agent-playground#8180",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -301,7 +301,7 @@
       "submission_key": "xevrion-v2/agent-playground#8181",
       "reward": 50.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -309,7 +309,7 @@
       "submission_key": "UnsafeLabs/Bounty-Hunters#309",
       "reward": 1.0,
       "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8194",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -317,7 +317,7 @@
       "submission_key": "UnsafeLabs/Bounty-Hunters#305",
       "reward": 1.0,
       "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8193",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -325,7 +325,7 @@
       "submission_key": "UnsafeLabs/Bounty-Hunters#312",
       "reward": 1.0,
       "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8192",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -333,7 +333,7 @@
       "submission_key": "2lll5/TentOfTrials#1",
       "reward": 40.0,
       "pr_url": "",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -341,7 +341,7 @@
       "submission_key": "xevrion-v2/agent-playground#8603",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8610",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -349,7 +349,7 @@
       "submission_key": "xevrion-v2/agent-playground#8602",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8612",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -357,7 +357,7 @@
       "submission_key": "xevrion-v2/agent-playground#8601",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8611",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -365,15 +365,15 @@
       "submission_key": "xevrion-v2/agent-playground#8600",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8609",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
     {
       "submission_key": "xevrion-v2/agent-playground#8599",
       "reward": 50.0,
-      "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8643",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "pr_url": "",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -381,7 +381,7 @@
       "submission_key": "zhangjiayang6835-cyber/bounty-plaza#686",
       "reward": 50.0,
       "pr_url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/pull/688",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -389,7 +389,7 @@
       "submission_key": "xevrion-v2/agent-playground#8617",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8626",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -397,7 +397,7 @@
       "submission_key": "xevrion-v2/agent-playground#8616",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8625",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -405,7 +405,7 @@
       "submission_key": "xevrion-v2/agent-playground#8615",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8623",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -413,7 +413,7 @@
       "submission_key": "xevrion-v2/agent-playground#8614",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8624",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -421,15 +421,15 @@
       "submission_key": "xevrion-v2/agent-playground#8613",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8627",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
     {
       "submission_key": "xevrion-v2/agent-playground#8632",
       "reward": 50.0,
-      "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8642",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "pr_url": "",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -437,7 +437,7 @@
       "submission_key": "xevrion-v2/agent-playground#8631",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8638",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -445,7 +445,7 @@
       "submission_key": "xevrion-v2/agent-playground#8630",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8640",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -453,7 +453,7 @@
       "submission_key": "xevrion-v2/agent-playground#8629",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8641",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     },
@@ -461,7 +461,7 @@
       "submission_key": "xevrion-v2/agent-playground#8628",
       "reward": 50.0,
       "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8639",
-      "checked_at": "2026-07-24T11:22:45.530409+00:00",
+      "checked_at": "2026-07-24T11:11:20.531146+00:00",
       "evidence": [],
       "state": "unverified"
     }
