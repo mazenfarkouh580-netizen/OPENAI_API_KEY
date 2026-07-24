@@ -506,15 +506,16 @@
     "workflow_run_id": "30074762511"
   },
   "UnsafeLabs/Bounty-Hunters#305": {
-    "state": "reserved",
+    "state": "submitted",
     "repository": "UnsafeLabs/Bounty-Hunters",
     "issue_number": 305,
     "issue_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/305",
     "title": "[ Docs ] Fix missing Step 4 in setup-guide.md",
-    "reward": 1.0,
     "worker": "Atlas 2",
-    "reserved_at": "2026-07-24T07:13:48.970880+00:00",
-    "reserved_at_ts": 1784877268.909331,
+    "reward": 1.0,
+    "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8193",
+    "submitted_at": "2026-07-24T07:17:46.830191+00:00",
+    "submitted_at_ts": 1784877466.8302026,
     "workflow_run_id": "30074762511"
   },
   "UnsafeLabs/Bounty-Hunters#312": {
