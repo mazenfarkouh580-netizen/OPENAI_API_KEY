@@ -227,6 +227,8 @@
     "worker": "Atlas 1",
     "reserved_at": "2026-07-24T04:29:43.787403+00:00",
     "reserved_at_ts": 1784867420.514378,
-    "workflow_run_id": "30066931173"
+    "workflow_run_id": "30066931173",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   }
 }
