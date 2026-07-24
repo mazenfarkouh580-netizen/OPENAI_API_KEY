@@ -1,7 +1,7 @@
-name: Atlas + Alex V53 — Runtime, Worker, and Pages Repair
+name: Atlas + Alex V55 — Persistent Full Queue
 
 run-name: >-
-  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V53 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V53 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V53 Watchdog Recovery' || format('Atlas V53 Manual — {0}', github.event.inputs.execution_mode) }}
+  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V55 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V55 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V55 Watchdog Recovery' || format('Atlas V55 Manual — {0}', github.event.inputs.execution_mode) }}
 
 on:
   workflow_dispatch:
@@ -26,7 +26,7 @@ on:
 concurrency:
   # Keep production runs serialized, but never make the watchdog wait behind
   # a long execution job. The original single group blocked watchdog recovery.
-  group: ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'atlas-alex-v46-watchdog' || 'atlas-alex-v46-production' }}
+  group: ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'atlas-alex-v55-watchdog' || 'atlas-alex-v55-production' }}
   cancel-in-progress: false
 
 permissions:
@@ -101,7 +101,7 @@ jobs:
           SUBMISSIONS_FILE = DATA_DIR / "submissions_history.json"
           PIPELINE_FILE = DATA_DIR / "atlas-pipeline.json"
           PAYER_INTELLIGENCE_FILE = DATA_DIR / "payer-intelligence.json"
-          RESERVATION_LEASE_SECONDS = 900
+          RESERVATION_LEASE_SECONDS = 60
           MAINTENANCE_FILE = DATA_DIR / "dr-alex-maintenance.json"
           EARNINGS_FILE = DATA_DIR / "earnings-ledger.json"
           ALERTS_FILE = DATA_DIR / "atlas-alerts.json"
@@ -475,16 +475,14 @@ jobs:
               "minimum_reward": 0.10,
               "minimum_payment_confidence": 55,
               "minimum_expected_value": 2,
-              "queue_size": 100,
-              "maximum_tasks_per_run": 100,
+              "queue_size": 200,
+              "maximum_tasks_per_run": 200,
               "dashboard_refresh_seconds": 900,
               "tax_percent": 25,
               "reinvest_percent": 25,
               "mazen_percent": 50,
               "automatic_execution": True,
               "parallel_workers": 5,
-              "maximum_execution_reward": 250,
-              "execution_score_floor": 48,
           }
           config = load_json_file(CONFIG_FILE, default_config)
           for key, value in default_config.items():
@@ -498,8 +496,10 @@ jobs:
           # bounded only by the queue safety cap. Existing saved configurations
           # from older versions must not keep Atlas limited to one worker.
           config["parallel_workers"] = 5
-          config["queue_size"] = max(100, int(config.get("queue_size", 100)))
-          config["maximum_tasks_per_run"] = max(100, int(config.get("maximum_tasks_per_run", 100)))
+          # V55: keep a large persistent backlog. GitHub matrix expansion has a hard
+          # platform ceiling, so 200 leaves safe headroom while allowing 30+ jobs.
+          config["queue_size"] = 200
+          config["maximum_tasks_per_run"] = 200
 
           split_total = sum(float(config.get(key, 0)) for key in (
               "tax_percent", "reinvest_percent", "mazen_percent"
@@ -519,12 +519,12 @@ jobs:
               EARNINGS_FILE.write_text("[]\n", encoding="utf-8")
 
           operations = load_json_file(OPERATIONS_FILE, {
-              "version": "V53",
+              "version": "V55",
               "pipeline": [],
               "last_updated": GENERATED_AT,
           })
           if not isinstance(operations, dict):
-              operations = {"version": "V53", "pipeline": [], "last_updated": GENERATED_AT}
+              operations = {"version": "V55", "pipeline": [], "last_updated": GENERATED_AT}
 
           maintenance = load_json_file(MAINTENANCE_FILE, {
               "doctor": "Dr. Alex",
@@ -2836,22 +2836,53 @@ jobs:
                   return 1
               return 0
 
+          # V55 persistent queue: merge unfinished work from prior runs with all
+          # newly qualified PURSUE opportunities. New scan data replaces stale
+          # metadata for the same repository/issue; terminal records are removed.
+          prior_pipeline = operations.get("pipeline", []) if isinstance(operations, dict) else []
+          if not isinstance(prior_pipeline, list):
+              prior_pipeline = []
+
+          def persistent_key(item):
+              return f"{item.get('repository', '')}#{int(item.get('issue_number') or 0)}"
+
+          terminal_states = {"submitted", "accepted", "merged", "paid", "completed", "rejected", "disqualified"}
+          merged_queue = {}
+          for item in prior_pipeline + execution_queue:
+              if not isinstance(item, dict) or item.get("decision") != "PURSUE":
+                  continue
+              key = persistent_key(item)
+              if key == "#0":
+                  continue
+              state = str(submissions_history.get(key, {}).get("state", "")).lower()
+              if state in terminal_states:
+                  continue
+              existing = merged_queue.get(key, {})
+              combined = dict(existing)
+              combined.update(item)
+              combined["queue_state"] = "WAITING"
+              combined.setdefault("first_queued_at", GENERATED_AT)
+              combined["last_seen_at"] = GENERATED_AT
+              merged_queue[key] = combined
+
+          execution_queue = list(merged_queue.values())
           execution_queue.sort(
               key=lambda x: (
-                  x["decision"] == "PURSUE",
                   bool(x.get("instant_payment_priority")),
                   bool(x.get("fast_pay_candidate")),
                   reward_priority_rank(x),
                   x.get("source_focus_score", 0),
                   x.get("ai_eligibility") == "EXPLICITLY ALLOWED",
-                  x["expected_value"],
+                  x.get("expected_value", 0),
                   x.get("score", 0),
               ),
               reverse=True,
           )
-          execution_queue = execution_queue[:int(config.get("queue_size", 100))]
+          # Do not truncate to 10 or 20. Preserve up to 200 executable jobs so
+          # a run may legitimately contain 30, 50, or more assignments.
+          execution_queue = execution_queue[:200]
 
-          operations["version"] = "V53"
+          operations["version"] = "V55"
           operations["last_updated"] = GENERATED_AT
           operations["pipeline"] = execution_queue
           operations["source_performance"] = source_performance
@@ -2863,29 +2894,30 @@ jobs:
               return f"{item.get('repository', '')}#{int(item.get('issue_number') or 0)}"
 
           def execution_history_allows(item):
+              # Only permanently completed/submitted work is excluded. A reservation
+              # or failed attempt from an older workflow run must never empty the next
+              # production queue. Production runs are serialized by workflow concurrency.
               record = submissions_history.get(execution_key(item), {})
               state = str(record.get("state", "")).lower()
-              if state in {"submitted", "accepted", "paid", "completed"}:
+              if state in {"submitted", "accepted", "merged", "paid", "completed"}:
                   return False
-              if state in {"reserved", "attempted"}:
-                  reserved_at_ts = float(record.get("reserved_at_ts", 0) or 0)
-                  if time.time() - reserved_at_ts < RESERVATION_LEASE_SECONDS:
-                      return False
+              same_run = str(record.get("workflow_run_id", "")) == str(os.environ.get("GITHUB_RUN_ID", ""))
+              if state == "reserved" and same_run:
+                  return False
               return True
 
+          # CEO law: PURSUE is the final dispatch approval. Do not apply a second
+          # reward ceiling, score floor, payer gate, or execution-confidence gate here.
+          # Those decisions already belong in the qualification stage. Keep only
+          # essential duplicate and hard-safety protections at dispatch time.
           executable_candidates = [
               item for item in execution_queue
               if item.get("decision") == "PURSUE"
-              and 0 < float(item.get("reward", 0) or 0) <= float(config.get("maximum_execution_reward", 250))
-              and float(item.get("score", 0) or 0) >= float(config.get("execution_score_floor", 48))
+              and float(item.get("reward", 0) or 0) >= 0.10
               and not item.get("assignees")
               and int(item.get("open_competing_prs", 0) or 0) == 0
               and not item.get("repository_mismatch")
-              and item.get("atlas_can_execute")
               and item.get("ai_eligibility") != "PROHIBITED"
-              # CEO throughput law: a safe PURSUE decision is sufficient for dispatch.
-              # Payment speed and payer history determine queue order, not whether an
-              # otherwise executable opportunity is denied a worker.
               and execution_history_allows(item)
           ]
           executable_candidates.sort(
@@ -2905,7 +2937,7 @@ jobs:
           # next assignment after its mandatory five-minute recovery break.
           worker_names = ["Atlas 1", "Atlas 2", "Atlas 3", "Atlas 4", "Atlas 5"]
           safe_test = os.environ.get("REQUESTED_EXECUTION_MODE", "scan_only") == "safe_test"
-          dispatch_limit = 1 if safe_test else int(config.get("maximum_tasks_per_run", 100))
+          dispatch_limit = 1 if safe_test else 200
           for item in executable_candidates:
               if len(selected_executions) >= dispatch_limit:
                   break
@@ -2953,7 +2985,7 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V53",
+                  "version": "V55",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": 5,
@@ -3033,7 +3065,7 @@ jobs:
           ALERTS_FILE.write_text(json.dumps(alerts, indent=2), encoding="utf-8")
 
           payload = {
-              "version": "V53",
+              "version": "V55",
               "owner": "Mazen Farkouh",
               "generated_at": GENERATED_AT,
               "config": config,
@@ -3094,7 +3126,7 @@ jobs:
           WORKER_HEALTH_FILE.write_text(
               json.dumps(
                   {
-                      "version": "V53",
+                      "version": "V55",
                       "last_completed_at": NOW.isoformat(),
                       "last_completed_display": GENERATED_AT,
                       "trigger": os.environ.get("GITHUB_EVENT_NAME", "unknown"),
@@ -3675,10 +3707,10 @@ jobs:
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
                   "<title>\n              Atlas + Alex Opportunity Hunter V50\n            </title>",
-                  "<title>Atlas V53 Status Window</title>",
+                  "<title>Atlas V55 Status Window</title>",
               ).replace(
                   "Atlas + Alex Opportunity Hunter V50",
-                  "Atlas V53 Status Window",
+                  "Atlas V55 Status Window",
                   1,
               ),
               encoding="utf-8",
@@ -3741,7 +3773,7 @@ jobs:
               else:
                   stage = state.upper() if state else "FOUND"
               normalized_pipeline.append({**record, "submission_key": key, "stage": stage, "current_status": state, "last_synced_at": record.get("confirmed_at") or record.get("submitted_at") or GENERATED_AT})
-          PIPELINE_FILE.write_text(json.dumps({"version": "V53", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
+          PIPELINE_FILE.write_text(json.dumps({"version": "V55", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
           def record_value(record):
               try:
                   return float(record.get("reward", record.get("amount", 0)) or 0)
@@ -4043,6 +4075,9 @@ jobs:
                       + ("true" if selected_executions else "false")
                       + "\n"
                   )
+                  output.write(f"executable_count={len(executable_candidates)}\n")
+                  output.write(f"dispatched_count={len(selected_executions)}\n")
+                  output.write(f"persistent_queue_count={len(execution_queue)}\n")
 
                   output.write(
                       "contested_count="
@@ -4055,7 +4090,7 @@ jobs:
                   )
 
           print(
-              f"Atlas + Alex V51 status={status}; "
+              f"Atlas + Alex V55 status={status}; "
               f"checked {len(raw_issues)} "
               "raw issues; "
               f"found {len(initial_candidates)} "
@@ -5598,7 +5633,7 @@ jobs:
           workflow_id="${workflow_id%@*}"
           last_success="$(
             gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=50" \
-              --jq '[.workflow_runs[] | select(.display_title == "Atlas V53 Main Production" or .display_title == "Atlas V53 Watchdog Recovery")][0].updated_at // empty' \
+              --jq '[.workflow_runs[] | select(.display_title == "Atlas V55 Main Production" or .display_title == "Atlas V55 Watchdog Recovery")][0].updated_at // empty' \
               2>/dev/null || true
           )"
 
