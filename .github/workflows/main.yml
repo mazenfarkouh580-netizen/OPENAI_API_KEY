@@ -1,4 +1,4 @@
-name: Atlas + Alex V47 — Five-Worker Field Test
+name: Atlas + Alex V49 — Immutable ATM Deployment Repair
 
 run-name: >-
   ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V46 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V46 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V46 Watchdog Recovery' || format('Atlas V46 Manual — {0}', github.event.inputs.execution_mode) }}
@@ -2788,12 +2788,17 @@ jobs:
           )
 
           selected_executions = []
+          repository_dispatch_counts = {}
           # Five execution lanes share one qualification/rule engine.
           # Alex remains the single controller, monitor, repair, and payment-confirmation system.
+          # A single repository may occupy at most five slots per run. This prevents one
+          # broken test harness or duplicate bounty family from consuming the entire queue.
           worker_names = ["Atlas 1", "Atlas 2", "Atlas 3", "Atlas 4", "Atlas 5"]
           for item in executable_candidates:
               repository = item.get("repository") or ""
               if not repository:
+                  continue
+              if repository_dispatch_counts.get(repository, 0) >= 5:
                   continue
               task_sequence = len(selected_executions) + 1
               worker = worker_names[(task_sequence - 1) % len(worker_names)]
@@ -2811,6 +2816,7 @@ jobs:
                   "status": "DISPATCHED",
                   "reserved_at": NOW.isoformat(),
               })
+              repository_dispatch_counts[repository] = repository_dispatch_counts.get(repository, 0) + 1
               submissions_history[execution_key(item)] = {
                   "state": "reserved",
                   "repository": repository,
@@ -2842,7 +2848,7 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V47",
+                  "version": "V48",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": 5,
@@ -3212,7 +3218,7 @@ jobs:
               content="{int(config.get('dashboard_refresh_seconds', 900))}"
             >
             <title>
-              Atlas + Alex Opportunity Hunter V47
+              Atlas + Alex Opportunity Hunter V48
             </title>
             <style>
               :root {{
@@ -3329,7 +3335,7 @@ jobs:
           </head>
           <body>
             <h1>
-              Atlas + Alex Opportunity Hunter V47
+              Atlas + Alex Opportunity Hunter V48
             </h1>
 
             <p>
@@ -3563,10 +3569,10 @@ jobs:
           )
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
-                  "<title>\n              Atlas + Alex Opportunity Hunter V47\n            </title>",
+                  "<title>\n              Atlas + Alex Opportunity Hunter V48\n            </title>",
                   "<title>Atlas V46 Status Window</title>",
               ).replace(
-                  "Atlas + Alex Opportunity Hunter V47",
+                  "Atlas + Alex Opportunity Hunter V48",
                   "Atlas V46 Status Window",
                   1,
               ),
@@ -3745,7 +3751,7 @@ jobs:
               f"<tr><td>{i}</td><td>{html.escape(item['decision'])}</td><td>${item['reward']:,.2f}</td><td>${item['expected_value']:,.2f}</td><td>{html.escape(item['title'])}</td></tr>"
               for i, item in enumerate(execution_queue, 1)
           )
-          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V28 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V47 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
+          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V28 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V48 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
           (REPORTS_DIR / "latest.html").write_text(report_html, encoding="utf-8")
           csv_lines = ["rank,decision,reward,expected_value,payment_confidence,competition_advantage,title,url"]
           for i, item in enumerate(execution_queue, 1):
@@ -3757,14 +3763,14 @@ jobs:
               ]))
           (REPORTS_DIR / "latest.csv").write_text("\n".join(csv_lines) + "\n", encoding="utf-8")
           (REPORTS_DIR / "latest.txt").write_text(
-              "Atlas + Alex Opportunity Hunter V47\n" +
+              "Atlas + Alex Opportunity Hunter V48\n" +
               f"Generated: {GENERATED_AT}\nStatus: {status}\n" +
               f"Today: ${earnings['today']:,.2f}\nWeek: ${earnings['week']:,.2f}\nMonth: ${earnings['month']:,.2f}\nYear: ${earnings['year']:,.2f}\nLifetime: ${earnings['lifetime']:,.2f}\n",
               encoding="utf-8",
           )
 
           summary_lines = [
-              "# Atlas + Alex Opportunity Hunter V47",
+              "# Atlas + Alex Opportunity Hunter V48",
               "",
               (
                   f"- System status: "
@@ -3884,7 +3890,7 @@ jobs:
                   )
 
           print(
-              f"Atlas + Alex V47 status={status}; "
+              f"Atlas + Alex V49 status={status}; "
               f"checked {len(raw_issues)} "
               "raw issues; "
               f"found {len(initial_candidates)} "
@@ -3906,7 +3912,7 @@ jobs:
 
           if searches_completed == 0:
               raise SystemExit(
-                  "Atlas + Alex V47 could not complete "
+                  "Atlas + Alex V49 could not complete "
                   "any GitHub search query."
               )
           PY
@@ -3959,7 +3965,7 @@ jobs:
             fi
 
             git commit \
-              -m "Atlas + Alex V47 opportunity scan"
+              -m "Atlas + Alex V49 opportunity scan"
 
             if git push origin "HEAD:$BRANCH_NAME"
             then
@@ -3973,6 +3979,14 @@ jobs:
 
           echo "Unable to save Atlas results after conflict-safe retries." >&2
           exit 1
+
+      - name: Freeze this run's exact ATM site
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-atm-site-${{ github.run_id }}-${{ github.run_attempt }}
+          path: docs
+          if-no-files-found: error
+          retention-days: 2
 
   worker-status:
     name: ${{ matrix.worker }} — assignment status
@@ -4439,30 +4453,69 @@ jobs:
           OPENAI_API_KEY: ""
           GH_TOKEN: ""
           GITHUB_TOKEN: ""
+          CI: "true"
+          NEXT_TELEMETRY_DISABLED: "1"
+          PIP_DISABLE_PIP_VERSION_CHECK: "1"
         run: |
-          set -euo pipefail
+          set -uo pipefail
+          validation_status=0
+          validation_reason="validation_passed"
+
+          fail_validation() {
+            local code="$1"
+            local reason="$2"
+            if [ "$validation_status" -eq 0 ]; then
+              validation_status="$code"
+              validation_reason="$reason"
+            fi
+          }
+
           if [ -f package.json ]; then
-            if [ -f package-lock.json ]; then npm ci --ignore-scripts; else npm install --ignore-scripts; fi
-            npm test --if-present
-            npm run lint --if-present
+            if [ -f package-lock.json ]; then
+              npm ci --ignore-scripts || fail_validation $? "npm_dependency_install_failed"
+            else
+              npm install --ignore-scripts || fail_validation $? "npm_dependency_install_failed"
+            fi
+            if [ "$validation_status" -eq 0 ]; then
+              npm test --if-present || fail_validation $? "npm_test_failed"
+            fi
+            # Match the baseline gate. Never introduce a new interactive or unsupported
+            # lint command only after Atlas has changed the repository.
+            if [ "$validation_status" -eq 0 ]; then
+              if [ -f eslint.config.js ] || [ -f eslint.config.mjs ] || [ -f eslint.config.cjs ] ||                  [ -f .eslintrc ] || [ -f .eslintrc.js ] || [ -f .eslintrc.cjs ] ||                  [ -f .eslintrc.json ] || [ -f .eslintrc.yml ] || [ -f .eslintrc.yaml ]; then
+                npm run lint --if-present || fail_validation $? "npm_lint_failed"
+              else
+                echo "No committed ESLint configuration; skipping post-change lint exactly as baseline did."
+              fi
+            fi
           elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then
             if [ ! -d "$RUNNER_TEMP/atlas-validation-venv" ]; then
-              python -m venv "$RUNNER_TEMP/atlas-validation-venv"
+              python -m venv "$RUNNER_TEMP/atlas-validation-venv" || fail_validation $? "python_venv_failed"
             fi
-            . "$RUNNER_TEMP/atlas-validation-venv/bin/activate"
-            pytest -q
+            if [ "$validation_status" -eq 0 ]; then
+              . "$RUNNER_TEMP/atlas-validation-venv/bin/activate"
+              pytest -q || fail_validation $? "pytest_failed"
+            fi
           elif [ -f go.mod ]; then
-            go test ./...
+            go test ./... || fail_validation $? "go_test_failed"
           elif [ -f Cargo.toml ]; then
-            cargo test
+            cargo test || fail_validation $? "cargo_test_failed"
           else
             echo "No supported automated test command detected; validating diff only."
-            git diff --check
           fi
-          # Make new files visible to diff without staging their contents.
+
           git ls-files --others --exclude-standard -z | xargs -0 -r git add -N --
-          git diff --check
-          test -n "$(git diff --name-only)" || { echo "Agent produced no change."; exit 1; }
+          if ! git diff --check; then
+            fail_validation 1 "git_diff_check_failed"
+          fi
+          if [ -z "$(git diff --name-only)" ]; then
+            fail_validation 1 "agent_produced_no_change"
+          fi
+
+          echo "reason=$validation_reason" >> "$GITHUB_OUTPUT"
+          echo "exit_code=$validation_status" >> "$GITHUB_OUTPUT"
+          echo "Validation result: $validation_reason (exit $validation_status)" >> "$GITHUB_STEP_SUMMARY"
+          exit "$validation_status"
 
       - name: Save safe-test patch for review
         if: steps.credentials.outputs.ready == 'true' && steps.baseline.outputs.ready == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode == 'safe_test'
@@ -4637,6 +4690,8 @@ jobs:
           BASELINE_REASON: ${{ steps.baseline.outputs.reason }}
           IMPLEMENT_OUTCOME: ${{ steps.implement.outcome }}
           VALIDATE_OUTCOME: ${{ steps.validate_change.outcome }}
+          VALIDATE_REASON: ${{ steps.validate_change.outputs.reason }}
+          VALIDATE_EXIT_CODE: ${{ steps.validate_change.outputs.exit_code }}
           SUBMIT_OUTCOME: ${{ steps.submit_pr.outcome }}
           PR_URL: ${{ steps.submit_pr.outputs.pr_url }}
           EXECUTION_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.execution_mode || 'submit' }}
@@ -4668,7 +4723,7 @@ jobs:
             reason="implementation_not_run"
           elif [ "${VALIDATE_OUTCOME:-skipped}" = "failure" ]; then
             result="failed"
-            reason="post_change_validation_failed"
+            reason="${VALIDATE_REASON:-post_change_validation_failed} (exit ${VALIDATE_EXIT_CODE:-unknown})"
           elif [ "${VALIDATE_OUTCOME:-skipped}" = "skipped" ]; then
             result="skipped"
             reason="validation_not_run"
@@ -5130,7 +5185,7 @@ jobs:
 
 
   deploy_status_window:
-    name: Deploy lean ATM money window last
+    name: Deploy immutable ATM site last
     needs: [hunt, execute, confirm_results, alex_payment_followup]
     if: >-
       ${{ always() &&
@@ -5139,7 +5194,10 @@ jobs:
            github.event_name == 'repository_dispatch' ||
            (github.event_name == 'schedule' && github.event.schedule == '8,23,38,53 * * * *')) }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
+    concurrency:
+      group: atlas-atm-pages-deployment
+      cancel-in-progress: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -5147,24 +5205,56 @@ jobs:
       contents: read
       pages: write
       id-token: write
+      actions: read
     steps:
-      - name: Download latest generated Status window
-        uses: actions/checkout@v6
+      - name: Download this run's frozen ATM site
+        uses: actions/download-artifact@v4
         with:
-          fetch-depth: 1
-          ref: ${{ github.ref_name }}
+          name: atlas-atm-site-${{ github.run_id }}-${{ github.run_attempt }}
+          path: docs
+
+      - name: Verify frozen ATM homepage before deployment
+        run: |
+          set -euo pipefail
+          test -s docs/index.html
+          grep -q "ATLAS ATM" docs/index.html
+          test -s docs/money-data.json
+          echo "Frozen ATM artifact verified for run ${GITHUB_RUN_ID}."
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload Status window site
+      - name: Upload this run's frozen ATM site to Pages
         uses: actions/upload-pages-artifact@v4
         with:
           path: docs
 
-      - name: Publish Status window
+      - name: Publish immutable ATM site
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify published homepage is Atlas ATM
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          set -euo pipefail
+          url="${PAGE_URL%/}/?atlas_run=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          for attempt in 1 2 3 4 5 6
+          do
+            body="$(curl --fail --silent --show-error --location \
+              --header 'Cache-Control: no-cache' \
+              --header 'Pragma: no-cache' \
+              "$url" || true)"
+            if printf '%s' "$body" | grep -q "ATLAS ATM"
+            then
+              echo "Published ATM homepage verified on attempt $attempt."
+              exit 0
+            fi
+            echo "ATM homepage not visible yet; retry $attempt of 6."
+            sleep 10
+          done
+          echo "Published root page is not the Atlas ATM generated by this run." >&2
+          exit 1
 
   workflow_health:
     name: Verify truthful workflow status
@@ -5188,7 +5278,7 @@ jobs:
         run: |
           set -euo pipefail
           {
-            echo "## Atlas + Alex V47 Workflow Health"
+            echo "## Atlas + Alex V49 Workflow Health"
             echo "- Hunt job: ${HUNT_RESULT}"
             echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
             echo "- Execution ready: ${EXECUTION_READY:-false}"
@@ -5222,7 +5312,7 @@ jobs:
             echo "Payment follow-up had a non-critical warning; production work remains healthy." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          echo "Atlas + Alex V47 completed: only passing submissions are persisted; task failures are isolated."
+          echo "Atlas + Alex V49 completed: only passing submissions are persisted; task failures are isolated."
 
   watchdog:
     if: >-
