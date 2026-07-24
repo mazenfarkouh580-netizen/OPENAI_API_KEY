@@ -1,18 +1,18 @@
 # Atlas + Alex V41 Gate Diagnostics
 
-Generated: 2026-07-24 12:26 AM Pacific
+Generated: 2026-07-24 01:14 AM Pacific
 
 ## Decision Counts
 
-- PURSUE: 16
+- PURSUE: 17
 - PRIORITY REVIEW: 0
-- WATCHLIST: 14
+- WATCHLIST: 13
 - REJECT: 0
 
 ## Gate Counts
 
-- SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED: 16
-- PAYMENT SPEED OR FUNDING NOT VERIFIED: 14
+- SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED: 17
+- PAYMENT SPEED OR FUNDING NOT VERIFIED: 13
 
 ## Candidate Details
 
@@ -59,6 +59,17 @@ Generated: 2026-07-24 12:26 AM Pacific
 - Quick-win risk accepted: True
 - Atlas executable: True
 - URL: https://github.com/Iamgoofball/-tg-station/issues/49
+
+### 2lll5/TentOfTrials #1
+- Decision: PURSUE
+- Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
+- Reward: $40.00
+- Payment: SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: True
+- Quick-win risk accepted: True
+- Atlas executable: True
+- URL: https://github.com/2lll5/TentOfTrials/issues/1
 
 ### cuentaprueba244w-dotcom/TentOfTrials #10
 - Decision: PURSUE
@@ -268,17 +279,6 @@ Generated: 2026-07-24 12:26 AM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: False
 - URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/318
-
-### UnsafeLabs/Bounty-Hunters #316
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $1.00
-- Payment: UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: True
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/UnsafeLabs/Bounty-Hunters/issues/316
 
 ### zhangjiayang6835-cyber/bounty-plaza #619
 - Decision: WATCHLIST
