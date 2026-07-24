@@ -623,15 +623,16 @@
     "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8599": {
-    "state": "reserved",
+    "state": "submitted",
     "repository": "xevrion-v2/agent-playground",
     "issue_number": 8599,
     "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8599",
     "title": "Add is-hangul-jamo-chitueumcieuc-present API utility",
-    "reward": 50.0,
     "worker": "Atlas 2",
-    "reserved_at": "2026-07-24T11:19:49.334365+00:00",
-    "reserved_at_ts": 1784892026.700188,
+    "reward": 50.0,
+    "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8643",
+    "submitted_at": "2026-07-24T11:22:30.433140+00:00",
+    "submitted_at_ts": 1784892150.4331572,
     "workflow_run_id": "30089179008"
   },
   "zhangjiayang6835-cyber/bounty-plaza#686": {
