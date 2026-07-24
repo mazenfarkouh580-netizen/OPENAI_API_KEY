@@ -1,7 +1,7 @@
-name: Atlas + Alex V57 — Bad Resources Fixed
+name: Atlas + Alex V58 — Blocked Resources Zero Jobs
 
 run-name: >-
-  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V57 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V57 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V57 Watchdog Recovery' || format('Atlas V57 Manual — {0}', github.event.inputs.execution_mode) }}
+  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V58 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V58 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V58 Watchdog Recovery' || format('Atlas V58 Manual — {0}', github.event.inputs.execution_mode) }}
 
 on:
   workflow_dispatch:
@@ -498,7 +498,7 @@ jobs:
           # bounded only by the queue safety cap. Existing saved configurations
           # from older versions must not keep Atlas limited to one worker.
           config["parallel_workers"] = 5
-          # V57: keep a large persistent backlog. GitHub matrix expansion has a hard
+          # V58: keep a large persistent backlog. GitHub matrix expansion has a hard
           # platform ceiling, so 200 leaves safe headroom while allowing 30+ jobs.
           config["queue_size"] = 200
           config["maximum_tasks_per_run"] = 200
@@ -521,12 +521,12 @@ jobs:
               EARNINGS_FILE.write_text("[]\n", encoding="utf-8")
 
           operations = load_json_file(OPERATIONS_FILE, {
-              "version": "V57",
+              "version": "V58",
               "pipeline": [],
               "last_updated": GENERATED_AT,
           })
           if not isinstance(operations, dict):
-              operations = {"version": "V57", "pipeline": [], "last_updated": GENERATED_AT}
+              operations = {"version": "V58", "pipeline": [], "last_updated": GENERATED_AT}
 
           maintenance = load_json_file(MAINTENANCE_FILE, {
               "doctor": "Dr. Alex",
@@ -712,13 +712,27 @@ jobs:
                   default=0.0,
               )
 
+          def normalize_repository(value):
+              value = str(value or "").strip().lower().rstrip("/")
+              if not value:
+                  return ""
+              for marker in ("/repos/", "github.com/"):
+                  if marker in value:
+                      value = value.split(marker, 1)[1]
+              value = value.split("?", 1)[0].split("#", 1)[0].strip("/")
+              parts = [part for part in value.split("/") if part]
+              return "/".join(parts[:2]) if len(parts) >= 2 else value
+
           def issue_identity(issue):
-              repository = (
-                  issue.get("repository_url") or ""
-              ).split("/repos/")[-1]
+              repository = normalize_repository(
+                  issue.get("repository_url")
+                  or issue.get("html_url")
+                  or issue.get("repository")
+                  or ""
+              )
 
               number = int(
-                  issue.get("number") or 0
+                  issue.get("number") or issue.get("issue_number") or 0
               )
 
               return repository, number
@@ -2838,7 +2852,7 @@ jobs:
                   return 1
               return 0
 
-          # V57 persistent queue: merge unfinished work from prior runs with all
+          # V58 persistent queue: merge unfinished work from prior runs with all
           # newly qualified PURSUE opportunities. New scan data replaces stale
           # metadata for the same repository/issue; terminal records are removed.
           prior_pipeline = operations.get("pipeline", []) if isinstance(operations, dict) else []
@@ -2884,7 +2898,7 @@ jobs:
           # a run may legitimately contain 30, 50, or more assignments.
           execution_queue = execution_queue[:200]
 
-          operations["version"] = "V57"
+          operations["version"] = "V58"
           operations["last_updated"] = GENERATED_AT
           operations["pipeline"] = execution_queue
           operations["source_performance"] = source_performance
@@ -2960,7 +2974,7 @@ jobs:
               selected_executions.append({
                   "worker": worker,
                   "task_sequence": task_sequence,
-                  "repository": repository,
+                  "repository": normalize_repository(repository),
                   "issue_number": int(item.get("issue_number") or 0),
                   "issue_url": item.get("url") or "",
                   "title": item.get("title") or "",
@@ -2991,7 +3005,7 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V57",
+                  "version": "V58",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": 5,
@@ -3071,7 +3085,7 @@ jobs:
           ALERTS_FILE.write_text(json.dumps(alerts, indent=2), encoding="utf-8")
 
           payload = {
-              "version": "V57",
+              "version": "V58",
               "owner": "Mazen Farkouh",
               "generated_at": GENERATED_AT,
               "config": config,
@@ -3132,7 +3146,7 @@ jobs:
           WORKER_HEALTH_FILE.write_text(
               json.dumps(
                   {
-                      "version": "V57",
+                      "version": "V58",
                       "last_completed_at": NOW.isoformat(),
                       "last_completed_display": GENERATED_AT,
                       "trigger": os.environ.get("GITHUB_EVENT_NAME", "unknown"),
@@ -3713,10 +3727,10 @@ jobs:
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
                   "<title>\n              Atlas + Alex Opportunity Hunter V50\n            </title>",
-                  "<title>Atlas V57 Status Window</title>",
+                  "<title>Atlas V58 Status Window</title>",
               ).replace(
                   "Atlas + Alex Opportunity Hunter V50",
-                  "Atlas V57 Status Window",
+                  "Atlas V58 Status Window",
                   1,
               ),
               encoding="utf-8",
@@ -3779,7 +3793,7 @@ jobs:
               else:
                   stage = state.upper() if state else "FOUND"
               normalized_pipeline.append({**record, "submission_key": key, "stage": stage, "current_status": state, "last_synced_at": record.get("confirmed_at") or record.get("submitted_at") or GENERATED_AT})
-          PIPELINE_FILE.write_text(json.dumps({"version": "V57", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
+          PIPELINE_FILE.write_text(json.dumps({"version": "V58", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
           def record_value(record):
               try:
                   return float(record.get("reward", record.get("amount", 0)) or 0)
@@ -4071,6 +4085,33 @@ jobs:
                       f"{counts['PURSUE']}\n"
                   )
 
+                  # V58 final dispatch firewall: blocked owners/repositories are
+                  # removed immediately before matrix serialization. This is the last
+                  # point before GitHub creates jobs, so blocked resources can never
+                  # become matrix jobs even if malformed cached data bypassed an earlier gate.
+                  pre_firewall_count = len(selected_executions)
+                  selected_executions = [
+                      task for task in selected_executions
+                      if not blocked_source({
+                          "repository": normalize_repository(task.get("repository")),
+                          "repository_url": normalize_repository(task.get("repository")),
+                          "title": task.get("title") or "",
+                          "body": "",
+                          "issue_number": task.get("issue_number") or 0,
+                      })
+                  ]
+                  blocked_matrix_removals = pre_firewall_count - len(selected_executions)
+                  if blocked_matrix_removals:
+                      print(
+                          f"V58 dispatch firewall removed {blocked_matrix_removals} blocked task(s) before matrix creation."
+                      )
+
+                  # Re-number workers only after final filtering so job totals and
+                  # visible worker numbering exactly match executable opportunities.
+                  for index, task in enumerate(selected_executions, start=1):
+                      task["task_sequence"] = index
+                      task["worker"] = f"Atlas Job {index}"
+
                   matrix = {"include": selected_executions}
                   matrix_json = json.dumps(matrix, separators=(",", ":"))
                   output.write("execution_matrix<<ATLAS_MATRIX\n")
@@ -4096,7 +4137,7 @@ jobs:
                   )
 
           print(
-              f"Atlas + Alex V57 status={status}; "
+              f"Atlas + Alex V58 status={status}; "
               f"checked {len(raw_issues)} "
               "raw issues; "
               f"found {len(initial_candidates)} "
@@ -5577,7 +5618,7 @@ jobs:
         run: |
           set -euo pipefail
           {
-            echo "## Atlas + Alex V57 Workflow Health"
+            echo "## Atlas + Alex V58 Workflow Health"
             echo "- Hunt job: ${HUNT_RESULT}"
             echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
             echo "- Execution ready: ${EXECUTION_READY:-false}"
@@ -5611,7 +5652,7 @@ jobs:
             echo "Payment follow-up had a non-critical warning; production work remains healthy." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          echo "Atlas + Alex V57 completed: only passing submissions are persisted; task failures are isolated."
+          echo "Atlas + Alex V58 completed: only passing submissions are persisted; task failures are isolated."
 
   watchdog:
     if: >-
@@ -5639,7 +5680,7 @@ jobs:
           workflow_id="${workflow_id%@*}"
           last_success="$(
             gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=50" \
-              --jq '[.workflow_runs[] | select(.display_title == "Atlas V57 Main Production" or .display_title == "Atlas V57 Watchdog Recovery")][0].updated_at // empty' \
+              --jq '[.workflow_runs[] | select(.display_title == "Atlas V58 Main Production" or .display_title == "Atlas V58 Watchdog Recovery")][0].updated_at // empty' \
               2>/dev/null || true
           )"
 
