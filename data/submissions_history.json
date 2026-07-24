@@ -632,7 +632,9 @@
     "worker": "Atlas 2",
     "reserved_at": "2026-07-24T11:04:02.687881+00:00",
     "reserved_at_ts": 1784891082.1127925,
-    "workflow_run_id": "30088295002"
+    "workflow_run_id": "30088295002",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "zhangjiayang6835-cyber/bounty-plaza#686": {
     "state": "submitted",
@@ -734,7 +736,9 @@
     "worker": "Atlas 1",
     "reserved_at": "2026-07-24T11:04:02.687881+00:00",
     "reserved_at_ts": 1784891082.112775,
-    "workflow_run_id": "30088295002"
+    "workflow_run_id": "30088295002",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8631": {
     "state": "submitted",
