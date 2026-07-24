@@ -1,14 +1,14 @@
 {
-  "version": "V57",
-  "generated_at": "2026-07-24 06:05 AM Pacific",
+  "version": "V58",
+  "generated_at": "2026-07-24 06:23 AM Pacific",
   "automatic_execution": true,
   "workers_requested": 5,
-  "tasks_dispatched": 3,
+  "tasks_dispatched": 8,
   "tasks": [
     {
       "worker": "Atlas Job 1",
       "task_sequence": 1,
-      "repository": "Iamgoofball/-tg-station",
+      "repository": "iamgoofball/-tg-station",
       "issue_number": 49,
       "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -17,12 +17,26 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "Iamgoofball/-tg-station#49",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T13:05:17.512820+00:00"
+      "reserved_at": "2026-07-24T13:23:42.007203+00:00"
     },
     {
       "worker": "Atlas Job 2",
       "task_sequence": 2,
-      "repository": "2lll5/TentOfTrials",
+      "repository": "iamgoofball/-tg-station",
+      "issue_number": 49,
+      "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
+      "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
+      "reward": 50.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "iamgoofball/-tg-station#49",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-24T13:23:42.007203+00:00"
+    },
+    {
+      "worker": "Atlas Job 3",
+      "task_sequence": 3,
+      "repository": "2lll5/tentoftrials",
       "issue_number": 1,
       "issue_url": "https://github.com/2lll5/TentOfTrials/issues/1",
       "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
@@ -31,12 +45,26 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "2lll5/TentOfTrials#1",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T13:05:17.512820+00:00"
+      "reserved_at": "2026-07-24T13:23:42.007203+00:00"
     },
     {
-      "worker": "Atlas Job 3",
-      "task_sequence": 3,
-      "repository": "cuentaprueba244w-dotcom/TentOfTrials",
+      "worker": "Atlas Job 4",
+      "task_sequence": 4,
+      "repository": "2lll5/tentoftrials",
+      "issue_number": 1,
+      "issue_url": "https://github.com/2lll5/TentOfTrials/issues/1",
+      "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
+      "reward": 40.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "2lll5/tentoftrials#1",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-24T13:23:42.007203+00:00"
+    },
+    {
+      "worker": "Atlas Job 5",
+      "task_sequence": 5,
+      "repository": "cuentaprueba244w-dotcom/tentoftrials",
       "issue_number": 10,
       "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -45,7 +73,49 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "cuentaprueba244w-dotcom/TentOfTrials#10",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T13:05:17.512820+00:00"
+      "reserved_at": "2026-07-24T13:23:42.007203+00:00"
+    },
+    {
+      "worker": "Atlas Job 6",
+      "task_sequence": 6,
+      "repository": "cuentaprueba244w-dotcom/tentoftrials",
+      "issue_number": 10,
+      "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
+      "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
+      "reward": 35.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "cuentaprueba244w-dotcom/tentoftrials#10",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-24T13:23:42.007203+00:00"
+    },
+    {
+      "worker": "Atlas Job 7",
+      "task_sequence": 7,
+      "repository": "iamgoofball/-tg-station",
+      "issue_number": 50,
+      "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/50",
+      "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
+      "reward": 10.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "iamgoofball/-tg-station#50",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-24T13:23:42.007203+00:00"
+    },
+    {
+      "worker": "Atlas Job 8",
+      "task_sequence": 8,
+      "repository": "saiaaax/cyberninja-dojo",
+      "issue_number": 10,
+      "issue_url": "https://github.com/Saiaaax/CyberNinja-Dojo/issues/10",
+      "title": "[$10 BOUNTY] [TypeScript] Add telemetry batch flush threshold tests",
+      "reward": 10.0,
+      "score": 100.0,
+      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
+      "submission_key": "saiaaax/cyberninja-dojo#10",
+      "status": "DISPATCHED",
+      "reserved_at": "2026-07-24T13:23:42.007203+00:00"
     }
   ]
 }

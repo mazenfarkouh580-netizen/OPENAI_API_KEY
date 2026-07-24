@@ -1,6 +1,6 @@
 # Atlas + Alex V51 Gate Diagnostics
 
-Generated: 2026-07-24 06:05 AM Pacific
+Generated: 2026-07-24 06:23 AM Pacific
 
 ## Decision Counts
 
@@ -41,7 +41,7 @@ Generated: 2026-07-24 06:05 AM Pacific
 - Atlas executable: True
 - URL: https://github.com/aporthq/aport-integrations/issues/4
 
-### Iamgoofball/-tg-station #49
+### iamgoofball/-tg-station #49
 - Decision: PURSUE
 - Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
 - Reward: $50.00
@@ -52,7 +52,7 @@ Generated: 2026-07-24 06:05 AM Pacific
 - Atlas executable: True
 - URL: https://github.com/Iamgoofball/-tg-station/issues/49
 
-### 2lll5/TentOfTrials #1
+### 2lll5/tentoftrials #1
 - Decision: PURSUE
 - Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
 - Reward: $40.00
@@ -63,7 +63,7 @@ Generated: 2026-07-24 06:05 AM Pacific
 - Atlas executable: True
 - URL: https://github.com/2lll5/TentOfTrials/issues/1
 
-### cuentaprueba244w-dotcom/TentOfTrials #10
+### cuentaprueba244w-dotcom/tentoftrials #10
 - Decision: PURSUE
 - Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
 - Reward: $35.00
@@ -85,7 +85,7 @@ Generated: 2026-07-24 06:05 AM Pacific
 - Atlas executable: True
 - URL: https://github.com/jackjin1997/zeroeye/issues/1
 
-### Saiaaax/CyberNinja-Dojo #10
+### saiaaax/cyberninja-dojo #10
 - Decision: PURSUE
 - Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
 - Reward: $10.00
@@ -96,7 +96,7 @@ Generated: 2026-07-24 06:05 AM Pacific
 - Atlas executable: True
 - URL: https://github.com/Saiaaax/CyberNinja-Dojo/issues/10
 
-### Iamgoofball/-tg-station #50
+### iamgoofball/-tg-station #50
 - Decision: PURSUE
 - Gate: SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED
 - Reward: $10.00
@@ -140,7 +140,7 @@ Generated: 2026-07-24 06:05 AM Pacific
 - Atlas executable: True
 - URL: https://github.com/moorcheh-ai/memanto/issues/1609
 
-### Iamgoofball/-tg-station #46
+### iamgoofball/-tg-station #46
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
 - Reward: $250.00
@@ -272,7 +272,7 @@ Generated: 2026-07-24 06:05 AM Pacific
 - Atlas executable: True
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/484
 
-### Vikingr2023/awesome-agent-bounties #225
+### vikingr2023/awesome-agent-bounties #225
 - Decision: WATCHLIST
 - Gate: REPOSITORY MISMATCH - MANUAL VERIFY
 - Reward: $200.00

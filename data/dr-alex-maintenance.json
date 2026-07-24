@@ -1,7 +1,7 @@
 {
   "doctor": "Dr. Alex",
   "health": "HEALTHY_WITH_WARNINGS",
-  "last_check": "2026-07-24 06:05 AM Pacific",
+  "last_check": "2026-07-24 06:23 AM Pacific",
   "repairs": [],
   "diagnostics": [],
   "api_errors": 2,
@@ -13,7 +13,7 @@
   "alex_retry_triggered": true,
   "alex_search_failure": true,
   "alex_search_status": "FAILED",
-  "quick_wins_found": 5,
+  "quick_wins_found": 10,
   "instant_payment_extra_priority_candidates": 0,
   "fast_paypal_candidates": 0,
   "ai_explicitly_allowed_candidates": 0,
@@ -21,6 +21,6 @@
   "priority_reviews": 0,
   "pursue_candidates": 9,
   "best_immediate_target": "https://github.com/xevrion-v2/agent-playground/issues/8632",
-  "recommendation": "Review 5 unassigned quick-win candidate(s) first; verify AI permission and payer authority.",
+  "recommendation": "Review 10 unassigned quick-win candidate(s) first; verify AI permission and payer authority.",
   "instant_money_warning": "Small PayPal bounties may pay quickly after acceptance, but only the bounty owner or platform can approve work and release payment. Atlas ranks advertised instant/same-day/within-hours fiat tasks ahead of every ordinary task, while still recording that payment is not guaranteed."
 }

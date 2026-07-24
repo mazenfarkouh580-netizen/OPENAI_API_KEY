@@ -22,11 +22,9 @@
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
     "worker": "Atlas Job 1",
-    "reserved_at": "2026-07-24T13:05:17.512820+00:00",
-    "reserved_at_ts": 1784898353.0068958,
-    "workflow_run_id": "30095500947",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T13:23:42.007203+00:00",
+    "reserved_at_ts": 1784899454.0512183,
+    "workflow_run_id": "30096693130"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -95,12 +93,10 @@
     "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
     "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
     "reward": 35.0,
-    "worker": "Atlas Job 3",
-    "reserved_at": "2026-07-24T13:05:17.512820+00:00",
-    "reserved_at_ts": 1784898353.0069373,
-    "workflow_run_id": "30095500947",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas Job 5",
+    "reserved_at": "2026-07-24T13:23:42.007203+00:00",
+    "reserved_at_ts": 1784899454.0512738,
+    "workflow_run_id": "30096693130"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -555,12 +551,10 @@
     "issue_url": "https://github.com/2lll5/TentOfTrials/issues/1",
     "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
     "reward": 40.0,
-    "worker": "Atlas Job 2",
-    "reserved_at": "2026-07-24T13:05:17.512820+00:00",
-    "reserved_at_ts": 1784898353.0069172,
-    "workflow_run_id": "30095500947",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas Job 3",
+    "reserved_at": "2026-07-24T13:23:42.007203+00:00",
+    "reserved_at_ts": 1784899454.0512493,
+    "workflow_run_id": "30096693130"
   },
   "xevrion-v2/agent-playground#8603": {
     "state": "submitted",
@@ -799,5 +793,65 @@
     "workflow_run_id": "30084654822",
     "confirmation_state": "unverified",
     "confirmation_reason": "missing_or_invalid_pr_url"
+  },
+  "iamgoofball/-tg-station#49": {
+    "state": "reserved",
+    "repository": "iamgoofball/-tg-station",
+    "issue_number": 49,
+    "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
+    "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
+    "reward": 50.0,
+    "worker": "Atlas Job 2",
+    "reserved_at": "2026-07-24T13:23:42.007203+00:00",
+    "reserved_at_ts": 1784899454.051235,
+    "workflow_run_id": "30096693130"
+  },
+  "2lll5/tentoftrials#1": {
+    "state": "reserved",
+    "repository": "2lll5/tentoftrials",
+    "issue_number": 1,
+    "issue_url": "https://github.com/2lll5/TentOfTrials/issues/1",
+    "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
+    "reward": 40.0,
+    "worker": "Atlas Job 4",
+    "reserved_at": "2026-07-24T13:23:42.007203+00:00",
+    "reserved_at_ts": 1784899454.051262,
+    "workflow_run_id": "30096693130"
+  },
+  "cuentaprueba244w-dotcom/tentoftrials#10": {
+    "state": "reserved",
+    "repository": "cuentaprueba244w-dotcom/tentoftrials",
+    "issue_number": 10,
+    "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
+    "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
+    "reward": 35.0,
+    "worker": "Atlas Job 6",
+    "reserved_at": "2026-07-24T13:23:42.007203+00:00",
+    "reserved_at_ts": 1784899454.051285,
+    "workflow_run_id": "30096693130"
+  },
+  "iamgoofball/-tg-station#50": {
+    "state": "reserved",
+    "repository": "iamgoofball/-tg-station",
+    "issue_number": 50,
+    "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/50",
+    "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
+    "reward": 10.0,
+    "worker": "Atlas Job 7",
+    "reserved_at": "2026-07-24T13:23:42.007203+00:00",
+    "reserved_at_ts": 1784899454.0512967,
+    "workflow_run_id": "30096693130"
+  },
+  "saiaaax/cyberninja-dojo#10": {
+    "state": "reserved",
+    "repository": "saiaaax/cyberninja-dojo",
+    "issue_number": 10,
+    "issue_url": "https://github.com/Saiaaax/CyberNinja-Dojo/issues/10",
+    "title": "[$10 BOUNTY] [TypeScript] Add telemetry batch flush threshold tests",
+    "reward": 10.0,
+    "worker": "Atlas Job 8",
+    "reserved_at": "2026-07-24T13:23:42.007203+00:00",
+    "reserved_at_ts": 1784899454.051308,
+    "workflow_run_id": "30096693130"
   }
 }

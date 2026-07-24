@@ -1,6 +1,6 @@
 {
   "potential": 285.0,
-  "assigned": 125.0,
+  "assigned": 270.0,
   "submitted": 0,
   "approved": 0,
   "payment_pending": 0,
@@ -46,7 +46,7 @@
       "reward": 0.0
     }
   ],
-  "generated_at": "2026-07-24 06:05 AM Pacific",
+  "generated_at": "2026-07-24 06:23 AM Pacific",
   "pipeline_counts": {
     "open_prs": 0,
     "awaiting_review": 0,
@@ -54,7 +54,7 @@
     "rejected": 0,
     "paid": 0,
     "submitted": 0,
-    "assigned": 3
+    "assigned": 8
   },
   "open_prs": 0,
   "awaiting_review": 0,
