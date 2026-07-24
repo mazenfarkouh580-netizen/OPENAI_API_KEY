@@ -24,7 +24,9 @@
     "worker": "Atlas 3",
     "reserved_at": "2026-07-24T12:36:15.057899+00:00",
     "reserved_at_ts": 1784896619.7694578,
-    "workflow_run_id": "30093678944"
+    "workflow_run_id": "30093678944",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -96,7 +98,9 @@
     "worker": "Atlas 5",
     "reserved_at": "2026-07-24T12:36:15.057899+00:00",
     "reserved_at_ts": 1784896619.769474,
-    "workflow_run_id": "30093678944"
+    "workflow_run_id": "30093678944",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -554,7 +558,9 @@
     "worker": "Atlas 4",
     "reserved_at": "2026-07-24T12:36:15.057899+00:00",
     "reserved_at_ts": 1784896619.7694662,
-    "workflow_run_id": "30093678944"
+    "workflow_run_id": "30093678944",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8603": {
     "state": "submitted",
@@ -626,7 +632,9 @@
     "worker": "Atlas 2",
     "reserved_at": "2026-07-24T12:36:15.057899+00:00",
     "reserved_at_ts": 1784896619.769447,
-    "workflow_run_id": "30093678944"
+    "workflow_run_id": "30093678944",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "zhangjiayang6835-cyber/bounty-plaza#686": {
     "state": "submitted",
@@ -728,7 +736,9 @@
     "worker": "Atlas 1",
     "reserved_at": "2026-07-24T12:36:15.057899+00:00",
     "reserved_at_ts": 1784896619.7694333,
-    "workflow_run_id": "30093678944"
+    "workflow_run_id": "30093678944",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8631": {
     "state": "submitted",
