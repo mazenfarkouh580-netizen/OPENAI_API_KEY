@@ -21,12 +21,10 @@
     "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
-    "worker": "Atlas 1",
-    "reserved_at": "2026-07-24T11:23:24.467417+00:00",
-    "reserved_at_ts": 1784892238.0971587,
-    "workflow_run_id": "30089309046",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas 3",
+    "reserved_at": "2026-07-24T11:48:46.748527+00:00",
+    "reserved_at_ts": 1784893779.3402967,
+    "workflow_run_id": "30090839331"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -95,12 +93,10 @@
     "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
     "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
     "reward": 35.0,
-    "worker": "Atlas 3",
-    "reserved_at": "2026-07-24T11:23:24.467417+00:00",
-    "reserved_at_ts": 1784892238.0971873,
-    "workflow_run_id": "30089309046",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas 5",
+    "reserved_at": "2026-07-24T11:48:46.748527+00:00",
+    "reserved_at_ts": 1784893779.3403182,
+    "workflow_run_id": "30090839331"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -555,12 +551,10 @@
     "issue_url": "https://github.com/2lll5/TentOfTrials/issues/1",
     "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
     "reward": 40.0,
-    "worker": "Atlas 2",
-    "reserved_at": "2026-07-24T11:23:24.467417+00:00",
-    "reserved_at_ts": 1784892238.097175,
-    "workflow_run_id": "30089309046",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas 4",
+    "reserved_at": "2026-07-24T11:48:46.748527+00:00",
+    "reserved_at_ts": 1784893779.3403075,
+    "workflow_run_id": "30090839331"
   },
   "xevrion-v2/agent-playground#8603": {
     "state": "submitted",
@@ -630,11 +624,9 @@
     "title": "Add is-hangul-jamo-chitueumcieuc-present API utility",
     "reward": 50.0,
     "worker": "Atlas 2",
-    "reserved_at": "2026-07-24T11:19:49.334365+00:00",
-    "reserved_at_ts": 1784892026.700188,
-    "workflow_run_id": "30089179008",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T11:48:46.748527+00:00",
+    "reserved_at_ts": 1784893779.3402836,
+    "workflow_run_id": "30090839331"
   },
   "zhangjiayang6835-cyber/bounty-plaza#686": {
     "state": "submitted",
@@ -734,11 +726,9 @@
     "title": "Add is-hangul-jamo-choseong-filler-present API utility",
     "reward": 50.0,
     "worker": "Atlas 1",
-    "reserved_at": "2026-07-24T11:19:49.334365+00:00",
-    "reserved_at_ts": 1784892026.7001708,
-    "workflow_run_id": "30089179008",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T11:48:46.748527+00:00",
+    "reserved_at_ts": 1784893779.340267,
+    "workflow_run_id": "30090839331"
   },
   "xevrion-v2/agent-playground#8631": {
     "state": "submitted",

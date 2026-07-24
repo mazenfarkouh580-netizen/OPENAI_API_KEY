@@ -1,6 +1,6 @@
 {
   "potential": 1085.0,
-  "assigned": 0,
+  "assigned": 225.0,
   "submitted": 0,
   "approved": 0,
   "payment_pending": 0,
@@ -12,41 +12,41 @@
   "workers": [
     {
       "worker": "Atlas 1",
-      "status": "IDLE",
-      "repository": "",
-      "issue_number": "",
-      "reward": 0.0
+      "status": "ASSIGNED",
+      "repository": "xevrion-v2/agent-playground",
+      "issue_number": 8632,
+      "reward": 50.0
     },
     {
       "worker": "Atlas 2",
-      "status": "IDLE",
-      "repository": "",
-      "issue_number": "",
-      "reward": 0.0
+      "status": "ASSIGNED",
+      "repository": "xevrion-v2/agent-playground",
+      "issue_number": 8599,
+      "reward": 50.0
     },
     {
       "worker": "Atlas 3",
-      "status": "IDLE",
-      "repository": "",
-      "issue_number": "",
-      "reward": 0.0
+      "status": "ASSIGNED",
+      "repository": "Iamgoofball/-tg-station",
+      "issue_number": 49,
+      "reward": 50.0
     },
     {
       "worker": "Atlas 4",
-      "status": "IDLE",
-      "repository": "",
-      "issue_number": "",
-      "reward": 0.0
+      "status": "ASSIGNED",
+      "repository": "2lll5/TentOfTrials",
+      "issue_number": 1,
+      "reward": 40.0
     },
     {
       "worker": "Atlas 5",
-      "status": "IDLE",
-      "repository": "",
-      "issue_number": "",
-      "reward": 0.0
+      "status": "ASSIGNED",
+      "repository": "cuentaprueba244w-dotcom/TentOfTrials",
+      "issue_number": 10,
+      "reward": 35.0
     }
   ],
-  "generated_at": "2026-07-24 04:33 AM Pacific",
+  "generated_at": "2026-07-24 04:48 AM Pacific",
   "pipeline_counts": {
     "open_prs": 0,
     "awaiting_review": 0,
@@ -54,7 +54,7 @@
     "rejected": 0,
     "paid": 0,
     "submitted": 0,
-    "assigned": 0
+    "assigned": 5
   },
   "open_prs": 0,
   "awaiting_review": 0,
