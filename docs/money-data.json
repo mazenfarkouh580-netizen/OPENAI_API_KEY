@@ -1,6 +1,6 @@
 {
   "potential": 326.0,
-  "assigned": 169.0,
+  "assigned": 0,
   "submitted": 0,
   "approved": 0,
   "payment_pending": 0,
@@ -12,40 +12,40 @@
   "workers": [
     {
       "worker": "Atlas 1",
-      "status": "ASSIGNED",
-      "repository": "xevrion-v2/agent-playground",
-      "issue_number": 2681,
-      "reward": 50.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     },
     {
       "worker": "Atlas 2",
-      "status": "ASSIGNED",
-      "repository": "Iamgoofball/-tg-station",
-      "issue_number": 49,
-      "reward": 50.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     },
     {
       "worker": "Atlas 3",
-      "status": "ASSIGNED",
-      "repository": "cuentaprueba244w-dotcom/TentOfTrials",
-      "issue_number": 10,
-      "reward": 35.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     },
     {
       "worker": "Atlas 4",
-      "status": "ASSIGNED",
-      "repository": "jackjin1997/zeroeye",
-      "issue_number": 1,
-      "reward": 30.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     },
     {
       "worker": "Atlas 5",
-      "status": "ASSIGNED",
-      "repository": "UnsafeLabs/Bounty-Hunters",
-      "issue_number": 303,
-      "reward": 1.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     }
   ],
-  "generated_at": "2026-07-24 12:13 AM Pacific",
+  "generated_at": "2026-07-24 12:26 AM Pacific",
   "cash_rule": "Pipeline amounts are not cash; cash received requires documented payment"
 }
