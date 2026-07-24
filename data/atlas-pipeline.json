@@ -1,6 +1,6 @@
 {
-  "version": "V59",
-  "generated_at": "2026-07-24 01:35 PM Pacific",
+  "version": "V60",
+  "generated_at": "2026-07-24 01:38 PM Pacific",
   "records": [
     {
       "state": "submitted",
@@ -32,10 +32,12 @@
       "reserved_at": "2026-07-24T20:35:17.744807+00:00",
       "reserved_at_ts": 1784925359.9858634,
       "workflow_run_id": "30124623616",
+      "confirmation_state": "unverified",
+      "confirmation_reason": "missing_or_invalid_pr_url",
       "submission_key": "Iamgoofball/-tg-station#49",
-      "stage": "ASSIGNED",
-      "current_status": "reserved",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "stage": "UNVERIFIED",
+      "current_status": "unverified",
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "submitted",
@@ -124,10 +126,12 @@
       "reserved_at": "2026-07-24T20:35:17.744807+00:00",
       "reserved_at_ts": 1784925359.9859407,
       "workflow_run_id": "30124623616",
+      "confirmation_state": "unverified",
+      "confirmation_reason": "missing_or_invalid_pr_url",
       "submission_key": "cuentaprueba244w-dotcom/TentOfTrials#10",
-      "stage": "ASSIGNED",
-      "current_status": "reserved",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "stage": "UNVERIFIED",
+      "current_status": "unverified",
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "submitted",
@@ -183,7 +187,7 @@
       "submission_key": "xevrion-v2/agent-playground#8345",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "submitted",
@@ -277,7 +281,7 @@
       "submission_key": "xevrion-v2/agent-playground#8474",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "submitted",
@@ -314,7 +318,7 @@
       "submission_key": "xevrion-v2/agent-playground#8145",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "submitted",
@@ -351,7 +355,7 @@
       "submission_key": "xevrion-v2/agent-playground#8147",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "submitted",
@@ -388,7 +392,7 @@
       "submission_key": "xevrion-v2/agent-playground#8154",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -406,7 +410,7 @@
       "submission_key": "xevrion-v2/agent-playground#8155",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -424,7 +428,7 @@
       "submission_key": "xevrion-v2/agent-playground#8156",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -442,7 +446,7 @@
       "submission_key": "xevrion-v2/agent-playground#8157",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -460,7 +464,7 @@
       "submission_key": "xevrion-v2/agent-playground#8158",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -478,7 +482,7 @@
       "submission_key": "xevrion-v2/agent-playground#8164",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -496,7 +500,7 @@
       "submission_key": "xevrion-v2/agent-playground#8165",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -514,7 +518,7 @@
       "submission_key": "xevrion-v2/agent-playground#8166",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -532,7 +536,7 @@
       "submission_key": "xevrion-v2/agent-playground#8167",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -550,7 +554,7 @@
       "submission_key": "xevrion-v2/agent-playground#8168",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -568,7 +572,7 @@
       "submission_key": "xevrion-v2/agent-playground#8177",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -586,7 +590,7 @@
       "submission_key": "xevrion-v2/agent-playground#8178",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -604,7 +608,7 @@
       "submission_key": "xevrion-v2/agent-playground#8179",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -622,7 +626,7 @@
       "submission_key": "xevrion-v2/agent-playground#8180",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
@@ -640,7 +644,7 @@
       "submission_key": "xevrion-v2/agent-playground#8181",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "submitted",
@@ -710,10 +714,12 @@
       "reserved_at": "2026-07-24T20:35:17.744807+00:00",
       "reserved_at_ts": 1784925359.985916,
       "workflow_run_id": "30124623616",
+      "confirmation_state": "unverified",
+      "confirmation_reason": "missing_or_invalid_pr_url",
       "submission_key": "2lll5/TentOfTrials#1",
-      "stage": "ASSIGNED",
-      "current_status": "reserved",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "stage": "UNVERIFIED",
+      "current_status": "unverified",
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "submitted",
@@ -807,7 +813,7 @@
       "submission_key": "xevrion-v2/agent-playground#8599",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "submitted",
@@ -939,7 +945,7 @@
       "submission_key": "xevrion-v2/agent-playground#8632",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "submitted",
@@ -1019,67 +1025,71 @@
     },
     {
       "state": "reserved",
+      "canonical_key": "iamgoofball/-tg-station#49",
       "repository": "iamgoofball/-tg-station",
       "issue_number": 49,
       "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
       "reward": 50.0,
-      "worker": "Atlas Job 2",
-      "reserved_at": "2026-07-24T20:35:17.744807+00:00",
-      "reserved_at_ts": 1784925359.9858959,
-      "workflow_run_id": "30124623616",
+      "worker": "Atlas Job 1",
+      "reserved_at": "2026-07-24T20:38:55.022187+00:00",
+      "reserved_at_ts": 1784925577.366727,
+      "workflow_run_id": "30124851092",
       "submission_key": "iamgoofball/-tg-station#49",
       "stage": "ASSIGNED",
       "current_status": "reserved",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
+      "canonical_key": "2lll5/tentoftrials#1",
       "repository": "2lll5/tentoftrials",
       "issue_number": 1,
       "issue_url": "https://github.com/2lll5/TentOfTrials/issues/1",
       "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
       "reward": 40.0,
-      "worker": "Atlas Job 4",
-      "reserved_at": "2026-07-24T20:35:17.744807+00:00",
-      "reserved_at_ts": 1784925359.9859285,
-      "workflow_run_id": "30124623616",
+      "worker": "Atlas Job 2",
+      "reserved_at": "2026-07-24T20:38:55.022187+00:00",
+      "reserved_at_ts": 1784925577.3667428,
+      "workflow_run_id": "30124851092",
       "submission_key": "2lll5/tentoftrials#1",
       "stage": "ASSIGNED",
       "current_status": "reserved",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
+      "canonical_key": "cuentaprueba244w-dotcom/tentoftrials#10",
       "repository": "cuentaprueba244w-dotcom/tentoftrials",
       "issue_number": 10,
       "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
       "reward": 35.0,
-      "worker": "Atlas Job 6",
-      "reserved_at": "2026-07-24T20:35:17.744807+00:00",
-      "reserved_at_ts": 1784925359.9859521,
-      "workflow_run_id": "30124623616",
+      "worker": "Atlas Job 3",
+      "reserved_at": "2026-07-24T20:38:55.022187+00:00",
+      "reserved_at_ts": 1784925577.3667564,
+      "workflow_run_id": "30124851092",
       "submission_key": "cuentaprueba244w-dotcom/tentoftrials#10",
       "stage": "ASSIGNED",
       "current_status": "reserved",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "reserved",
+      "canonical_key": "iamgoofball/-tg-station#50",
       "repository": "iamgoofball/-tg-station",
       "issue_number": 50,
       "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/50",
       "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
       "reward": 10.0,
-      "worker": "Atlas Job 7",
-      "reserved_at": "2026-07-24T20:35:17.744807+00:00",
-      "reserved_at_ts": 1784925359.9859648,
-      "workflow_run_id": "30124623616",
+      "worker": "Atlas Job 4",
+      "reserved_at": "2026-07-24T20:38:55.022187+00:00",
+      "reserved_at_ts": 1784925577.3667681,
+      "workflow_run_id": "30124851092",
       "submission_key": "iamgoofball/-tg-station#50",
       "stage": "ASSIGNED",
       "current_status": "reserved",
-      "last_synced_at": "2026-07-24 01:35 PM Pacific"
+      "last_synced_at": "2026-07-24 01:38 PM Pacific"
     },
     {
       "state": "submitted",

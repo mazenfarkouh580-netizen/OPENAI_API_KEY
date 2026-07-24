@@ -1,27 +1,15 @@
 {
-  "version": "V59",
-  "generated_at": "2026-07-24 01:35 PM Pacific",
+  "version": "V60",
+  "generated_at": "2026-07-24 01:38 PM Pacific",
   "automatic_execution": true,
-  "workers_requested": 5,
-  "tasks_dispatched": 7,
+  "workers_requested": 30,
+  "tasks_dispatched": 4,
   "tasks": [
     {
       "worker": "Atlas Job 1",
+      "worker_number": 1,
       "task_sequence": 1,
-      "repository": "iamgoofball/-tg-station",
-      "issue_number": 49,
-      "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
-      "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
-      "reward": 50.0,
-      "score": 100.0,
-      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
-      "submission_key": "Iamgoofball/-tg-station#49",
-      "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T20:35:17.744807+00:00"
-    },
-    {
-      "worker": "Atlas Job 2",
-      "task_sequence": 2,
+      "canonical_key": "iamgoofball/-tg-station#49",
       "repository": "iamgoofball/-tg-station",
       "issue_number": 49,
       "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
@@ -31,25 +19,13 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "iamgoofball/-tg-station#49",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T20:35:17.744807+00:00"
+      "reserved_at": "2026-07-24T20:38:55.022187+00:00"
     },
     {
-      "worker": "Atlas Job 3",
-      "task_sequence": 3,
-      "repository": "2lll5/tentoftrials",
-      "issue_number": 1,
-      "issue_url": "https://github.com/2lll5/TentOfTrials/issues/1",
-      "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
-      "reward": 40.0,
-      "score": 100.0,
-      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
-      "submission_key": "2lll5/TentOfTrials#1",
-      "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T20:35:17.744807+00:00"
-    },
-    {
-      "worker": "Atlas Job 4",
-      "task_sequence": 4,
+      "worker": "Atlas Job 2",
+      "worker_number": 2,
+      "task_sequence": 2,
+      "canonical_key": "2lll5/tentoftrials#1",
       "repository": "2lll5/tentoftrials",
       "issue_number": 1,
       "issue_url": "https://github.com/2lll5/TentOfTrials/issues/1",
@@ -59,25 +35,13 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "2lll5/tentoftrials#1",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T20:35:17.744807+00:00"
+      "reserved_at": "2026-07-24T20:38:55.022187+00:00"
     },
     {
-      "worker": "Atlas Job 5",
-      "task_sequence": 5,
-      "repository": "cuentaprueba244w-dotcom/tentoftrials",
-      "issue_number": 10,
-      "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
-      "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
-      "reward": 35.0,
-      "score": 100.0,
-      "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
-      "submission_key": "cuentaprueba244w-dotcom/TentOfTrials#10",
-      "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T20:35:17.744807+00:00"
-    },
-    {
-      "worker": "Atlas Job 6",
-      "task_sequence": 6,
+      "worker": "Atlas Job 3",
+      "worker_number": 3,
+      "task_sequence": 3,
+      "canonical_key": "cuentaprueba244w-dotcom/tentoftrials#10",
       "repository": "cuentaprueba244w-dotcom/tentoftrials",
       "issue_number": 10,
       "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
@@ -87,11 +51,13 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "cuentaprueba244w-dotcom/tentoftrials#10",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T20:35:17.744807+00:00"
+      "reserved_at": "2026-07-24T20:38:55.022187+00:00"
     },
     {
-      "worker": "Atlas Job 7",
-      "task_sequence": 7,
+      "worker": "Atlas Job 4",
+      "worker_number": 4,
+      "task_sequence": 4,
+      "canonical_key": "iamgoofball/-tg-station#50",
       "repository": "iamgoofball/-tg-station",
       "issue_number": 50,
       "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/50",
@@ -101,7 +67,7 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "iamgoofball/-tg-station#50",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T20:35:17.744807+00:00"
+      "reserved_at": "2026-07-24T20:38:55.022187+00:00"
     }
   ]
 }
