@@ -107,7 +107,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/588": {
     "title": "[Bounty] [paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth orga",
@@ -123,7 +123,7 @@
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "repository": "Iamgoofball/-tg-station",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -143,7 +143,7 @@
     "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
     "repository": "Iamgoofball/-tg-station",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 10.0,
@@ -213,7 +213,7 @@
     "title": "[Hacktoberfest] Create a Custom n8n Node for APort Verification",
     "repository": "aporthq/aport-integrations",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -223,7 +223,7 @@
     "title": "[Hacktoberfest] n8n Workflow Node for Policy Checks",
     "repository": "aporthq/aport-integrations",
     "first_seen": "2026-07-21 03:13 AM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 10.0,
@@ -353,7 +353,7 @@
     "title": "[Bounty] [BOUNTY] [EASY AI TASK] [$40] [AGENTIC] [AGENT READY][PAID BOUNTY] [UNCLAIMED] [",
     "repository": "zhangjiayang6835-cyber/bounty-plaza",
     "first_seen": "2026-07-21 08:30 AM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "WATCHLIST",
     "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
     "last_reward": 40.0,
@@ -373,7 +373,7 @@
     "title": "[$10 BOUNTY] [TypeScript] Add telemetry batch flush threshold tests",
     "repository": "Saiaaax/CyberNinja-Dojo",
     "first_seen": "2026-07-21 10:48 AM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 10.0,
@@ -393,7 +393,7 @@
     "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
     "repository": "cuentaprueba244w-dotcom/TentOfTrials",
     "first_seen": "2026-07-21 10:48 AM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 35.0,
@@ -483,7 +483,7 @@
     "title": "[Bounty] [BOUNTY] [$40] Add a Nix flake and an agentic screenshot harness using Wine + xv",
     "repository": "zhangjiayang6835-cyber/bounty-plaza",
     "first_seen": "2026-07-21 02:46 PM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "WATCHLIST",
     "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
     "last_reward": 40.0,
@@ -513,7 +513,7 @@
     "title": "[Bounty] [BOUNTY] [$50] Fix SSinput Deadlocking",
     "repository": "zhangjiayang6835-cyber/bounty-plaza",
     "first_seen": "2026-07-22 11:55 AM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "WATCHLIST",
     "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
     "last_reward": 50.0,
@@ -543,11 +543,11 @@
     "title": "[Bounty] [BOUNTY] [$25] [NO CODE] [REQUEST] Instructions are in issue body",
     "repository": "zhangjiayang6835-cyber/bounty-plaza",
     "first_seen": "2026-07-22 05:50 PM Pacific",
-    "last_verified": "2026-07-24 04:48 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "WATCHLIST",
     "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
     "last_reward": 25.0,
-    "verification_state": "NOT REVERIFIED THIS RUN"
+    "verification_state": "VERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8345": {
     "title": "Add is-hangul-jamo-chitueumsios-present API utility",
@@ -793,7 +793,7 @@
     "title": "[$30 BOUNTY] [Python] Expand backend API contract edge-case tests",
     "repository": "jackjin1997/zeroeye",
     "first_seen": "2026-07-23 12:50 PM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 30.0,
@@ -1113,7 +1113,7 @@
     "title": "[Bounty] [Bounty] [$30] Apply an owospeak speech filter to the felinid species",
     "repository": "zhangjiayang6835-cyber/bounty-plaza",
     "first_seen": "2026-07-24 12:13 AM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "WATCHLIST",
     "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
     "last_reward": 30.0,
@@ -1123,27 +1123,27 @@
     "title": "[Bounty] [BOUNTY] [PAID BOUNTY] [$40] [paid opire bounty] Add enterprise resource plannin",
     "repository": "zhangjiayang6835-cyber/bounty-plaza",
     "first_seen": "2026-07-24 12:13 AM Pacific",
-    "last_verified": "2026-07-24 01:44 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "WATCHLIST",
     "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
     "last_reward": 40.0,
-    "verification_state": "NOT REVERIFIED THIS RUN"
+    "verification_state": "VERIFIED THIS RUN"
   },
   "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/587": {
     "title": "[Bounty] [BOUNTY] [PAID BOUNTY] [$25] Make the bar fish sing",
     "repository": "zhangjiayang6835-cyber/bounty-plaza",
     "first_seen": "2026-07-24 12:13 AM Pacific",
-    "last_verified": "2026-07-24 01:44 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "WATCHLIST",
     "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
     "last_reward": 30.0,
-    "verification_state": "NOT REVERIFIED THIS RUN"
+    "verification_state": "VERIFIED THIS RUN"
   },
   "https://github.com/2lll5/TentOfTrials/issues/1": {
     "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
     "repository": "2lll5/TentOfTrials",
     "first_seen": "2026-07-24 01:14 AM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 40.0,
@@ -1153,7 +1153,7 @@
     "title": "[Bounty] Bounty: end-to-end test copperhead create (brief → clean full run) + findings re",
     "repository": "zhangjiayang6835-cyber/bounty-plaza",
     "first_seen": "2026-07-24 02:12 AM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
@@ -1167,7 +1167,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8602": {
     "title": "Add is-hangul-jamo-ceongchieumssangcieuc-present API utility",
@@ -1177,7 +1177,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8601": {
     "title": "Add is-hangul-jamo-ceongchieumcieuc-present API utility",
@@ -1187,7 +1187,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8600": {
     "title": "Add is-hangul-jamo-chitueumssangcieuc-present API utility",
@@ -1197,7 +1197,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8599": {
     "title": "Add is-hangul-jamo-chitueumcieuc-present API utility",
@@ -1207,7 +1207,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8617": {
     "title": "Add is-hangul-jamo-ssanghieuh-present API utility",
@@ -1217,7 +1217,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8616": {
     "title": "Add is-hangul-jamo-kapyeounphieuph-present API utility",
@@ -1227,7 +1227,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8615": {
     "title": "Add is-hangul-jamo-ceongchieumchieuch-present API utility",
@@ -1237,7 +1237,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8614": {
     "title": "Add is-hangul-jamo-chitueumchieuch-present API utility",
@@ -1247,7 +1247,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8613": {
     "title": "Add is-hangul-jamo-chieuch-hieuh-present API utility",
@@ -1257,7 +1257,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8632": {
     "title": "Add is-hangul-jamo-choseong-filler-present API utility",
@@ -1267,7 +1267,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8631": {
     "title": "Add is-hangul-jamo-tikeut-rieul-present API utility",
@@ -1277,7 +1277,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8630": {
     "title": "Add is-hangul-jamo-nieun-hieuh-present API utility",
@@ -1287,7 +1287,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8629": {
     "title": "Add is-hangul-jamo-nieun-cieuc-present API utility",
@@ -1297,7 +1297,7 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/xevrion-v2/agent-playground/issues/8628": {
     "title": "Add is-hangul-jamo-yeorinhieuh-present API utility",
@@ -1307,16 +1307,146 @@
     "last_decision": "PURSUE",
     "last_availability": "SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED",
     "last_reward": 50.0,
-    "verification_state": "VERIFIED THIS RUN"
+    "verification_state": "NOT REVERIFIED THIS RUN"
   },
   "https://github.com/globe-and-citizen/cnc-portal/issues/2255": {
     "title": "Sprint Script",
     "repository": "globe-and-citizen/cnc-portal",
     "first_seen": "2026-07-24 05:36 AM Pacific",
-    "last_verified": "2026-07-24 05:36 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
     "last_decision": "REJECT",
     "last_availability": "ASSIGNED",
     "last_reward": 1.25,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/623": {
+    "title": "[Bounty] [$200 USD BOUNTY] Design a new station job",
+    "repository": "zhangjiayang6835-cyber/bounty-plaza",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "WATCHLIST",
+    "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
+    "last_reward": 200.0,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/moorcheh-ai/memanto/issues/1609": {
+    "title": "[BOUNTY $200] 🐜 The Great Memory Migration: Own Your Agentic Memory with Memanto + OKF",
+    "repository": "moorcheh-ai/memanto",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "WATCHLIST",
+    "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
+    "last_reward": 200.0,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/Iamgoofball/-tg-station/issues/46": {
+    "title": "[paid PR opire bounty $250 TG USD CREDS] [EASY TASK FOR AGENTS] [AGENTIC] Implement the Security Rework: Workplace Culture Center and The Rest Of It design docs",
+    "repository": "Iamgoofball/-tg-station",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "WATCHLIST",
+    "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
+    "last_reward": 250.0,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/nirium-protocol/nirium-sdk/issues/11": {
+    "title": "Bounty ($50 USDC): Telegram AI Agent Bot with x402 Paywall",
+    "repository": "nirium-protocol/nirium-sdk",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "REJECT",
+    "last_availability": "CRYPTO OR WALLET PAYMENT - BLOCKED",
+    "last_reward": 0.02,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/658": {
+    "title": "[Bounty] [BOUNTY] [$250] [EASY] [AGENTIC AI] Albuquerque/Turkey Refactor",
+    "repository": "zhangjiayang6835-cyber/bounty-plaza",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "WATCHLIST",
+    "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
+    "last_reward": 250.0,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/681": {
+    "title": "[Bounty] [bounty] [100 ETH reward] [agentic ai] Create a Warrior Cats codebase",
+    "repository": "zhangjiayang6835-cyber/bounty-plaza",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "WATCHLIST",
+    "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
+    "last_reward": 100.0,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/484": {
+    "title": "[Bounty] [claude-builders-bounty/claude-builders-bounty] [BOUNTY $200] WORKFLOW: n8n + Cl",
+    "repository": "zhangjiayang6835-cyber/bounty-plaza",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "WATCHLIST",
+    "last_availability": "REPOSITORY MISMATCH - MANUAL VERIFY",
+    "last_reward": 200.0,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/Vikingr2023/awesome-agent-bounties/issues/225": {
+    "title": "[claude-builders-bounty/claude-builders-bounty] [BOUNTY $200] WORKFLOW: n8n + Claude Code — automated weekly",
+    "repository": "Vikingr2023/awesome-agent-bounties",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "WATCHLIST",
+    "last_availability": "REPOSITORY MISMATCH - MANUAL VERIFY",
+    "last_reward": 200.0,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/628": {
+    "title": "[Bounty] [BOUNTY] [$100] [AGENTIC / AI] Implement pixel movement",
+    "repository": "zhangjiayang6835-cyber/bounty-plaza",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "REJECT",
+    "last_availability": "CRYPTO OR WALLET PAYMENT - BLOCKED",
+    "last_reward": 100.0,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/657": {
+    "title": "[Bounty] [BOUNTY][$67] Add the Tung Tung Tung Sahur antagonist.",
+    "repository": "zhangjiayang6835-cyber/bounty-plaza",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "WATCHLIST",
+    "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
+    "last_reward": 67.0,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/622": {
+    "title": "[Bounty] [BOUNTY] [MONEY] [$$$100$$$] [PAID] [FUNDING] [MONETARY REWARD] Add Ralsei",
+    "repository": "zhangjiayang6835-cyber/bounty-plaza",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "WATCHLIST",
+    "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
+    "last_reward": 100.0,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/624": {
+    "title": "[Bounty] [BOUNTY] [$67.69] [AGENTIC] [MILKING] milkabale moths",
+    "repository": "zhangjiayang6835-cyber/bounty-plaza",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "WATCHLIST",
+    "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
+    "last_reward": 67.0,
+    "verification_state": "VERIFIED THIS RUN"
+  },
+  "https://github.com/lablab-ai/community-content/issues/462": {
+    "title": "Crafting a Comprehensive Tutorial for Vectara Chat",
+    "repository": "lablab-ai/community-content",
+    "first_seen": "2026-07-24 06:05 AM Pacific",
+    "last_verified": "2026-07-24 06:05 AM Pacific",
+    "last_decision": "WATCHLIST",
+    "last_availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
+    "last_reward": 60.0,
     "verification_state": "VERIFIED THIS RUN"
   }
 }

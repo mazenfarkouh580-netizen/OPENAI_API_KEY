@@ -21,12 +21,10 @@
     "issue_url": "https://github.com/Iamgoofball/-tg-station/issues/49",
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
-    "worker": "Atlas 3",
-    "reserved_at": "2026-07-24T12:36:15.057899+00:00",
-    "reserved_at_ts": 1784896619.7694578,
-    "workflow_run_id": "30093678944",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas Job 1",
+    "reserved_at": "2026-07-24T13:05:17.512820+00:00",
+    "reserved_at_ts": 1784898353.0068958,
+    "workflow_run_id": "30095500947"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -95,12 +93,10 @@
     "issue_url": "https://github.com/cuentaprueba244w-dotcom/TentOfTrials/issues/10",
     "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
     "reward": 35.0,
-    "worker": "Atlas 5",
-    "reserved_at": "2026-07-24T12:36:15.057899+00:00",
-    "reserved_at_ts": 1784896619.769474,
-    "workflow_run_id": "30093678944",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas Job 3",
+    "reserved_at": "2026-07-24T13:05:17.512820+00:00",
+    "reserved_at_ts": 1784898353.0069373,
+    "workflow_run_id": "30095500947"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -555,12 +551,10 @@
     "issue_url": "https://github.com/2lll5/TentOfTrials/issues/1",
     "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
     "reward": 40.0,
-    "worker": "Atlas 4",
-    "reserved_at": "2026-07-24T12:36:15.057899+00:00",
-    "reserved_at_ts": 1784896619.7694662,
-    "workflow_run_id": "30093678944",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "worker": "Atlas Job 2",
+    "reserved_at": "2026-07-24T13:05:17.512820+00:00",
+    "reserved_at_ts": 1784898353.0069172,
+    "workflow_run_id": "30095500947"
   },
   "xevrion-v2/agent-playground#8603": {
     "state": "submitted",

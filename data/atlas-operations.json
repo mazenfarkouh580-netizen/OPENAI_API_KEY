@@ -1,5 +1,5 @@
 {
-  "version": "V55",
+  "version": "V57",
   "pipeline": [
     {
       "title": "Add is-hangul-jamo-choseong-filler-present API utility",
@@ -93,7 +93,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 05:36 AM Pacific"
+      "last_seen_at": "2026-07-24 06:05 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-chitueumcieuc-present API utility",
@@ -187,7 +187,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 05:36 AM Pacific"
+      "last_seen_at": "2026-07-24 06:05 AM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -271,10 +271,10 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 05:36 AM Pacific",
+      "last_verified": "2026-07-24 06:05 AM Pacific",
       "source": "Opire",
-      "source_focus_score": 44.0,
-      "source_rank": 4,
+      "source_focus_score": 75.0,
+      "source_rank": 3,
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -287,7 +287,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 05:36 AM Pacific"
+      "last_seen_at": "2026-07-24 06:05 AM Pacific"
     },
     {
       "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
@@ -373,10 +373,10 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 01:14 AM Pacific",
-      "last_verified": "2026-07-24 05:36 AM Pacific",
+      "last_verified": "2026-07-24 06:05 AM Pacific",
       "source": "2lll5",
       "source_focus_score": 13.0,
-      "source_rank": 8,
+      "source_rank": 10,
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -389,7 +389,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 05:36 AM Pacific"
+      "last_seen_at": "2026-07-24 06:05 AM Pacific"
     },
     {
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -470,10 +470,10 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-24 05:36 AM Pacific",
+      "last_verified": "2026-07-24 06:05 AM Pacific",
       "source": "cuentaprueba244w-dotcom",
       "source_focus_score": 12.5,
-      "source_rank": 9,
+      "source_rank": 11,
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -486,20 +486,20 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 05:36 AM Pacific"
+      "last_seen_at": "2026-07-24 06:05 AM Pacific"
     }
   ],
-  "last_updated": "2026-07-24 05:36 AM Pacific",
+  "last_updated": "2026-07-24 06:05 AM Pacific",
   "source_performance": {
     "zhangjiayang6835-cyber": {
-      "found": 5,
+      "found": 15,
       "pursue": 1,
-      "advertised_value": 210.0,
+      "advertised_value": 1349.0,
       "submitted": 1,
       "accepted": 0,
       "paid": 0,
       "revenue": 0.0,
-      "focus_score": 54.0
+      "focus_score": 93.0
     },
     "APort": {
       "found": 2,
@@ -511,25 +511,15 @@
       "revenue": 0.0,
       "focus_score": 64.0
     },
-    "Xevrion": {
-      "found": 16,
-      "pursue": 16,
-      "advertised_value": 800.0,
-      "submitted": 17,
-      "accepted": 0,
-      "paid": 0,
-      "revenue": 0.0,
-      "focus_score": 534.0
-    },
     "Opire": {
-      "found": 2,
+      "found": 4,
       "pursue": 2,
-      "advertised_value": 60.0,
+      "advertised_value": 350.0,
       "submitted": 1,
       "accepted": 0,
       "paid": 0,
       "revenue": 0.0,
-      "focus_score": 44.0
+      "focus_score": 75.0
     },
     "2lll5": {
       "found": 1,
@@ -571,6 +561,46 @@
       "revenue": 0.0,
       "focus_score": 30.0
     },
+    "moorcheh-ai": {
+      "found": 1,
+      "pursue": 0,
+      "advertised_value": 200.0,
+      "submitted": 0,
+      "accepted": 0,
+      "paid": 0,
+      "revenue": 0.0,
+      "focus_score": 21.0
+    },
+    "nirium-protocol": {
+      "found": 1,
+      "pursue": 0,
+      "advertised_value": 0.02,
+      "submitted": 0,
+      "accepted": 0,
+      "paid": 0,
+      "revenue": 0.0,
+      "focus_score": 1.0
+    },
+    "Vikingr2023": {
+      "found": 1,
+      "pursue": 0,
+      "advertised_value": 200.0,
+      "submitted": 0,
+      "accepted": 0,
+      "paid": 0,
+      "revenue": 0.0,
+      "focus_score": 21.0
+    },
+    "lablab-ai": {
+      "found": 1,
+      "pursue": 0,
+      "advertised_value": 60.0,
+      "submitted": 0,
+      "accepted": 0,
+      "paid": 0,
+      "revenue": 0.0,
+      "focus_score": 7.0
+    },
     "globe-and-citizen": {
       "found": 1,
       "pursue": 0,
@@ -591,6 +621,16 @@
       "revenue": 0.0,
       "focus_score": 40.0
     },
+    "Xevrion": {
+      "found": 0,
+      "pursue": 0,
+      "advertised_value": 0.0,
+      "submitted": 17,
+      "accepted": 0,
+      "paid": 0,
+      "revenue": 0.0,
+      "focus_score": 340.0
+    },
     "UnsafeLabs": {
       "found": 0,
       "pursue": 0,
@@ -605,14 +645,18 @@
   "source_focus_order": [
     "Xevrion",
     "UnsafeLabs",
-    "APort",
     "zhangjiayang6835-cyber",
     "Opire",
+    "APort",
     "claude-builders-bounty",
     "jackjin1997",
     "CyberNinja",
+    "moorcheh-ai",
+    "Vikingr2023",
     "2lll5",
     "cuentaprueba244w-dotcom",
-    "globe-and-citizen"
+    "lablab-ai",
+    "globe-and-citizen",
+    "nirium-protocol"
   ]
 }
