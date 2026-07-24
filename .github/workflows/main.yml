@@ -1,5 +1,46 @@
-  schedule:
-    # Main hunt: every 15 minutes.
-    - cron: "8,23,38,53 * * * *"
-    # Watchdog: five minutes after each main slot.
-    - cron: "13,28,43,58 * * * *"
+Inbox
+Customize your view
+
+Tailor your Inbox to fit your workflow, or pick a different view to open by default at github.com/pulls
+
+Needs your review
+0
+ (0)
+Needs your teams' review
+0
+ (0)
+Your drafts
+0
+ (0)
+Waiting for review or checks
+5
+ (5)
+Fix #31: [Hacktoberfest] n8n Workflow Node for Policy Checks
+aporthq/aport-integrations#125 • mazenfarkouh580-netizen • Updated 17 hours ago
+Awaiting approval
+—
+—
+Fix #4: [Hacktoberfest] Create a Custom n8n Node for APort Verification
+aporthq/aport-integrations#124 • mazenfarkouh580-netizen • Updated yesterday
+Awaiting approval
+—
+—
+Fix #2855: [BOUNTY $25] AGENT: Create a CLAUDE.md at the repo root.
+claude-builders-bounty/claude-builders-bounty#3581 • mazenfarkouh580-netizen • Updated yesterday
+Awaiting approval
+—
+—
+Fix #1: [BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history
+claude-builders-bounty/claude-builders-bounty#3580 • mazenfarkouh580-netizen • Updated yesterday
+Awaiting approval
+—
+—
+Fix #10: [$10 BOUNTY] [TypeScript] Add telemetry batch flush threshold tests
+Saiaaax/CyberNinja-Dojo#72 • mazenfarkouh580-netizen • Updated yesterday
+Awaiting approval
+—
+Needs action
+0
+ (0)
+Ready to merge
+0
