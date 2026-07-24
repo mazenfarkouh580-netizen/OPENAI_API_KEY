@@ -1,6 +1,6 @@
 {
-  "version": "V51",
-  "generated_at": "2026-07-24 04:23 AM Pacific",
+  "version": "V53",
+  "generated_at": "2026-07-24 04:33 AM Pacific",
   "records": [
     {
       "state": "submitted",
@@ -32,10 +32,12 @@
       "reserved_at": "2026-07-24T11:23:24.467417+00:00",
       "reserved_at_ts": 1784892238.0971587,
       "workflow_run_id": "30089309046",
+      "confirmation_state": "unverified",
+      "confirmation_reason": "missing_or_invalid_pr_url",
       "submission_key": "Iamgoofball/-tg-station#49",
-      "stage": "ASSIGNED",
-      "current_status": "reserved",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "stage": "UNVERIFIED",
+      "current_status": "unverified",
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "submitted",
@@ -124,10 +126,12 @@
       "reserved_at": "2026-07-24T11:23:24.467417+00:00",
       "reserved_at_ts": 1784892238.0971873,
       "workflow_run_id": "30089309046",
+      "confirmation_state": "unverified",
+      "confirmation_reason": "missing_or_invalid_pr_url",
       "submission_key": "cuentaprueba244w-dotcom/TentOfTrials#10",
-      "stage": "ASSIGNED",
-      "current_status": "reserved",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "stage": "UNVERIFIED",
+      "current_status": "unverified",
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "submitted",
@@ -183,7 +187,7 @@
       "submission_key": "xevrion-v2/agent-playground#8345",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "submitted",
@@ -277,7 +281,7 @@
       "submission_key": "xevrion-v2/agent-playground#8474",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "submitted",
@@ -314,7 +318,7 @@
       "submission_key": "xevrion-v2/agent-playground#8145",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "submitted",
@@ -351,7 +355,7 @@
       "submission_key": "xevrion-v2/agent-playground#8147",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "submitted",
@@ -388,7 +392,7 @@
       "submission_key": "xevrion-v2/agent-playground#8154",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -406,7 +410,7 @@
       "submission_key": "xevrion-v2/agent-playground#8155",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -424,7 +428,7 @@
       "submission_key": "xevrion-v2/agent-playground#8156",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -442,7 +446,7 @@
       "submission_key": "xevrion-v2/agent-playground#8157",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -460,7 +464,7 @@
       "submission_key": "xevrion-v2/agent-playground#8158",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -478,7 +482,7 @@
       "submission_key": "xevrion-v2/agent-playground#8164",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -496,7 +500,7 @@
       "submission_key": "xevrion-v2/agent-playground#8165",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -514,7 +518,7 @@
       "submission_key": "xevrion-v2/agent-playground#8166",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -532,7 +536,7 @@
       "submission_key": "xevrion-v2/agent-playground#8167",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -550,7 +554,7 @@
       "submission_key": "xevrion-v2/agent-playground#8168",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -568,7 +572,7 @@
       "submission_key": "xevrion-v2/agent-playground#8177",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -586,7 +590,7 @@
       "submission_key": "xevrion-v2/agent-playground#8178",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -604,7 +608,7 @@
       "submission_key": "xevrion-v2/agent-playground#8179",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -622,7 +626,7 @@
       "submission_key": "xevrion-v2/agent-playground#8180",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "reserved",
@@ -640,7 +644,7 @@
       "submission_key": "xevrion-v2/agent-playground#8181",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "submitted",
@@ -710,10 +714,12 @@
       "reserved_at": "2026-07-24T11:23:24.467417+00:00",
       "reserved_at_ts": 1784892238.097175,
       "workflow_run_id": "30089309046",
+      "confirmation_state": "unverified",
+      "confirmation_reason": "missing_or_invalid_pr_url",
       "submission_key": "2lll5/TentOfTrials#1",
-      "stage": "ASSIGNED",
-      "current_status": "reserved",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "stage": "UNVERIFIED",
+      "current_status": "unverified",
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "submitted",
@@ -802,10 +808,12 @@
       "reserved_at": "2026-07-24T11:19:49.334365+00:00",
       "reserved_at_ts": 1784892026.700188,
       "workflow_run_id": "30089179008",
+      "confirmation_state": "unverified",
+      "confirmation_reason": "missing_or_invalid_pr_url",
       "submission_key": "xevrion-v2/agent-playground#8599",
-      "stage": "ASSIGNED",
-      "current_status": "reserved",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "stage": "UNVERIFIED",
+      "current_status": "unverified",
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "submitted",
@@ -932,10 +940,12 @@
       "reserved_at": "2026-07-24T11:19:49.334365+00:00",
       "reserved_at_ts": 1784892026.7001708,
       "workflow_run_id": "30089179008",
+      "confirmation_state": "unverified",
+      "confirmation_reason": "missing_or_invalid_pr_url",
       "submission_key": "xevrion-v2/agent-playground#8632",
-      "stage": "ASSIGNED",
-      "current_status": "reserved",
-      "last_synced_at": "2026-07-24 04:23 AM Pacific"
+      "stage": "UNVERIFIED",
+      "current_status": "unverified",
+      "last_synced_at": "2026-07-24 04:33 AM Pacific"
     },
     {
       "state": "submitted",

@@ -1,6 +1,6 @@
 {
   "potential": 1085.0,
-  "assigned": 225.0,
+  "assigned": 0,
   "submitted": 0,
   "approved": 0,
   "payment_pending": 0,
@@ -12,24 +12,24 @@
   "workers": [
     {
       "worker": "Atlas 1",
-      "status": "ASSIGNED",
-      "repository": "Iamgoofball/-tg-station",
-      "issue_number": 49,
-      "reward": 50.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     },
     {
       "worker": "Atlas 2",
-      "status": "ASSIGNED",
-      "repository": "2lll5/TentOfTrials",
-      "issue_number": 1,
-      "reward": 40.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     },
     {
       "worker": "Atlas 3",
-      "status": "ASSIGNED",
-      "repository": "cuentaprueba244w-dotcom/TentOfTrials",
-      "issue_number": 10,
-      "reward": 35.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     },
     {
       "worker": "Atlas 4",
@@ -46,7 +46,7 @@
       "reward": 0.0
     }
   ],
-  "generated_at": "2026-07-24 04:23 AM Pacific",
+  "generated_at": "2026-07-24 04:33 AM Pacific",
   "pipeline_counts": {
     "open_prs": 0,
     "awaiting_review": 0,
@@ -54,7 +54,7 @@
     "rejected": 0,
     "paid": 0,
     "submitted": 0,
-    "assigned": 5
+    "assigned": 0
   },
   "open_prs": 0,
   "awaiting_review": 0,
