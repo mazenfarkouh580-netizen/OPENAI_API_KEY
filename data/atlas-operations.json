@@ -93,7 +93,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 12:54 PM Pacific"
+      "last_seen_at": "2026-07-24 01:35 PM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-chitueumcieuc-present API utility",
@@ -187,7 +187,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 12:54 PM Pacific"
+      "last_seen_at": "2026-07-24 01:35 PM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -287,7 +287,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 12:54 PM Pacific"
+      "last_seen_at": "2026-07-24 01:35 PM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -371,7 +371,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 12:54 PM Pacific",
+      "last_verified": "2026-07-24 01:35 PM Pacific",
       "source": "Opire",
       "source_focus_score": 70.0,
       "source_rank": 3,
@@ -387,7 +387,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 06:23 AM Pacific",
-      "last_seen_at": "2026-07-24 12:54 PM Pacific"
+      "last_seen_at": "2026-07-24 01:35 PM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
@@ -472,7 +472,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 12:54 PM Pacific",
+      "last_verified": "2026-07-24 01:35 PM Pacific",
       "source": "Opire",
       "source_focus_score": 70.0,
       "source_rank": 3,
@@ -488,7 +488,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 06:23 AM Pacific",
-      "last_seen_at": "2026-07-24 12:54 PM Pacific"
+      "last_seen_at": "2026-07-24 01:35 PM Pacific"
     },
     {
       "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
@@ -590,7 +590,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 12:54 PM Pacific"
+      "last_seen_at": "2026-07-24 01:35 PM Pacific"
     },
     {
       "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
@@ -676,10 +676,10 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 01:14 AM Pacific",
-      "last_verified": "2026-07-24 12:54 PM Pacific",
+      "last_verified": "2026-07-24 01:35 PM Pacific",
       "source": "2lll5",
       "source_focus_score": 13.0,
-      "source_rank": 10,
+      "source_rank": 11,
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -692,7 +692,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 06:23 AM Pacific",
-      "last_seen_at": "2026-07-24 12:54 PM Pacific"
+      "last_seen_at": "2026-07-24 01:35 PM Pacific"
     },
     {
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -789,7 +789,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 12:54 PM Pacific"
+      "last_seen_at": "2026-07-24 01:35 PM Pacific"
     },
     {
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -869,10 +869,10 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-24 12:54 PM Pacific",
+      "last_verified": "2026-07-24 01:35 PM Pacific",
       "source": "cuentaprueba244w-dotcom",
       "source_focus_score": 12.5,
-      "source_rank": 11,
+      "source_rank": 12,
       "payment_confidence": 49,
       "competition_score": 100,
       "clarity_score": 50,
@@ -885,20 +885,20 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 06:23 AM Pacific",
-      "last_seen_at": "2026-07-24 12:54 PM Pacific"
+      "last_seen_at": "2026-07-24 01:35 PM Pacific"
     }
   ],
-  "last_updated": "2026-07-24 12:54 PM Pacific",
+  "last_updated": "2026-07-24 01:35 PM Pacific",
   "source_performance": {
     "zhangjiayang6835-cyber": {
-      "found": 16,
+      "found": 15,
       "pursue": 1,
-      "advertised_value": 1527.0,
+      "advertised_value": 1702.0,
       "submitted": 1,
       "accepted": 0,
       "paid": 0,
       "revenue": 0.0,
-      "focus_score": 94.0
+      "focus_score": 93.0
     },
     "APort": {
       "found": 2,
@@ -961,6 +961,16 @@
       "focus_score": 50.0
     },
     "moorcheh-ai": {
+      "found": 1,
+      "pursue": 0,
+      "advertised_value": 200.0,
+      "submitted": 0,
+      "accepted": 0,
+      "paid": 0,
+      "revenue": 0.0,
+      "focus_score": 21.0
+    },
+    "iamgoofball": {
       "found": 1,
       "pursue": 0,
       "advertised_value": 200.0,
@@ -1051,6 +1061,7 @@
     "claude-builders-bounty",
     "jackjin1997",
     "moorcheh-ai",
+    "iamgoofball",
     "vikingr2023",
     "2lll5",
     "cuentaprueba244w-dotcom",

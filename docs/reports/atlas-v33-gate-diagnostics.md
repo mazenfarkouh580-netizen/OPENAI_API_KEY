@@ -1,6 +1,6 @@
 # Atlas + Alex V51 Gate Diagnostics
 
-Generated: 2026-07-24 12:54 PM Pacific
+Generated: 2026-07-24 01:35 PM Pacific
 
 ## Decision Counts
 
@@ -139,6 +139,17 @@ Generated: 2026-07-24 12:54 PM Pacific
 - Atlas executable: True
 - URL: https://github.com/moorcheh-ai/memanto/issues/1609
 
+### iamgoofball/-tg-station #53
+- Decision: WATCHLIST
+- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
+- Reward: $200.00
+- Payment: FIAT METHOD MENTIONED - FUNDING/TIMING NOT PROVEN
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: False
+- Atlas executable: True
+- URL: https://github.com/Iamgoofball/-tg-station/issues/53
+
 ### iamgoofball/-tg-station #46
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
@@ -216,17 +227,6 @@ Generated: 2026-07-24 12:54 PM Pacific
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/607
 
-### zhangjiayang6835-cyber/bounty-plaza #587
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $30.00
-- Payment: UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: True
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/587
-
 ### zhangjiayang6835-cyber/bounty-plaza #649
 - Decision: REJECT
 - Gate: CRYPTO OR WALLET PAYMENT - BLOCKED
@@ -238,17 +238,6 @@ Generated: 2026-07-24 12:54 PM Pacific
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/649
 
-### zhangjiayang6835-cyber/bounty-plaza #674
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $25.00
-- Payment: UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: True
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/674
-
 ### zhangjiayang6835-cyber/bounty-plaza #681
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
@@ -259,6 +248,17 @@ Generated: 2026-07-24 12:54 PM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/681
+
+### zhangjiayang6835-cyber/bounty-plaza #692
+- Decision: WATCHLIST
+- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
+- Reward: $200.00
+- Payment: UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: False
+- Atlas executable: False
+- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/692
 
 ### zhangjiayang6835-cyber/bounty-plaza #690
 - Decision: WATCHLIST
@@ -304,6 +304,17 @@ Generated: 2026-07-24 12:54 PM Pacific
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/628
 
+### zhangjiayang6835-cyber/bounty-plaza #629
+- Decision: WATCHLIST
+- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
+- Reward: $130.00
+- Payment: FIAT METHOD MENTIONED - FUNDING/TIMING NOT PROVEN
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: False
+- Atlas executable: False
+- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/629
+
 ### zhangjiayang6835-cyber/bounty-plaza #657
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
@@ -314,17 +325,6 @@ Generated: 2026-07-24 12:54 PM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/657
-
-### zhangjiayang6835-cyber/bounty-plaza #622
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $100.00
-- Payment: FIAT METHOD MENTIONED - FUNDING/TIMING NOT PROVEN
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/622
 
 ### dasharo/dasharo-issues #1041
 - Decision: WATCHLIST
