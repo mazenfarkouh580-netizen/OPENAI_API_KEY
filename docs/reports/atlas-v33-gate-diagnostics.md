@@ -1,6 +1,6 @@
 # Atlas + Alex V51 Gate Diagnostics
 
-Generated: 2026-07-24 06:23 AM Pacific
+Generated: 2026-07-24 06:36 AM Pacific
 
 ## Decision Counts
 
@@ -13,9 +13,8 @@ Generated: 2026-07-24 06:23 AM Pacific
 
 - PAYMENT SPEED OR FUNDING NOT VERIFIED: 16
 - SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED: 9
-- CRYPTO OR WALLET PAYMENT - BLOCKED: 2
+- CRYPTO OR WALLET PAYMENT - BLOCKED: 3
 - REPOSITORY MISMATCH - MANUAL VERIFY: 2
-- ASSIGNED: 1
 
 ## Candidate Details
 
@@ -250,6 +249,17 @@ Generated: 2026-07-24 06:23 AM Pacific
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/681
 
+### zhangjiayang6835-cyber/bounty-plaza #649
+- Decision: REJECT
+- Gate: CRYPTO OR WALLET PAYMENT - BLOCKED
+- Reward: $145.00
+- Payment: FIAT METHOD MENTIONED - FUNDING/TIMING NOT PROVEN
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: False
+- Atlas executable: False
+- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/649
+
 ### zhangjiayang6835-cyber/bounty-plaza #674
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
@@ -337,14 +347,3 @@ Generated: 2026-07-24 06:23 AM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: False
 - URL: https://github.com/lablab-ai/community-content/issues/462
-
-### globe-and-citizen/cnc-portal #2255
-- Decision: REJECT
-- Gate: ASSIGNED
-- Reward: $1.25
-- Payment: FIAT METHOD MENTIONED - FUNDING/TIMING NOT PROVEN
-- Payout source: Unverified promise or discovery signal
-- Claimable: False
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/globe-and-citizen/cnc-portal/issues/2255
