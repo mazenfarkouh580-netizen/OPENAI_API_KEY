@@ -1,6 +1,6 @@
 {
   "version": "V59",
-  "generated_at": "2026-07-24 06:36 AM Pacific",
+  "generated_at": "2026-07-24 12:44 PM Pacific",
   "records": [
     {
       "state": "submitted",
@@ -29,13 +29,13 @@
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
       "reward": 50.0,
       "worker": "Atlas Job 1",
-      "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-      "reserved_at_ts": 1784900229.898921,
-      "workflow_run_id": "30097551643",
+      "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+      "reserved_at_ts": 1784922306.0818386,
+      "workflow_run_id": "30121488420",
       "submission_key": "Iamgoofball/-tg-station#49",
       "stage": "ASSIGNED",
       "current_status": "reserved",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "submitted",
@@ -121,13 +121,13 @@
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
       "reward": 35.0,
       "worker": "Atlas Job 5",
-      "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-      "reserved_at_ts": 1784900229.8989606,
-      "workflow_run_id": "30097551643",
+      "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+      "reserved_at_ts": 1784922306.0819216,
+      "workflow_run_id": "30121488420",
       "submission_key": "cuentaprueba244w-dotcom/TentOfTrials#10",
       "stage": "ASSIGNED",
       "current_status": "reserved",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "submitted",
@@ -183,7 +183,7 @@
       "submission_key": "xevrion-v2/agent-playground#8345",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "submitted",
@@ -277,7 +277,7 @@
       "submission_key": "xevrion-v2/agent-playground#8474",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "submitted",
@@ -314,7 +314,7 @@
       "submission_key": "xevrion-v2/agent-playground#8145",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "submitted",
@@ -351,7 +351,7 @@
       "submission_key": "xevrion-v2/agent-playground#8147",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "submitted",
@@ -388,7 +388,7 @@
       "submission_key": "xevrion-v2/agent-playground#8154",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -406,7 +406,7 @@
       "submission_key": "xevrion-v2/agent-playground#8155",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -424,7 +424,7 @@
       "submission_key": "xevrion-v2/agent-playground#8156",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -442,7 +442,7 @@
       "submission_key": "xevrion-v2/agent-playground#8157",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -460,7 +460,7 @@
       "submission_key": "xevrion-v2/agent-playground#8158",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -478,7 +478,7 @@
       "submission_key": "xevrion-v2/agent-playground#8164",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -496,7 +496,7 @@
       "submission_key": "xevrion-v2/agent-playground#8165",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -514,7 +514,7 @@
       "submission_key": "xevrion-v2/agent-playground#8166",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -532,7 +532,7 @@
       "submission_key": "xevrion-v2/agent-playground#8167",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -550,7 +550,7 @@
       "submission_key": "xevrion-v2/agent-playground#8168",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -568,7 +568,7 @@
       "submission_key": "xevrion-v2/agent-playground#8177",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -586,7 +586,7 @@
       "submission_key": "xevrion-v2/agent-playground#8178",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -604,7 +604,7 @@
       "submission_key": "xevrion-v2/agent-playground#8179",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -622,7 +622,7 @@
       "submission_key": "xevrion-v2/agent-playground#8180",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -640,7 +640,7 @@
       "submission_key": "xevrion-v2/agent-playground#8181",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "submitted",
@@ -707,13 +707,13 @@
       "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
       "reward": 40.0,
       "worker": "Atlas Job 3",
-      "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-      "reserved_at_ts": 1784900229.8989432,
-      "workflow_run_id": "30097551643",
+      "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+      "reserved_at_ts": 1784922306.0818694,
+      "workflow_run_id": "30121488420",
       "submission_key": "2lll5/TentOfTrials#1",
       "stage": "ASSIGNED",
       "current_status": "reserved",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "submitted",
@@ -807,7 +807,7 @@
       "submission_key": "xevrion-v2/agent-playground#8599",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "submitted",
@@ -939,7 +939,7 @@
       "submission_key": "xevrion-v2/agent-playground#8632",
       "stage": "UNVERIFIED",
       "current_status": "unverified",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "submitted",
@@ -1025,13 +1025,13 @@
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
       "reward": 50.0,
       "worker": "Atlas Job 2",
-      "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-      "reserved_at_ts": 1784900229.898933,
-      "workflow_run_id": "30097551643",
+      "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+      "reserved_at_ts": 1784922306.0818555,
+      "workflow_run_id": "30121488420",
       "submission_key": "iamgoofball/-tg-station#49",
       "stage": "ASSIGNED",
       "current_status": "reserved",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -1041,13 +1041,13 @@
       "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
       "reward": 40.0,
       "worker": "Atlas Job 4",
-      "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-      "reserved_at_ts": 1784900229.8989522,
-      "workflow_run_id": "30097551643",
+      "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+      "reserved_at_ts": 1784922306.0818965,
+      "workflow_run_id": "30121488420",
       "submission_key": "2lll5/tentoftrials#1",
       "stage": "ASSIGNED",
       "current_status": "reserved",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -1057,13 +1057,13 @@
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
       "reward": 35.0,
       "worker": "Atlas Job 6",
-      "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-      "reserved_at_ts": 1784900229.8989685,
-      "workflow_run_id": "30097551643",
+      "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+      "reserved_at_ts": 1784922306.081936,
+      "workflow_run_id": "30121488420",
       "submission_key": "cuentaprueba244w-dotcom/tentoftrials#10",
       "stage": "ASSIGNED",
       "current_status": "reserved",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "reserved",
@@ -1073,13 +1073,13 @@
       "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
       "reward": 10.0,
       "worker": "Atlas Job 7",
-      "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-      "reserved_at_ts": 1784900229.8989773,
-      "workflow_run_id": "30097551643",
+      "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+      "reserved_at_ts": 1784922306.0819478,
+      "workflow_run_id": "30121488420",
       "submission_key": "iamgoofball/-tg-station#50",
       "stage": "ASSIGNED",
       "current_status": "reserved",
-      "last_synced_at": "2026-07-24 06:36 AM Pacific"
+      "last_synced_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "state": "submitted",

@@ -1,6 +1,6 @@
 # Atlas + Alex V51 Gate Diagnostics
 
-Generated: 2026-07-24 06:36 AM Pacific
+Generated: 2026-07-24 12:44 PM Pacific
 
 ## Decision Counts
 
@@ -216,17 +216,6 @@ Generated: 2026-07-24 06:36 AM Pacific
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/607
 
-### zhangjiayang6835-cyber/bounty-plaza #585
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $40.00
-- Payment: UNVERIFIED
-- Payout source: Unverified promise or discovery signal
-- Claimable: True
-- Quick-win risk accepted: False
-- Atlas executable: False
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/585
-
 ### zhangjiayang6835-cyber/bounty-plaza #587
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
@@ -270,6 +259,17 @@ Generated: 2026-07-24 06:36 AM Pacific
 - Quick-win risk accepted: False
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/674
+
+### zhangjiayang6835-cyber/bounty-plaza #690
+- Decision: WATCHLIST
+- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
+- Reward: $100.00
+- Payment: UNVERIFIED
+- Payout source: Unverified promise or discovery signal
+- Claimable: False
+- Quick-win risk accepted: False
+- Atlas executable: False
+- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/690
 
 ### zhangjiayang6835-cyber/bounty-plaza #484
 - Decision: WATCHLIST
@@ -326,16 +326,16 @@ Generated: 2026-07-24 06:36 AM Pacific
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/622
 
-### zhangjiayang6835-cyber/bounty-plaza #624
+### dasharo/dasharo-issues #1041
 - Decision: WATCHLIST
 - Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $67.00
+- Reward: $100.00
 - Payment: UNVERIFIED
 - Payout source: Unverified promise or discovery signal
 - Claimable: False
 - Quick-win risk accepted: False
 - Atlas executable: False
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/624
+- URL: https://github.com/Dasharo/dasharo-issues/issues/1041
 
 ### lablab-ai/community-content #462
 - Decision: WATCHLIST

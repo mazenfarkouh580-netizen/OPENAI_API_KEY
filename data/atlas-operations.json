@@ -93,7 +93,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 06:36 AM Pacific"
+      "last_seen_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-chitueumcieuc-present API utility",
@@ -187,7 +187,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 06:36 AM Pacific"
+      "last_seen_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -287,7 +287,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 06:36 AM Pacific"
+      "last_seen_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -371,9 +371,9 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 06:36 AM Pacific",
+      "last_verified": "2026-07-24 12:44 PM Pacific",
       "source": "Opire",
-      "source_focus_score": 75.0,
+      "source_focus_score": 70.0,
       "source_rank": 3,
       "payment_confidence": 49,
       "competition_score": 100,
@@ -387,7 +387,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 06:23 AM Pacific",
-      "last_seen_at": "2026-07-24 06:36 AM Pacific"
+      "last_seen_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
@@ -472,9 +472,9 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 06:36 AM Pacific",
+      "last_verified": "2026-07-24 12:44 PM Pacific",
       "source": "Opire",
-      "source_focus_score": 75.0,
+      "source_focus_score": 70.0,
       "source_rank": 3,
       "payment_confidence": 49,
       "competition_score": 100,
@@ -488,7 +488,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 06:23 AM Pacific",
-      "last_seen_at": "2026-07-24 06:36 AM Pacific"
+      "last_seen_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
@@ -590,7 +590,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 06:36 AM Pacific"
+      "last_seen_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
@@ -676,7 +676,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 01:14 AM Pacific",
-      "last_verified": "2026-07-24 06:36 AM Pacific",
+      "last_verified": "2026-07-24 12:44 PM Pacific",
       "source": "2lll5",
       "source_focus_score": 13.0,
       "source_rank": 10,
@@ -692,7 +692,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 06:23 AM Pacific",
-      "last_seen_at": "2026-07-24 06:36 AM Pacific"
+      "last_seen_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -789,7 +789,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 06:36 AM Pacific"
+      "last_seen_at": "2026-07-24 12:44 PM Pacific"
     },
     {
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -858,8 +858,7 @@
         "Claim path confirmed or normal pull-request claim path inferred",
         "Task matches Atlas execution capabilities",
         "Highest-priority first-payment reward band",
-        "No assignee and no competing pull request",
-        "Very recent activity"
+        "No assignee and no competing pull request"
       ],
       "risks": [
         "Payment unverified; risk accepted under small-reward prototype law"
@@ -870,7 +869,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-24 06:36 AM Pacific",
+      "last_verified": "2026-07-24 12:44 PM Pacific",
       "source": "cuentaprueba244w-dotcom",
       "source_focus_score": 12.5,
       "source_rank": 11,
@@ -886,15 +885,15 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 06:23 AM Pacific",
-      "last_seen_at": "2026-07-24 06:36 AM Pacific"
+      "last_seen_at": "2026-07-24 12:44 PM Pacific"
     }
   ],
-  "last_updated": "2026-07-24 06:36 AM Pacific",
+  "last_updated": "2026-07-24 12:44 PM Pacific",
   "source_performance": {
     "zhangjiayang6835-cyber": {
       "found": 16,
       "pursue": 1,
-      "advertised_value": 1494.0,
+      "advertised_value": 1527.0,
       "submitted": 1,
       "accepted": 0,
       "paid": 0,
@@ -912,14 +911,14 @@
       "focus_score": 64.0
     },
     "Opire": {
-      "found": 4,
+      "found": 3,
       "pursue": 2,
-      "advertised_value": 350.0,
+      "advertised_value": 310.0,
       "submitted": 1,
       "accepted": 0,
       "paid": 0,
       "revenue": 0.0,
-      "focus_score": 75.0
+      "focus_score": 70.0
     },
     "2lll5": {
       "found": 1,
@@ -991,6 +990,16 @@
       "revenue": 0.0,
       "focus_score": 21.0
     },
+    "dasharo": {
+      "found": 1,
+      "pursue": 0,
+      "advertised_value": 100.0,
+      "submitted": 0,
+      "accepted": 0,
+      "paid": 0,
+      "revenue": 0.0,
+      "focus_score": 11.0
+    },
     "lablab-ai": {
       "found": 1,
       "pursue": 0,
@@ -1045,6 +1054,7 @@
     "vikingr2023",
     "2lll5",
     "cuentaprueba244w-dotcom",
+    "dasharo",
     "lablab-ai",
     "nirium-protocol"
   ]

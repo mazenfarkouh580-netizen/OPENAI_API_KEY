@@ -22,11 +22,9 @@
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
     "worker": "Atlas Job 1",
-    "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-    "reserved_at_ts": 1784900229.898921,
-    "workflow_run_id": "30097551643",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+    "reserved_at_ts": 1784922306.0818386,
+    "workflow_run_id": "30121488420"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -96,11 +94,9 @@
     "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
     "reward": 35.0,
     "worker": "Atlas Job 5",
-    "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-    "reserved_at_ts": 1784900229.8989606,
-    "workflow_run_id": "30097551643",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+    "reserved_at_ts": 1784922306.0819216,
+    "workflow_run_id": "30121488420"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -556,11 +552,9 @@
     "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
     "reward": 40.0,
     "worker": "Atlas Job 3",
-    "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-    "reserved_at_ts": 1784900229.8989432,
-    "workflow_run_id": "30097551643",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+    "reserved_at_ts": 1784922306.0818694,
+    "workflow_run_id": "30121488420"
   },
   "xevrion-v2/agent-playground#8603": {
     "state": "submitted",
@@ -808,11 +802,9 @@
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
     "worker": "Atlas Job 2",
-    "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-    "reserved_at_ts": 1784900229.898933,
-    "workflow_run_id": "30097551643",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+    "reserved_at_ts": 1784922306.0818555,
+    "workflow_run_id": "30121488420"
   },
   "2lll5/tentoftrials#1": {
     "state": "reserved",
@@ -822,11 +814,9 @@
     "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
     "reward": 40.0,
     "worker": "Atlas Job 4",
-    "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-    "reserved_at_ts": 1784900229.8989522,
-    "workflow_run_id": "30097551643",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+    "reserved_at_ts": 1784922306.0818965,
+    "workflow_run_id": "30121488420"
   },
   "cuentaprueba244w-dotcom/tentoftrials#10": {
     "state": "reserved",
@@ -836,11 +826,9 @@
     "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
     "reward": 35.0,
     "worker": "Atlas Job 6",
-    "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-    "reserved_at_ts": 1784900229.8989685,
-    "workflow_run_id": "30097551643",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+    "reserved_at_ts": 1784922306.081936,
+    "workflow_run_id": "30121488420"
   },
   "iamgoofball/-tg-station#50": {
     "state": "reserved",
@@ -850,11 +838,9 @@
     "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
     "reward": 10.0,
     "worker": "Atlas Job 7",
-    "reserved_at": "2026-07-24T13:36:30.525948+00:00",
-    "reserved_at_ts": 1784900229.8989773,
-    "workflow_run_id": "30097551643",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T19:44:22.488014+00:00",
+    "reserved_at_ts": 1784922306.0819478,
+    "workflow_run_id": "30121488420"
   },
   "saiaaax/cyberninja-dojo#10": {
     "state": "submitted",
