@@ -22,11 +22,9 @@
     "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
     "reward": 50.0,
     "worker": "Atlas 1",
-    "reserved_at": "2026-07-24T08:14:21.268693+00:00",
-    "reserved_at_ts": 1784880899.7933016,
-    "workflow_run_id": "30078214330",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T08:44:26.692346+00:00",
+    "reserved_at_ts": 1784882700.4328115,
+    "workflow_run_id": "30079992365"
   },
   "Iamgoofball/-tg-station#50": {
     "state": "submitted",
@@ -96,11 +94,9 @@
     "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
     "reward": 35.0,
     "worker": "Atlas 3",
-    "reserved_at": "2026-07-24T08:14:21.268693+00:00",
-    "reserved_at_ts": 1784880899.7933302,
-    "workflow_run_id": "30078214330",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T08:44:26.692346+00:00",
+    "reserved_at_ts": 1784882700.4328396,
+    "workflow_run_id": "30079992365"
   },
   "claude-builders-bounty/claude-builders-bounty#2855": {
     "state": "submitted",
@@ -556,10 +552,8 @@
     "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
     "reward": 40.0,
     "worker": "Atlas 2",
-    "reserved_at": "2026-07-24T08:14:21.268693+00:00",
-    "reserved_at_ts": 1784880899.7933202,
-    "workflow_run_id": "30078214330",
-    "confirmation_state": "unverified",
-    "confirmation_reason": "missing_or_invalid_pr_url"
+    "reserved_at": "2026-07-24T08:44:26.692346+00:00",
+    "reserved_at_ts": 1784882700.4328296,
+    "workflow_run_id": "30079992365"
   }
 }
