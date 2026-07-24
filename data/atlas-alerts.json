@@ -1,17 +1,12 @@
 [
   {
-    "level": "HIGH",
-    "message": "16 pursue candidate(s) found",
-    "generated_at": "2026-07-23 04:42 PM Pacific"
-  },
-  {
     "level": "WARNING",
     "message": "Atlas health is HEALTHY_WITH_WARNINGS: 2 API error(s)",
-    "generated_at": "2026-07-23 04:42 PM Pacific"
+    "generated_at": "2026-07-23 08:23 PM Pacific"
   },
   {
     "level": "CRITICAL",
     "message": "Alex is not searching: zero completed queries after automatic retry",
-    "generated_at": "2026-07-23 04:42 PM Pacific"
+    "generated_at": "2026-07-23 08:23 PM Pacific"
   }
 ]

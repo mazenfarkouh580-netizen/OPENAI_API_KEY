@@ -1,12 +1,8 @@
 {
-  "lifetime": 0.0,
   "today": 0.0,
   "week": 0.0,
   "month": 0.0,
-  "waiting_total": 0.0,
-  "last_payment": "No verified payment yet",
-  "status": "HEALTHY_WITH_WARNINGS",
-  "pursue": 16,
-  "priority_review": 0,
-  "generated_at": "2026-07-23 04:42 PM Pacific"
+  "year": 0.0,
+  "generated_at": "2026-07-23 08:23 PM Pacific",
+  "cash_rule": "Verified received payments only"
 }
