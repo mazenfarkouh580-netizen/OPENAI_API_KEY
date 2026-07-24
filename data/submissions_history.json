@@ -625,15 +625,16 @@
     "workflow_run_id": "30081706398"
   },
   "zhangjiayang6835-cyber/bounty-plaza#686": {
-    "state": "reserved",
+    "state": "submitted",
     "repository": "zhangjiayang6835-cyber/bounty-plaza",
     "issue_number": 686,
     "issue_url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/686",
     "title": "[Bounty] Bounty: end-to-end test copperhead create (brief → clean full run) + findings re",
-    "reward": 50.0,
     "worker": "Atlas 2",
-    "reserved_at": "2026-07-24T09:12:24.564231+00:00",
-    "reserved_at_ts": 1784884383.5019052,
+    "reward": 50.0,
+    "pr_url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/pull/688",
+    "submitted_at": "2026-07-24T09:15:34.329732+00:00",
+    "submitted_at_ts": 1784884534.3297446,
     "workflow_run_id": "30081706398"
   }
 }
