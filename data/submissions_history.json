@@ -662,7 +662,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8626",
     "submitted_at": "2026-07-24T09:39:32.502798+00:00",
     "submitted_at_ts": 1784885972.5028145,
-    "workflow_run_id": "30083220325"
+    "workflow_run_id": "30083220325",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8616": {
     "state": "submitted",
@@ -675,7 +677,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8625",
     "submitted_at": "2026-07-24T09:39:25.694615+00:00",
     "submitted_at_ts": 1784885965.6946323,
-    "workflow_run_id": "30083220325"
+    "workflow_run_id": "30083220325",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8615": {
     "state": "submitted",
@@ -688,7 +692,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8623",
     "submitted_at": "2026-07-24T09:39:20.366856+00:00",
     "submitted_at_ts": 1784885960.3668685,
-    "workflow_run_id": "30083220325"
+    "workflow_run_id": "30083220325",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8614": {
     "state": "submitted",
@@ -701,7 +707,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8624",
     "submitted_at": "2026-07-24T09:39:22.288715+00:00",
     "submitted_at_ts": 1784885962.2887316,
-    "workflow_run_id": "30083220325"
+    "workflow_run_id": "30083220325",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8613": {
     "state": "submitted",
@@ -714,6 +722,8 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8627",
     "submitted_at": "2026-07-24T09:39:36.520631+00:00",
     "submitted_at_ts": 1784885976.5206485,
-    "workflow_run_id": "30083220325"
+    "workflow_run_id": "30083220325",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   }
 }
