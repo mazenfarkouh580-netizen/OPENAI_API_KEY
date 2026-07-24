@@ -1,6 +1,6 @@
 {
   "potential": 665.0,
-  "assigned": 350.0,
+  "assigned": 0,
   "submitted": 0,
   "approved": 0,
   "payment_pending": 0,
@@ -12,40 +12,40 @@
   "workers": [
     {
       "worker": "Atlas 1",
-      "status": "ASSIGNED",
-      "repository": "xevrion-v2/agent-playground",
-      "issue_number": 8603,
-      "reward": 50.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     },
     {
       "worker": "Atlas 2",
-      "status": "ASSIGNED",
-      "repository": "xevrion-v2/agent-playground",
-      "issue_number": 8602,
-      "reward": 50.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     },
     {
       "worker": "Atlas 3",
-      "status": "ASSIGNED",
-      "repository": "xevrion-v2/agent-playground",
-      "issue_number": 8601,
-      "reward": 50.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     },
     {
       "worker": "Atlas 4",
-      "status": "ASSIGNED",
-      "repository": "xevrion-v2/agent-playground",
-      "issue_number": 8600,
-      "reward": 50.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     },
     {
       "worker": "Atlas 5",
-      "status": "ASSIGNED",
-      "repository": "xevrion-v2/agent-playground",
-      "issue_number": 8599,
-      "reward": 50.0
+      "status": "IDLE",
+      "repository": "",
+      "issue_number": "",
+      "reward": 0.0
     }
   ],
-  "generated_at": "2026-07-24 02:12 AM Pacific",
+  "generated_at": "2026-07-24 02:22 AM Pacific",
   "cash_rule": "Pipeline amounts are not cash; cash received requires documented payment"
 }
