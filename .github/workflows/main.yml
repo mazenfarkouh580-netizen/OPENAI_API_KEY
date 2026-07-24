@@ -1,7 +1,7 @@
-name: Atlas + Alex V56 — Persistent Full Queue
+name: Atlas + Alex V57 — Bad Resources Fixed
 
 run-name: >-
-  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V56 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V56 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V56 Watchdog Recovery' || format('Atlas V56 Manual — {0}', github.event.inputs.execution_mode) }}
+  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V57 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V57 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V57 Watchdog Recovery' || format('Atlas V57 Manual — {0}', github.event.inputs.execution_mode) }}
 
 on:
   workflow_dispatch:
@@ -498,7 +498,7 @@ jobs:
           # bounded only by the queue safety cap. Existing saved configurations
           # from older versions must not keep Atlas limited to one worker.
           config["parallel_workers"] = 5
-          # V56: keep a large persistent backlog. GitHub matrix expansion has a hard
+          # V57: keep a large persistent backlog. GitHub matrix expansion has a hard
           # platform ceiling, so 200 leaves safe headroom while allowing 30+ jobs.
           config["queue_size"] = 200
           config["maximum_tasks_per_run"] = 200
@@ -521,12 +521,12 @@ jobs:
               EARNINGS_FILE.write_text("[]\n", encoding="utf-8")
 
           operations = load_json_file(OPERATIONS_FILE, {
-              "version": "V56",
+              "version": "V57",
               "pipeline": [],
               "last_updated": GENERATED_AT,
           })
           if not isinstance(operations, dict):
-              operations = {"version": "V56", "pipeline": [], "last_updated": GENERATED_AT}
+              operations = {"version": "V57", "pipeline": [], "last_updated": GENERATED_AT}
 
           maintenance = load_json_file(MAINTENANCE_FILE, {
               "doctor": "Dr. Alex",
@@ -2838,7 +2838,7 @@ jobs:
                   return 1
               return 0
 
-          # V56 persistent queue: merge unfinished work from prior runs with all
+          # V57 persistent queue: merge unfinished work from prior runs with all
           # newly qualified PURSUE opportunities. New scan data replaces stale
           # metadata for the same repository/issue; terminal records are removed.
           prior_pipeline = operations.get("pipeline", []) if isinstance(operations, dict) else []
@@ -2884,7 +2884,7 @@ jobs:
           # a run may legitimately contain 30, 50, or more assignments.
           execution_queue = execution_queue[:200]
 
-          operations["version"] = "V56"
+          operations["version"] = "V57"
           operations["last_updated"] = GENERATED_AT
           operations["pipeline"] = execution_queue
           operations["source_performance"] = source_performance
@@ -2991,7 +2991,7 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V56",
+                  "version": "V57",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": 5,
@@ -3071,7 +3071,7 @@ jobs:
           ALERTS_FILE.write_text(json.dumps(alerts, indent=2), encoding="utf-8")
 
           payload = {
-              "version": "V56",
+              "version": "V57",
               "owner": "Mazen Farkouh",
               "generated_at": GENERATED_AT,
               "config": config,
@@ -3132,7 +3132,7 @@ jobs:
           WORKER_HEALTH_FILE.write_text(
               json.dumps(
                   {
-                      "version": "V56",
+                      "version": "V57",
                       "last_completed_at": NOW.isoformat(),
                       "last_completed_display": GENERATED_AT,
                       "trigger": os.environ.get("GITHUB_EVENT_NAME", "unknown"),
@@ -3713,10 +3713,10 @@ jobs:
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
                   "<title>\n              Atlas + Alex Opportunity Hunter V50\n            </title>",
-                  "<title>Atlas V56 Status Window</title>",
+                  "<title>Atlas V57 Status Window</title>",
               ).replace(
                   "Atlas + Alex Opportunity Hunter V50",
-                  "Atlas V56 Status Window",
+                  "Atlas V57 Status Window",
                   1,
               ),
               encoding="utf-8",
@@ -3779,7 +3779,7 @@ jobs:
               else:
                   stage = state.upper() if state else "FOUND"
               normalized_pipeline.append({**record, "submission_key": key, "stage": stage, "current_status": state, "last_synced_at": record.get("confirmed_at") or record.get("submitted_at") or GENERATED_AT})
-          PIPELINE_FILE.write_text(json.dumps({"version": "V56", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
+          PIPELINE_FILE.write_text(json.dumps({"version": "V57", "generated_at": GENERATED_AT, "records": normalized_pipeline}, indent=2, ensure_ascii=False), encoding="utf-8")
           def record_value(record):
               try:
                   return float(record.get("reward", record.get("amount", 0)) or 0)
@@ -4096,7 +4096,7 @@ jobs:
                   )
 
           print(
-              f"Atlas + Alex V56 status={status}; "
+              f"Atlas + Alex V57 status={status}; "
               f"checked {len(raw_issues)} "
               "raw issues; "
               f"found {len(initial_candidates)} "
@@ -5577,7 +5577,7 @@ jobs:
         run: |
           set -euo pipefail
           {
-            echo "## Atlas + Alex V56 Workflow Health"
+            echo "## Atlas + Alex V57 Workflow Health"
             echo "- Hunt job: ${HUNT_RESULT}"
             echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
             echo "- Execution ready: ${EXECUTION_READY:-false}"
@@ -5611,7 +5611,7 @@ jobs:
             echo "Payment follow-up had a non-critical warning; production work remains healthy." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          echo "Atlas + Alex V56 completed: only passing submissions are persisted; task failures are isolated."
+          echo "Atlas + Alex V57 completed: only passing submissions are persisted; task failures are isolated."
 
   watchdog:
     if: >-
@@ -5639,7 +5639,7 @@ jobs:
           workflow_id="${workflow_id%@*}"
           last_success="$(
             gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=50" \
-              --jq '[.workflow_runs[] | select(.display_title == "Atlas V56 Main Production" or .display_title == "Atlas V56 Watchdog Recovery")][0].updated_at // empty' \
+              --jq '[.workflow_runs[] | select(.display_title == "Atlas V57 Main Production" or .display_title == "Atlas V57 Watchdog Recovery")][0].updated_at // empty' \
               2>/dev/null || true
           )"
 
