@@ -1,18 +1,19 @@
 # Atlas + Alex V51 Gate Diagnostics
 
-Generated: 2026-07-24 04:48 AM Pacific
+Generated: 2026-07-24 05:36 AM Pacific
 
 ## Decision Counts
 
 - PURSUE: 25
 - PRIORITY REVIEW: 0
-- WATCHLIST: 5
-- REJECT: 0
+- WATCHLIST: 4
+- REJECT: 1
 
 ## Gate Counts
 
 - SMALL REWARD AUTO-APPROVED - PAYMENT HISTORY UNVERIFIED: 25
-- PAYMENT SPEED OR FUNDING NOT VERIFIED: 5
+- PAYMENT SPEED OR FUNDING NOT VERIFIED: 4
+- ASSIGNED: 1
 
 ## Candidate Details
 
@@ -335,13 +336,13 @@ Generated: 2026-07-24 04:48 AM Pacific
 - Atlas executable: False
 - URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/607
 
-### zhangjiayang6835-cyber/bounty-plaza #674
-- Decision: WATCHLIST
-- Gate: PAYMENT SPEED OR FUNDING NOT VERIFIED
-- Reward: $25.00
-- Payment: UNVERIFIED
+### globe-and-citizen/cnc-portal #2255
+- Decision: REJECT
+- Gate: ASSIGNED
+- Reward: $1.25
+- Payment: FIAT METHOD MENTIONED - FUNDING/TIMING NOT PROVEN
 - Payout source: Unverified promise or discovery signal
-- Claimable: True
+- Claimable: False
 - Quick-win risk accepted: False
 - Atlas executable: False
-- URL: https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/674
+- URL: https://github.com/globe-and-citizen/cnc-portal/issues/2255

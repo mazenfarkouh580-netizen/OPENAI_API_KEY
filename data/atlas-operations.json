@@ -77,7 +77,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific",
+      "last_verified": "2026-07-24 05:36 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -93,7 +93,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 04:48 AM Pacific"
+      "last_seen_at": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-chitueumcieuc-present API utility",
@@ -171,7 +171,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific",
+      "last_verified": "2026-07-24 05:36 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -187,7 +187,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 04:48 AM Pacific"
+      "last_seen_at": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -260,8 +260,7 @@
         "Claim path confirmed or normal pull-request claim path inferred",
         "Task matches Atlas execution capabilities",
         "Highest-priority first-payment reward band",
-        "No assignee and no competing pull request",
-        "Very recent activity"
+        "No assignee and no competing pull request"
       ],
       "risks": [
         "Payment unverified; risk accepted under small-reward prototype law"
@@ -272,7 +271,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific",
+      "last_verified": "2026-07-24 05:36 AM Pacific",
       "source": "Opire",
       "source_focus_score": 44.0,
       "source_rank": 4,
@@ -288,7 +287,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 04:48 AM Pacific"
+      "last_seen_at": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
@@ -374,7 +373,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 01:14 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific",
+      "last_verified": "2026-07-24 05:36 AM Pacific",
       "source": "2lll5",
       "source_focus_score": 13.0,
       "source_rank": 8,
@@ -390,7 +389,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 04:48 AM Pacific"
+      "last_seen_at": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -471,7 +470,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific",
+      "last_verified": "2026-07-24 05:36 AM Pacific",
       "source": "cuentaprueba244w-dotcom",
       "source_focus_score": 12.5,
       "source_rank": 9,
@@ -487,20 +486,20 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 04:48 AM Pacific"
+      "last_seen_at": "2026-07-24 05:36 AM Pacific"
     }
   ],
-  "last_updated": "2026-07-24 04:48 AM Pacific",
+  "last_updated": "2026-07-24 05:36 AM Pacific",
   "source_performance": {
     "zhangjiayang6835-cyber": {
-      "found": 6,
+      "found": 5,
       "pursue": 1,
-      "advertised_value": 235.0,
+      "advertised_value": 210.0,
       "submitted": 1,
       "accepted": 0,
       "paid": 0,
       "revenue": 0.0,
-      "focus_score": 57.5
+      "focus_score": 54.0
     },
     "APort": {
       "found": 2,
@@ -572,6 +571,16 @@
       "revenue": 0.0,
       "focus_score": 30.0
     },
+    "globe-and-citizen": {
+      "found": 1,
+      "pursue": 0,
+      "advertised_value": 1.25,
+      "submitted": 0,
+      "accepted": 0,
+      "paid": 0,
+      "revenue": 0.0,
+      "focus_score": 1.12
+    },
     "claude-builders-bounty": {
       "found": 0,
       "pursue": 0,
@@ -603,6 +612,7 @@
     "jackjin1997",
     "CyberNinja",
     "2lll5",
-    "cuentaprueba244w-dotcom"
+    "cuentaprueba244w-dotcom",
+    "globe-and-citizen"
   ]
 }

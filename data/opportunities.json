@@ -1,7 +1,7 @@
 {
   "version": "V55",
   "owner": "Mazen Farkouh",
-  "generated_at": "2026-07-24 04:48 AM Pacific",
+  "generated_at": "2026-07-24 05:36 AM Pacific",
   "config": {
     "minimum_reward": 0.1,
     "minimum_payment_confidence": 55,
@@ -112,7 +112,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific",
+      "last_verified": "2026-07-24 05:36 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -128,7 +128,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 04:48 AM Pacific"
+      "last_seen_at": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-chitueumcieuc-present API utility",
@@ -206,7 +206,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific",
+      "last_verified": "2026-07-24 05:36 AM Pacific",
       "source": "Xevrion",
       "source_focus_score": 534.0,
       "source_rank": 0,
@@ -222,7 +222,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 04:48 AM Pacific"
+      "last_seen_at": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -295,8 +295,7 @@
         "Claim path confirmed or normal pull-request claim path inferred",
         "Task matches Atlas execution capabilities",
         "Highest-priority first-payment reward band",
-        "No assignee and no competing pull request",
-        "Very recent activity"
+        "No assignee and no competing pull request"
       ],
       "risks": [
         "Payment unverified; risk accepted under small-reward prototype law"
@@ -307,7 +306,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific",
+      "last_verified": "2026-07-24 05:36 AM Pacific",
       "source": "Opire",
       "source_focus_score": 44.0,
       "source_rank": 4,
@@ -323,7 +322,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 04:48 AM Pacific"
+      "last_seen_at": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
@@ -409,7 +408,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 01:14 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific",
+      "last_verified": "2026-07-24 05:36 AM Pacific",
       "source": "2lll5",
       "source_focus_score": 13.0,
       "source_rank": 8,
@@ -425,7 +424,7 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 04:48 AM Pacific"
+      "last_seen_at": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -506,7 +505,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific",
+      "last_verified": "2026-07-24 05:36 AM Pacific",
       "source": "cuentaprueba244w-dotcom",
       "source_focus_score": 12.5,
       "source_rank": 9,
@@ -522,24 +521,24 @@
       "historical_payment_percentage": 0.0,
       "queue_state": "WAITING",
       "first_queued_at": "2026-07-24 04:48 AM Pacific",
-      "last_seen_at": "2026-07-24 04:48 AM Pacific"
+      "last_seen_at": "2026-07-24 05:36 AM Pacific"
     }
   ],
   "alerts": [
     {
       "level": "HIGH",
       "message": "25 pursue candidate(s) found",
-      "generated_at": "2026-07-24 04:48 AM Pacific"
+      "generated_at": "2026-07-24 05:36 AM Pacific"
     },
     {
       "level": "WARNING",
       "message": "Atlas health is HEALTHY_WITH_WARNINGS: 2 API error(s)",
-      "generated_at": "2026-07-24 04:48 AM Pacific"
+      "generated_at": "2026-07-24 05:36 AM Pacific"
     },
     {
       "level": "CRITICAL",
       "message": "Alex is not searching: zero completed queries after automatic retry",
-      "generated_at": "2026-07-24 04:48 AM Pacific"
+      "generated_at": "2026-07-24 05:36 AM Pacific"
     }
   ],
   "system_status": "HEALTHY_WITH_WARNINGS",
@@ -558,7 +557,7 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "xevrion-v2/agent-playground#8632",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T11:48:46.748527+00:00"
+      "reserved_at": "2026-07-24T12:36:15.057899+00:00"
     },
     {
       "worker": "Atlas 2",
@@ -572,7 +571,7 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "xevrion-v2/agent-playground#8599",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T11:48:46.748527+00:00"
+      "reserved_at": "2026-07-24T12:36:15.057899+00:00"
     },
     {
       "worker": "Atlas 3",
@@ -586,7 +585,7 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "Iamgoofball/-tg-station#49",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T11:48:46.748527+00:00"
+      "reserved_at": "2026-07-24T12:36:15.057899+00:00"
     },
     {
       "worker": "Atlas 4",
@@ -600,7 +599,7 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "2lll5/TentOfTrials#1",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T11:48:46.748527+00:00"
+      "reserved_at": "2026-07-24T12:36:15.057899+00:00"
     },
     {
       "worker": "Atlas 5",
@@ -614,7 +613,7 @@
       "payment_verification": "SMALL-REWARD RISK ACCEPTED - PAYMENT UNVERIFIED",
       "submission_key": "cuentaprueba244w-dotcom/TentOfTrials#10",
       "status": "DISPATCHED",
-      "reserved_at": "2026-07-24T11:48:46.748527+00:00"
+      "reserved_at": "2026-07-24T12:36:15.057899+00:00"
     }
   ],
   "automation_boundary": "Atlas and Alex automatically dispatch every eligible simple, uncontested tasks. Submission still depends on configured GitHub and AI credentials; payment remains controlled by maintainers.",
@@ -623,7 +622,7 @@
   "api_errors": [
     {
       "url": "https://api.github.com/search/issues?q=is%3Aissue%20is%3Aopen%20%22%2440%22%20in%3Atitle%2Cbody&sort=updated&order=desc&per_page=100",
-      "error": "HTTP 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID 3800:1E00DA:78238C2:19FF2529:6A635152 and timestamp 2026-07-24 11:49:38 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of S"
+      "error": "HTTP 403: {\n\t\"message\": \"API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID CC42:15CF32:5D20BAF:1481B8F2:6A635C6A and timestamp 2026-07-24 12:36:58 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of S"
     },
     {
       "worker": "Alex",
@@ -631,27 +630,34 @@
       "error": "Alex completed zero search queries after automatic retry"
     }
   ],
-  "raw_issues_found": 2530,
-  "aggregator_pages_rejected": 907,
-  "unsafe_items_rejected": 92,
-  "items_without_extractable_reward_rejected": 1438,
-  "eligible_candidates_found": 93,
+  "raw_issues_found": 2586,
+  "aggregator_pages_rejected": 924,
+  "unsafe_items_rejected": 91,
+  "items_without_extractable_reward_rejected": 1477,
+  "eligible_candidates_found": 94,
   "deep_verified_candidates": 30,
   "counts": {
     "PURSUE": 25,
     "PRIORITY REVIEW": 0,
-    "WATCHLIST": 5,
-    "REJECT": 0
+    "WATCHLIST": 4,
+    "REJECT": 1
   },
   "contested_count": 0,
-  "assigned_count": 0,
+  "assigned_count": 1,
   "strong_uncontested_targets": 25,
-  "meaningful_changes": [],
+  "meaningful_changes": [
+    {
+      "type": "NEW",
+      "title": "Sprint Script",
+      "url": "https://github.com/globe-and-citizen/cnc-portal/issues/2255",
+      "decision": "REJECT"
+    }
+  ],
   "lifecycle_summary": {
-    "new_this_run": 0,
-    "still_active": 30,
+    "new_this_run": 1,
+    "still_active": 29,
     "changed": 0,
-    "not_reverified": 0
+    "not_reverified": 1
   },
   "top_results": [
     {
@@ -739,7 +745,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[Hacktoberfest] Create a Custom n8n Node for APort Verification",
@@ -822,7 +828,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-choseong-filler-present API utility",
@@ -900,7 +906,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-tikeut-rieul-present API utility",
@@ -978,7 +984,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-nieun-hieuh-present API utility",
@@ -1056,7 +1062,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-nieun-cieuc-present API utility",
@@ -1134,7 +1140,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-yeorinhieuh-present API utility",
@@ -1212,7 +1218,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-ssanghieuh-present API utility",
@@ -1290,7 +1296,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-kapyeounphieuph-present API utility",
@@ -1368,7 +1374,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-ceongchieumchieuch-present API utility",
@@ -1446,7 +1452,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-chitueumchieuch-present API utility",
@@ -1524,7 +1530,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-chieuch-hieuh-present API utility",
@@ -1602,7 +1608,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     }
   ],
   "all_verified_results": [
@@ -1691,7 +1697,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[Hacktoberfest] Create a Custom n8n Node for APort Verification",
@@ -1774,7 +1780,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-choseong-filler-present API utility",
@@ -1852,7 +1858,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-tikeut-rieul-present API utility",
@@ -1930,7 +1936,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-nieun-hieuh-present API utility",
@@ -2008,7 +2014,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-nieun-cieuc-present API utility",
@@ -2086,7 +2092,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-yeorinhieuh-present API utility",
@@ -2164,7 +2170,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 03:00 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-ssanghieuh-present API utility",
@@ -2242,7 +2248,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-kapyeounphieuph-present API utility",
@@ -2320,7 +2326,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-ceongchieumchieuch-present API utility",
@@ -2398,7 +2404,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-chitueumchieuch-present API utility",
@@ -2476,7 +2482,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-chieuch-hieuh-present API utility",
@@ -2554,7 +2560,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:37 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-chieuch-khieukh-present API utility",
@@ -2632,7 +2638,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-ceongchieumssangcieuc-present API utility",
@@ -2710,7 +2716,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-ceongchieumcieuc-present API utility",
@@ -2788,7 +2794,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-chitueumssangcieuc-present API utility",
@@ -2866,7 +2872,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "Add is-hangul-jamo-chitueumcieuc-present API utility",
@@ -2944,7 +2950,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 02:12 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[agent] Document repository GitHub workflows",
@@ -3022,7 +3028,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [HIGH PRIORITY] [$50] Add the Dentist job with teeth organs.",
@@ -3095,8 +3101,7 @@
         "Claim path confirmed or normal pull-request claim path inferred",
         "Task matches Atlas execution capabilities",
         "Highest-priority first-payment reward band",
-        "No assignee and no competing pull request",
-        "Very recent activity"
+        "No assignee and no competing pull request"
       ],
       "risks": [
         "Payment unverified; risk accepted under small-reward prototype law"
@@ -3107,7 +3112,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[$40 BOUNTY] [TypeScript] Harden API response error handling",
@@ -3193,7 +3198,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 01:14 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[$35 BOUNTY] [Python] Add module validation and --list-modules flag to build.py",
@@ -3274,7 +3279,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[$30 BOUNTY] [Python] Expand backend API contract edge-case tests",
@@ -3356,7 +3361,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-23 12:50 PM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[$10 BOUNTY] [TypeScript] Add telemetry batch flush threshold tests",
@@ -3440,7 +3445,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 10:48 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[paid PR Opire bounty] [$10] Fix the clown not being able to do backflips.",
@@ -3514,8 +3519,7 @@
         "Claim path confirmed or normal pull-request claim path inferred",
         "Task matches Atlas execution capabilities",
         "Highest-priority first-payment reward band",
-        "No assignee and no competing pull request",
-        "Very recent activity"
+        "No assignee and no competing pull request"
       ],
       "risks": [
         "Payment unverified; risk accepted under small-reward prototype law"
@@ -3526,7 +3530,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[Hacktoberfest] n8n Workflow Node for Policy Checks",
@@ -3609,7 +3613,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 03:13 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[Bounty] [BOUNTY] [$50] Fix SSinput Deadlocking",
@@ -3686,7 +3690,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-22 11:55 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[Bounty] [BOUNTY] [$40] Add a Nix flake and an agentic screenshot harness using Wine + xv",
@@ -3763,7 +3767,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 02:46 PM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[Bounty] [Bounty] [$30] Apply an owospeak speech filter to the felinid species",
@@ -3840,7 +3844,7 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-24 12:13 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
       "title": "[Bounty] [BOUNTY] [EASY AI TASK] [$40] [AGENTIC] [AGENT READY][PAID BOUNTY] [UNCLAIMED] [",
@@ -3916,33 +3920,35 @@
       "primary_hunter": "Atlas",
       "change": "UNCHANGED",
       "first_seen": "2026-07-21 08:30 AM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     },
     {
-      "title": "[Bounty] [BOUNTY] [$25] [NO CODE] [REQUEST] Instructions are in issue body",
-      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/674",
-      "repository": "zhangjiayang6835-cyber/bounty-plaza",
-      "issue_number": 674,
-      "author": "zhangjiayang6835-cyber",
-      "reward": 25.0,
+      "title": "Sprint Script",
+      "url": "https://github.com/globe-and-citizen/cnc-portal/issues/2255",
+      "repository": "globe-and-citizen/cnc-portal",
+      "issue_number": 2255,
+      "author": "stravid87",
+      "reward": 1.25,
       "reward_priority": "HIGHEST",
-      "score": 37,
-      "decision": "WATCHLIST",
-      "availability": "PAYMENT SPEED OR FUNDING NOT VERIFIED",
-      "created_at": "2026-07-23T00:09:27Z",
-      "updated_at": "2026-07-24T04:25:53Z",
+      "score": 0,
+      "decision": "REJECT",
+      "availability": "ASSIGNED",
+      "created_at": "2026-07-06T13:31:28Z",
+      "updated_at": "2026-07-24T12:34:15Z",
       "comments": 0,
-      "labels": [
-        "bounty",
-        "real"
+      "labels": [],
+      "assignees": [
+        "hermannleboss",
+        "stravid87"
       ],
-      "assignees": [],
       "open_competing_prs": 0,
       "merged_linked_prs": 0,
       "linked_pull_requests": [],
-      "payment_verification": "UNVERIFIED",
+      "payment_verification": "FIAT METHOD MENTIONED - FUNDING/TIMING NOT PROVEN",
       "paypal_signals": [],
-      "fiat_payment_signals": [],
+      "fiat_payment_signals": [
+        "ach"
+      ],
       "fast_payment_signals": [],
       "fast_acceptance_signals": [],
       "fast_acceptance_verified": false,
@@ -3959,7 +3965,7 @@
       "trusted_repository": false,
       "payout_program_repository": false,
       "payout_source": "Unverified promise or discovery signal",
-      "claimable_now": true,
+      "claimable_now": false,
       "quick_win_risk_accepted": false,
       "claimability_signals": [],
       "atlas_can_execute": false,
@@ -3972,27 +3978,28 @@
       "manual_verification_required": true,
       "reasons": [
         "Stated paid reward",
-        "Basic requirements",
+        "Detailed requirements",
+        "Capability match: ci",
         "No visible comments",
-        "Posted within 7 days",
+        "Posted within 30 days",
         "Recently updated",
-        "Claim path confirmed or normal pull-request claim path inferred",
+        "Review path appears usable",
         "Highest-priority first-payment reward band",
-        "No assignee and no competing pull request",
         "Very recent activity"
       ],
       "risks": [
-        "Acceptance path requires manual confirmation",
+        "Issue already has an assignee",
         "No direct payment proof or funded bounty platform detected",
+        "Claim path is missing, blocked, or ambiguous",
         "Task is not clearly executable by Atlas"
       ],
       "discovered_by": [
         "Atlas"
       ],
       "primary_hunter": "Atlas",
-      "change": "UNCHANGED",
-      "first_seen": "2026-07-22 05:50 PM Pacific",
-      "last_verified": "2026-07-24 04:48 AM Pacific"
+      "change": "NEW",
+      "first_seen": "2026-07-24 05:36 AM Pacific",
+      "last_verified": "2026-07-24 05:36 AM Pacific"
     }
   ]
 }
