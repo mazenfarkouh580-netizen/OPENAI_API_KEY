@@ -202,5 +202,17 @@
     "workflow_run_id": "30054023555",
     "confirmation_state": "unverified",
     "confirmation_reason": "missing_or_invalid_pr_url"
+  },
+  "xevrion-v2/agent-playground#8474": {
+    "state": "reserved",
+    "repository": "xevrion-v2/agent-playground",
+    "issue_number": 8474,
+    "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8474",
+    "title": "Add is-hangul-jamo-yesieung-present API utility",
+    "reward": 50.0,
+    "worker": "Atlas 1",
+    "reserved_at": "2026-07-24T03:43:04.240893+00:00",
+    "reserved_at_ts": 1784864618.3973916,
+    "workflow_run_id": "30064921126"
   }
 }
