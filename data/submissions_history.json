@@ -228,7 +228,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8596",
     "submitted_at": "2026-07-24T06:17:28.120395+00:00",
     "submitted_at_ts": 1784873848.1204069,
-    "workflow_run_id": "30071735811"
+    "workflow_run_id": "30071735811",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8145": {
     "state": "reserved",
@@ -240,7 +242,9 @@
     "worker": "Atlas 2",
     "reserved_at": "2026-07-24T06:15:26.142013+00:00",
     "reserved_at_ts": 1784873760.4556155,
-    "workflow_run_id": "30071735811"
+    "workflow_run_id": "30071735811",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8146": {
     "state": "submitted",
@@ -253,7 +257,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8597",
     "submitted_at": "2026-07-24T06:17:39.202766+00:00",
     "submitted_at_ts": 1784873859.202781,
-    "workflow_run_id": "30071735811"
+    "workflow_run_id": "30071735811",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8147": {
     "state": "reserved",
@@ -265,7 +271,9 @@
     "worker": "Atlas 4",
     "reserved_at": "2026-07-24T06:15:26.142013+00:00",
     "reserved_at_ts": 1784873760.4556334,
-    "workflow_run_id": "30071735811"
+    "workflow_run_id": "30071735811",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8148": {
     "state": "submitted",
@@ -278,7 +286,9 @@
     "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8595",
     "submitted_at": "2026-07-24T06:17:26.879028+00:00",
     "submitted_at_ts": 1784873846.8790426,
-    "workflow_run_id": "30071735811"
+    "workflow_run_id": "30071735811",
+    "confirmation_state": "unverified",
+    "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8154": {
     "state": "reserved",
