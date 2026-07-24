@@ -218,15 +218,16 @@
     "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "xevrion-v2/agent-playground#8144": {
-    "state": "reserved",
+    "state": "submitted",
     "repository": "xevrion-v2/agent-playground",
     "issue_number": 8144,
     "issue_url": "https://github.com/xevrion-v2/agent-playground/issues/8144",
     "title": "Add is-halfwidth-katakana-letter-small-i-present API utility",
-    "reward": 50.0,
     "worker": "Atlas 1",
-    "reserved_at": "2026-07-24T06:15:26.142013+00:00",
-    "reserved_at_ts": 1784873760.4555972,
+    "reward": 50.0,
+    "pr_url": "https://github.com/xevrion-v2/agent-playground/pull/8596",
+    "submitted_at": "2026-07-24T06:17:28.120395+00:00",
+    "submitted_at_ts": 1784873848.1204069,
     "workflow_run_id": "30071735811"
   },
   "xevrion-v2/agent-playground#8145": {
