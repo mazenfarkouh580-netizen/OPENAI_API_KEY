@@ -1,7 +1,7 @@
-name: Atlas + Alex V45 — Lean ATM Production
+name: Atlas + Alex V46 — Five-Worker Field Test
 
 run-name: >-
-  ${{ github.event_name == 'schedule' && github.event.schedule == '13,28,43,58 * * * *' && 'Atlas V45 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V45 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V45 Watchdog Recovery' || format('Atlas V45 Manual — {0}', github.event.inputs.execution_mode) }}
+  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V46 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V46 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V46 Watchdog Recovery' || format('Atlas V46 Manual — {0}', github.event.inputs.execution_mode) }}
 
 on:
   workflow_dispatch:
@@ -20,13 +20,13 @@ on:
   schedule:
     # Main hunt: every 15 minutes.
     - cron: "8,23,38,53 * * * *"
-    # Watchdog: five minutes after each main slot.
-    - cron: "13,28,43,58 * * * *"
+    # Watchdog: thirteen minutes after each main slot, after the ten-minute worker window.
+    - cron: "6,21,36,51 * * * *"
 
 concurrency:
   # Keep production runs serialized, but never make the watchdog wait behind
   # a long execution job. The original single group blocked watchdog recovery.
-  group: ${{ github.event_name == 'schedule' && github.event.schedule == '13,28,43,58 * * * *' && 'atlas-alex-v45-watchdog' || 'atlas-alex-v45-production' }}
+  group: ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'atlas-alex-v46-watchdog' || 'atlas-alex-v46-production' }}
   cancel-in-progress: false
 
 permissions:
@@ -2736,7 +2736,7 @@ jobs:
           )
           execution_queue = execution_queue[:int(config.get("queue_size", 20))]
 
-          operations["version"] = "V45"
+          operations["version"] = "V46"
           operations["last_updated"] = GENERATED_AT
           operations["pipeline"] = execution_queue
           operations["source_performance"] = source_performance
@@ -2796,9 +2796,11 @@ jobs:
               repository = item.get("repository") or ""
               if not repository or repository in reserved_repositories:
                   continue
-              worker = worker_names[len(selected_executions) % len(worker_names)]
+              task_sequence = len(selected_executions) + 1
+              worker = worker_names[(task_sequence - 1) % len(worker_names)]
               selected_executions.append({
                   "worker": worker,
+                  "task_sequence": task_sequence,
                   "repository": repository,
                   "issue_number": int(item.get("issue_number") or 0),
                   "issue_url": item.get("url") or "",
@@ -2823,7 +2825,14 @@ jobs:
                   "workflow_run_id": os.environ.get("GITHUB_RUN_ID", ""),
               }
               reserved_repositories.add(repository)
-              dispatch_limit = 1 if os.environ.get("REQUESTED_EXECUTION_MODE", "scan_only") == "safe_test" else int(config.get("parallel_workers", 2))
+              # Safe test remains one local task. Production supplies up to five tasks
+              # per worker lane. GitHub's max-parallel=5 keeps five live slots and
+              # automatically starts the next queued task whenever one finishes or fails.
+              dispatch_limit = (
+                  1
+                  if os.environ.get("REQUESTED_EXECUTION_MODE", "scan_only") == "safe_test"
+                  else int(config.get("parallel_workers", 5)) * 5
+              )
               if len(selected_executions) >= dispatch_limit:
                   break
 
@@ -2834,7 +2843,7 @@ jobs:
 
           EXECUTION_FILE.write_text(
               json.dumps({
-                  "version": "V45",
+                  "version": "V46",
                   "generated_at": GENERATED_AT,
                   "automatic_execution": True,
                   "workers_requested": 5,
@@ -3204,7 +3213,7 @@ jobs:
               content="{int(config.get('dashboard_refresh_seconds', 900))}"
             >
             <title>
-              Atlas + Alex Opportunity Hunter V45
+              Atlas + Alex Opportunity Hunter V46
             </title>
             <style>
               :root {{
@@ -3321,7 +3330,7 @@ jobs:
           </head>
           <body>
             <h1>
-              Atlas + Alex Opportunity Hunter V45
+              Atlas + Alex Opportunity Hunter V46
             </h1>
 
             <p>
@@ -3555,11 +3564,11 @@ jobs:
           )
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
-                  "<title>\n              Atlas + Alex Opportunity Hunter V45\n            </title>",
-                  "<title>Atlas V45 Status Window</title>",
+                  "<title>\n              Atlas + Alex Opportunity Hunter V46\n            </title>",
+                  "<title>Atlas V46 Status Window</title>",
               ).replace(
-                  "Atlas + Alex Opportunity Hunter V45",
-                  "Atlas V45 Status Window",
+                  "Atlas + Alex Opportunity Hunter V46",
+                  "Atlas V46 Status Window",
                   1,
               ),
               encoding="utf-8",
@@ -3737,7 +3746,7 @@ jobs:
               f"<tr><td>{i}</td><td>{html.escape(item['decision'])}</td><td>${item['reward']:,.2f}</td><td>${item['expected_value']:,.2f}</td><td>{html.escape(item['title'])}</td></tr>"
               for i, item in enumerate(execution_queue, 1)
           )
-          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V28 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V45 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
+          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V28 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V46 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
           (REPORTS_DIR / "latest.html").write_text(report_html, encoding="utf-8")
           csv_lines = ["rank,decision,reward,expected_value,payment_confidence,competition_advantage,title,url"]
           for i, item in enumerate(execution_queue, 1):
@@ -3749,14 +3758,14 @@ jobs:
               ]))
           (REPORTS_DIR / "latest.csv").write_text("\n".join(csv_lines) + "\n", encoding="utf-8")
           (REPORTS_DIR / "latest.txt").write_text(
-              "Atlas + Alex Opportunity Hunter V45\n" +
+              "Atlas + Alex Opportunity Hunter V46\n" +
               f"Generated: {GENERATED_AT}\nStatus: {status}\n" +
               f"Today: ${earnings['today']:,.2f}\nWeek: ${earnings['week']:,.2f}\nMonth: ${earnings['month']:,.2f}\nYear: ${earnings['year']:,.2f}\nLifetime: ${earnings['lifetime']:,.2f}\n",
               encoding="utf-8",
           )
 
           summary_lines = [
-              "# Atlas + Alex Opportunity Hunter V45",
+              "# Atlas + Alex Opportunity Hunter V46",
               "",
               (
                   f"- System status: "
@@ -3876,7 +3885,7 @@ jobs:
                   )
 
           print(
-              f"Atlas + Alex V45 status={status}; "
+              f"Atlas + Alex V46 status={status}; "
               f"checked {len(raw_issues)} "
               "raw issues; "
               f"found {len(initial_candidates)} "
@@ -3898,7 +3907,7 @@ jobs:
 
           if searches_completed == 0:
               raise SystemExit(
-                  "Atlas + Alex V45 could not complete "
+                  "Atlas + Alex V46 could not complete "
                   "any GitHub search query."
               )
           PY
@@ -3951,7 +3960,7 @@ jobs:
             fi
 
             git commit \
-              -m "Atlas + Alex V45 opportunity scan"
+              -m "Atlas + Alex V46 opportunity scan"
 
             if git push origin "HEAD:$BRANCH_NAME"
             then
@@ -3995,13 +4004,13 @@ jobs:
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
               summary.write(f"## {worker}\n\n")
               if task:
-                  summary.write(f"- Status: **ASSIGNED**\n")
+                  summary.write(f"- Status: **QUEUED / ACTIVE FIELD-TEST TASK**\n")
                   summary.write(f"- Repository: `{task.get('repository','')}`\n")
                   summary.write(f"- Issue: #{task.get('issue_number','')}\n")
                   summary.write(f"- Reward: ${float(task.get('reward',0) or 0):.2f}\n")
                   summary.write(f"- Score: {task.get('score',0)}\n")
               else:
-                  summary.write("- Status: **IDLE — no distinct qualified task available this run**\n")
+                  summary.write("- Status: **IDLE — no qualified replacement task available**\n")
           PY
 
   execute:
@@ -4020,7 +4029,7 @@ jobs:
       max-parallel: 5
       matrix: ${{ fromJSON(needs.hunt.outputs.execution_matrix) }}
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 10
     permissions:
       contents: write
       issues: write
@@ -4075,13 +4084,15 @@ jobs:
 
           default_branch="$(gh api "repos/${REPOSITORY}" --jq .default_branch)"
           repo_name="${REPOSITORY#*/}"
+          worker_slug="$(printf '%s' "$WORKER" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g')"
+          [ -n "$worker_slug" ] || worker_slug="atlas-worker"
 
           if [ "$EXECUTION_MODE" = "safe_test" ]; then
             # Read-only prototype test: no issue comment, no fork, no push, no PR.
             git clone --depth 1 --branch "$default_branch" \
               "https://github.com/${REPOSITORY}.git" worktree
             cd worktree
-            git checkout -B "atlas-test/issue-${ISSUE_NUMBER}-${WORKER,,}"
+            git checkout -B "atlas-test/issue-${ISSUE_NUMBER}-${worker_slug}"
           elif [ "$EXECUTION_MODE" = "submit" ]; then
             # Do not post a start/claim comment. Some target repositories reject
             # issue comments from this PAT, and commenting is not required to
@@ -4146,7 +4157,7 @@ jobs:
             git remote set-url --push origin \
               "https://x-access-token:${GH_TOKEN}@github.com/${owner}/${repo_name}.git"
             git fetch --depth 1 upstream "$default_branch"
-            git checkout -B "atlas/issue-${ISSUE_NUMBER}-${WORKER,,}" "upstream/${default_branch}"
+            git checkout -B "atlas/issue-${ISSUE_NUMBER}-${worker_slug}" "upstream/${default_branch}"
           else
             echo "Unsupported execution mode: $EXECUTION_MODE" >&2
             exit 1
@@ -5117,8 +5128,8 @@ jobs:
 
 
   deploy_status_window:
-    name: Deploy lean ATM money window
-    needs: hunt
+    name: Deploy lean ATM money window last
+    needs: [hunt, execute, confirm_results, alex_payment_followup]
     if: >-
       ${{ always() &&
           needs.hunt.result == 'success' &&
@@ -5155,7 +5166,7 @@ jobs:
 
   workflow_health:
     name: Verify truthful workflow status
-    needs: [hunt, execute, confirm_results, alex_payment_followup]
+    needs: [hunt, execute, confirm_results, alex_payment_followup, deploy_status_window]
     if: >-
       always() &&
       (github.event_name == 'workflow_dispatch' ||
@@ -5175,7 +5186,7 @@ jobs:
         run: |
           set -euo pipefail
           {
-            echo "## Atlas + Alex V45 Workflow Health"
+            echo "## Atlas + Alex V46 Workflow Health"
             echo "- Hunt job: ${HUNT_RESULT}"
             echo "- System status: ${SYSTEM_STATUS:-UNKNOWN}"
             echo "- Execution ready: ${EXECUTION_READY:-false}"
@@ -5209,12 +5220,12 @@ jobs:
             echo "Payment follow-up had a non-critical warning; production work remains healthy." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          echo "Atlas + Alex V45 completed: only passing submissions are persisted; task failures are isolated."
+          echo "Atlas + Alex V46 completed: only passing submissions are persisted; task failures are isolated."
 
   watchdog:
     if: >-
       github.event_name == 'schedule' &&
-      github.event.schedule == '13,28,43,58 * * * *'
+      github.event.schedule == '6,21,36,51 * * * *'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -5237,7 +5248,7 @@ jobs:
           workflow_id="${workflow_id%@*}"
           last_success="$(
             gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=50" \
-              --jq '[.workflow_runs[] | select(.display_title == "Atlas V45 Main Production" or .display_title == "Atlas V45 Watchdog Recovery")][0].updated_at // empty' \
+              --jq '[.workflow_runs[] | select(.display_title == "Atlas V46 Main Production" or .display_title == "Atlas V46 Watchdog Recovery")][0].updated_at // empty' \
               2>/dev/null || true
           )"
 
