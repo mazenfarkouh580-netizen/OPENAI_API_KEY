@@ -1,7 +1,7 @@
-name: Atlas + Alex V60 — Truthful Deduplicated Dashboard Fix
+name: Atlas + Alex V61 — Truthful Selection, 30-Job Fill, And Dashboard Repair
 
 run-name: >-
-  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V60 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V60 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V60 Watchdog Recovery' || format('Atlas V60 Manual — {0}', github.event.inputs.execution_mode) }}
+  ${{ github.event_name == 'schedule' && github.event.schedule == '6,21,36,51 * * * *' && 'Atlas V61 Watchdog Health Check' || github.event_name == 'schedule' && 'Atlas V61 Main Production' || github.event_name == 'repository_dispatch' && 'Atlas V61 Watchdog Recovery' || format('Atlas V61 Manual — {0}', github.event.inputs.execution_mode) }}
 
 on:
   workflow_dispatch:
@@ -587,7 +587,7 @@ jobs:
                           "Accept": accept,
                           "X-GitHub-Api-Version": API_VERSION,
                           "User-Agent": (
-                              "Atlas-Opportunity-Hunter-V50"
+                              "Atlas-Opportunity-Hunter-V61"
                           ),
                       },
                   )
@@ -1834,6 +1834,7 @@ jobs:
 
               return {
                   "title": title,
+                  "body": body,
                   "url": issue_url,
                   "repository": repository,
                   "issue_number": number,
@@ -2227,7 +2228,7 @@ jobs:
           def add_candidates(candidates, limit):
               added = 0
               for issue in candidates:
-                  if added >= limit or len(verification_queue) >= 30:
+                  if added >= limit or len(verification_queue) >= 200:
                       break
                   url = issue.get("html_url")
                   if not url or url in queued_urls:
@@ -2239,15 +2240,15 @@ jobs:
           # Revenue-first verification allocation. Small rewards are checked once
           # for openness, competition, repository fit, and technical executability;
           # payment proof is not repeatedly fast-verified under the CEO risk law.
-          add_candidates(atlas_small_candidates, 10)
-          add_candidates(alex_small_candidates, 10)
+          add_candidates(atlas_small_candidates, 60)
+          add_candidates(alex_small_candidates, 60)
           add_candidates(
               [issue_by_url[url] for url in previous_actionable_urls],
-              3,
+              20,
           )
-          add_candidates(atlas_candidates, 3)
-          add_candidates(alex_candidates, 2)
-          add_candidates(initial_candidates, 30)
+          add_candidates(atlas_candidates, 30)
+          add_candidates(alex_candidates, 30)
+          add_candidates(initial_candidates, 200)
 
           verified_results = []
 
@@ -2942,26 +2943,146 @@ jobs:
                   return False
               return True
 
-          # CEO law: PURSUE is the final dispatch approval. Do not apply a second
-          # reward ceiling, score floor, payer gate, or execution-confidence gate here.
-          # Those decisions already belong in the qualification stage. Keep only
-          # essential duplicate and hard-safety protections at dispatch time.
-          executable_candidates = [
-              item for item in execution_queue
-              if not blocked_source({
-                  "repository_url": f"https://api.github.com/repos/{item.get('repository') or ''}",
-                  "title": item.get("title") or "",
-                  "body": "",
-                  "number": item.get("issue_number") or 0,
-              })
-              and item.get("decision") == "PURSUE"
-              and float(item.get("reward", 0) or 0) >= 0.10
-              and not item.get("assignees")
-              and int(item.get("open_competing_prs", 0) or 0) == 0
-              and not item.get("repository_mismatch")
-              and item.get("ai_eligibility") != "PROHIBITED"
-              and execution_history_allows(item)
-          ]
+          # V61 truthful pre-dispatch gate. PURSUE is necessary but never sufficient:
+          # every candidate must still pass legitimacy, repository integrity,
+          # technical feasibility, competition, payout commitment, and acceptance clarity.
+          FALSE_TASK_TERMS = (
+              "joke", "parody", "meme only", "troll", "anti-bot", "anti bot",
+              "bot trap", "bait", "do not use ai", "no ai", "human only",
+              "for fun", "test bounty", "fake bounty", "prank", "tentoftrials",
+          )
+          NON_GUARANTEED_TERMS = (
+              "not guaranteed", "no guarantee", "may pay", "might pay",
+              "at our discretion", "discretionary", "subject to discretion",
+              "reward is optional", "payment optional", "if we decide",
+          )
+          CLEAR_ACCEPTANCE_TERMS = (
+              "acceptance criteria", "expected behavior", "requirements",
+              "must pass", "tests", "definition of done", "deliverable",
+              "done when", "success criteria", "implementation",
+          )
+
+          def final_quality_gate(item):
+              title = str(item.get("title") or "")
+              body = str(item.get("body") or "")
+              text = f"{title}\n{body}".lower()
+              reasons = []
+              repository = canonical_repository(item.get("repository"))
+              issue_number = int(item.get("issue_number") or 0)
+              reward = float(item.get("reward", 0) or 0)
+              if not repository or "/" not in repository or issue_number <= 0:
+                  reasons.append("invalid canonical repository or issue number")
+              if any(term in text for term in FALSE_TASK_TERMS):
+                  reasons.append("joke, parody, anti-bot bait, or known false-task signal")
+              if any(term in text for term in NON_GUARANTEED_TERMS):
+                  reasons.append("payout is discretionary or explicitly non-guaranteed")
+              if item.get("repository_mismatch"):
+                  reasons.append("repository mismatch")
+              if item.get("ai_eligibility") == "PROHIBITED":
+                  reasons.append("AI or automation is prohibited")
+              if not item.get("atlas_can_execute"):
+                  reasons.append("technical feasibility not established")
+              if item.get("external_execution_blockers"):
+                  reasons.append("external execution blocker exists")
+              if item.get("assignees"):
+                  reasons.append("issue is already assigned")
+              if int(item.get("open_competing_prs", 0) or 0) > 0:
+                  reasons.append("active competing pull request exists")
+              if reward < 0.10:
+                  reasons.append("reward below minimum")
+              if not item.get("claimable_now"):
+                  reasons.append("opportunity is not demonstrably claimable now")
+
+              # V61: words such as bounty/reward/payment are not payout proof.
+              # Small rewards may skip deep payer history, but still require a funded
+              # platform, direct payment evidence, a trusted payout source, or a
+              # documented maintainer-controlled payout program and approval path.
+              payout_committed = bool(
+                  item.get("direct_payment_proof")
+                  or item.get("funded_payment_platform")
+                  or item.get("trusted_payout_source")
+                  or (
+                      item.get("payout_program_repository")
+                      and item.get("trusted_repository")
+                      and item.get("approval_authority") == "OWNER/MAINTAINER APPROVAL PATH DESCRIBED"
+                  )
+              )
+              if not payout_committed:
+                  reasons.append("no verified payout mechanism or maintainer commitment")
+
+              acceptance_clear = bool(
+                  len(body.strip()) >= 120
+                  and any(term in text for term in CLEAR_ACCEPTANCE_TERMS)
+                  and len(item.get("atlas_capability_signals") or []) >= 1
+              )
+              if not acceptance_clear:
+                  reasons.append("no sufficiently clear acceptance criteria and executable deliverable")
+
+              # Reject implausible value/scope combinations rather than allowing a
+              # high advertised reward to dominate ranking.
+              if reward >= 100 and len(body.strip()) < 200:
+                  reasons.append("unrealistic reward-to-work combination")
+              if reward >= 1000 and not (item.get("funded_payment_platform") or item.get("direct_payment_proof")):
+                  reasons.append("large reward lacks funded or direct payment proof")
+              return (not reasons), reasons
+
+          # V61 repeated-failure cooldown is scoped to the canonical repository+issue,
+          # never an entire owner after one bad issue.
+          prior_quality_rejections = operations.get("final_quality_rejections", [])
+          rejection_counts = {}
+          for rejection in prior_quality_rejections if isinstance(prior_quality_rejections, list) else []:
+              key = str(rejection.get("canonical_key") or "").lower()
+              if key:
+                  rejection_counts[key] = rejection_counts.get(key, 0) + 1
+
+          rejected_by_final_quality = []
+          executable_candidates = []
+          for item in execution_queue:
+              prelim = (
+                  not blocked_source({
+                      "repository_url": f"https://api.github.com/repos/{item.get('repository') or ''}",
+                      "title": item.get("title") or "",
+                      "body": item.get("body") or "",
+                      "number": item.get("issue_number") or 0,
+                  })
+                  and item.get("decision") == "PURSUE"
+                  and execution_history_allows(item)
+              )
+              if not prelim:
+                  continue
+              candidate_key = execution_key(item)
+              if rejection_counts.get(candidate_key, 0) >= 2:
+                  rejected_by_final_quality.append({
+                      "canonical_key": candidate_key,
+                      "repository": canonical_repository(item.get("repository")),
+                      "issue_number": int(item.get("issue_number") or 0),
+                      "title": item.get("title") or "",
+                      "reasons": ["canonical repository-and-issue is in repeated-false cooldown"],
+                      "rejected_at": GENERATED_AT,
+                  })
+                  continue
+              passed, quality_reasons = final_quality_gate(item)
+              if passed:
+                  item["final_quality_verified"] = True
+                  executable_candidates.append(item)
+              else:
+                  item["final_quality_verified"] = False
+                  item["final_quality_rejection_reasons"] = quality_reasons
+                  rejected_by_final_quality.append({
+                      "canonical_key": execution_key(item),
+                      "repository": canonical_repository(item.get("repository")),
+                      "issue_number": int(item.get("issue_number") or 0),
+                      "title": item.get("title") or "",
+                      "reasons": quality_reasons,
+                      "rejected_at": GENERATED_AT,
+                  })
+
+          # Preserve rejection evidence so repeated false jobs do not recycle silently.
+          operations["final_quality_rejections"] = rejected_by_final_quality[-500:]
+          operations["final_quality_rejected_count"] = len(rejected_by_final_quality)
+          OPERATIONS_FILE.write_text(json.dumps(operations, indent=2, ensure_ascii=False), encoding="utf-8")
+
+          # V61 scans up to 200 verified candidates and fills up to 30 slots only with truthful unique opportunities.
           executable_candidates.sort(
               key=lambda item: (
                   bool(item.get("instant_payment_priority")),
@@ -3747,7 +3868,7 @@ jobs:
             <p class="small">
               V33 runs two independent search universes on every
               run and keeps a discovery cache so temporary API limits do not erase
-              sources. Up to 30 candidates receive a fast technical and competition check, with reserved capacity for small rewards from both workers. Small-reward PURSUE does not require deep payment proof; it requires an open task, no active competition, repository integrity, and work Atlas can realistically execute. The page refreshes every
+              sources. Up to 200 candidates are checked to fill a target of 30 truthful unique executable jobs, with reserved capacity for small rewards from both workers. Small-reward PURSUE does not require deep payment proof; it requires an open task, no active competition, repository integrity, and work Atlas can realistically execute. The page refreshes every
               15 minutes.
             </p>
           </body>
@@ -3760,11 +3881,11 @@ jobs:
           )
           STATUS_WINDOW_FILE.write_text(
               dashboard.replace(
-                  "<title>\n              Atlas + Alex Opportunity Hunter V50\n            </title>",
-                  "<title>Atlas V60 Status Window</title>",
+                  "<title>\n              Atlas + Alex Opportunity Hunter V61\n            </title>",
+                  "<title>Atlas V61 Status Window</title>",
               ).replace(
                   "Atlas + Alex Opportunity Hunter V50",
-                  "Atlas V60 Status Window",
+                  "Atlas V61 Status Window",
                   1,
               ),
               encoding="utf-8",
@@ -4002,7 +4123,7 @@ jobs:
               f"<tr><td>{i}</td><td>{html.escape(item['decision'])}</td><td>${item['reward']:,.2f}</td><td>${item['expected_value']:,.2f}</td><td>{html.escape(item['title'])}</td></tr>"
               for i, item in enumerate(execution_queue, 1)
           )
-          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V51 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V50 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
+          report_html = f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Atlas + Alex V61 Report</title><style>body{{font-family:Arial,sans-serif;margin:28px}}table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #999;padding:8px;text-align:left}}@media print{{button{{display:none}}}}</style></head><body><button onclick='window.print()'>Print</button><h1>Atlas + Alex Opportunity Hunter V61 Report</h1><p>Generated: {html.escape(GENERATED_AT)}</p><p>Status: <strong>{html.escape(status)}</strong></p><h2>Earnings</h2><p>Today ${earnings['today']:,.2f} · Week ${earnings['week']:,.2f} · Month ${earnings['month']:,.2f} · Year ${earnings['year']:,.2f} · Lifetime ${earnings['lifetime']:,.2f}</p><h2>Allocation</h2><p>Tax ${allocations['tax']:,.2f} · Reinvesting ${allocations['reinvesting']:,.2f} · Mazen ${allocations['mazen']:,.2f}</p><h2>Execution Queue</h2><table><thead><tr><th>#</th><th>Decision</th><th>Reward</th><th>Expected Value</th><th>Opportunity</th></tr></thead><tbody>{report_rows}</tbody></table></body></html>"""
           (REPORTS_DIR / "latest.html").write_text(report_html, encoding="utf-8")
           csv_lines = ["rank,decision,reward,expected_value,payment_confidence,competition_advantage,title,url"]
           for i, item in enumerate(execution_queue, 1):
@@ -4014,14 +4135,14 @@ jobs:
               ]))
           (REPORTS_DIR / "latest.csv").write_text("\n".join(csv_lines) + "\n", encoding="utf-8")
           (REPORTS_DIR / "latest.txt").write_text(
-              "Atlas + Alex Opportunity Hunter V50\n" +
+              "Atlas + Alex Opportunity Hunter V61\n" +
               f"Generated: {GENERATED_AT}\nStatus: {status}\n" +
               f"Today: ${earnings['today']:,.2f}\nWeek: ${earnings['week']:,.2f}\nMonth: ${earnings['month']:,.2f}\nYear: ${earnings['year']:,.2f}\nLifetime: ${earnings['lifetime']:,.2f}\n",
               encoding="utf-8",
           )
 
           summary_lines = [
-              "# Atlas + Alex Opportunity Hunter V50",
+              "# Atlas + Alex Opportunity Hunter V61",
               "",
               (
                   f"- System status: "
@@ -4137,10 +4258,10 @@ jobs:
                   blocked_matrix_removals = pre_firewall_count - len(selected_executions)
                   if blocked_matrix_removals:
                       print(
-                          f"V60 dispatch firewall removed {blocked_matrix_removals} blocked task(s) before matrix creation."
+                          f"V61 dispatch firewall removed {blocked_matrix_removals} blocked task(s) before matrix creation."
                       )
 
-                  # V60 second deduplication immediately before matrix creation.
+                  # V61 second deduplication immediately before matrix creation.
                   pre_matrix_records = len(selected_executions)
                   unique_matrix = []
                   seen_matrix_keys = set()
@@ -5220,6 +5341,79 @@ jobs:
                   if row.get('failed'): failed+=1
                   else: skipped+=1
 
+          # Refresh every historical Atlas pull request before calculating dashboard pipeline counts.
+          # This prevents Waiting for approval from remaining frozen when an older PR is reviewed,
+          # merged, closed, or changed outside the current workflow run.
+          submissions_path=Path('data/submissions_history.json')
+          try:
+              submissions=json.loads(submissions_path.read_text(encoding='utf-8')) if submissions_path.exists() else {}
+              if not isinstance(submissions,dict): submissions={}
+          except Exception:
+              submissions={}
+
+          refresh_errors=[]
+          awaiting_review=approved_count=merged_count=closed_unmerged_count=changes_requested_count=0
+          now_iso=datetime.now(timezone.utc).isoformat()
+          for submission_key, record in submissions.items():
+              if not isinstance(record,dict):
+                  continue
+              pr_url=str(record.get('pr_url') or record.get('verified_pull_request_url') or '').strip()
+              match=re.fullmatch(r'https://github\.com/([^/]+/[^/]+)/pull/(\d+)',pr_url)
+              if not match:
+                  continue
+              repo, number=match.group(1), int(match.group(2))
+              headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+              try:
+                  request=urllib.request.Request(f'https://api.github.com/repos/{repo}/pulls/{number}',headers=headers)
+                  with urllib.request.urlopen(request,timeout=20) as response:
+                      pr=json.load(response)
+                  reviews_request=urllib.request.Request(f'https://api.github.com/repos/{repo}/pulls/{number}/reviews?per_page=100',headers=headers)
+                  try:
+                      with urllib.request.urlopen(reviews_request,timeout=20) as response:
+                          reviews=json.load(response)
+                  except Exception:
+                      reviews=[]
+                  latest_review_by_user={}
+                  for review in reviews if isinstance(reviews,list) else []:
+                      login=str((review.get('user') or {}).get('login') or '')
+                      submitted_at=str(review.get('submitted_at') or '')
+                      if login and (login not in latest_review_by_user or submitted_at >= str(latest_review_by_user[login].get('submitted_at') or '')):
+                          latest_review_by_user[login]=review
+                  review_states={str(review.get('state') or '').upper() for review in latest_review_by_user.values()}
+                  if pr.get('merged_at'):
+                      state='merged'; merged_count+=1
+                  elif str(pr.get('state') or '').lower()=='closed':
+                      state='closed_unmerged'; closed_unmerged_count+=1
+                  elif 'CHANGES_REQUESTED' in review_states:
+                      state='changes_requested'; changes_requested_count+=1; awaiting_review+=1
+                  elif 'APPROVED' in review_states:
+                      state='approved'; approved_count+=1
+                  else:
+                      state='under_review'; awaiting_review+=1
+                  record.update({
+                      'state':state,
+                      'confirmation_state':state,
+                      'pr_url':pr.get('html_url') or pr_url,
+                      'verified_pull_request_url':pr.get('html_url') or pr_url,
+                      'pr_state':pr.get('state'),
+                      'pr_merged_at':pr.get('merged_at'),
+                      'pr_updated_at':pr.get('updated_at'),
+                      'confirmed_at':now_iso,
+                      'last_status_refresh_run_id':run_id,
+                  })
+              except Exception as exc:
+                  refresh_errors.append({'submission_key':submission_key,'pr_url':pr_url,'error':str(exc)[:240]})
+                  prior=str(record.get('confirmation_state') or record.get('state') or '').lower()
+                  if prior in {'submitted','verified_submitted','under_review','changes_requested'}:
+                      awaiting_review+=1
+                  elif prior=='approved':
+                      approved_count+=1
+                  elif prior=='merged':
+                      merged_count+=1
+
+          submissions_path.parent.mkdir(exist_ok=True)
+          submissions_path.write_text(json.dumps(submissions,indent=2,ensure_ascii=False),encoding='utf-8')
+
           ledger_path=Path('data/earnings-ledger.json')
           try: ledger=json.loads(ledger_path.read_text()) if ledger_path.exists() else []
           except Exception: ledger=[]
@@ -5232,15 +5426,26 @@ jobs:
             'duplicates_removed':int(os.environ.get('DUPLICATES_REMOVED') or 0)+duplicate_worker_records,'unique_jobs_dispatched':int(os.environ.get('DISPATCHED_COUNT') or 0),
             'succeeded':succeeded,'failed':failed,'skipped':skipped,'verified_pull_requests':verified,
             'submitted_value':round(submitted_value,2),'merged_value':round(merged_value,2),'approved_value':round(approved_value,2),'cash_received':round(cash_received,2),
-            'final_truthful_system_status':final_status,'worker_results':results
+            'waiting_for_approval':awaiting_review,'approved_pull_requests':approved_count,'merged_pull_requests':merged_count,
+            'changes_requested':changes_requested_count,'closed_unmerged':closed_unmerged_count,
+            'pull_request_refresh_errors':len(refresh_errors),'final_truthful_system_status':final_status,
+            'worker_results':results,'refresh_errors':refresh_errors
           }
           Path('data').mkdir(exist_ok=True); Path('docs').mkdir(exist_ok=True)
           Path('data/truthful-run-results.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
           run_file=f'run-data-{run_id}.json'
-          Path('docs',run_file).write_text(json.dumps(report,indent=2),encoding='utf-8')
-          Path('docs','latest-run.json').write_text(json.dumps({'run_id':run_id,'data_file':run_file,'generated_at_pacific':pacific},indent=2),encoding='utf-8')
-          cards=''.join(f'<div><b>{html.escape(k.replace("_"," ").title())}</b><span>{html.escape(str(v))}</span></div>' for k,v in report.items() if k!='worker_results')
-          page=f"""<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATLAS ATM V60</title><style>body{{font-family:system-ui;margin:24px;background:#0b1020;color:#eef}}h1{{font-size:2rem}}main{{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}}main div{{background:#17213d;padding:14px;border-radius:10px}}span{{display:block;font-size:1.35rem;margin-top:6px}}</style></head><body><h1>ATLAS ATM V60</h1><p>Truthful finalized run {run_id}</p><main>{cards}</main><script>fetch('{run_file}?run={run_id}',{{cache:'no-store'}}).then(r=>r.json()).then(d=>{{if(String(d.run_id)!=='{run_id}')document.body.innerHTML='<h1>Dashboard run verification failed</h1>';}})</script></body></html>"""
+          serialized_report=json.dumps(report,indent=2)
+          Path('docs',run_file).write_text(serialized_report,encoding='utf-8')
+          # Refresh every dashboard data endpoint used by current and legacy Atlas pages.
+          # money-data.json was previously left stale, which froze visible totals on yesterday's run.
+          Path('docs','money-data.json').write_text(serialized_report,encoding='utf-8')
+          Path('docs','truthful-run-results.json').write_text(serialized_report,encoding='utf-8')
+          marker={'run_id':run_id,'commit_sha':sha,'data_file':run_file,'generated_at_pacific':pacific,'cache_key':f'{run_id}-{os.environ.get("GITHUB_RUN_ATTEMPT","1")}-{sha[:12]}'}
+          Path('docs','latest-run.json').write_text(json.dumps(marker,indent=2),encoding='utf-8')
+          Path('docs','current-run.txt').write_text(run_id+'\n',encoding='utf-8')
+          cards=''.join(f'<div><b>{html.escape(k.replace("_"," ").title())}</b><span>{html.escape(str(v))}</span></div>' for k,v in report.items() if k not in {'worker_results','refresh_errors'})
+          cache_key=marker['cache_key']
+          page=f"""<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATLAS ATM V61</title><style>body{{font-family:system-ui;margin:24px;background:#0b1020;color:#eef}}h1{{font-size:2rem}}main{{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}}main div{{background:#17213d;padding:14px;border-radius:10px}}span{{display:block;font-size:1.35rem;margin-top:6px}}</style></head><body><h1>ATLAS ATM V61</h1><p>Truthful finalized run {run_id}</p><main id="atlas-cards">{cards}</main><script>(async()=>{{const expected='{run_id}';const key='{cache_key}';const latest=await fetch('latest-run.json?v='+encodeURIComponent(key)+'&t='+Date.now(),{{cache:'no-store',headers:{{'Cache-Control':'no-cache'}}}}).then(r=>{{if(!r.ok)throw new Error('latest-run '+r.status);return r.json()}});if(String(latest.run_id)!==expected)throw new Error('latest run mismatch: '+latest.run_id+' != '+expected);const d=await fetch(latest.data_file+'?v='+encodeURIComponent(key)+'&t='+Date.now(),{{cache:'no-store',headers:{{'Cache-Control':'no-cache'}}}}).then(r=>{{if(!r.ok)throw new Error('run data '+r.status);return r.json()}});if(String(d.run_id)!==expected)throw new Error('dashboard run mismatch: '+d.run_id+' != '+expected);}})().catch(e=>{{document.body.innerHTML='<h1>Dashboard refresh verification failed</h1><p>'+String(e.message||e)+'</p>';}});</script></body></html>"""
           Path('docs','index.html').write_text(page,encoding='utf-8')
           Path('docs','status.html').write_text(page,encoding='utf-8')
           Path('docs','report.html').write_text(page,encoding='utf-8')
@@ -5249,7 +5454,7 @@ jobs:
               for k,v in {'final_status':final_status,'succeeded':succeeded,'failed':failed,'skipped':skipped,'verified_submissions':verified}.items(): h.write(f'{k}={v}\n')
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as h:
               h.write('## Atlas + Alex V60 Truthful Final Report\n')
-              for k in ['pursue_candidates','executable_candidates','matrix_records','unique_opportunities','duplicates_removed','unique_jobs_dispatched','succeeded','failed','skipped','verified_pull_requests','submitted_value','merged_value','approved_value','cash_received','final_truthful_system_status']:
+              for k in ['pursue_candidates','executable_candidates','matrix_records','unique_opportunities','duplicates_removed','unique_jobs_dispatched','succeeded','failed','skipped','verified_pull_requests','waiting_for_approval','approved_pull_requests','merged_pull_requests','changes_requested','closed_unmerged','pull_request_refresh_errors','submitted_value','merged_value','approved_value','cash_received','final_truthful_system_status']:
                   h.write(f'- {k.replace("_"," ").title()}: **{report[k]}**\n')
           PY
 
@@ -5258,17 +5463,17 @@ jobs:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          git config user.name "Atlas V60 Truth Verifier"
+          git config user.name "Atlas V61 Truth Verifier"
           git config user.email "atlas-verifier@users.noreply.github.com"
           snapshot="$RUNNER_TEMP/atlas-v60-final-${GITHUB_RUN_ID}.tar"
-          tar -cf "$snapshot" data/truthful-run-results.json docs
+          tar -cf "$snapshot" data/truthful-run-results.json data/submissions_history.json docs
           for attempt in 1 2 3 4 5 6; do
             git fetch origin "$BRANCH_NAME"
             git reset --hard "origin/$BRANCH_NAME"
             tar -xf "$snapshot"
-            git add data/truthful-run-results.json docs
+            git add data/truthful-run-results.json data/submissions_history.json docs
             if git diff --cached --quiet; then exit 0; fi
-            git commit -m "Atlas V60 truthful final run ${GITHUB_RUN_ID}"
+            git commit -m "Atlas V61 truthful final run ${GITHUB_RUN_ID}"
             git push origin "HEAD:$BRANCH_NAME" && exit 0
             sleep $((attempt*3))
           done
@@ -5474,10 +5679,14 @@ jobs:
         run: |
           set -euo pipefail
           test -s docs/index.html
-          grep -q "ATLAS ATM V60" docs/index.html
+          grep -q "ATLAS ATM V61" docs/index.html
           grep -q "${GITHUB_RUN_ID}" docs/index.html
           test -s "docs/run-data-${GITHUB_RUN_ID}.json"
+          test -s docs/latest-run.json
           test -s docs/money-data.json
+          test "$(tr -d '\r\n' < docs/current-run.txt)" = "${GITHUB_RUN_ID}"
+          grep -q '"run_id": "'"${GITHUB_RUN_ID}"'"' docs/latest-run.json
+          grep -q '"run_id": "'"${GITHUB_RUN_ID}"'"' docs/money-data.json
           echo "Frozen ATM artifact verified for run ${GITHUB_RUN_ID}."
 
       - name: Configure GitHub Pages
@@ -5559,7 +5768,12 @@ jobs:
               --header 'Pragma: no-cache' \
               "$url" || true)"
             data="$(curl --fail --silent --show-error --location --header 'Cache-Control: no-cache' "${PAGE_URL%/}/run-data-${GITHUB_RUN_ID}.json?atlas_run=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" || true)"
-            if printf '%s' "$body" | grep -q "ATLAS ATM V60" && printf '%s' "$data" | grep -q '"run_id": "'"${GITHUB_RUN_ID}"'"'
+            latest="$(curl --fail --silent --show-error --location --header 'Cache-Control: no-cache' "${PAGE_URL%/}/latest-run.json?atlas_run=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" || true)"
+            money="$(curl --fail --silent --show-error --location --header 'Cache-Control: no-cache' "${PAGE_URL%/}/money-data.json?atlas_run=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" || true)"
+            if printf '%s' "$body" | grep -q "ATLAS ATM V61" \
+              && printf '%s' "$data" | grep -q '"run_id": "'"${GITHUB_RUN_ID}"'"' \
+              && printf '%s' "$latest" | grep -q '"run_id": "'"${GITHUB_RUN_ID}"'"' \
+              && printf '%s' "$money" | grep -q '"run_id": "'"${GITHUB_RUN_ID}"'"'
             then
               echo "Published ATM homepage and data verified for run ${GITHUB_RUN_ID} on attempt $attempt."
               exit 0
@@ -5658,7 +5872,7 @@ jobs:
           workflow_id="${workflow_id%@*}"
           last_success="$(
             gh api "repos/${REPOSITORY}/actions/workflows/${workflow_id}/runs?status=success&per_page=50" \
-              --jq '[.workflow_runs[] | select(.display_title == "Atlas V60 Main Production" or .display_title == "Atlas V60 Watchdog Recovery")][0].updated_at // empty' \
+              --jq '[.workflow_runs[] | select(.display_title == "Atlas V61 Main Production" or .display_title == "Atlas V61 Watchdog Recovery")][0].updated_at // empty' \
               2>/dev/null || true
           )"
 
