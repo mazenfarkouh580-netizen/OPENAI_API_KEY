@@ -494,15 +494,16 @@
     "confirmation_reason": "missing_or_invalid_pr_url"
   },
   "UnsafeLabs/Bounty-Hunters#309": {
-    "state": "reserved",
+    "state": "submitted",
     "repository": "UnsafeLabs/Bounty-Hunters",
     "issue_number": 309,
     "issue_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/309",
     "title": "[ Config ] Fix misspelled database key in app.json",
-    "reward": 1.0,
     "worker": "Atlas 1",
-    "reserved_at": "2026-07-24T07:13:48.970880+00:00",
-    "reserved_at_ts": 1784877268.909305,
+    "reward": 1.0,
+    "pr_url": "https://github.com/UnsafeLabs/Bounty-Hunters/pull/8194",
+    "submitted_at": "2026-07-24T07:17:51.090181+00:00",
+    "submitted_at_ts": 1784877471.0901928,
     "workflow_run_id": "30074762511"
   },
   "UnsafeLabs/Bounty-Hunters#305": {
